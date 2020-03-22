@@ -19,5 +19,11 @@
     <Folder Include="Views\" />
     <Folder Include="Views\Login\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="ViewModels\Login\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Views\Login\ResetPassPage.xaml">
+      <LogicalName>EscapeRankUI.Views.ResetPassPage.xaml</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

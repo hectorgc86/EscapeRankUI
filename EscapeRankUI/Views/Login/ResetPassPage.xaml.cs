@@ -9,15 +9,15 @@ using Xamarin.Forms;
 
 namespace EscapeRankUI.Views
 {
-    public partial class LoginPage : ContentPage
+    public partial class ResetPassPage : ContentPage
     {
-        public LoginViewModel lvm;
+        public ResetPassViewModel rpvm;
 
-        public LoginPage()
+        public ResetPassPage()
         {
-            lvm = new LoginViewModel(Navigation);
+            rpvm = new ResetPassViewModel(Navigation);
             InitializeComponent();
-            BindingContext = lvm;
+            BindingContext = rpvm;
         }
     }
 }
