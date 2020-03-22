@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EscapeRankUI.Views.RegistroPage" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss">
+    <xfg:ContentPageGloss.BackgroundGradient>
+        <xfg:Gradient Rotation="150">
+            <xfg:GradientStep StepColor="{StaticResource dark_purple}" StepPercentage="0" />
+            <xfg:GradientStep StepColor="{StaticResource dark_blue}" StepPercentage="1" />
+        </xfg:Gradient>
+    </xfg:ContentPageGloss.BackgroundGradient>
+    <Grid>
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout VerticalOptions="FillAndExpand" Padding="24" Spacing="0">
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <Label Text="Registrarse" FontSize="22" FontFamily="{StaticResource font_heavy}" HorizontalTextAlignment="Center" TextColor="#ffffff" />
+                    <Label Margin="0,24,0,16" FontSize="15" FontFamily="{StaticResource font_book}" TextColor="#ffffff" HorizontalTextAlignment="Center" Text="Cree una cuenta antes de comenzar" />
+                    <StackLayout x:Name="FormLayout" Spacing="16" VerticalOptions="CenterAndExpand">
+                        <Grid ColumnSpacing="16"></Grid>
+                        <StackLayout Spacing="8">
+                            <Label Text="Nombre" FontFamily="{StaticResource font_medium}" FontSize="18" />
+                            <Entry Text="{Binding Nombre}" Keyboard="Text" />
+                        </StackLayout>
+                        <StackLayout Spacing="8">
+                            <Label Text="Email" FontFamily="{StaticResource font_medium}" FontSize="18" />
+                            <Entry Text="{Binding Email}" IsPassword="True" Keyboard="Email" />
+                        </StackLayout>
+                        <StackLayout Spacing="8">
+                            <Label Text="Contraseña" FontFamily="{StaticResource font_medium}" FontSize="18" />
+                            <Entry Text="{Binding Contrasenya}" IsPassword="True" Keyboard="Text" />
+                        </StackLayout>
+                        <StackLayout Spacing="8">
+                            <Label Text="Repetir contraseña" FontFamily="{StaticResource font_medium}" FontSize="18" />
+                            <Entry Text="{Binding RepContrasenya}" IsPassword="True" Keyboard="Text" />
+                        </StackLayout>
+
+                        <Button x:Name="RegistrarButton" Command="{Binding RegistrarCommand}" CornerRadius="15" VerticalOptions="EndAndExpand" Text="Registrar" />
+
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label FontSize="15" FontFamily="{StaticResource font_book}" TextColor="#ffffff" HorizontalTextAlignment="Center" Text="¿Ya tienes una cuenta?"></Label>
+                    <Label x:Name="LoginLabel" FontSize="15" Padding="8,0,0,0" FontFamily="{StaticResource font_book}" TextColor="#ffffff" HorizontalTextAlignment="End" Text="Ingresar">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginCommand}" CommandParameter="{x:Reference LoginLabel}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
