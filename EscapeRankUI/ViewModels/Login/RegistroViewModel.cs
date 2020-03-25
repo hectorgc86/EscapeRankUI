@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Input;
-using EscapeRankUI.Views;
+using EscapeRankUI.Views.Login;
 using Xamarin.Forms;
 
-namespace EscapeRankUI.ViewModels
+namespace EscapeRankUI.ViewModels.Login
 {
     public class RegistroViewModel : BaseViewModel
     {

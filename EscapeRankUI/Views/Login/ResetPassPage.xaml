@@ -1,23 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EscapeRankUI.Views.ResetPassPage" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss" ios:Page.UseSafeArea="true">
-    <xfg:ContentPageGloss.BackgroundGradient>
-        <xfg:Gradient Rotation="150">
-            <xfg:GradientStep StepColor="{StaticResource dark_purple}" StepPercentage="0" />
-            <xfg:GradientStep StepColor="{StaticResource dark_blue}" StepPercentage="1" />
-        </xfg:Gradient>
-    </xfg:ContentPageGloss.BackgroundGradient>
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EscapeRankUI.Views.Login.ResetPassPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             Visual="Material"
+             BackgroundColor="{StaticResource colPrim}"
+             NavigationPage.HasNavigationBar="false">
     <Grid>
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout VerticalOptions="FillAndExpand" Padding="24" Spacing="0">
                 <StackLayout VerticalOptions="CenterAndExpand">
-                    <Label Text="¿Has olvidado tu contraseña?" FontSize="22" FontFamily="{StaticResource font_heavy}" HorizontalTextAlignment="Center" TextColor="#ffffff" />
-                    <Label Margin="0,24,0,16" FontSize="15" FontFamily="{StaticResource font_book}" TextColor="#ffffff" HorizontalTextAlignment="Center" Text="Te enviaremos las instrucciones sobre como reestablecer tu contraseña al e-mail donde te hayas registrado con nosotros" />
+                    <Label Text="¿Has olvidado tu contraseña?" FontSize="22" FontFamily="{StaticResource fuente_negrita}" HorizontalTextAlignment="Center" TextColor="#ffffff" />
+                    <Label Margin="0,24,0,16" FontSize="15" FontFamily="{StaticResource fuente_normal}" TextColor="#ffffff" HorizontalTextAlignment="Center" Text="Te enviaremos las instrucciones sobre como reestablecer tu contraseña al e-mail donde te hayas registrado con nosotros" />
                     <StackLayout x:Name="FormLayout" Spacing="16" VerticalOptions="CenterAndExpand">
                         <Grid ColumnSpacing="16"></Grid>
                         <StackLayout Spacing="8">
-                            <Label Text="E-mail" FontFamily="{StaticResource font_medium}" FontSize="18" />
+                            <Label Text="E-mail" FontFamily="{StaticResource fuente_normal}" FontSize="18" />
                             <Entry Text="{Binding Email}" Keyboard="Email" />
                         </StackLayout>
 
@@ -26,8 +25,8 @@
                     </StackLayout>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Label FontSize="15" FontFamily="{StaticResource                font_book}" TextColor="#ffffff" HorizontalTextAlignment="Center" Text="¿No tienes una cuenta?"></Label>
-                    <Label x:Name="RegistrarLabel" FontSize="15" Padding="8,0,0,0" FontFamily="{StaticResource font_book}" TextColor="#ffffff" HorizontalTextAlignment="End" Text="Regístrate">
+                    <Label FontSize="15" FontFamily="{StaticResource                fuente_normal}" TextColor="#ffffff" HorizontalTextAlignment="Center" Text="¿No tienes una cuenta?"></Label>
+                    <Label x:Name="RegistrarLabel" FontSize="15" Padding="8,0,0,0" FontFamily="{StaticResource fuente_normal}" TextColor="#ffffff" HorizontalTextAlignment="End" Text="Regístrate">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding RegistrarCommand}" CommandParameter="{x:Reference RegistrarLabel}" />
                         </Label.GestureRecognizers>

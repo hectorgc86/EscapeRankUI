@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="EscapeRankUI.AppShell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:v="clr-namespace:EscapeRankUI.Views"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    Title="EscapeRank"
+    ios:Page.UseSafeArea="true"
+    mc:Ignorable="d"
+    NavigationPage.HasNavigationBar="false">
+
+    <Shell.Resources>
+        <Style
+            x:Key="EstiloBase"
+            TargetType="Element"
+            ApplyToDerivedTypes="True">
+            <Setter Property="Shell.ForegroundColor" Value="{DynamicResource colQua}" />
+            <Setter Property="Shell.UnselectedColor" Value="{DynamicResource colTabBarUns}" />
+            <Setter Property="Shell.BackgroundColor" Value="{StaticResource colPrim}" />
+            <Setter Property="Shell.TitleColor" Value="#FFFFFF" />
+            <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource colTabBarBack}" />
+            <Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource colTabBarUns}" />
+            <Setter Property="Shell.TabBarTitleColor" Value="{DynamicResource colPrim}" />
+        </Style>
+
+         <Style
+            BasedOn="{StaticResource EstiloBase}"
+            TargetType="TabBar"
+            ApplyToDerivedTypes="True"/>
+    </Shell.Resources>
+
+    <TabBar>
+        <Tab
+            Title="Inicio"
+            Icon="{StaticResource icono_tab_muro}">
+            <ShellContent ContentTemplate="{DataTemplate v:Muro.MuroNoticiasView}" />
+        </Tab>
+        <Tab
+            Title="Explorar"
+            Icon="{StaticResource icono_tab_salas}">
+             <ShellContent ContentTemplate="{DataTemplate v:Salas.ExplorarSalasView}" />
+        </Tab>
+        <Tab
+            Title="Partida"
+            Icon="{StaticResource icono_tab_partida}">
+            <ShellContent ContentTemplate="{DataTemplate v:Partida.NuevaPartidaView}" />
+        </Tab>
+         <Tab
+            Title="Historial"
+            Icon="{StaticResource icono_tab_historial}">
+            <ShellContent ContentTemplate="{DataTemplate v:Historial.HistorialPartidasView}" />
+        </Tab>
+        <Tab
+            Title="Perfil"
+            Icon="{StaticResource icono_tab_perfil}">
+            <ShellContent
+                Title="Datos"
+                ContentTemplate="{DataTemplate v:Perfil.PerfilDatosView}" />
+            <ShellContent
+                Title="Amigos"
+                ContentTemplate="{DataTemplate v:Perfil.PastOrders}" />
+            <ShellContent
+                Title="Equipos"
+                ContentTemplate="{DataTemplate v:Perfil.PastOrders}" />
+        </Tab>
+    </TabBar>
+</Shell>

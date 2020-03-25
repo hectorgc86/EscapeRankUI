@@ -4,10 +4,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EscapeRankUI.ViewModels;
+using EscapeRankUI.ViewModels.Login;
 using Xamarin.Forms;
 
-namespace EscapeRankUI.Views
+namespace EscapeRankUI.Views.Login
 {
     public partial class ResetPassPage : ContentPage
     {

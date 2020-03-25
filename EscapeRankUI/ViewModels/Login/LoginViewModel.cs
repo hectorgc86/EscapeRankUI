@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Input;
-using EscapeRankUI.Views;
+using EscapeRankUI.Views.Login;
 using Xamarin.Forms;
 
-namespace EscapeRankUI.ViewModels
+namespace EscapeRankUI.ViewModels.Login
 {
     public class LoginViewModel : BaseViewModel
     {
@@ -50,9 +50,9 @@ namespace EscapeRankUI.ViewModels
         }
 
 
-        public void Login()
+        public async void Login()
         {
-            Debug.WriteLine("Has hecho Login");
+            await Navigation.PushAsync(new AppShell());
             /*
             Cargando = true;
             Title = string.Empty;
@@ -106,6 +106,7 @@ namespace EscapeRankUI.ViewModels
                 Debug.WriteLine("ERROR {0}", e.Message);
                 await App.Current.MainPage.DisplayAlert("Error de conexión", e.Message, "Ok");
             }*/
+
         }
     
 

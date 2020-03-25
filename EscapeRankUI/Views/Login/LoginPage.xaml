@@ -1,42 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EscapeRankUI.Views.LoginPage" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss" ios:Page.UseSafeArea="true">
-    <xfg:ContentPageGloss.BackgroundGradient>
-        <xfg:Gradient Rotation="150">
-            <xfg:GradientStep StepColor="{StaticResource dark_purple}" StepPercentage="0" />
-            <xfg:GradientStep StepColor="{StaticResource dark_blue}" StepPercentage="1" />
-        </xfg:Gradient>
-    </xfg:ContentPageGloss.BackgroundGradient>
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EscapeRankUI.Views.Login.LoginPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             Visual="Material"
+             BackgroundColor="{StaticResource colPrim}"
+             NavigationPage.HasNavigationBar="false">
     <Grid>
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout VerticalOptions="FillAndExpand" Padding="24" Spacing="0">
                 <StackLayout VerticalOptions="CenterAndExpand">
-                    <Label Text="Iniciar sesión" FontSize="22" FontFamily="{StaticResource font_heavy}" HorizontalTextAlignment="Center" TextColor="#ffffff" />
-                    <Label Margin="0,24,0,16" FontSize="15" FontFamily="{StaticResource font_book}" TextColor="#ffffff" HorizontalTextAlignment="Center" Text="Entra al mundo escaperanker" />
+                    <Label Text="Iniciar sesión" FontSize="22" FontFamily="{StaticResource fuente_negrita}" HorizontalTextAlignment="Center" TextColor="#ffffff" />
+                    <Label Margin="0,24,0,16" FontSize="15" FontFamily="{StaticResource fuente_normal}" TextColor="#ffffff" HorizontalTextAlignment="Center" Text="Entra al mundo escaperanker" />
                     <StackLayout x:Name="FormLayout" Spacing="16" VerticalOptions="CenterAndExpand">
                         <Grid ColumnSpacing="16"></Grid>
                         <StackLayout Spacing="8">
-                            <Label Text="E-mail" FontFamily="{StaticResource font_medium}" FontSize="18" />
+                            <Label Text="E-mail" FontFamily="{StaticResource fuente_normal}" FontSize="18" />
                             <Entry Text="{Binding Email}" Keyboard="Email" />
                         </StackLayout>
                         <StackLayout Spacing="8">
-                            <Label Text="Contraseña" FontFamily="{StaticResource font_medium}" FontSize="18" />
+                            <Label Text="Contraseña" FontFamily="{StaticResource fuente_normal}" FontSize="18" />
                             <Entry Text="{Binding Contrasenya}" IsPassword="True" Keyboard="Text" />
                         </StackLayout>
-                        <Label x:Name="ResetPassLabel" Margin="0,0,0,16" FontSize="15" FontFamily="{StaticResource font_book}" TextColor="#ffffff" HorizontalTextAlignment="End" Text="¿Has olvidado la contraseña?">
+                        <Label x:Name="ResetPassLabel" Margin="0,0,0,16" FontSize="15" FontFamily="{StaticResource fuente_normal}" TextColor="#ffffff" HorizontalTextAlignment="End" Text="¿Has olvidado la contraseña?">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ResetPassCommand}" CommandParameter="{x:Reference ResetPassLabel}" />
                             </Label.GestureRecognizers>
                         </Label>
                         <Button x:Name="LoginButton" Command="{Binding LoginCommand}" CornerRadius="15" VerticalOptions="EndAndExpand" Text="Entrar" />
-                        <Label FontSize="15" FontFamily="{StaticResource font_book}" TextColor="#ffffff" HorizontalTextAlignment="Center" Text="O crea una cuenta usando una red social" />
-                        <Button x:Name="LoginFacebookButton" Command="{Binding FacebookLoginCommand}" CornerRadius="15" VerticalOptions="EndAndExpand" Text="Entrar con Facebook" />
+                        <Label FontSize="15" FontFamily="{StaticResource fuente_normal}" TextColor="#ffffff" HorizontalTextAlignment="Center" Text="O crea una cuenta usando una red social" />
+                        <Button x:Name="LoginFacebookButton" Command="{Binding FacebookLoginCommand}" CornerRadius="15" VerticalOptions="EndAndExpand" ImageSource="{StaticResource icono_facebook}" Text="Entrar con Facebook" >
+                        </Button>
                     </StackLayout>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Label FontSize="15" FontFamily="{StaticResource                font_book}" TextColor="#ffffff" HorizontalTextAlignment="Center" Text="¿No tienes una cuenta?"></Label>
-                    <Label x:Name="RegistrarLabel" FontSize="15" Padding="8,0,0,0" FontFamily="{StaticResource font_book}" TextColor="#ffffff" HorizontalTextAlignment="End" Text="Regístrate">
+                    <Label FontSize="15" FontFamily="{StaticResource                fuente_normal}" TextColor="#ffffff" HorizontalTextAlignment="Center" Text="¿No tienes una cuenta?"></Label>
+                    <Label x:Name="RegistrarLabel" FontSize="15" Padding="8,0,0,0" FontFamily="{StaticResource fuente_normal}" TextColor="#ffffff" HorizontalTextAlignment="End" Text="Regístrate">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding RegistrarCommand}" CommandParameter="{x:Reference RegistrarLabel}" />
                         </Label.GestureRecognizers>

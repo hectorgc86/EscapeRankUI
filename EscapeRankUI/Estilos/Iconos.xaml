@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:i="clr-namespace:EscapeRankUI.Estilos;assembly=EscapeRankUI"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <!-- Fuente iconos-->
+
+    <OnPlatform
+        x:Key="FuenteIconosMD"
+        x:TypeArguments="x:String">
+        <On Platform="Android" Value="Icons/materialdesignicons-webfont.ttf#Material Design Icons"/>
+        <On Platform="iOS" Value="Material Design Icons"/>
+    </OnPlatform>
+
+    <!--Iconos TABS-->
+
+    <FontImageSource
+        x:Key="icono_tab_muro"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="{x:Static i:Iconos.icono_tab_muro}" />
+
+    <FontImageSource
+        x:Key="icono_tab_salas"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="{x:Static i:Iconos.icono_tab_salas}" />
+
+    <FontImageSource
+        x:Key="icono_tab_partida"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="{x:Static i:Iconos.icono_tab_partida}" />
+
+    <FontImageSource
+        x:Key="icono_tab_historial"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="{x:Static i:Iconos.icono_tab_historial}" />
+
+    <FontImageSource
+        x:Key="icono_tab_perfil"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="{x:Static i:Iconos.icono_tab_perfil}" />
+
+    <!--Iconos INTERFACES-->
+
+    <FontImageSource
+        x:Key="icono_facebook"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="{x:Static i:Iconos.icono_facebook}"
+        Size="18"
+        Color="#B9BDC5" />
+
+     <FontImageSource
+        x:Key="icono_estrella"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="{x:Static i:Iconos.icono_estrella}"
+        Size="12"
+        Color="#FDC900" />
+
+    <FontImageSource
+        x:Key="icono_cat_misterio"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="{x:Static i:Iconos.icono_cat_misterio}"
+        Size="44"
+        Color="#FE8C01" />
+
+    <FontImageSource
+        x:Key="icono_cat_miedo"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="{x:Static i:Iconos.icono_cat_miedo}"
+        Size="44"
+        Color="#5AC7FB" />
+
+    <FontImageSource
+        x:Key="icono_cat_menores"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="{x:Static i:Iconos.icono_cat_menores}"
+        Size="44"
+        Color="#FF2D55" />
+
+    <FontImageSource
+        x:Key="icono_cat_familiar"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="{x:Static i:Iconos.icono_cat_familiar}"
+        Size="44"
+        Color="#5754D6" />
+
+    <FontImageSource
+        x:Key="icono_marcador"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="{x:Static i:Iconos.icono_marcador}"
+        Size="23"
+        Color="#B9BDC5" />
+
+    <FontImageSource
+        x:Key="icono_filtrar"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="{x:Static i:Iconos.icono_filtrar}"
+        Size="23"
+        Color="#B9BDC5" />
+
+    <FontImageSource
+        x:Key="icono_ubicacion"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="{x:Static i:Iconos.icono_ubicacion}"
+        Size="14"
+        Color="#B9BDC5" />
+
+</ResourceDictionary>

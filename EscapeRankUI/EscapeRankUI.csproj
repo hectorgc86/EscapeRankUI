@@ -1,29 +1,66 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>portable</DebugType>
+    <DebugType>pdbonly</DebugType>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.495" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />  
+    <PackageReference Include="Xamarin.Forms.DebugRainbows" Version="1.1.4" />  
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.5.0.495" />
+  </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.396" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
-    <PackageReference Include="Ansuria.XFGloss" Version="1.1.3" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-    <Folder Include="Views\Login\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="ViewModels\Login\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Views\Login\ResetPassPage.xaml">
-      <LogicalName>EscapeRankUI.Views.ResetPassPage.xaml</LogicalName>
+    <EmbeddedResource Update="Estilos\General.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Estilos\Iconos.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Estilos\Espacios.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Estilos\Textos.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Estilos\Temas\Oscuro.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Estilos\Temas\Claro.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+      <EmbeddedResource Update="Views\Muro\MuroNoticiasView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+      <EmbeddedResource Update="Views\Partida\NuevaPartidaView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+     </EmbeddedResource>
+      <EmbeddedResource Update="Views\Perfil\PerfilDatosView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Perfil\PastOrders.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+     <EmbeddedResource Update="Views\Salas\ExplorarSalasView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+   <EmbeddedResource Update="Views\Historial\HistorialPartidasView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+   <EmbeddedResource Update="Views\Login\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+   <EmbeddedResource Update="Views\Login\RegistroPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+   <EmbeddedResource Update="Views\Login\ResetPassPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 </Project>
