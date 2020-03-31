@@ -3,7 +3,6 @@
 <ResourceDictionary
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:i="clr-namespace:EscapeRankUI.Estilos;assembly=EscapeRankUI"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -22,91 +21,98 @@
     <FontImageSource
         x:Key="icono_tab_muro"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="{x:Static i:Iconos.icono_tab_muro}" />
+        Glyph="&#x000f06a1;"/>
 
     <FontImageSource
         x:Key="icono_tab_salas"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="{x:Static i:Iconos.icono_tab_salas}" />
+        Glyph="&#x000f0349;" />
 
     <FontImageSource
         x:Key="icono_tab_partida"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="{x:Static i:Iconos.icono_tab_partida}" />
+        Glyph="&#x000f043e;" />
 
     <FontImageSource
         x:Key="icono_tab_historial"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="{x:Static i:Iconos.icono_tab_historial}" />
+        Glyph="&#x000f09ed;" />
 
     <FontImageSource
         x:Key="icono_tab_perfil"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="{x:Static i:Iconos.icono_tab_perfil}" />
+        Glyph="&#x000f0007;" />
 
     <!--Iconos INTERFACES-->
 
     <FontImageSource
         x:Key="icono_facebook"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="{x:Static i:Iconos.icono_facebook}"
+        Glyph="&#x000f020c;"
         Size="18"
         Color="#B9BDC5" />
 
      <FontImageSource
         x:Key="icono_estrella"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="{x:Static i:Iconos.icono_estrella}"
+        Glyph="&#x000f04ce;"
         Size="12"
         Color="#FDC900" />
 
     <FontImageSource
         x:Key="icono_cat_misterio"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="{x:Static i:Iconos.icono_cat_misterio}"
+        Glyph="&#x000f0ba6;"
         Size="44"
         Color="#FE8C01" />
 
     <FontImageSource
         x:Key="icono_cat_miedo"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="{x:Static i:Iconos.icono_cat_miedo}"
+        Glyph="&#x000f0bc8;"
         Size="44"
         Color="#5AC7FB" />
 
     <FontImageSource
         x:Key="icono_cat_menores"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="{x:Static i:Iconos.icono_cat_menores}"
+        Glyph="&#x000f02e7;"
         Size="44"
         Color="#FF2D55" />
 
     <FontImageSource
         x:Key="icono_cat_familiar"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="{x:Static i:Iconos.icono_cat_familiar}"
+        Glyph="&#x000f138c;"
         Size="44"
         Color="#5754D6" />
 
     <FontImageSource
         x:Key="icono_marcador"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="{x:Static i:Iconos.icono_marcador}"
+        Glyph="&#x000f00c3;"
+        Size="23"
+        Color="{DynamicResource variable4}" />
+
+    <FontImageSource
+        x:Key="icono_anyadir"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f0419;"
         Size="23"
         Color="#B9BDC5" />
 
     <FontImageSource
         x:Key="icono_filtrar"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="{x:Static i:Iconos.icono_filtrar}"
+        Glyph="&#x000f0236;"
         Size="23"
         Color="#B9BDC5" />
 
     <FontImageSource
         x:Key="icono_ubicacion"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="{x:Static i:Iconos.icono_ubicacion}"
+        Glyph="&#x000f034e;"
         Size="14"
-        Color="#B9BDC5" />
+        Color="{DynamicResource variable4}" />
 
 </ResourceDictionary>

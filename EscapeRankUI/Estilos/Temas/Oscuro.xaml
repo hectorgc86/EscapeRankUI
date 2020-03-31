@@ -8,38 +8,23 @@
     Source="/Estilos/General.xaml"
     mc:Ignorable="d">
 
-    <!--Colores-->
-    <Color x:Key="colPrim">#FF175063</Color>
-    <Color x:Key="colSec">#FF8199FF</Color>
-    <Color x:Key="colTer">#FFC5C5C5</Color>
-    <Color x:Key="colQua">#FFFFFFFF</Color>
-    <Color x:Key="colQui">#FFFFFFFF</Color>
+    <!--Colores tema oscuro-->
 
-    <!--Colores fondo-->
-    <Color x:Key="colBG1">#FF121212</Color>
-    <Color x:Key="colBG2">#FF121212</Color>
+    <Color x:Key="negro1">#000000</Color>
+    <Color x:Key="negro2">#121212</Color>
+    <Color x:Key="blanco1">#FFFFFF</Color>
+    <Color x:Key="blanco2">#F5F8FB</Color>
+    <Color x:Key="gris1">#56565A</Color>
+    <Color x:Key="gris2">#C5C5C5</Color>
+    <Color x:Key="azul1">#344955</Color>
+    <Color x:Key="azul2">#232F34</Color>
+    <Color x:Key="azul3">#4A6572</Color>
+    <Color x:Key="naranja1">#F9AA33</Color>
 
-    <!--Colores casilla-->
-    <Color x:Key="colAccCheck">#FFE7F9F5</Color>
-    <Color x:Key="colAccError">#FFF9E7EB</Color>
-    <Color x:Key="colAccUns">#FFF2F3F5</Color>
-    <Color x:Key="colUnsPrim">#FFC7CAD1</Color>
-    <Color x:Key="colAltQua">#FFE3E7EF</Color>
-
-    <!--Colores borde-->
-    <Color x:Key="colBorCheck">#FF10CA87</Color>
-    <Color x:Key="colBorError">#FFCA1030</Color>
-
-    <!--Colores observación-->
-    <Color x:Key="colRemPrim">#FFF93963</Color>
-    <Color x:Key="colRemSec">#FFD4145C</Color>
-
-    <!--Colores superficie-->
-    <Color x:Key="colSurf1">#FF121212</Color>
-    <Color x:Key="colSurf2">#FF1D1D1D</Color>
-
-    <!--Colores shell-->
-    <Color x:Key="colTabBarUns">#FFC5C5C5</Color>
-    <Color x:Key="colTabBarBack">#FF121212</Color>
+    <Color x:Key="variable1">#000000</Color>
+    <Color x:Key="variable2">#121212</Color>
+    <Color x:Key="variable3">#F9AA33</Color>
+    <Color x:Key="variable4">#C5C5C5</Color>
+    <Color x:Key="variable5">#FFFFFF</Color>
 
 </ResourceDictionary>

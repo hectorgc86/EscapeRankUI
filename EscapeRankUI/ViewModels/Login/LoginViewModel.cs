@@ -8,15 +8,12 @@ namespace EscapeRankUI.ViewModels.Login
 {
     public class LoginViewModel : BaseViewModel
     {
-        #region Commands
         public ICommand LoginCommand { get; set; }
         public ICommand RegistrarCommand { get; set; }
         public ICommand ResetPassCommand { get; set; }
         public ICommand FacebookLoginCommand { get; set; }
         //public ICredentialsService storeService;
-        #endregion
 
-        #region Properties
         private string _message;
 
         public string Message
@@ -24,7 +21,6 @@ namespace EscapeRankUI.ViewModels.Login
             get { return _message; }
             set { SetProperty(ref _message, value); }
         }
-        #endregion
 
         public LoginViewModel(INavigation navigation)
         {
@@ -50,9 +46,9 @@ namespace EscapeRankUI.ViewModels.Login
         }
 
 
-        public async void Login()
+        public void Login()
         {
-            await Navigation.PushAsync(new AppShell());
+            Application.Current.MainPage = new AppShell();
             /*
             Cargando = true;
             Title = string.Empty;

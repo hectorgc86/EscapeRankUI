@@ -7,55 +7,31 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <!--#region TYPES OF SPACES-->
-    <OnPlatform x:Key="idealSpace" x:TypeArguments="Thickness">
+    <!--Espacios-->
+
+    <OnPlatform x:Key="espacio_normal" x:TypeArguments="Thickness">
         <On Platform="Android" Value="16,0" />
         <On Platform="iOS" Value="18,0" />
     </OnPlatform>
 
-    <OnPlatform x:Key="mediumSpace" x:TypeArguments="Thickness">
+    <OnPlatform x:Key="espacio_normal_izquierdo" x:TypeArguments="Thickness">
+        <On Platform="Android" Value="16,0,0,0" />
+        <On Platform="iOS" Value="18,0,0,0" />
+    </OnPlatform>
+
+    <OnPlatform x:Key="espacio_medio" x:TypeArguments="Thickness">
         <On Platform="Android" Value="20,0" />
         <On Platform="iOS" Value="22,0" />
     </OnPlatform>
 
-    <OnPlatform x:Key="bigSpace" x:TypeArguments="Thickness">
+    <OnPlatform x:Key="espacio_grande" x:TypeArguments="Thickness">
         <On Platform="Android" Value="32,0" />
         <On Platform="iOS" Value="34,0" />
     </OnPlatform>
-   <!--#endregion-->
 
 
-    <!--#region SPACES Grid-->
-    <Style x:Key="GridIdealSpace" TargetType="Grid">
-        <Setter Property="Padding" Value="{StaticResource idealSpace}" />
-    </Style>
+    <!--Espacios por defecto-->
 
-    <Style x:Key="GridMediumSpace" TargetType="Grid">
-        <Setter Property="Padding" Value="{StaticResource mediumSpace}" />
-    </Style>
-
-    <Style x:Key="GridBigSpace" TargetType="Grid">
-        <Setter Property="Padding" Value="{StaticResource bigSpace}" />
-    </Style>
-   <!--#endregion-->
-
-
-    <!--#region SPACES StackLayout-->
-    <Style x:Key="StackIdealSpace" TargetType="StackLayout">
-        <Setter Property="Padding" Value="{StaticResource idealSpace}" />
-    </Style>
-
-    <Style x:Key="StackMediumSpace" TargetType="StackLayout">
-        <Setter Property="Padding" Value="{StaticResource mediumSpace}" />
-    </Style>
-
-    <Style x:Key="StackBigSpace" TargetType="StackLayout">
-        <Setter Property="Padding" Value="{StaticResource bigSpace}" />
-    </Style>
-   <!--#endregion-->
-
-
-    <!--#region SPACES BASE-->
     <Style TargetType="Grid">
         <Setter Property="RowSpacing" Value="0" />
         <Setter Property="ColumnSpacing" Value="0" />
@@ -68,22 +44,38 @@
     <Style TargetType="Frame">
         <Setter Property="Padding" Value="0" />
     </Style>
-    <!--#endregion-->
 
+     <!--Espacios Grid-->
 
-    <!--#region CUSTOM SPACE TYPES-->
-    <OnPlatform x:Key="idealPSpace" x:TypeArguments="Thickness">
-        <On Platform="Android" Value="16,0,0,0" />
-        <On Platform="iOS" Value="18,0,0,0" />
-    </OnPlatform>
-    <!--#endregion-->
-
-
-    <!--#region  CUSTOM GRID SPACES-->
-    <!--  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++  -->
-    <Style TargetType="Grid" x:Key="GridIdealPSpace">
-        <Setter Property="Padding" Value="{StaticResource idealPSpace}" />
+    <Style x:Key="espacio_grid_normal" TargetType="Grid">
+        <Setter Property="Padding" Value="{StaticResource espacio_normal}" />
     </Style>
-    <!--#endregion-->
+
+     <Style x:Key="espacio_grid_normal_izquierdo" TargetType="Grid">
+        <Setter Property="Padding" Value="{StaticResource espacio_normal_izquierdo}" />
+    </Style>
+
+    <Style x:Key="espacio_grid_medio" TargetType="Grid">
+        <Setter Property="Padding" Value="{StaticResource espacio_medio}" />
+    </Style>
+
+    <Style x:Key="espacio_grid_grande" TargetType="Grid">
+        <Setter Property="Padding" Value="{StaticResource espacio_grande}" />
+    </Style>
+
+
+    <!--Espacios StackLayout-->
+    <Style x:Key="espacio_stack_normal" TargetType="StackLayout">
+        <Setter Property="Padding" Value="{StaticResource espacio_normal}" />
+    </Style>
+
+    <Style x:Key="espacio_stack_medio" TargetType="StackLayout">
+        <Setter Property="Padding" Value="{StaticResource espacio_medio}" />
+    </Style>
+
+    <Style x:Key="espacio_stack_grande" TargetType="StackLayout">
+        <Setter Property="Padding" Value="{StaticResource espacio_grande}" />
+    </Style>
+
 
 </ResourceDictionary>

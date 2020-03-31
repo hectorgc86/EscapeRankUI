@@ -3,29 +3,24 @@
     x:Class="EscapeRankUI.AppShell"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:v="clr-namespace:EscapeRankUI.Views"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    Title="EscapeRank"
-    ios:Page.UseSafeArea="true"
-    mc:Ignorable="d"
-    NavigationPage.HasNavigationBar="false">
+    xmlns:muro="clr-namespace:EscapeRankUI.Views.Muro"
+    xmlns:salas="clr-namespace:EscapeRankUI.Views.Salas"
+    xmlns:partida="clr-namespace:EscapeRankUI.Views.Partida"
+    xmlns:historial="clr-namespace:EscapeRankUI.Views.Historial"
+    xmlns:perfil="clr-namespace:EscapeRankUI.Views.Perfil">
 
     <Shell.Resources>
         <Style
             x:Key="EstiloBase"
             TargetType="Element"
             ApplyToDerivedTypes="True">
-            <Setter Property="Shell.ForegroundColor" Value="{DynamicResource colQua}" />
-            <Setter Property="Shell.UnselectedColor" Value="{DynamicResource colTabBarUns}" />
-            <Setter Property="Shell.BackgroundColor" Value="{StaticResource colPrim}" />
-            <Setter Property="Shell.TitleColor" Value="#FFFFFF" />
-            <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource colTabBarBack}" />
-            <Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource colTabBarUns}" />
-            <Setter Property="Shell.TabBarTitleColor" Value="{DynamicResource colPrim}" />
+            <Setter Property="Shell.ForegroundColor" Value="{DynamicResource blanco1}" />
+            <Setter Property="Shell.UnselectedColor" Value="{DynamicResource gris2}" />
+            <Setter Property="Shell.BackgroundColor" Value="{DynamicResource azul1}" />
+            <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource variable2}" />
+            <Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource gris2}" />
+            <Setter Property="Shell.TabBarTitleColor" Value="{DynamicResource naranja1}" />
         </Style>
-
          <Style
             BasedOn="{StaticResource EstiloBase}"
             TargetType="TabBar"
@@ -36,35 +31,35 @@
         <Tab
             Title="Inicio"
             Icon="{StaticResource icono_tab_muro}">
-            <ShellContent ContentTemplate="{DataTemplate v:Muro.MuroNoticiasView}" />
+            <ShellContent ContentTemplate="{DataTemplate muro:MuroPage}" />
         </Tab>
         <Tab
             Title="Explorar"
             Icon="{StaticResource icono_tab_salas}">
-             <ShellContent ContentTemplate="{DataTemplate v:Salas.ExplorarSalasView}" />
+             <ShellContent ContentTemplate="{DataTemplate salas:SalasPage}" />
         </Tab>
         <Tab
             Title="Partida"
             Icon="{StaticResource icono_tab_partida}">
-            <ShellContent ContentTemplate="{DataTemplate v:Partida.NuevaPartidaView}" />
+            <ShellContent ContentTemplate="{DataTemplate partida:PartidaPage}" />
         </Tab>
          <Tab
             Title="Historial"
             Icon="{StaticResource icono_tab_historial}">
-            <ShellContent ContentTemplate="{DataTemplate v:Historial.HistorialPartidasView}" />
+            <ShellContent ContentTemplate="{DataTemplate historial:HistorialPage}" />
         </Tab>
         <Tab
             Title="Perfil"
             Icon="{StaticResource icono_tab_perfil}">
             <ShellContent
                 Title="Datos"
-                ContentTemplate="{DataTemplate v:Perfil.PerfilDatosView}" />
+                ContentTemplate="{DataTemplate perfil:UsuarioPage}" />
             <ShellContent
                 Title="Amigos"
-                ContentTemplate="{DataTemplate v:Perfil.PastOrders}" />
+                ContentTemplate="{DataTemplate perfil:AmigosPage}" />
             <ShellContent
                 Title="Equipos"
-                ContentTemplate="{DataTemplate v:Perfil.PastOrders}" />
+                ContentTemplate="{DataTemplate perfil:EquiposPage}" />
         </Tab>
     </TabBar>
 </Shell>

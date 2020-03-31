@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
@@ -11,11 +10,30 @@ namespace EscapeRankUI.ViewModels
     {
 
         public INavigation Navigation { get; set; }
-
+        public event PropertyChangedEventHandler PropertyChanged;
+        string title, icon;
         private bool _cargando;
         //private Usuario _usuario;
         //private ObservableCollection<Equipo> _listaEquipos;
         //private ObservableCollection<Usuario> _listaAmigos;
+
+        public BaseViewModel()
+        {
+            // User = FakeData.Users.FirstOrDefault<User>((arg) => arg.IdUsuarios == App.CredentialsService.IdUsuario);
+        }
+
+        public string Title
+        {
+            get { return title; }
+            set { SetProperty(ref title, value); }
+        }
+
+
+        public string Icon
+        {
+            get { return icon; }
+            set { SetProperty(ref icon, value); }
+        }
 
         public bool Cargando
         {
@@ -30,6 +48,7 @@ namespace EscapeRankUI.ViewModels
                 return _cargando;
             }
         }
+
 
         /*
         public Usuario Usuario
@@ -52,35 +71,10 @@ namespace EscapeRankUI.ViewModels
         
     */
 
-        string title = string.Empty;
-
-
-        public string Title
-        {
-            get { return title; }
-            set { SetProperty(ref title, value); }
-        }
-
-        string icon = string.Empty;
-
-  
-        public string Icon
-        {
-            get { return icon; }
-            set { SetProperty(ref icon, value); }
-        }
-
-        public BaseViewModel()
-        {
-            // User = FakeData.Users.FirstOrDefault<User>((arg) => arg.IdUsuarios == App.CredentialsService.IdUsuario);
-
-        }
-
-       
         protected bool SetProperty<T>(
-            ref T backingStore, T value,
-            [CallerMemberName]string propertyName = "",
-            Action onChanged = null)
+           ref T backingStore, T value,
+           [CallerMemberName]string propertyName = "",
+           Action onChanged = null)
         {
             if (EqualityComparer<T>.Default.Equals(backingStore, value))
                 return false;
@@ -91,23 +85,12 @@ namespace EscapeRankUI.ViewModels
             return true;
         }
 
-     
-
-        #region INotifyPropertyChanged implementation
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        #endregion
-
-        //Método para actualizar los cambios
         protected virtual void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged == null)
                 return;
             PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-
         }
-
 
     }
 }

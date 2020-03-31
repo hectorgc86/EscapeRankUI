@@ -11,8 +11,7 @@
   
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.495" />  
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />  
-    <PackageReference Include="Xamarin.Forms.DebugRainbows" Version="1.1.4" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.2" />  
     <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.5.0.495" />
   </ItemGroup>
 
@@ -26,31 +25,28 @@
     <EmbeddedResource Update="Estilos\Espacios.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Estilos\Textos.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Estilos\Temas\Oscuro.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Estilos\Temas\Claro.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-      <EmbeddedResource Update="Views\Muro\MuroNoticiasView.xaml">
+      <EmbeddedResource Update="Views\Muro\MuroPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-      <EmbeddedResource Update="Views\Partida\NuevaPartidaView.xaml">
+      <EmbeddedResource Update="Views\Partida\PartidaPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
      </EmbeddedResource>
-      <EmbeddedResource Update="Views\Perfil\PerfilDatosView.xaml">
+      <EmbeddedResource Update="Views\Perfil\UsuarioPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Perfil\PastOrders.xaml">
+      <EmbeddedResource Update="Views\Perfil\AmigosPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-     <EmbeddedResource Update="Views\Salas\ExplorarSalasView.xaml">
+       <EmbeddedResource Update="Views\Perfil\EquiposPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-   <EmbeddedResource Update="Views\Historial\HistorialPartidasView.xaml">
+   <EmbeddedResource Update="Views\Historial\HistorialPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
    <EmbeddedResource Update="Views\Login\LoginPage.xaml">

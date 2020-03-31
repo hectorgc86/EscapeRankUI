@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Xamarin.Forms;
 using EscapeRankUI.Modelos;
 using EscapeRankUI.Servicios;
@@ -12,21 +7,22 @@ namespace EscapeRankUI.ViewModels
 {
     public class MainViewModel : BindableObject
     {
-
-        #region Properties
-        private bool _isBusy = false;
+        private bool _cargando = false;
+        private List<Category> _listCategory;
+        private List<Restaurant> _listRestaurant;
+        private List<Food> _listFood;
 
         public bool Cargando
         {
-            get { return _isBusy; }
+            get { return _cargando; }
             set
             {
-                _isBusy = value;
+                _cargando = value;
                 OnPropertyChanged();
             }
         }
 
-        private List<Restaurant> _listRestaurant;
+
 
         public List<Restaurant> ListRestaurant
         {
@@ -38,7 +34,10 @@ namespace EscapeRankUI.ViewModels
             }
         }
 
-        private List<Category> _listCategory;
+        public MainViewModel()
+        {
+            GetService();
+        }
 
         public List<Category> ListCategory
         {
@@ -50,7 +49,7 @@ namespace EscapeRankUI.ViewModels
             }
         }
 
-        private List<Food> _listFood;
+
 
         public List<Food> ListFood
         {
@@ -61,18 +60,11 @@ namespace EscapeRankUI.ViewModels
                 OnPropertyChanged();
             }
         }
-        #endregion
 
 
-        #region Constructors
-        public MainViewModel()
-        {
-            GetService();
-        }
-        #endregion
+        
 
 
-        #region CRUD Services
         public void GetService()
         {
             var service = new MainService();
@@ -80,6 +72,5 @@ namespace EscapeRankUI.ViewModels
             ListCategory = service.GetCategory();
             ListFood = service.GetFood();
         }
-        #endregion
     }
 }

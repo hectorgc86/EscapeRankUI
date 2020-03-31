@@ -71,6 +71,9 @@
     <BundleResource Include="Resources\ProductSans-Italic.ttf" />
     <BundleResource Include="Resources\ProductSans-Regular.ttf" />
     <BundleResource Include="Resources\materialdesignicons-webfont.ttf" />
+    <BundleResource Include="Resources\fondo.png" />
+    <BundleResource Include="Resources\logo.png" />
+    <BundleResource Include="Resources\icono.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -82,7 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.495" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.2" />
     <PackageReference Include="Xamarin.Forms.Visual.Material">
       <Version>4.5.0.495</Version>
     </PackageReference>
@@ -90,12 +93,21 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\EscapeRankUI\EscapeRankUI.csproj">
-      <Project>{E1FCE674-2E21-453D-9542-8E2695DCC52F}</Project>
+      <Project>{FD8CB3FB-D617-4B4A-8E7A-90228B6E380C}</Project>
       <Name>EscapeRankUI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ITunesArtwork Include="iTunesArtwork" />
-    <ITunesArtwork Include="iTunesArtwork%402x" />
+    <ImageAsset Include="Assets.xcassets\Icono.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Icono.appiconset\icono.png" />
+    <ImageAsset Include="Assets.xcassets\Logo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Logo.imageset\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\Icono.appiconset\" />
+    <Folder Include="Assets.xcassets\Logo.imageset\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Titulo.storyboard" />
   </ItemGroup>
 </Project>

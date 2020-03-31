@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using EscapeRankUI.Modelos;
 using EscapeRankUI.Estilos;
+using Xamarin.Forms;
 
 namespace EscapeRankUI.Servicios
 {
     public class MainService
     {
+
         public List<Restaurant> GetRestaurant()
         {
             var restaurant = new List<Restaurant>
@@ -56,36 +58,35 @@ namespace EscapeRankUI.Servicios
 
         public List<Category> GetCategory()
         {
+       
             var category = new List<Category>
             {
 
                 new Category {
-                  Image_Category=Iconos.icono_cat_misterio,
+                  Image_Category="\U000f0ba6",
                   ImageColor_Category="#FE8C01",
                   Title_Category="Misterio",
                   Place_Category="2350 places"
                 },
                 new Category {
-                  Image_Category=Iconos.icono_cat_miedo,
+                  Image_Category="\U000f0bc8",
                   ImageColor_Category="#5AC7FB",
                   Title_Category="Miedo",
                   Place_Category="350 places"
                 },
                  new Category {
-                  Image_Category=Iconos.icono_cat_menores,
+                  Image_Category="\U000f02e7",
                   ImageColor_Category="#FF2D55",
                   Title_Category="Niños",
                   Place_Category="834 places"
                 },
                  new Category {
-                  Image_Category=Iconos.icono_cat_familiar,
+                  Image_Category="\U000f138c",
                   ImageColor_Category="#5754D6",
                   Title_Category="Familiar",
                   Place_Category="150 places"
                 },
-
             };
-
             return category;
         }
 
