@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using EscapeRankUI.Estilos.Temas;
+using EscapeRankUI.ViewModels;
 
-namespace EscapeRankUI.Views.Perfil
+namespace EscapeRankUI.Views.Muro
 {
-    public partial class PastOrders : ContentPage
+    public partial class MuroPage : ContentPage
     {
-        public PastOrders()
+        public MuroPage()
         {
             InitializeComponent();
         }

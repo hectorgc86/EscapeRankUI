@@ -1,15 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="EscapeRankUI.Views.Perfil.PerfilDatosView"
+    x:Class="EscapeRankUI.Views.Perfil.UsuarioPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vm="clr-namespace:EscapeRankUI.ViewModels"
-    ios:Page.UseSafeArea="true"
-    mc:Ignorable="d"
-    NavigationPage.HasNavigationBar="false">
+    xmlns:vm="clr-namespace:EscapeRankUI.ViewModels">
 
     <ContentPage.BindingContext>
         <vm:MainViewModel />
@@ -19,7 +13,7 @@
         <Grid>
             <Label
                 Text="Datos"
-                Style="{StaticResource TxtHeadline6_3}"
+                Style="{StaticResource texto_cabecera4}"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
             </Label>
@@ -35,10 +29,10 @@
 
     <ContentPage.Content>
         <Grid>
-            <BoxView BackgroundColor="{DynamicResource colBG1}" />
-            <ScrollView>
-                <Grid Padding="16,16,16,10">
+            <BoxView BackgroundColor="{DynamicResource variable1}" />
+                <Grid Style="{StaticResource espacio_grid_normal}">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
@@ -49,14 +43,13 @@
                             Spacing="5"
                             HorizontalOptions="Center">
                             <StackLayout
-                                Margin="0,0,0,1"
                                 Orientation="Horizontal"
                                 HorizontalOptions="Center">
 
                                 <Frame
-                                    Margin="0,0,0,15"
+                                    Margin="0,20"
                                     CornerRadius="42"
-                                    OutlineColor="#FFC5C5C5"
+                                    OutlineColor="{StaticResource variable3}"
                                     HasShadow="False"
                                     Visual="Material"
                                     HorizontalOptions="Start">
@@ -68,65 +61,65 @@
                                 </Frame>
                             </StackLayout>
                             <StackLayout
-                                Margin="0,0,0,1"
                                 Orientation="Horizontal">
                                 <Label
                                     Text="Luna Fernández E."
-                                    Style="{StaticResource TxtHeadline5_1}" />
+                                    Style="{StaticResource texto_cabecera3}" />
                                 <Label
-                                    Text="Edit"
-                                    Style="{StaticResource TxtSubTit1_7}"
+                                    Text="Editar"
+                                    Style="{StaticResource texto_subtitulo4}"
                                     HorizontalOptions="EndAndExpand"
                                     VerticalOptions="Center" />
                             </StackLayout>
 
                             <Label HorizontalOptions="Center"
-                                Text="luna.f29@hotmail.com"
-                                Style="{StaticResource TxtSubTit2_5}" />
+                                Text="luna82"
+                                Style="{StaticResource texto_subtitulo5}" />
+
                             <Label HorizontalOptions="Center"
-                                Text="937323221"
-                                Style="{StaticResource TxtSubTit2_5}" />
+                                Text="luna.f29@hotmail.com"
+                                Style="{StaticResource texto_subtitulo5}" />
                         </StackLayout>
                         <BoxView
                             Margin="0,10,0,0"
-                            BackgroundColor="{DynamicResource colTer}"
+                            BackgroundColor="{DynamicResource variable4}"
                             HeightRequest="1.2" />
                         <StackLayout
                             Grid.Row="1"
-                            Margin="0,35,0,190"
+                            Margin="0,15"
                             Spacing="15">
                             <StackLayout
                                 Orientation="Horizontal"
                                 Spacing="20">
                                 <Label
-                                    Text="Track order"
-                                    Style="{StaticResource TxtHeadline6_2}" /> 
+                                    Text="Teléfono"
+                                    Style="{StaticResource texto_subtitulo3}" /> 
                             </StackLayout>
 
                             <Label
-                                Text="Payment"
-                                Style="{StaticResource TxtHeadline6_2}" />
+                                Text="Dirección"
+                                Style="{StaticResource texto_subtitulo3}" />
 
                             <Label
-                                Text="Address"
-                                Style="{StaticResource TxtHeadline6_2}" />
+                                Text="Edad"
+                                Style="{StaticResource texto_subtitulo3}" />
 
                             <Label
-                                Text="Settings"
-                                Style="{StaticResource TxtHeadline6_2}" />
+                                Text="Fecha nacimiento"
+                                Style="{StaticResource texto_subtitulo3}" />
 
                             <Label
-                                Text="Refer eam"
-                                Style="{StaticResource TxtHeadline6_2}" />
+                                Text="Descripción"
+                                Style="{StaticResource texto_subtitulo3}" />
 
                         </StackLayout>
-                        <Label HorizontalOptions="Center"
-                            Grid.Row="1"
+                        <StackLayout Grid.Row="2" Margin="0,15">
+                            <Label HorizontalOptions="Center"
                             Text="Logout"
-                            Style="{StaticResource TxtTitle_6}" />
+                            Style="{StaticResource texto_subtitulo4}" />
+                        </StackLayout>
                     </StackLayout>
                 </Grid>
-            </ScrollView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

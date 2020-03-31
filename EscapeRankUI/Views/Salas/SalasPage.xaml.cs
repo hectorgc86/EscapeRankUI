@@ -11,12 +11,11 @@ using EscapeRankUI.ViewModels;
 
 namespace EscapeRankUI.Views.Salas
 {
-    public partial class ExplorarSalasView : ContentPage
+    public partial class SalasPage : ContentPage
     {
-        public ExplorarSalasView()
+        public SalasPage()
         {
             InitializeComponent();
-
         }
 
         private void ActivarSwitchTema(object sender, ToggledEventArgs e)

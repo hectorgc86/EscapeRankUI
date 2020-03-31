@@ -10,9 +10,9 @@ using EscapeRankUI.Estilos.Temas;
 
 namespace EscapeRankUI.Views.Historial
 {
-    public partial class HistorialPartidasView : ContentPage
+    public partial class HistorialPage : ContentPage
     {
-        public HistorialPartidasView()
+        public HistorialPage()
         {
             InitializeComponent();
         }

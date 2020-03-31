@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 using EscapeRankUI.Estilos.Temas;
-using EscapeRankUI.ViewModels;
 
-namespace EscapeRankUI.Views.Muro
+namespace EscapeRankUI.Views.Perfil
 {
-    public partial class MuroNoticiasView : ContentPage
+    public partial class UsuarioPage : ContentPage
     {
-        public MuroNoticiasView()
+        public UsuarioPage()
         {
             InitializeComponent();
 

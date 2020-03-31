@@ -9,9 +9,9 @@ using Xamarin.Forms.Xaml;
 
 namespace EscapeRankUI.Views.Partida
 {
-    public partial class NuevaPartidaView : ContentPage
+    public partial class PartidaPage : ContentPage
     {
-        public NuevaPartidaView()
+        public PartidaPage()
         {
             InitializeComponent();
         }

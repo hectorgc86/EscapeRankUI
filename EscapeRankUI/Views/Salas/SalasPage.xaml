@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EscapeRankUI.Views.Salas.SalasPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:EscapeRankUI.ViewModels">
+
+    <ContentPage.BindingContext>
+        <vm:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <Shell.TitleView>
+        <Grid>
+            <Label
+                Text="Salas"
+                Style="{StaticResource texto_cabecera4}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+            </Label>
+            <Switch
+                IsToggled="{Binding Cargando}"
+                Toggled="ActivarSwitchTema"
+                OnColor="{StaticResource negro1}"
+                HorizontalOptions="End"
+                VerticalOptions="Center"/>
+        </Grid>
+    </Shell.TitleView>
+
+    <ContentPage.Content>
+        <Grid>
+            <BoxView BackgroundColor="{DynamicResource variable1}" />
+            <ScrollView>
+              <Grid
+                  Style="{DynamicResource espacio_grid_normal_izquierdo}"
+                  RowSpacing="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="310" />
+                    <RowDefinition Height="205" />
+                    <RowDefinition Height="205" />
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <SearchBar Placeholder="Buscar..."
+                                   BackgroundColor="{DynamicResource variable1}"
+                               TextColor="{DynamicResource variable5}"/>
+                    <Image Source="{StaticResource icono_filtrar}"
+                               HorizontalOptions="End"
+                               Margin="0,0,10,0"
+                               Grid.Column="1"
+                               Opacity=".8"
+                               Aspect="AspectFit" />
+                </Grid>
+
+                <StackLayout
+                        Grid.Row="1"
+                        Spacing="15">
+                    <Label
+                            Text="Popular ahora"
+                            Style="{StaticResource texto_cabecera1}" />
+
+                    <CollectionView
+                            ItemsSource="{Binding ListRestaurant}"
+                            SelectionMode="Single">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                        Padding="7.5"
+                                        BackgroundColor="transparent"
+                                        HasShadow="False">
+                                    <Frame
+                                            CornerRadius="6"
+                                            WidthRequest="208"
+                                            BackgroundColor="{DynamicResource variable1}"
+                                            Visual="Material"
+                                            HasShadow="False">
+                                        <StackLayout Spacing="6">
+                                            <Frame
+                                                    CornerRadius="6"
+                                                    Visual="Material"
+                                                    HasShadow="False">
+                                                <Image
+                                                        Source="{Binding Image_Restaurant}"
+                                                        Aspect="AspectFill"
+                                                        HeightRequest="150" />
+                                            </Frame>
+                                            <Label
+                                                    Margin="0,0,0,2"
+                                                    Text="{Binding Title_Restaurant}"
+                                                    Style="{StaticResource texto_titulo1}"
+                                                    LineBreakMode="TailTruncation" />
+                                            <Label
+                                                    Text="{Binding Place_Restaurant}"
+                                                    Style="{StaticResource texto_subtitulo5}"
+                                                    LineBreakMode="TailTruncation" />
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image
+                                                        Margin="0,-4,8.2,0"
+                                                        Source="{StaticResource icono_estrella}"
+                                                        HorizontalOptions="Start"
+                                                        VerticalOptions="Center" />
+                                                <Label
+                                                        Margin="0,0,2,0"
+                                                        Text="{Binding Rating1_Restaurant}"
+                                                        Style="{StaticResource texto_subtitulo6}"
+                                                        HorizontalOptions="Start"
+                                                        LineBreakMode="TailTruncation" />
+                                                <Label
+                                                        Margin="0,0,10,0"
+                                                        Text="{Binding Rating2_Restaurant}"
+                                                        Style="{StaticResource texto_subtitulo5}"
+                                                        HorizontalOptions="Start"
+                                                        LineBreakMode="TailTruncation" />
+
+                                                <Frame
+                                                        Margin="0,-4,0,0"
+                                                        BackgroundColor="{DynamicResource variable2}"
+                                                        HasShadow="False"
+                                                        CornerRadius="10"
+                                                        Visual="Material"
+                                                        WidthRequest="78"
+                                                        HeightRequest="18"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        VerticalOptions="Center">
+                                                    <Label
+                                                            Text="Free delivery"
+                                                            MaxLines="1"
+                                                            Style="{StaticResource estilo_boton2}"
+                                                            HorizontalOptions="Center"
+                                                            VerticalOptions="Center"
+                                                            LineBreakMode="TailTruncation" />
+                                                </Frame>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+
+                <StackLayout
+                        Grid.Row="2"
+                        Spacing="15">
+
+                    <StackLayout
+                            Padding="0,0,16,0"
+                            Orientation="Horizontal">
+                        <Label
+                                Text="Categoria"
+                                Style="{StaticResource texto_cabecera3}"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center" />
+                        <Label
+                                Text="Ver todo"
+                                Style="{StaticResource texto_subtitulo6}"
+                                HorizontalOptions="EndAndExpand"
+                                VerticalOptions="Center" />
+                    </StackLayout>
+
+                    <CollectionView
+                            SelectionMode="Single"
+                            ItemsSource="{Binding ListCategory}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                        Padding="7.5"
+                                        HasShadow="False"
+                                        Visual="Material"
+                                        BackgroundColor="{DynamicResource variable1}">
+                                    <StackLayout Spacing="4">
+                                        <Frame
+                                                Margin="0,0,0,4"
+                                                WidthRequest="88"
+                                                HeightRequest="88"
+                                                Visual="Material"
+                                                BackgroundColor="{DynamicResource variable2}">
+                                            <Label
+                                                    Text="{Binding Image_Category}"
+                                                    FontFamily="{StaticResource FuenteIconosMD}"
+                                                    FontSize="44"
+                                                    TextColor="{Binding ImageColor_Category}"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center" />
+                                        </Frame>
+
+                                        <Label
+                                                Text="{Binding Title_Category}"
+                                                Style="{StaticResource texto_titulo1}" />
+
+                                        <Label
+                                                Text="{Binding Place_Category}"
+                                                Style="{StaticResource texto_subtitulo5}" />
+
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <StackLayout
+                        Grid.Row="3"
+                        Spacing="15">
+
+                    <StackLayout
+                            Padding="0,0,16,0"
+                            Orientation="Horizontal">
+                        <Label
+                                Text="Dificultad"
+                                Style="{StaticResource texto_cabecera3}"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center" />
+                        <Label
+                                Text="Ver todo"
+                                Style="{StaticResource texto_subtitulo6}"
+                                HorizontalOptions="EndAndExpand"
+                                VerticalOptions="Center" />
+                    </StackLayout>
+
+                    <CollectionView
+                            SelectionMode="Single"
+                            ItemsSource="{Binding ListCategory}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                        Padding="7.5"
+                                        HasShadow="False"
+                                        Visual="Material"
+                                        BackgroundColor="{DynamicResource variable1}">
+                                    <StackLayout Spacing="4">
+                                        <Frame
+                                                Margin="0,0,0,4"
+                                                WidthRequest="88"
+                                                HeightRequest="88"
+                                                Visual="Material"
+                                                BackgroundColor="{DynamicResource variable2}">
+                                            <Label
+                                                    Text="{Binding Image_Category}"
+                                                    FontFamily="{StaticResource FuenteIconosMD}"
+                                                    FontSize="44"
+                                                    TextColor="{Binding ImageColor_Category}"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center" />
+                                        </Frame>
+
+                                        <Label
+                                                Text="{Binding Title_Category}"
+                                                Style="{StaticResource texto_titulo1}" />
+
+                                        <Label
+                                                Text="{Binding Place_Category}"
+                                                Style="{StaticResource texto_subtitulo5}" />
+
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+               </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

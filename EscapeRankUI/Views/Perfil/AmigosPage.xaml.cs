@@ -3,12 +3,11 @@ using EscapeRankUI.Estilos.Temas;
 
 namespace EscapeRankUI.Views.Perfil
 {
-    public partial class PerfilDatosView : ContentPage
+    public partial class AmigosPage : ContentPage
     {
-        public PerfilDatosView()
+        public AmigosPage()
         {
             InitializeComponent();
-
         }
 
         private void ActivarSwitchTema(object sender, ToggledEventArgs e)
