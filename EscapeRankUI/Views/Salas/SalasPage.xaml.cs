@@ -8,14 +8,21 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using EscapeRankUI.Estilos.Temas;
 using EscapeRankUI.ViewModels;
+using EscapeRankUI.ViewModels.Salas;
 
 namespace EscapeRankUI.Views.Salas
 {
     public partial class SalasPage : ContentPage
     {
+        public SalasViewModel svm;
+
         public SalasPage()
         {
             InitializeComponent();
+
+            svm = new SalasViewModel(Navigation);
+            InitializeComponent();
+            BindingContext = svm;
         }
 
         private void ActivarSwitchTema(object sender, ToggledEventArgs e)

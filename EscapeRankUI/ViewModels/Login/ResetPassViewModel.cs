@@ -8,12 +8,9 @@ namespace EscapeRankUI.ViewModels.Login
 {
     public class ResetPassViewModel : BaseViewModel
     {
-        #region Commands
         public ICommand ResetPassCommand { get; set; }
         public ICommand RegistrarCommand { get; set; }
-        #endregion
 
-        #region Properties
         private string _message;
 
         public string Message
@@ -21,7 +18,6 @@ namespace EscapeRankUI.ViewModels.Login
             get { return _message; }
             set { SetProperty(ref _message, value); }
         }
-        #endregion
 
         public ResetPassViewModel(INavigation navigation)
         {

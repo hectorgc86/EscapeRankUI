@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using EscapeRankUI.Modelos;
 using Xamarin.Forms;
 
 namespace EscapeRankUI.ViewModels
@@ -10,29 +12,20 @@ namespace EscapeRankUI.ViewModels
     {
 
         public INavigation Navigation { get; set; }
-        public event PropertyChangedEventHandler PropertyChanged;
-        string title, icon;
         private bool _cargando;
-        //private Usuario _usuario;
-        //private ObservableCollection<Equipo> _listaEquipos;
-        //private ObservableCollection<Usuario> _listaAmigos;
+        private ObservableCollection<Noticia> _noticias;
+        private ObservableCollection<Sala> _salas;
+        private ObservableCollection<Sala> _salasFiltradas;
+        private ObservableCollection<Categoria> _categorias;
+        private ObservableCollection<Publico> _publico;
+        private ObservableCollection<Dificultad> _dificultades;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
 
         public BaseViewModel()
         {
-            // User = FakeData.Users.FirstOrDefault<User>((arg) => arg.IdUsuarios == App.CredentialsService.IdUsuario);
-        }
-
-        public string Title
-        {
-            get { return title; }
-            set { SetProperty(ref title, value); }
-        }
-
-
-        public string Icon
-        {
-            get { return icon; }
-            set { SetProperty(ref icon, value); }
+           // _usuario = ServicioFake.Usuarios.FirstOrDefault<Usuario>((arg) => arg.Id == App.CredentialsService.IdUsuario);
         }
 
         public bool Cargando
@@ -41,7 +34,6 @@ namespace EscapeRankUI.ViewModels
             {
                 _cargando = value;
                 OnPropertyChanged("Cargando");
-
             }
             get
             {
@@ -49,27 +41,49 @@ namespace EscapeRankUI.ViewModels
             }
         }
 
-
-        /*
-        public Usuario Usuario
+        public ObservableCollection<Noticia> Noticias
         {
-            get { return _usuario; }
-            set { SetProperty(ref _usuario, value); }
+            get { return _noticias; }
+            set { SetProperty(ref _noticias, value); }
         }
 
-        public ObservableCollection<Equipo> ListaEquipos
+      
+        public ObservableCollection<Sala> Salas
         {
-            set{SetProperty(ref _listaEquipos, value);}
-            get{ return _listaEquipos; }
+            get { return _salas; }
+            set { SetProperty(ref _salas, value); }
         }
 
-        public ObservableCollection<Usuario> ListaAmigos
+        public ObservableCollection<Sala> SalasFiltradas
         {
-            get { return _listaAmigos; }
-            set { SetProperty(ref _listaAmigos, value); }
+            get { return _salasFiltradas; }
+            set { SetProperty(ref _salasFiltradas, value); }
         }
-        
-    */
+
+        public ObservableCollection<Dificultad> Dificultades
+        {
+            get { return _dificultades; }
+            set { SetProperty(ref _dificultades, value); }
+        }
+
+        public ObservableCollection<Publico> Publico
+        {
+            get { return _publico; }
+            set { SetProperty(ref _publico, value); }
+        }
+
+        public ObservableCollection<Categoria> Categorias
+        {
+            get { return _categorias; }
+            set { SetProperty(ref _categorias, value); }
+        }
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged == null)
+                return;
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         protected bool SetProperty<T>(
            ref T backingStore, T value,
@@ -83,13 +97,6 @@ namespace EscapeRankUI.ViewModels
             onChanged?.Invoke();
             OnPropertyChanged(propertyName);
             return true;
-        }
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged == null)
-                return;
-            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
     }

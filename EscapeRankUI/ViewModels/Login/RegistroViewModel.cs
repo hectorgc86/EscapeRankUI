@@ -8,13 +8,10 @@ namespace EscapeRankUI.ViewModels.Login
 {
     public class RegistroViewModel : BaseViewModel
     {
-        #region Commands
         public ICommand RegistrarCommand { get; set; }
         public ICommand LoginCommand { get; set; }
         //public ICredentialsService storeService;
-        #endregion
 
-        #region Properties
         private string _message;
 
         public string Message
@@ -22,7 +19,6 @@ namespace EscapeRankUI.ViewModels.Login
             get { return _message; }
             set { SetProperty(ref _message, value); }
         }
-        #endregion
 
         public RegistroViewModel(INavigation navigation)
         {

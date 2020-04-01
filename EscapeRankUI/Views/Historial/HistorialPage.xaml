@@ -3,11 +3,7 @@
     x:Class="EscapeRankUI.Views.Historial.HistorialPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:vm="clr-namespace:EscapeRankUI.ViewModels">
-
-    <ContentPage.BindingContext>
-        <vm:MainViewModel />
-    </ContentPage.BindingContext>
+    xmlns:salas="clr-namespace:EscapeRankUI.ViewModels.Salas">
 
     <Shell.TitleView>
         <Grid>
@@ -30,7 +26,7 @@
           <Grid>
             <BoxView BackgroundColor="{DynamicResource variable1}" />
             <StackLayout>
-                <CollectionView ItemsSource="{Binding ListRestaurant}" SelectionMode="Single">
+                <CollectionView ItemsSource="{Binding Salas}" SelectionMode="Single">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
@@ -51,7 +47,7 @@
                                             CornerRadius="6"
                                             Padding="0">
                                             <Image
-                                                    Source="{Binding Image_Restaurant}"
+                                                    Source="{Binding ImagenAncha}"
                                                     Aspect="AspectFill"
                                                     HeightRequest="98"
                                                     WidthRequest="98" />
@@ -65,7 +61,7 @@
                                                     Orientation="Horizontal"
                                                     Spacing="55">
                                                 <Label
-                                                        Text="{Binding Title_Restaurant}"
+                                                        Text="{Binding Nombre}"
                                                         Style="{StaticResource texto_titulo1}"
                                                         LineBreakMode="TailTruncation"
                                                         MaxLines="2" />
@@ -83,7 +79,7 @@
                                                         Source="{StaticResource icono_ubicacion}"
                                                         VerticalOptions="Start" />
                                                 <Label
-                                                        Text="{Binding Place_Restaurant}"
+                                                        Text="{Binding Direccion}"
                                                         Style="{StaticResource texto_subtitulo5}"
                                                         MaxLines="3"
                                                         LineBreakMode="TailTruncation" />
@@ -97,11 +93,11 @@
                                                         Margin="0,-4,2,0"
                                                         Source="{StaticResource icono_estrella}" />
                                                 <Label
-                                                        Text="{Binding Rating1_Restaurant}"
+                                                        Text="{Binding Puntuacion}"
                                                         Style="{StaticResource texto_subtitulo6}"
                                                         LineBreakMode="TailTruncation" />
                                                 <Label
-                                                        Text="{Binding Rating2_Restaurant}"
+                                                        Text="{Binding Web}"
                                                         Style="{StaticResource texto_subtitulo5}"
                                                         LineBreakMode="TailTruncation" />
                                             </StackLayout>

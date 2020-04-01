@@ -7,15 +7,21 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using EscapeRankUI.Estilos.Temas;
-using EscapeRankUI.ViewModels;
+using EscapeRankUI.ViewModels.Muro;
 
 namespace EscapeRankUI.Views.Muro
 {
     public partial class MuroPage : ContentPage
     {
+        public MuroViewModel mvm;
+
         public MuroPage()
         {
             InitializeComponent();
+
+            mvm = new MuroViewModel(Navigation);
+            InitializeComponent();
+            BindingContext = mvm;
         }
 
         private void ActivarSwitchTema(object sender, ToggledEventArgs e)

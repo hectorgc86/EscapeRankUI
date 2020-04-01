@@ -2,12 +2,7 @@
 <ContentPage
     x:Class="EscapeRankUI.Views.Perfil.EquiposPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:vm="clr-namespace:EscapeRankUI.ViewModels">
-
-    <ContentPage.BindingContext>
-        <vm:MainViewModel />
-    </ContentPage.BindingContext>
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <Shell.TitleView>
          <Grid>
@@ -37,7 +32,7 @@
                             <DataTemplate>
                                 <StackLayout Orientation="Vertical">
                                   <Frame
-                                    OutlineColor="#FFC5C5C5"
+                                    OutlineColor="{StaticResource variable3}"
                                     CornerRadius="50"
                                     Visual="Material">
                                         <Image

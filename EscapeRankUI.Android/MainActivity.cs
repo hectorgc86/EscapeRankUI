@@ -21,8 +21,8 @@ namespace EscapeRankUI.Droid
             Forms.SetFlags("Shell_Experimental", "Visual_Experimental", "CollectionView_Experimental", "FastRenderers_Experimental");
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            Forms.Init(this, savedInstanceState);
             FormsMaterial.Init(this, savedInstanceState);
+            Forms.Init(this, savedInstanceState);
 
             LoadApplication(new App());
         }

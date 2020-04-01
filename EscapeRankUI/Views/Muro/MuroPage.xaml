@@ -2,12 +2,7 @@
 <ContentPage
     x:Class="EscapeRankUI.Views.Muro.MuroPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:vm="clr-namespace:EscapeRankUI.ViewModels">
-
-    <ContentPage.BindingContext>
-        <vm:MainViewModel />
-    </ContentPage.BindingContext>
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <Shell.TitleView>
         <Grid>
@@ -30,15 +25,15 @@
         <Grid Style="{DynamicResource espacio_grid_normal}"
               BackgroundColor="{DynamicResource variable1}">
             <Grid>
-                    <CollectionView
-                        ItemsSource="{Binding ListRestaurant}"
+                <CollectionView
+                        ItemsSource="{Binding Noticias}"
                         SelectionMode="Single">
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout Orientation="Vertical" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                              <StackLayout Padding="0,15,0,0">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="0,15,0,0">
                                 <Frame
                                     Padding="15"
                                     BackgroundColor="{DynamicResource variable2}"
@@ -49,56 +44,57 @@
                                         <Frame
                                         Visual="Material">
                                             <Image
-                                            Source="{Binding Image_Restaurant}"
-                                            Aspect="AspectFill"/>
+                                            Source="{Binding Imagen}"
+                                            Aspect="AspectFill"
+                                            HeightRequest="180"/>
                                         </Frame>
                                         <StackLayout Orientation="Horizontal">
                                             <Label
-                                                        Text="{Binding Title_Restaurant}"
+                                                        Text="{Binding Titular}"
                                                         Style="{StaticResource texto_titulo1}"
                                                         LineBreakMode="TailTruncation"
                                                         MaxLines="2" />
-                                            <Image
-                                                        Source="{StaticResource icono_marcador}"
-                                                        HorizontalOptions="EndAndExpand"
-                                                        VerticalOptions="Start" />
+
                                         </StackLayout>
                                         <StackLayout
                                                     Margin="0,0,0,12"
                                                     Orientation="Horizontal"
                                                     Spacing="5">
-                                                    <Image
+                                            <Image
                                                         Margin="0,-1,0,0"
-                                                        Source="{StaticResource icono_ubicacion}"
+                                                        Source="{StaticResource icono_calendario_hoy}"
                                                         VerticalOptions="Start" />
-                                                    <Label
-                                                        Text="{Binding Place_Restaurant}"
+                                            <Label
+                                                        Text="{Binding Fecha}"
                                                         Style="{StaticResource texto_subtitulo5}"
                                                         MaxLines="3"
                                                         LineBreakMode="TailTruncation" />
-                                                </StackLayout>
+                                        </StackLayout>
+
                                         <StackLayout
-                                                    Orientation="Horizontal"
-                                                    VerticalOptions="EndAndExpand"
+                                                    VerticalOptions="CenterAndExpand"
                                                     Spacing="2.2">
-                                                    <Image
-                                                        Margin="0,-4,2,0"
-                                                        Source="{StaticResource icono_estrella}" />
-                                                    <Label
-                                                        Text="{Binding Rating1_Restaurant}"
+                                            <StackLayout Orientation="Horizontal" Padding="0,0,0,10">
+                                                <Image
+                                                        Margin="0,0,5,0"
+                                                        Source="{StaticResource icono_prescripcion}" />
+                                                <Label
+                                                        Text="{Binding TextoCorto}"
                                                         Style="{StaticResource texto_subtitulo6}"
-                                                        LineBreakMode="TailTruncation" />
-                                                    <Label
-                                                        Text="{Binding Rating2_Restaurant}"
+                                                        LineBreakMode="WordWrap"/>
+                                            </StackLayout>
+                                            <Label Padding="17,0,0,0"
+                                                        Text="{Binding TextoLargo}"
                                                         Style="{StaticResource texto_subtitulo5}"
-                                                        LineBreakMode="TailTruncation" />
-                                                </StackLayout>
+                                                        LineBreakMode="WordWrap" />
+                                        </StackLayout>
+
                                     </StackLayout>
                                 </Frame>
-                              </StackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </Grid>
         </Grid>
     </ContentPage.Content>

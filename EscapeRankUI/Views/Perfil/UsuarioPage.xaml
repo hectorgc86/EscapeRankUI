@@ -2,12 +2,7 @@
 <ContentPage
     x:Class="EscapeRankUI.Views.Perfil.UsuarioPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:vm="clr-namespace:EscapeRankUI.ViewModels">
-
-    <ContentPage.BindingContext>
-        <vm:MainViewModel />
-    </ContentPage.BindingContext>
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <Shell.TitleView>
         <Grid>
@@ -29,97 +24,122 @@
 
     <ContentPage.Content>
         <Grid>
-            <BoxView BackgroundColor="{DynamicResource variable1}" />
-                <Grid Style="{StaticResource espacio_grid_normal}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
+            <BoxView BackgroundColor="{DynamicResource variable1}"/>
+            <Grid Style="{StaticResource espacio_grid_normal}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-                    <StackLayout Grid.Row="0">
-                        <StackLayout
-                            Grid.Row="0"
+                <StackLayout Grid.Row="0">
+                    <StackLayout
                             Spacing="5"
                             HorizontalOptions="Center">
-                            <StackLayout
+                        <StackLayout
                                 Orientation="Horizontal"
                                 HorizontalOptions="Center">
-
-                                <Frame
+                            <Frame
                                     Margin="0,20"
-                                    CornerRadius="42"
-                                    OutlineColor="{StaticResource variable3}"
-                                    HasShadow="False"
+                                    CornerRadius="45"
+                                    OutlineColor="{DynamicResource variable3}"
                                     Visual="Material"
                                     HorizontalOptions="Start">
-                                        <Image
-                                        Source="https://i.picsum.photos/id/1027/2848/4272.jpg"
-                                        WidthRequest="85"
-                                        HeightRequest="85"
+                                <Image
+                                        Source="{Binding Usuario.Avatar}"
+                                        WidthRequest="90"
+                                        HeightRequest="90"
                                         Aspect="AspectFill" />
-                                </Frame>
-                            </StackLayout>
-                            <StackLayout
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout
                                 Orientation="Horizontal">
-                                <Label
-                                    Text="Luna Fernández E."
+                            <Label
+                                    Text="{Binding Usuario.Nombre}"
                                     Style="{StaticResource texto_cabecera3}" />
-                                <Label
+                            <Label
                                     Text="Editar"
                                     Style="{StaticResource texto_subtitulo4}"
                                     HorizontalOptions="EndAndExpand"
                                     VerticalOptions="Center" />
-                            </StackLayout>
-
-                            <Label HorizontalOptions="Center"
-                                Text="luna82"
-                                Style="{StaticResource texto_subtitulo5}" />
-
-                            <Label HorizontalOptions="Center"
-                                Text="luna.f29@hotmail.com"
-                                Style="{StaticResource texto_subtitulo5}" />
                         </StackLayout>
-                        <BoxView
+
+                        <Label HorizontalOptions="Center"
+                                Text="{Binding Usuario.Perfil.Nick}"
+                                Style="{StaticResource texto_subtitulo5}" />
+
+                        <Label HorizontalOptions="Center"
+                                Text="{Binding Usuario.Email}"
+                                Style="{StaticResource texto_subtitulo5}" />
+                    </StackLayout>
+                    <BoxView
                             Margin="0,10,0,0"
                             BackgroundColor="{DynamicResource variable4}"
                             HeightRequest="1.2" />
-                        <StackLayout
+                    <StackLayout Orientation="Horizontal"
                             Grid.Row="1"
                             Margin="0,15"
-                            Spacing="15">
-                            <StackLayout
-                                Orientation="Horizontal"
-                                Spacing="20">
-                                <Label
-                                    Text="Teléfono"
-                                    Style="{StaticResource texto_subtitulo3}" /> 
-                            </StackLayout>
-
-                            <Label
-                                Text="Dirección"
-                                Style="{StaticResource texto_subtitulo3}" />
-
+                            Spacing="80">
+                        <StackLayout
+                                Orientation="Vertical"
+                                Spacing="15">
                             <Label
                                 Text="Edad"
                                 Style="{StaticResource texto_subtitulo3}" />
-
                             <Label
                                 Text="Fecha nacimiento"
                                 Style="{StaticResource texto_subtitulo3}" />
-
                             <Label
-                                Text="Descripción"
+                                Text="Teléfono"
+                                Style="{StaticResource texto_subtitulo3}" />
+                            <Label
+                                Text="Partidas ganadas"
+                                Style="{StaticResource texto_subtitulo3}" />
+                            <Label
+                                Text="Partidas perdidas"
+                                Style="{StaticResource texto_subtitulo3}" />
+                            <Label
+                                Text="Total partidas"
+                                Style="{StaticResource texto_subtitulo3}" />
+                            <Label
+                                Text="Mejor tiempo"
                                 Style="{StaticResource texto_subtitulo3}" />
 
                         </StackLayout>
-                        <StackLayout Grid.Row="2" Margin="0,15">
-                            <Label HorizontalOptions="Center"
-                            Text="Logout"
-                            Style="{StaticResource texto_subtitulo4}" />
+                        <StackLayout Orientation="Vertical"
+                               Spacing="19.5">
+
+                            <Label x:Name="Edad"
+                                Style="{StaticResource texto_subtitulo5}" />
+
+                            <Label Text="{Binding Usuario.Nacido}"
+                                Style="{StaticResource texto_subtitulo5}" />
+
+                            <Label Text="{Binding Usuario.Telefono}"
+                                Style="{StaticResource texto_subtitulo5}" />
+
+                            <Label Text="{Binding Usuario.Perfil.PartidasGanadas}"
+                                Style="{StaticResource texto_subtitulo5}" />
+
+                             <Label Text="{Binding Usuario.Perfil.PartidasPerdidas}"
+                                Style="{StaticResource texto_subtitulo5}" />
+
+                             <Label Text="{Binding Usuario.Perfil.NumeroPartidas}"
+                                Style="{StaticResource texto_subtitulo5}" />
+
+                            <Label Text="{Binding Usuario.Perfil.MejorTiempo}"
+                                Style="{StaticResource texto_subtitulo5}" />
                         </StackLayout>
                     </StackLayout>
-                </Grid>
+                    <StackLayout Grid.Row="2" Margin="0,15">
+                         <Label x:Name="LogoutLabel" HorizontalOptions="Center" Style="{StaticResource texto_subtitulo4}" HorizontalTextAlignment="End" Text="Logout">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LogoutCommand}" CommandParameter="{x:Reference LogoutLabel}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
