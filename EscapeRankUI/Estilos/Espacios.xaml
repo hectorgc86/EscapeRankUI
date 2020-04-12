@@ -16,6 +16,11 @@
         <On Platform="iOS" Value="18,0,0,0" />
     </OnPlatform>
 
+    <OnPlatform x:Key="espacio_normal_completo" x:TypeArguments="Thickness">
+        <On Platform="Android" Value="16" />
+        <On Platform="iOS" Value="18" />
+    </OnPlatform>
+
     <OnPlatform x:Key="espacio_medio" x:TypeArguments="Thickness">
         <On Platform="Android" Value="20,0" />
         <On Platform="iOS" Value="22,0" />
@@ -62,6 +67,7 @@
 
 
     <!--Espacios StackLayout-->
+
     <Style x:Key="espacio_stack_normal" TargetType="StackLayout">
         <Setter Property="Padding" Value="{StaticResource espacio_normal}" />
     </Style>
@@ -71,6 +77,20 @@
     </Style>
 
     <Style x:Key="espacio_stack_grande" TargetType="StackLayout">
+        <Setter Property="Padding" Value="{StaticResource espacio_grande}" />
+    </Style>
+
+     <!--Espacios Flexlayout-->
+
+    <Style x:Key="espacio_flex_normal" TargetType="FlexLayout">
+        <Setter Property="Padding" Value="{StaticResource espacio_normal_completo}" />
+    </Style>
+
+    <Style x:Key="espacio_flex_medio" TargetType="FlexLayout">
+        <Setter Property="Padding" Value="{StaticResource espacio_medio}" />
+    </Style>
+
+    <Style x:Key="espacio_flex_grande" TargetType="FlexLayout">
         <Setter Property="Padding" Value="{StaticResource espacio_grande}" />
     </Style>
 

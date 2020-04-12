@@ -15,7 +15,7 @@ namespace EscapeRankUI.Views.Login
 
         public RegistroPage()
         {
-            rvm = new RegistroViewModel(Navigation);
+            rvm = new RegistroViewModel();
             InitializeComponent();
             BindingContext = rvm;
 

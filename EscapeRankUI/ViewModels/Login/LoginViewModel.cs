@@ -8,43 +8,34 @@ namespace EscapeRankUI.ViewModels.Login
 {
     public class LoginViewModel : BaseViewModel
     {
-        public ICommand LoginCommand { get; set; }
-        public ICommand RegistrarCommand { get; set; }
-        public ICommand ResetPassCommand { get; set; }
-        public ICommand FacebookLoginCommand { get; set; }
         //public ICredentialsService storeService;
 
-        private string _message;
-
-        public string Message
+        public LoginViewModel()
         {
-            get { return _message; }
-            set { SetProperty(ref _message, value); }
-        }
-
-        public LoginViewModel(INavigation navigation)
-        {
-           // storeService = App.CredentialsService;
-           // storeService.DeleteCredentials();
-           // Usuario = new Usuario();
+            // storeService = App.CredentialsService;
+            // storeService.DeleteCredentials();
+            // Usuario = new Usuario();
             LoginCommand = new Command(Login);
             RegistrarCommand = new Command(Registrar);
             FacebookLoginCommand = new Command(FacebookLogin);
             ResetPassCommand = new Command(ReestablecerPassAsync);
-            Navigation = navigation;
-            
+           
         }
+
+        public ICommand LoginCommand { get; set; }
+        public ICommand RegistrarCommand { get; set; }
+        public ICommand ResetPassCommand { get; set; }
+        public ICommand FacebookLoginCommand { get; set; }
 
         private async void ReestablecerPassAsync()
         {
-            await Navigation.PushAsync(new ResetPassPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new ResetPassPage());
         }
 
         public async void Registrar()
         {
-            await Navigation.PushAsync(new RegistroPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new RegistroPage());
         }
-
 
         public void Login()
         {
@@ -105,8 +96,6 @@ namespace EscapeRankUI.ViewModels.Login
 
         }
     
-
-
         public void FacebookLogin()
         {
             Debug.WriteLine("Has hecho Login mediante facebook");

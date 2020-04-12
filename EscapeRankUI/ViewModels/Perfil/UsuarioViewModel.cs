@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using EscapeRankUI.Estilos.Temas;
 using EscapeRankUI.Modelos;
 using EscapeRankUI.Views.Login;
 using Xamarin.Forms;
@@ -9,8 +10,22 @@ namespace EscapeRankUI.ViewModels.Perfil
 {
     public class UsuarioViewModel : BaseViewModel
     {
+
+    //Variables
+
+        private bool _modoOscuro;
         private Usuario _usuario;
-        public ICommand LogoutCommand { get; set; }
+
+    //Constructor
+
+        public UsuarioViewModel()
+        {
+            LogoutCommand = new Command(Logout);
+
+            GetPerfil();
+        }
+
+    //Getters & Setters
 
         public Usuario Usuario
         {
@@ -18,21 +33,32 @@ namespace EscapeRankUI.ViewModels.Perfil
             set { SetProperty(ref _usuario, value); }
         }
 
-        public UsuarioViewModel(INavigation navigation)
+        public bool ModoOscuro
         {
-            LogoutCommand = new Command(Logout);
-            Navigation = navigation;
+            get { return _modoOscuro; }
+            set
+            {
+                _modoOscuro = value;
 
-            GetPerfil();
+                if (_modoOscuro)
+                {
+                    Application.Current.Resources.Clear();
+                    Application.Current.Resources = new Oscuro();
+                }
+                else
+                {
+                    Application.Current.Resources.Clear();
+                    Application.Current.Resources = new Claro();
+                }
+            }
         }
+
+        public ICommand LogoutCommand { get; set; }
+
+    //Funciones
 
         private async void GetPerfil()
         {
-        //    if (Cargando)
-          //      return;
-
-            //Cargando = true;
-
             Usuario = Servicios.ServicioFake.Usuarios[0]; //await App.ProfileManager.GetPerfil();
         }
 

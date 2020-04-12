@@ -4,9 +4,8 @@ namespace EscapeRankUI.ViewModels.Partida
 {
     public class PartidaViewModel :BaseViewModel
     {
-        public PartidaViewModel(INavigation navigation)
+        public PartidaViewModel()
         {
-            Navigation = navigation;
         }
     }
 }

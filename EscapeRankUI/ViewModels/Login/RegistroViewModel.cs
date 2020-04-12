@@ -8,30 +8,31 @@ namespace EscapeRankUI.ViewModels.Login
 {
     public class RegistroViewModel : BaseViewModel
     {
-        public ICommand RegistrarCommand { get; set; }
-        public ICommand LoginCommand { get; set; }
+
+    //Variables
+
         //public ICredentialsService storeService;
 
-        private string _message;
+    //Constructor
 
-        public string Message
-        {
-            get { return _message; }
-            set { SetProperty(ref _message, value); }
-        }
-
-        public RegistroViewModel(INavigation navigation)
+        public RegistroViewModel()
         {
             //storeService = App.CredentialsService;
             //storeService.DeleteCredentials();
             LoginCommand = new Command(Login);
             RegistrarCommand = new Command(Registrar);
-            Navigation = navigation;
         }
+
+    //Getters & Setters
+
+        public ICommand RegistrarCommand { get; set; }
+        public ICommand LoginCommand { get; set; }
+
+    //Funciones
 
         private async void Login(object obj)
         {
-            await Navigation.PushAsync(new LoginPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
         }
 
         public void Registrar()

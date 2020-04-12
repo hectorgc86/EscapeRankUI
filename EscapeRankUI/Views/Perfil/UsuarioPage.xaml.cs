@@ -11,27 +11,13 @@ namespace EscapeRankUI.Views.Perfil
 
         public UsuarioPage()
         {
-            uvm = new UsuarioViewModel(Navigation);
+            uvm = new UsuarioViewModel();
             InitializeComponent();
             BindingContext = uvm;
 
             if (uvm.Usuario.Nacido.HasValue)
             {
                 Edad.Text = (DateTime.Now.Year - uvm.Usuario.Nacido.Value.Year).ToString();
-            }
-        }
-
-        private void ActivarSwitchTema(object sender, ToggledEventArgs e)
-        {
-            if (e.Value == true)
-            {
-                Application.Current.Resources.Clear();
-                Application.Current.Resources = new Oscuro();
-            }
-            else
-            {
-                Application.Current.Resources.Clear();
-                Application.Current.Resources = new Claro();
             }
         }
     }

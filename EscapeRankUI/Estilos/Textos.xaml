@@ -47,7 +47,6 @@
 
     <!--Estilos texto-->
 
-   
      <Style x:Key="texto_cabecera1" TargetType="Label">
         <Setter Property="TextColor" Value="{DynamicResource variable3}" />
         <Setter Property="FontSize" Value="{StaticResource h4}" />
@@ -133,6 +132,12 @@
     </Style>
 
      <Style x:Key="texto_subtitulo8" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource blanco2}" />
+        <Setter Property="FontSize" Value="{StaticResource subtitulo1}" />
+        <Setter Property="FontFamily" Value="{StaticResource fuente_negrita}" />
+    </Style>
+
+     <Style x:Key="texto_entry1" TargetType="Entry">
         <Setter Property="TextColor" Value="{DynamicResource blanco2}" />
         <Setter Property="FontSize" Value="{StaticResource subtitulo1}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_negrita}" />

@@ -9,9 +9,8 @@ namespace EscapeRankUI.ViewModels.Perfil
     {
         private ObservableCollection<Equipo> _equipos;
 
-        public EquiposViewModel(INavigation navigation)
+        public EquiposViewModel()
         {
-            Navigation = navigation;
             GetEquipos();
         }
 
@@ -23,11 +22,6 @@ namespace EscapeRankUI.ViewModels.Perfil
 
         private async void GetEquipos()
         {
-            if (Cargando)
-                return;
-
-            Cargando = true;
-
             List<Equipo> equiposCall = Servicios.ServicioFake.Usuarios[0].Equipos; //await App.ProfileManager.GetEquipos();
 
             Equipos = new ObservableCollection<Equipo>(equiposCall);

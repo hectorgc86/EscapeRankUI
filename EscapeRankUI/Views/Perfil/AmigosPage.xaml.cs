@@ -10,23 +10,9 @@ namespace EscapeRankUI.Views.Perfil
 
         public AmigosPage()
         {
-            avm = new AmigosViewModel(Navigation);
+            avm = new AmigosViewModel();
             InitializeComponent();
             BindingContext = avm;
-        }
-
-        private void ActivarSwitchTema(object sender, ToggledEventArgs e)
-        {
-            if (e.Value == true)
-            {
-                Application.Current.Resources.Clear();
-                Application.Current.Resources = new Oscuro();
-            }
-            else
-            {
-                Application.Current.Resources.Clear();
-                Application.Current.Resources = new Claro();
-            }
         }
     }
 }

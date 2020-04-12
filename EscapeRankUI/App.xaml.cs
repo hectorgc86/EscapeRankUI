@@ -8,16 +8,15 @@ namespace EscapeRankUI
 {
     public partial class App : Application
     {
-
         public App()
         {
             InitializeComponent();
 
             DependencyService.Register<BaseViewModel>();
 
-            Servicios.ServicioFake.RellenarDatos();
-
             MainPage = new NavigationPage(new LoginPage());
+
+            Servicios.ServicioFake.RellenarDatos();
         }
     }
 }

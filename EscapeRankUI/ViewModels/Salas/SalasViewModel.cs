@@ -6,16 +6,31 @@ using Xamarin.Forms;
 using System.Linq;
 //using MvvmAspire;
 using EscapeRankUI.Modelos;
+using System.Windows.Input;
+using System.Diagnostics;
+using EscapeRankUI.Views.Salas;
 
 namespace EscapeRankUI.ViewModels.Salas
 {
     public class SalasViewModel : BaseViewModel
     {
-        private int offset;
+        //Variables
 
-        public SalasViewModel(INavigation navigation)
+        private int offset;
+        private Sala _salaSeleccionada;
+        private ObservableCollection<Sala> _salas;
+        private ObservableCollection<Sala> _salasFiltradas;
+        private ObservableCollection<Publico> _publico;
+        private ObservableCollection<Categoria> _categorias;
+        private ObservableCollection<Dificultad> _dificultades;
+
+        //Constructor
+
+        public SalasViewModel()
         {
             offset = 0;
+            SalaSeleccionada = new Sala();
+            VerSalaCommand = new Command(VerSala);
 
             GetSalas();
             GetCategorias();
@@ -46,42 +61,83 @@ namespace EscapeRankUI.ViewModels.Salas
             */
         }
 
+        //Getters & Setters
+
+        public ICommand VerSalaCommand { get; set; }
+
+
+        public ObservableCollection<Publico> Publico
+        {
+            get { return _publico; }
+            set { SetProperty(ref _publico, value); }
+        }
+
+        public ObservableCollection<Dificultad> Dificultades
+        {
+            get { return _dificultades; }
+            set { SetProperty(ref _dificultades, value); }
+        }
+
+        public ObservableCollection<Categoria> Categorias
+        {
+            get { return _categorias; }
+            set { SetProperty(ref _categorias, value); }
+        }
+
+        public Sala SalaSeleccionada
+        {
+            get { return _salaSeleccionada; }
+            set { SetProperty(ref _salaSeleccionada, value); }
+        }
+
+        public ObservableCollection<Sala> Salas
+        {
+            get { return _salas; }
+            set { SetProperty(ref _salas, value); }
+        }
+
+        public ObservableCollection<Sala> SalasFiltradas
+        {
+            get { return _salasFiltradas; }
+            set { SetProperty(ref _salasFiltradas, value); }
+        }
+
+
+        //Funciones
+
+        private async void VerSala()
+        {
+            TabbedPage tp = new TabbedPage();
+
+            SalaDetallePage detalle = new SalaDetallePage(_salaSeleccionada);
+            SalaRankingPage ranking = new SalaRankingPage();
+
+            detalle.Title = "Info";
+            ranking.Title = "Ranking";
+
+            tp.Title = _salaSeleccionada.Nombre;
+            tp.Children.Add(detalle);
+            tp.Children.Add(ranking);
+
+            await Application.Current.MainPage.Navigation.PushAsync(tp);
+        }
+
         public async Task GetCategorias()
         {
-         //   if (Cargando)
-           //     return;
-
- //           Cargando = true;
-
             List<Categoria> categoriasCall = Servicios.ServicioFake.Categorias;
-
             Categorias = new ObservableCollection<Categoria>(categoriasCall);
-
         }
 
         public async Task GetPublico()
         {
-           // if (Cargando)
-             //   return;
-
-          //  Cargando = true;
-
             List<Publico> publicoCall = Servicios.ServicioFake.Publico;
-
             Publico = new ObservableCollection<Publico>(publicoCall);
-
         }
 
 
         public async Task GetDificultades()
         {
-         //   if (Cargando)
-           //     return;
-
-        //    Cargando = true;
-
             List<Dificultad> dificultadesCall = Servicios.ServicioFake.Dificultades;
-
             Dificultades = new ObservableCollection<Dificultad>(dificultadesCall);
         }
 
@@ -132,11 +188,8 @@ namespace EscapeRankUI.ViewModels.Salas
 
         public async Task GetSalas()
         {
-            if (Cargando)
-                return;
             try
             {
-                Cargando = true;
                 List<Sala> salasCall = Servicios.ServicioFake.Salas; //await App.EscapeManager.GetEscapesAsync(offset);
                 Salas = new ObservableCollection<Sala>(salasCall);
                 SalasFiltradas = new ObservableCollection<Sala>(salasCall);
@@ -150,17 +203,14 @@ namespace EscapeRankUI.ViewModels.Salas
                     "Ok"
                 );
             }
-
         }
 
         /* private async Task AddLoadEscapes()
          {
-             if (Cargando)
-                 return;
+
              try
              {
 
-                 Cargando = true;
 
                  List<Sala> salasCall = Servicios.ServicioFake.Salas; //await App.EscapeManager.GetEscapesAsync(offset);
 

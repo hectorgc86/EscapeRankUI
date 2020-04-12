@@ -15,7 +15,7 @@ namespace EscapeRankUI.Views.Login
 
         public ResetPassPage()
         {
-            rpvm = new ResetPassViewModel(Navigation);
+            rpvm = new ResetPassViewModel();
             InitializeComponent();
             BindingContext = rpvm;
         }

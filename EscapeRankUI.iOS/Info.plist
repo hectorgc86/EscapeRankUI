@@ -14,7 +14,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>13.3</string>
+	<string>13.4</string>
 	<key>CFBundleDisplayName</key>
 	<string>EscapeRank</string>
 	<key>CFBundleIdentifier</key>

@@ -2,54 +2,51 @@
 <ContentPage
     x:Class="EscapeRankUI.Views.Perfil.EquiposPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:recursos="clr-namespace:EscapeRankUI.Recursos">
 
     <Shell.TitleView>
-         <Grid>
-            <Label
-                Text="Equipos"
+        <Grid>
+             <Label
+                Text="{x:Static recursos:Strings.equipos}"
                 Style="{StaticResource texto_cabecera4}"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
             </Label>
-            <Switch
-                IsToggled="{Binding Cargando}"
-                Toggled="ActivarSwitchTema"
-                OnColor="Black"
-                HorizontalOptions="End"
-                VerticalOptions="Center"
-                Visual="Material" />
         </Grid>
     </Shell.TitleView>
 
-    <ContentPage.Content>
+     <ContentPage.Content>
         <Grid>
-       <BoxView BackgroundColor="{DynamicResource variable2}" />
-        <ScrollView>
-                    <StackLayout
-                        BindableLayout.ItemsSource="{Binding ListFood}">
+            <BoxView BackgroundColor="{DynamicResource variable1}" />
+            <Grid Style="{StaticResource espacio_grid_normal}">
+                <ScrollView>
+                    <FlexLayout Wrap="Wrap" JustifyContent="SpaceEvenly"
+                        BindableLayout.ItemsSource="{Binding Equipos}">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <StackLayout Orientation="Vertical">
-                                  <Frame
-                                    OutlineColor="{StaticResource variable3}"
-                                    CornerRadius="50"
+                                <StackLayout>
+                                    <Frame
+                                    Margin="0,20"
+                                    OutlineColor="{DynamicResource variable3}"
+                                    CornerRadius="36"
                                     Visual="Material">
                                         <Image
-                                        Source="{Binding Image_Food}"
-                                        HeightRequest="100"
-                                            Aspect="AspectFill"
-                                            />
-                                  </Frame>
+                                        Source="{Binding Avatar}"
+                                        WidthRequest="70"
+                                        HeightRequest="70"
+                                        Aspect="AspectFill" />
+                                    </Frame>
                                     <Label 
                                         HorizontalTextAlignment="Center"
-                                        Text="{Binding Title_Food}"
-                                         Style="{StaticResource texto_cabecera3}" />
+                                        Text="{Binding Nombre}"
+                                         Style="{StaticResource texto_subtitulo3}" />
                                 </StackLayout>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
-                    </StackLayout>
-        </ScrollView>
-        </Grid>      
+                    </FlexLayout>
+                </ScrollView>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

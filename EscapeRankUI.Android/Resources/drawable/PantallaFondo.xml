@@ -10,11 +10,5 @@
   <item>
     <color android:color="@color/colorBackground"/>
   </item>
-  
-  <item>
-    <bitmap android:src="@drawable/logo"
-            android:tileMode="disabled"
-            android:gravity="center"/>
-  </item>
 
 </layer-list>

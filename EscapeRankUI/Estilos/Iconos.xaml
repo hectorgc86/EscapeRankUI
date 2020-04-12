@@ -47,19 +47,19 @@
     <FontImageSource
         x:Key="icono_cat_misterio"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="&#x000f0ba6;"
+        Glyph="&#x000f0ba5;"
         Size="44"
         Color="#FE8C01" />
 
     <FontImageSource
         x:Key="icono_cat_miedo"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="&#x000f0bc8;"
+        Glyph="&#x000f068c;"
         Size="44"
         Color="#5AC7FB" />
 
     <FontImageSource
-        x:Key="icono_cat_menores"
+        x:Key="icono_cat_niños"
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f02e7;"
         Size="44"
@@ -75,9 +75,9 @@
       <!--"Público"-->
 
     <FontImageSource
-        x:Key="icono_pub_estandar"
+        x:Key="icono_pub_estándar"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="&#x000f0ba6;"
+        Glyph="&#x000f0004;"
         Size="44"
         Color="#FE8C01" />
 
@@ -91,21 +91,21 @@
     <FontImageSource
         x:Key="icono_pub_empresas"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="&#x000f0bc8;"
+        Glyph="&#x000f05b5;"
         Size="44"
         Color="#FF2D55" />
 
     <FontImageSource
-        x:Key="icono_pub_menores"
+        x:Key="icono_pub_niños"
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f02e7;"
         Size="44"
         Color="#5754D6"/>
 
     <FontImageSource
-        x:Key="icono_pub_grupos"
+        x:Key="icono_pub_grupos grandes"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="&#x000f02e7;"
+        Glyph="&#x000f0849;"
         Size="44"
         Color="#00BB2D"/>
 
@@ -114,21 +114,21 @@
     <FontImageSource
         x:Key="icono_dif_alta"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="&#x000f138c;"
+        Glyph="&#x000f005c;"
         Size="44"
         Color="#FE8C01" />
 
     <FontImageSource
         x:Key="icono_dif_media"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="&#x000f0bc8;"
+        Glyph="&#x000f0054;"
         Size="44"
         Color="#5AC7FB" />
 
     <FontImageSource
         x:Key="icono_dif_baja"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="&#x000f02e7;"
+        Glyph="&#x000f0043;"
         Size="44"
         Color="#FF2D55" />
 
@@ -148,6 +148,7 @@
         Glyph="&#x000f0419;"
         Size="23"
         Color="#B9BDC5" />
+
 
     <FontImageSource
         x:Key="icono_filtrar"
@@ -185,11 +186,20 @@
         Color="#FDC900" />
 
     <FontImageSource
+        x:Key="icono_trofeo"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f0538;"
+        Size="25"
+        Color="#FDC900" />
+
+    <FontImageSource
         x:Key="icono_minimo_usuarios"
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f0014;"
         Size="14"
         Color="#FDC900" />
+
+
 
     <FontImageSource
         x:Key="icono_prescripcion"
@@ -198,5 +208,14 @@
         Size="12"
         Color="#FDC900" />
 
+    <Label
+        x:Key="label_prueba"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Text="\U000f0004"
+        TextColor="Red"
+        BackgroundColor="Black"
+        Opacity="0"
+        FontSize="44"
+        />
 
 </ResourceDictionary>

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using EscapeRankUI.Modelos;
 using Xamarin.Forms;
 
@@ -230,9 +232,9 @@ namespace EscapeRankUI.Servicios
                 Equipos[10 - i].Usuarios.Add(u);
             }
 
-            for (int i = 0; i <= 5; i++)
+            for (int i = 0; i <= 6; i++)
             {
-                Usuarios[i].Amigos = Usuarios.GetRange(i + 1, 3);
+                Usuarios[i].Amigos = Usuarios.GetRange(i + 0, 4);
             }
 
             for (int i = 6; i < 10; i++)
@@ -253,12 +255,13 @@ namespace EscapeRankUI.Servicios
                     Nombre = "Sala " + i,
                     ImagenAncha = "https://picsum.photos/id/5" + i + "/200/300",
                     CompanyiaId = new Random().Next(4).ToString(),
+                    Icono = (FontImageSource)Utils.GetResourceValue("icono_cat_misterio"),
                     Categorias = new List<Categoria> {
                         new Categoria {
                             Id = "1",
                             Tipo = "Escape Room"
                         }
-                    },
+                    }, 
                     Tematicas = new List<Tematica>
                     {
                         new Tematica
@@ -298,6 +301,7 @@ namespace EscapeRankUI.Servicios
                     Nombre = "Sala " + i,
                     ImagenAncha = "https://picsum.photos/id/6" + i + "/200/300",
                     CompanyiaId = new Random().Next(4).ToString(),
+                    Icono = (FontImageSource)Utils.GetResourceValue("icono_cat_misterio"),
                     Categorias = new List<Categoria> {
                         new Categoria {
                             Id = "1",
@@ -336,13 +340,16 @@ namespace EscapeRankUI.Servicios
             }
         }
 
+        
+
         private static void GetCategoriasFake()
         {
+            //(FontImageSource)Application.Current.Resources["icono_cat_misterio"]
+
             Categorias = new List<Categoria>
             {
                 new Categoria {
                   Tipo="Misterio",
-                  Icono= new Image{Source = "" },
                   NumeroSalas = 500
                 },
                 new Categoria {
@@ -356,7 +363,7 @@ namespace EscapeRankUI.Servicios
                  new Categoria {
                   Tipo="Familiar",
                   NumeroSalas=150
-                },
+                }
             };
         }
 

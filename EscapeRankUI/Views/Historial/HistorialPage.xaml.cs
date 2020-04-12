@@ -5,30 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using EscapeRankUI.Estilos.Temas;
+using EscapeRankUI.ViewModels.Historial;
 
 namespace EscapeRankUI.Views.Historial
 {
     public partial class HistorialPage : ContentPage
     {
+        public HistorialViewModel hvm;
+
         public HistorialPage()
         {
+            hvm = new HistorialViewModel();
             InitializeComponent();
-        }
-
-        private void ActivarSwitchTema(object sender, ToggledEventArgs e)
-        {
-            if (e.Value == true)
-            {
-                Application.Current.Resources.Clear();
-                Application.Current.Resources = new Oscuro();
-            }
-            else
-            {
-                Application.Current.Resources.Clear();
-                Application.Current.Resources = new Claro();
-            }
+            BindingContext = hvm;
         }
     }
 }

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <DataTemplate x:Key="SalaBusquedaTemplate">
+            <Grid Padding="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.15*" />
+                    <ColumnDefinition Width="0.85*"/>
+                    <ColumnDefinition Width="0.85*"/>
+                    <ColumnDefinition Width="0.85*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding ImagenAncha}" 
+                       Aspect="AspectFill"
+                       HeightRequest="40" 
+                       WidthRequest="40" />
+                <Label Grid.Column="1"
+                       VerticalTextAlignment="Center"
+                       Padding="15,0"
+                       Text="{Binding Nombre}" 
+                       FontAttributes="Bold" />
+                <Label Grid.Column="2"
+                       VerticalTextAlignment="Center"
+                       Padding="15,0"
+                       Text="{Binding Ciudad.Nombre}" 
+                       FontAttributes="Bold" />
+                <Label Grid.Column="3"
+                       VerticalTextAlignment="Center"
+                       Padding="15,0"
+                       Text="{Binding Companyia.Nombre}" 
+                       FontAttributes="Bold" />
+            </Grid>
+     </DataTemplate>
+
+</ResourceDictionary>

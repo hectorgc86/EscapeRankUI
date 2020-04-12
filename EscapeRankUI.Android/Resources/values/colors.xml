@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="color_pantalla_titulo">#344955</color>
-    <color name="colorPrimary">#344955</color>
-    <color name="colorPrimaryDark">#344955</color>
+    <color name="colorPrimary">#00000000</color>
+    <color name="colorPrimaryDark">#121212</color>
     <color name="colorAccent">#344955</color>
-    <color name="colorBackground">#344955</color>
+    <color name="colorBackground">#CC344955</color>
 
-
-  
 </resources>

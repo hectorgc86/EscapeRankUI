@@ -2,7 +2,7 @@
 
 namespace EscapeRankUI
 {
-    public static class Constantes
+    public static class Constants
     {
         //Conexiones
 

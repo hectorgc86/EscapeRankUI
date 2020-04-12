@@ -44,6 +44,7 @@ namespace EscapeRankUI.Modelos
         public string DificultadId { get; set; }
         public bool EsVisible { get; set; }
 
+        public FontImageSource Icono { get; set; }
         public Companyia Companyia { get; set; }
         public Dificultad Dificultad { get; set; }
         public Provincia Provincia { get; set; }
@@ -58,7 +59,7 @@ namespace EscapeRankUI.Modelos
         {
             get
             {
-                var url = Constantes.ImagenesAnchasURL + ImagenAncha;
+                var url = Constants.ImagenesAnchasURL + ImagenAncha;
                 return ImageSource.FromUri(new Uri(url, UriKind.Absolute));
             }
             set { ImagenUriAncha = value; }
@@ -68,7 +69,7 @@ namespace EscapeRankUI.Modelos
         {
             get
             {
-                var url = Constantes.ImagenesEstrechasURL + ImagenEstrecha;
+                var url = Constants.ImagenesEstrechasURL + ImagenEstrecha;
                 return ImageSource.FromUri(new Uri(url, UriKind.Absolute));
             }
             set { ImagenUriEstrecha = value; }

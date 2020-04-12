@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using EscapeRankUI.Estilos.Temas;
 using EscapeRankUI.ViewModels.Partida;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace EscapeRankUI.Views.Partida
 {
@@ -16,23 +15,9 @@ namespace EscapeRankUI.Views.Partida
 
         public PartidaPage()
         {
-            pvm = new PartidaViewModel(Navigation);
+            pvm = new PartidaViewModel();
             InitializeComponent();
             BindingContext = pvm;
-        }
-
-        private void ActivarSwitchTema(object sender, ToggledEventArgs e)
-        {
-            if (e.Value == true)
-            {
-                Application.Current.Resources.Clear();
-                Application.Current.Resources = new Oscuro();
-            }
-            else
-            {
-                Application.Current.Resources.Clear();
-                Application.Current.Resources = new Claro();
-            }
         }
     }
 }

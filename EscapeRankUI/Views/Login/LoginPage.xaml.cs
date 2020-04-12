@@ -15,7 +15,7 @@ namespace EscapeRankUI.Views.Login
 
         public LoginPage()
         {
-            lvm = new LoginViewModel(Navigation);
+            lvm = new LoginViewModel();
             InitializeComponent();
             BindingContext = lvm;
         }

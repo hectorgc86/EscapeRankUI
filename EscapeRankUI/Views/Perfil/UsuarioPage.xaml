@@ -2,144 +2,129 @@
 <ContentPage
     x:Class="EscapeRankUI.Views.Perfil.UsuarioPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:recursos="clr-namespace:EscapeRankUI.Recursos"
+    xmlns:compartido="clr-namespace:EscapeRankUI.Views.Compartido">
 
     <Shell.TitleView>
         <Grid>
             <Label
-                Text="Datos"
+                Text="{x:Static recursos:Strings.datos}"
                 Style="{StaticResource texto_cabecera4}"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
             </Label>
-            <Switch
-                IsToggled="{Binding Cargando}"
-                Toggled="ActivarSwitchTema"
-                OnColor="Black"
-                HorizontalOptions="End"
-                VerticalOptions="Center"
-                Visual="Material" />
-        </Grid>
+            <Switch x:Name="BotonOscuro"
+                IsToggled="{Binding ModoOscuro}"
+                OnColor="{StaticResource variable2}"
+                HorizontalOptions="End"/>
+            </Grid>
     </Shell.TitleView>
 
+   
     <ContentPage.Content>
-        <Grid>
-            <BoxView BackgroundColor="{DynamicResource variable1}"/>
-            <Grid Style="{StaticResource espacio_grid_normal}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-
-                <StackLayout Grid.Row="0">
-                    <StackLayout
-                            Spacing="5"
-                            HorizontalOptions="Center">
-                        <StackLayout
-                                Orientation="Horizontal"
-                                HorizontalOptions="Center">
-                            <Frame
-                                    Margin="0,20"
-                                    CornerRadius="45"
-                                    OutlineColor="{DynamicResource variable3}"
-                                    Visual="Material"
-                                    HorizontalOptions="Start">
-                                <Image
-                                        Source="{Binding Usuario.Avatar}"
-                                        WidthRequest="90"
-                                        HeightRequest="90"
-                                        Aspect="AspectFill" />
-                            </Frame>
-                        </StackLayout>
-                        <StackLayout
-                                Orientation="Horizontal">
-                            <Label
+        <FlexLayout Direction="Column"
+                    AlignItems="Center"
+                    JustifyContent="SpaceEvenly"
+                    BackgroundColor="{DynamicResource variable1}">
+            <StackLayout>
+                <Frame
+                CornerRadius="45"
+                OutlineColor="{DynamicResource variable3}"
+                Visual="Material"
+                 HorizontalOptions="CenterAndExpand">
+                <Image
+                   Source="{Binding Usuario.Avatar}"
+                   WidthRequest="90"
+                   HeightRequest="90"
+                   Aspect="AspectFill" />
+            </Frame>
+            <StackLayout Orientation="Horizontal">
+                <Label
                                     Text="{Binding Usuario.Nombre}"
                                     Style="{StaticResource texto_cabecera3}" />
-                            <Label
-                                    Text="Editar"
+                <Label
+                                    Text="{x:Static recursos:Strings.editar}"
                                     Style="{StaticResource texto_subtitulo4}"
                                     HorizontalOptions="EndAndExpand"
                                     VerticalOptions="Center" />
-                        </StackLayout>
+            </StackLayout>
 
-                        <Label HorizontalOptions="Center"
+            <Label
                                 Text="{Binding Usuario.Perfil.Nick}"
-                                Style="{StaticResource texto_subtitulo5}" />
+                                Style="{StaticResource texto_subtitulo5}"
+                HorizontalTextAlignment="Center"/>
 
-                        <Label HorizontalOptions="Center"
+            <Label HorizontalOptions="Center"
                                 Text="{Binding Usuario.Email}"
-                                Style="{StaticResource texto_subtitulo5}" />
-                    </StackLayout>
-                    <BoxView
-                            Margin="0,10,0,0"
-                            BackgroundColor="{DynamicResource variable4}"
-                            HeightRequest="1.2" />
-                    <StackLayout Orientation="Horizontal"
-                            Grid.Row="1"
-                            Margin="0,15"
-                            Spacing="80">
-                        <StackLayout
+                                Style="{StaticResource texto_subtitulo5}"
+                   HorizontalTextAlignment="Center"/>
+                
+                    <BoxView Margin="0,10,0,0"
+                     BackgroundColor="{DynamicResource variable4}"
+                            HeightRequest="1"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal"
+                         Spacing="80">
+                <StackLayout
                                 Orientation="Vertical"
                                 Spacing="15">
-                            <Label
-                                Text="Edad"
+                    <Label
+                                Text="{x:Static recursos:Strings.edad}"
                                 Style="{StaticResource texto_subtitulo3}" />
-                            <Label
-                                Text="Fecha nacimiento"
+                    <Label
+                                Text="{x:Static recursos:Strings.fecha_nacimiento}"
                                 Style="{StaticResource texto_subtitulo3}" />
-                            <Label
-                                Text="Teléfono"
+                    <Label
+                                Text="{x:Static recursos:Strings.telefono}"
                                 Style="{StaticResource texto_subtitulo3}" />
-                            <Label
-                                Text="Partidas ganadas"
+                    <Label
+                                Text="{x:Static recursos:Strings.partidas_ganadas}"
                                 Style="{StaticResource texto_subtitulo3}" />
-                            <Label
-                                Text="Partidas perdidas"
+                    <Label
+                                Text="{x:Static recursos:Strings.partidas_perdidas}"
                                 Style="{StaticResource texto_subtitulo3}" />
-                            <Label
-                                Text="Total partidas"
+                    <Label
+                                Text="{x:Static recursos:Strings.total_partidas}"
                                 Style="{StaticResource texto_subtitulo3}" />
-                            <Label
-                                Text="Mejor tiempo"
+                    <Label
+                                Text="{x:Static recursos:Strings.mejor_tiempo}"
                                 Style="{StaticResource texto_subtitulo3}" />
 
-                        </StackLayout>
-                        <StackLayout Orientation="Vertical"
+                </StackLayout>
+                <StackLayout Orientation="Vertical"
                                Spacing="19.5">
 
-                            <Label x:Name="Edad"
+                    <Label x:Name="Edad"
                                 Style="{StaticResource texto_subtitulo5}" />
 
-                            <Label Text="{Binding Usuario.Nacido}"
+                    <Label Text="{Binding Usuario.Nacido}"
                                 Style="{StaticResource texto_subtitulo5}" />
 
-                            <Label Text="{Binding Usuario.Telefono}"
+                    <Label Text="{Binding Usuario.Telefono}"
                                 Style="{StaticResource texto_subtitulo5}" />
 
-                            <Label Text="{Binding Usuario.Perfil.PartidasGanadas}"
+                    <Label Text="{Binding Usuario.Perfil.PartidasGanadas}"
                                 Style="{StaticResource texto_subtitulo5}" />
 
-                             <Label Text="{Binding Usuario.Perfil.PartidasPerdidas}"
+                    <Label Text="{Binding Usuario.Perfil.PartidasPerdidas}"
                                 Style="{StaticResource texto_subtitulo5}" />
 
-                             <Label Text="{Binding Usuario.Perfil.NumeroPartidas}"
+                    <Label Text="{Binding Usuario.Perfil.NumeroPartidas}"
                                 Style="{StaticResource texto_subtitulo5}" />
 
-                            <Label Text="{Binding Usuario.Perfil.MejorTiempo}"
+                    <Label Text="{Binding Usuario.Perfil.MejorTiempo}"
                                 Style="{StaticResource texto_subtitulo5}" />
-                        </StackLayout>
-                    </StackLayout>
-                    <StackLayout Grid.Row="2" Margin="0,15">
-                         <Label x:Name="LogoutLabel" HorizontalOptions="Center" Style="{StaticResource texto_subtitulo4}" HorizontalTextAlignment="End" Text="Logout">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding LogoutCommand}" CommandParameter="{x:Reference LogoutLabel}" />
-                        </Label.GestureRecognizers>
-                    </Label>
-                    </StackLayout>
                 </StackLayout>
-            </Grid>
-        </Grid>
+            </StackLayout>
+            <StackLayout >
+                <Label x:Name="LogoutLabel" HorizontalOptions="Center" Style="{StaticResource texto_subtitulo4}" HorizontalTextAlignment="End" Text="{x:Static recursos:Strings.logout}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LogoutCommand}" CommandParameter="{x:Reference LogoutLabel}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

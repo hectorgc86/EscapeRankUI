@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</resheader>
+    
+    <data name="inicio">Inicio</data>
+    <data name="partida">Partida</data>
+    <data name="popular_ahora">Popular ahora</data>
+    <data name="categorias">Categorías</data>
+    <data name="ver_todo">Ver todo</data>
+    <data name="publico">Público</data>
+    <data name="explorar">Explorar</data>
+    <data name="login">Login</data>
+    <data name="logout">Logout</data>
+    <data name="dificultad">Dificultad</data>
+    <data name="salas">Salas</data>
+    <data name="perfil">Perfil</data>
+    <data name="datos">Datos</data>
+    <data name="editar">Editar</data>
+    <data name="historial">Historial</data>
+    <data name="ganada_en">Partida ganada en </data>
+    <data name="realizado_en">Realizado en</data>
+    <data name="tiempo_sala">Tiempo sala </data>
+    <data name="equipo">Equipo</data>
+    <data name="dificultad">Dificultad</data>
+    <data name="buscar">Buscar...</data>
+    <data name="amigos">Amigos</data>
+    <data name="equipos">Equipos</data>
+    <data name="hora">Hora</data>
+    <data name="fecha">Fecha</data>
+    <data name="fecha_nacimiento">Fecha nacimiento</data>
+    <data name="iniciar_sesion">Iniciar sesión</data>
+    <data name="duracion_sala">Duración Sala</data>
+    <data name="duracion_partida">Duración Partida</data>
+    <data name="validar_partida">Validar Partida</data>
+    <data name="enviar">Enviar</data>
+    <data name="registrarse">Registrarse</data>
+    <data name="registrar">Registrar</data>
+    <data name="guardar">Guardar</data>
+    <data name="nombre">Nombre</data>
+    <data name="ingresar">Ingresar</data>
+    <data name="edad">Edad</data>
+    <data name="telefono">Teléfono</data>
+    <data name="partidas_ganadas">Partidas ganadas</data>
+    <data name="partidas_perdidas">Partidas perdidas</data>
+    <data name="total_partidas">Total partidas</data>
+    <data name="mejor_tiempo">Mejor tiempo</data>
+    <data name="entrar">Entrar</data>
+    <data name="registrate">Regístrate</data>
+    <data name="eslogan">Entra al mundo escaperanker</data>
+    <data name="email">E-mail</data>
+    <data name="contrasenya">Contraseña</data>
+    <data name="repetir_contrasenya">Contraseña</data>
+    <data name="selecciona_equipo">Selecciona equipo...</data>
+    <data name="contrasenya_olvidada">¿Has olvidado tu contraseña?</data>
+    <data name="pregunta_cuenta">¿No tienes una cuenta?</data>
+    <data name="pregunta_crea_cuenta">O crea una cuenta usando una red social</data>
+    <data name="entrar_con_facebook">Entrar con facebook</data>
+    <data name="cree_cuenta">Cree una cuenta antes de comenzar</data>
+    <data name="instrucciones_contrasenya">Te enviaremos las instrucciones sobre como reestablecer tu contraseña al e-mail donde te hayas registrado con nosotros</data>
+</root>

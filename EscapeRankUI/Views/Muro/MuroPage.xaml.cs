@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using EscapeRankUI.Estilos.Temas;
 using EscapeRankUI.ViewModels.Muro;
+using System.Diagnostics;
 
 namespace EscapeRankUI.Views.Muro
 {
@@ -17,25 +18,15 @@ namespace EscapeRankUI.Views.Muro
 
         public MuroPage()
         {
-            InitializeComponent();
-
-            mvm = new MuroViewModel(Navigation);
+            mvm = new MuroViewModel();
             InitializeComponent();
             BindingContext = mvm;
         }
 
-        private void ActivarSwitchTema(object sender, ToggledEventArgs e)
+        protected override void OnAppearing()
         {
-            if (e.Value == true)
-            {
-                Application.Current.Resources.Clear();
-                Application.Current.Resources = new Oscuro();
-            }
-            else
-            {
-                Application.Current.Resources.Clear();
-                Application.Current.Resources = new Claro();
-            }
+            base.OnAppearing();
         }
     }
+
 }

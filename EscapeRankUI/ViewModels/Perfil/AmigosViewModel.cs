@@ -10,9 +10,8 @@ namespace EscapeRankUI.ViewModels.Perfil
     {
         private ObservableCollection<Usuario> _amigos;
 
-        public AmigosViewModel(INavigation navigation)
+        public AmigosViewModel()
         {
-            Navigation = navigation;
             GetAmigos();
         }
 
@@ -24,11 +23,6 @@ namespace EscapeRankUI.ViewModels.Perfil
 
         private async void GetAmigos()
         {
-            if (Cargando)
-                return;
-
-            Cargando = true;
-
             List<Usuario> amigosCall = Servicios.ServicioFake.Usuarios[0].Amigos; //await App.ProfileManager.GetAmigos();
 
             Amigos = new ObservableCollection<Usuario>(amigosCall);

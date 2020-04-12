@@ -2,23 +2,17 @@
 <ContentPage
     x:Class="EscapeRankUI.Views.Perfil.AmigosPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:recursos="clr-namespace:EscapeRankUI.Recursos">
 
     <Shell.TitleView>
         <Grid>
             <Label
-                Text="Amigos"
+                Text="{x:Static recursos:Strings.amigos}"
                 Style="{StaticResource texto_cabecera4}"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
             </Label>
-            <Switch
-                IsToggled="{Binding Cargando}"
-                Toggled="ActivarSwitchTema"
-                OnColor="Black"
-                HorizontalOptions="End"
-                VerticalOptions="Center"
-                Visual="Material" />
         </Grid>
     </Shell.TitleView>
 
@@ -27,7 +21,7 @@
             <BoxView BackgroundColor="{DynamicResource variable1}" />
             <Grid Style="{StaticResource espacio_grid_normal}">
                 <ScrollView>
-                    <StackLayout Orientation="Horizontal" Spacing="20" MinimumWidthRequest="100"
+                    <FlexLayout Wrap="Wrap" JustifyContent="SpaceEvenly"
                         BindableLayout.ItemsSource="{Binding Amigos}">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
@@ -35,7 +29,7 @@
                                     <Frame
                                     Margin="0,20"
                                     OutlineColor="{DynamicResource variable3}"
-                                    CornerRadius="50"
+                                    CornerRadius="36"
                                     Visual="Material">
                                         <Image
                                         Source="{Binding Avatar}"
@@ -50,7 +44,7 @@
                                 </StackLayout>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
-                    </StackLayout>
+                    </FlexLayout>
                 </ScrollView>
             </Grid>
 

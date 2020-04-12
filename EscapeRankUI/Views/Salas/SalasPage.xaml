@@ -2,22 +2,17 @@
 <ContentPage
     x:Class="EscapeRankUI.Views.Salas.SalasPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:recursos="clr-namespace:EscapeRankUI.Recursos">
 
     <Shell.TitleView>
         <Grid>
             <Label
-                Text="Salas"
+                Text="{x:Static recursos:Strings.salas}"
                 Style="{StaticResource texto_cabecera4}"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
             </Label>
-            <Switch
-                IsToggled="{Binding Cargando}"
-                Toggled="ActivarSwitchTema"
-                OnColor="{StaticResource negro1}"
-                HorizontalOptions="End"
-                VerticalOptions="Center"/>
         </Grid>
     </Shell.TitleView>
 
@@ -29,41 +24,53 @@
                   Style="{DynamicResource espacio_grid_normal_izquierdo}"
                   RowSpacing="15">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="80" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="310" />
                         <RowDefinition Height="205" />
                         <RowDefinition Height="205" />
                         <RowDefinition Height="205" />
                     </Grid.RowDefinitions>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <SearchBar Placeholder="Buscar..."
-                                   BackgroundColor="{DynamicResource variable1}"
-                               TextColor="{DynamicResource variable5}"/>
-                        <Image Source="{StaticResource icono_filtrar}"
+
+                    <StackLayout Padding="-15,15,0,15">
+                        <StackLayout Orientation="Horizontal">
+                            <SearchBar x:Name="Buscador"
+                               Placeholder="{x:Static recursos:Strings.buscar}"
+                               BackgroundColor="{DynamicResource variable1}"
+                               TextColor="{DynamicResource variable5}"
+                               TextChanged="Buscador_TextChanged"/>
+
+                            <ImageButton Source="{StaticResource icono_filtrar}"
                                HorizontalOptions="End"
-                               Margin="0,0,10,0"
-                               Grid.Column="1"
+                               BackgroundColor="{StaticResource variable1}"
                                Opacity=".8"
-                               Aspect="AspectFit" />
-                    </Grid>
+                               Aspect="AspectFit"
+                               Clicked="ImageButton_ClickedAsync"/>
+
+                        </StackLayout>
+                        <CollectionView x:Name="ResultadoBusqueda"
+                                        ItemTemplate="{StaticResource SalaBusquedaTemplate}"
+                                        SelectionMode="Single"
+                                        SelectedItem="{Binding SalaSeleccionada,Mode=TwoWay}"/>
+                    </StackLayout>
 
                     <StackLayout
                         Grid.Row="1"
                         Spacing="15">
+
                         <Label
-                            Text="Popular ahora"
+                            Text="{x:Static recursos:Strings.popular_ahora}"
                             Style="{StaticResource texto_cabecera1}" />
 
                         <CollectionView
                             ItemsSource="{Binding Salas}"
-                            SelectionMode="Single">
+                            SelectionMode="Single"
+                            SelectedItem="{Binding SalaSeleccionada,Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding VerSalaCommand}">
+
                             <CollectionView.ItemsLayout>
                                 <GridItemsLayout Orientation="Horizontal" />
                             </CollectionView.ItemsLayout>
+
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Frame
@@ -132,12 +139,12 @@
                             Padding="0,0,16,0"
                             Orientation="Horizontal">
                             <Label
-                                Text="Categoria"
+                                Text="{x:Static recursos:Strings.categorias}"
                                 Style="{StaticResource texto_cabecera3}"
                                 HorizontalOptions="Start"
                                 VerticalOptions="Center" />
                             <Label
-                                Text="Ver todo"
+                                Text="{x:Static recursos:Strings.ver_todo}"
                                 Style="{StaticResource texto_subtitulo6}"
                                 HorizontalOptions="EndAndExpand"
                                 VerticalOptions="Center" />
@@ -163,10 +170,10 @@
                                                 HeightRequest="88"
                                                 Visual="Material"
                                                 BackgroundColor="{DynamicResource variable2}">
-                                             <Image
+                                                <Image
                                                 Source="{Binding Icono}"                 
                                                 HorizontalOptions="Center"
-                                                VerticalOptions="Center"/>
+                                                Aspect="AspectFit"/>
                                             </Frame>
 
                                             <Label
@@ -191,12 +198,12 @@
                             Padding="0,0,16,0"
                             Orientation="Horizontal">
                             <Label
-                                Text="Público"
+                                Text="{x:Static recursos:Strings.publico}"
                                 Style="{StaticResource texto_cabecera3}"
                                 HorizontalOptions="Start"
                                 VerticalOptions="Center" />
                             <Label
-                                Text="Ver todo"
+                                Text="{x:Static recursos:Strings.ver_todo}"
                                 Style="{StaticResource texto_subtitulo6}"
                                 HorizontalOptions="EndAndExpand"
                                 VerticalOptions="Center" />
@@ -222,13 +229,10 @@
                                                 HeightRequest="88"
                                                 Visual="Material"
                                                 BackgroundColor="{DynamicResource variable2}">
-                                                <Label
-                                                    Text="{Binding Icono}"
-                                                    FontFamily="{StaticResource FuenteIconosMD}"
-                                                    FontSize="44"
-                                                    TextColor="{Binding ColorIcono}"
-                                                    HorizontalOptions="Center"
-                                                    VerticalOptions="Center" />
+                                                <Image
+                                                Source="{Binding Icono}"                 
+                                                HorizontalOptions="Center"
+                                                Aspect="AspectFit"/>
                                             </Frame>
 
                                             <Label
@@ -253,12 +257,12 @@
                             Padding="0,0,16,0"
                             Orientation="Horizontal">
                             <Label
-                                Text="Dificultad"
+                                Text="{x:Static recursos:Strings.dificultad}"
                                 Style="{StaticResource texto_cabecera3}"
                                 HorizontalOptions="Start"
                                 VerticalOptions="Center" />
                             <Label
-                                Text="Ver todo"
+                                Text="{x:Static recursos:Strings.ver_todo}"
                                 Style="{StaticResource texto_subtitulo6}"
                                 HorizontalOptions="EndAndExpand"
                                 VerticalOptions="Center" />
@@ -284,13 +288,10 @@
                                                 HeightRequest="88"
                                                 Visual="Material"
                                                 BackgroundColor="{DynamicResource variable2}">
-                                                <Label
-                                                    Text="{Binding Icono}"
-                                                    FontFamily="{StaticResource FuenteIconosMD}"
-                                                    FontSize="44"
-                                                    TextColor="{Binding ColorIcono}"
-                                                    HorizontalOptions="Center"
-                                                    VerticalOptions="Center" />
+                                                <Image
+                                                Source="{Binding Icono}"                 
+                                                HorizontalOptions="Center"
+                                                Aspect="AspectFit"/>
                                             </Frame>
 
                                             <Label

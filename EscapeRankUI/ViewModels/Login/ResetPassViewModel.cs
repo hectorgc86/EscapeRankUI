@@ -8,34 +8,26 @@ namespace EscapeRankUI.ViewModels.Login
 {
     public class ResetPassViewModel : BaseViewModel
     {
-        public ICommand ResetPassCommand { get; set; }
-        public ICommand RegistrarCommand { get; set; }
-
-        private string _message;
-
-        public string Message
-        {
-            get { return _message; }
-            set { SetProperty(ref _message, value); }
-        }
-
-        public ResetPassViewModel(INavigation navigation)
+        public ResetPassViewModel()
         {
             // storeService = App.CredentialsService;
             // storeService.DeleteCredentials();
             // Usuario = new Usuario();
             ResetPassCommand = new Command(ReestablecerPass);
             RegistrarCommand = new Command(Registrar);
-            Navigation = navigation;
             
         }
+
+        public ICommand ResetPassCommand { get; set; }
+        public ICommand RegistrarCommand { get; set; }
+
         private void ReestablecerPass()
         {
             Debug.WriteLine("Has hecho reset");
         }
         public async void Registrar()
         {
-            await Navigation.PushAsync(new RegistroPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new RegistroPage());
         }
     }
 }

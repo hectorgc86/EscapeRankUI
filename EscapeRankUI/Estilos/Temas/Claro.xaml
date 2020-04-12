@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ResourceDictionary
+    
     x:Class="EscapeRankUI.Estilos.Temas.Claro"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -16,8 +17,8 @@
     <Color x:Key="azul1">#344955</Color>
     <Color x:Key="azul2">#232F34</Color>
     <Color x:Key="azul3">#4A6572</Color>
+    <Color x:Key="azul4">#CC344955</Color>
     <Color x:Key="naranja1">#F9AA33</Color>
-
     <Color x:Key="variable1">#F5F8FB</Color>
     <Color x:Key="variable2">#FFFFFF</Color>
     <Color x:Key="variable3">#232F34</Color>

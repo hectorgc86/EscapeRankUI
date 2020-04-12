@@ -7,19 +7,22 @@ namespace EscapeRankUI.ViewModels.Muro
 {
     public class MuroViewModel : BaseViewModel
     {
-        public MuroViewModel(INavigation navigation)
+        private ObservableCollection<Noticia> _noticias;
+
+        public MuroViewModel()
         {
-            Navigation = navigation;
             GetNoticias();
         }
 
+        public ObservableCollection<Noticia> Noticias
+        {
+            get { return _noticias; }
+            set { SetProperty(ref _noticias, value); }
+        }
+
+
         private async void GetNoticias()
         {
-            if (Cargando)
-                return;
-
-                Cargando = true;
-
             List<Noticia> noticiasCall = Servicios.ServicioFake.Noticias;    //await App.WallManager.GetNewsAsync();
             Noticias = new ObservableCollection<Noticia>(noticiasCall);
         }
