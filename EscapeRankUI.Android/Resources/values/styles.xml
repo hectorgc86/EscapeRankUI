@@ -6,7 +6,6 @@
   <style name="MainTheme" parent="Theme.AppCompat.Light.DarkActionBar">
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
     <item name="android:windowBackground">@drawable/pantallafondo</item>
     <item name="windowNoTitle">true</item>
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>

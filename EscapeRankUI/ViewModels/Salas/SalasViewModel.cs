@@ -9,6 +9,8 @@ using EscapeRankUI.Modelos;
 using System.Windows.Input;
 using System.Diagnostics;
 using EscapeRankUI.Views.Salas;
+using EscapeRankUI.Views.Perfil;
+
 
 namespace EscapeRankUI.ViewModels.Salas
 {
@@ -118,6 +120,8 @@ namespace EscapeRankUI.ViewModels.Salas
             tp.Title = _salaSeleccionada.Nombre;
             tp.Children.Add(detalle);
             tp.Children.Add(ranking);
+
+           
 
             await Application.Current.MainPage.Navigation.PushAsync(tp);
         }

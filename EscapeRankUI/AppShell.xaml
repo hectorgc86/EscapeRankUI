@@ -18,8 +18,8 @@
             <Setter Property="Shell.ForegroundColor" Value="{DynamicResource blanco1}" />
             <Setter Property="Shell.UnselectedColor" Value="{DynamicResource gris2}" />
             <Setter Property="Shell.BackgroundColor" Value="{DynamicResource azul1}" />
-            <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource azul1}" />
-            <Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource gris2}" />
+            <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource variable2}" />
+            <Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource variable4}" />
             <Setter Property="Shell.TabBarTitleColor" Value="{DynamicResource naranja1}" />
         </Style>
          <Style

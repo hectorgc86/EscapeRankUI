@@ -16,7 +16,7 @@ namespace EscapeRankUI.Views.Salas
     {
         public SalasViewModel svm;
         private string filtroSeleccionado;
-        List<Sala> listaSalas;
+        private List<Sala> listaSalas;
 
         public SalasPage()
         {

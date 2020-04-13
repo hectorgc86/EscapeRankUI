@@ -5,33 +5,24 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <DataTemplate x:Key="SalaBusquedaTemplate">
-            <Grid Padding="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.15*" />
-                    <ColumnDefinition Width="0.85*"/>
-                    <ColumnDefinition Width="0.85*"/>
-                    <ColumnDefinition Width="0.85*"/>
-                </Grid.ColumnDefinitions>
+            <StackLayout Orientation="Horizontal" Spacing="5">
                 <Image Source="{Binding ImagenAncha}" 
                        Aspect="AspectFill"
-                       HeightRequest="40" 
-                       WidthRequest="40" />
-                <Label Grid.Column="1"
+                       HeightRequest="50" 
+                       WidthRequest="50" />
+                <Label
                        VerticalTextAlignment="Center"
-                       Padding="15,0"
                        Text="{Binding Nombre}" 
                        FontAttributes="Bold" />
-                <Label Grid.Column="2"
+                <Label 
                        VerticalTextAlignment="Center"
-                       Padding="15,0"
                        Text="{Binding Ciudad.Nombre}" 
                        FontAttributes="Bold" />
-                <Label Grid.Column="3"
+                <Label
                        VerticalTextAlignment="Center"
-                       Padding="15,0"
                        Text="{Binding Companyia.Nombre}" 
                        FontAttributes="Bold" />
-            </Grid>
+            </StackLayout>
      </DataTemplate>
 
 </ResourceDictionary>

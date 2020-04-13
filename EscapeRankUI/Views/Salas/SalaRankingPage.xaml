@@ -3,12 +3,10 @@
     x:Class="EscapeRankUI.Views.Salas.SalaRankingPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:recursos="clr-namespace:EscapeRankUI.Recursos">
+    xmlns:recursos="clr-namespace:EscapeRankUI.Recursos"
+    BackgroundColor="{DynamicResource variable1}">
 
     <ContentPage.Content>
-        <Grid>
-            <BoxView BackgroundColor="{DynamicResource variable1}" />
-            <StackLayout>
                 <CollectionView ItemsSource="{Binding Partidas}" SelectionMode="Single">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" />
@@ -113,7 +111,5 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </StackLayout>
-        </Grid>
     </ContentPage.Content>
 </ContentPage>

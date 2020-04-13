@@ -103,7 +103,7 @@
         Color="#5754D6"/>
 
     <FontImageSource
-        x:Key="icono_pub_grupos grandes"
+        x:Key="icono_pub_grupos_grandes"
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f0849;"
         Size="44"
@@ -165,6 +165,27 @@
         Color="{DynamicResource variable4}" />
 
     <FontImageSource
+        x:Key="icono_equipo"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f0004;"
+        Size="14"
+        Color="{DynamicResource variable4}" />
+
+    <FontImageSource
+        x:Key="icono_reloj"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f13ab;"
+        Size="14"
+        Color="{DynamicResource variable4}" />
+
+    <FontImageSource
+        x:Key="icono_reloj_arena"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f078c;"
+        Size="14"
+        Color="{DynamicResource variable4}" />
+
+    <FontImageSource
         x:Key="icono_calendario_hoy"
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f00f6;"
@@ -198,8 +219,6 @@
         Glyph="&#x000f0014;"
         Size="14"
         Color="#FDC900" />
-
-
 
     <FontImageSource
         x:Key="icono_prescripcion"

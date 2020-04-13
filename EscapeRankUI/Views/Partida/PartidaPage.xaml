@@ -3,7 +3,8 @@
     x:Class="EscapeRankUI.Views.Partida.PartidaPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:recursos="clr-namespace:EscapeRankUI.Recursos">
+    xmlns:recursos="clr-namespace:EscapeRankUI.Recursos"
+    BackgroundColor="{DynamicResource variable1}">
 
     <Shell.TitleView>
         <Grid>
@@ -15,15 +16,15 @@
             </Label>
         </Grid>
     </Shell.TitleView>
-    <ContentPage.Content>
 
+    <ContentPage.Content>
         <FlexLayout Direction="Column"
                JustifyContent="SpaceEvenly"
-               Style="{StaticResource espacio_flex_normal}"
-               BackgroundColor="{DynamicResource variable1}">
+               Style="{StaticResource espacio_flex_normal}">
 
-
-            <Label Text="{x:Static recursos:Strings.equipos}" HorizontalOptions="Start" Style="{StaticResource texto_titulo1}"/>
+            <Label Text="{x:Static recursos:Strings.equipos}"
+                   HorizontalOptions="Start"
+                   Style="{StaticResource texto_titulo1}"/>
 
             <Picker ItemsSource="{Binding Usuario.ListaEquipos}"
                         ItemDisplayBinding="{Binding Nombre}"
@@ -95,7 +96,6 @@
                             Style="{StaticResource estilo_boton1}" 
                             HorizontalOptions="Center"
                             Visual="Material"/>
-
 
         </FlexLayout>
     </ContentPage.Content>

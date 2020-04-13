@@ -1,26 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="EscapeRankUI.Views.Perfil.UsuarioPage"
+    x:Class="EscapeRankUI.Views.Perfil.AmigoDetallePage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:recursos="clr-namespace:EscapeRankUI.Recursos"
-    BackgroundColor="{DynamicResource variable1}">
-
-    <Shell.TitleView>
-        <Grid>
-            <Label
-                Text="{x:Static recursos:Strings.datos}"
-                Style="{StaticResource texto_cabecera4}"
-                VerticalOptions="Center"
-                HorizontalOptions="Center">
-            </Label>
-            <Switch x:Name="BotonOscuro"
-                IsToggled="{Binding ModoOscuro}"
-                OnColor="{StaticResource variable2}"
-                HorizontalOptions="End"/>
-        </Grid>
-    </Shell.TitleView>
-
+    BackgroundColor="{DynamicResource variable1}"
+    Title="{Binding Amigo.Nombre}">
 
     <ContentPage.Content>
         <FlexLayout Direction="Column"
@@ -33,31 +18,26 @@
                 Visual="Material"
                  HorizontalOptions="CenterAndExpand">
                     <Image
-                   Source="{Binding Usuario.Avatar}"
+                   Source="{Binding Amigo.Avatar}"
                    WidthRequest="90"
                    HeightRequest="90"
                    Aspect="AspectFill" />
                 </Frame>
-                <StackLayout Orientation="Horizontal">
-                    <Label
-                                    Text="{Binding Usuario.Nombre}"
-                                    Style="{StaticResource texto_cabecera3}" />
-                    <Label
-                                    Text="{x:Static recursos:Strings.editar}"
-                                    Style="{StaticResource texto_subtitulo4}"
-                                    HorizontalOptions="EndAndExpand"
-                                    VerticalOptions="Center" />
-                </StackLayout>
 
                 <Label
-                                Text="{Binding Usuario.Perfil.Nick}"
-                                Style="{StaticResource texto_subtitulo5}"
-                HorizontalTextAlignment="Center"/>
+                               Text="{Binding Amigo.Nombre}"
+                               Style="{StaticResource texto_cabecera3}"
+                               HorizontalTextAlignment="Center"/>
 
-                <Label HorizontalOptions="Center"
-                                Text="{Binding Usuario.Email}"
+                <Label
+                                Text="{Binding Amigo.Perfil.Nick}"
                                 Style="{StaticResource texto_subtitulo5}"
-                   HorizontalTextAlignment="Center"/>
+                                HorizontalTextAlignment="Center"/>
+
+                <Label 
+                                Text="{Binding Amigo.Email}"
+                                Style="{StaticResource texto_subtitulo5}"
+                                HorizontalTextAlignment="Center"/>
 
                 <BoxView Margin="0,10,0,0"
                      BackgroundColor="{DynamicResource variable4}"
@@ -98,31 +78,24 @@
                     <Label x:Name="Edad"
                                 Style="{StaticResource texto_subtitulo5}" />
 
-                    <Label Text="{Binding Usuario.Nacido}"
+                    <Label Text="{Binding Amigo.Nacido}"
                                 Style="{StaticResource texto_subtitulo5}" />
 
-                    <Label Text="{Binding Usuario.Telefono}"
+                    <Label Text="{Binding Amigo.Telefono}"
                                 Style="{StaticResource texto_subtitulo5}" />
 
-                    <Label Text="{Binding Usuario.Perfil.PartidasGanadas}"
+                    <Label Text="{Binding Amigo.Perfil.PartidasGanadas}"
                                 Style="{StaticResource texto_subtitulo5}" />
 
-                    <Label Text="{Binding Usuario.Perfil.PartidasPerdidas}"
+                    <Label Text="{Binding Amigo.Perfil.PartidasPerdidas}"
                                 Style="{StaticResource texto_subtitulo5}" />
 
-                    <Label Text="{Binding Usuario.Perfil.NumeroPartidas}"
+                    <Label Text="{Binding Amigo.Perfil.NumeroPartidas}"
                                 Style="{StaticResource texto_subtitulo5}" />
 
-                    <Label Text="{Binding Usuario.Perfil.MejorTiempo}"
+                    <Label Text="{Binding Amigo.Perfil.MejorTiempo}"
                                 Style="{StaticResource texto_subtitulo5}" />
                 </StackLayout>
-            </StackLayout>
-            <StackLayout >
-                <Label x:Name="LogoutLabel" HorizontalOptions="Center" Style="{StaticResource texto_subtitulo4}" HorizontalTextAlignment="End" Text="{x:Static recursos:Strings.logout}">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding LogoutCommand}" CommandParameter="{x:Reference LogoutLabel}" />
-                    </Label.GestureRecognizers>
-                </Label>
             </StackLayout>
         </FlexLayout>
     </ContentPage.Content>
