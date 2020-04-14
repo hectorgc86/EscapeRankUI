@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using EscapeRankUI.Modelos;
 using EscapeRankUI.Views.Login;
+using Newtonsoft.Json;
+using Plugin.FacebookClient;
 using Xamarin.Forms;
 
 namespace EscapeRankUI.ViewModels.Login
 {
     public class LoginViewModel : BaseViewModel
     {
-        //public ICredentialsService storeService;
+       //public ICredentialsService storeService;
+        public IFacebookClient _servicioFacebook = CrossFacebookClient.Current;
 
         public LoginViewModel()
         {
@@ -23,19 +28,10 @@ namespace EscapeRankUI.ViewModels.Login
         }
 
         public ICommand LoginCommand { get; set; }
+        public ICommand FacebookLoginCommand { get; set; }
         public ICommand RegistrarCommand { get; set; }
         public ICommand ResetPassCommand { get; set; }
-        public ICommand FacebookLoginCommand { get; set; }
 
-        private async void ReestablecerPassAsync()
-        {
-            await Application.Current.MainPage.Navigation.PushAsync(new ResetPassPage());
-        }
-
-        public async void Registrar()
-        {
-            await Application.Current.MainPage.Navigation.PushAsync(new RegistroPage());
-        }
 
         public void Login()
         {
@@ -95,90 +91,69 @@ namespace EscapeRankUI.ViewModels.Login
             }*/
 
         }
-    
-        public void FacebookLogin()
+
+        private async void FacebookLogin()
         {
-            Debug.WriteLine("Has hecho Login mediante facebook");
-            string clientId = null;
-            string redirectUri = null;
-
-            switch (Device.RuntimePlatform)
+            try
             {
-                case Device.iOS:
-                  //  clientId = Constants.GoogleiOSClientId;
-                  //  redirectUri = Constants.GoogleiOSRedirectUrl;
-                    break;
-
-                case Device.Android:
-                  //  clientId = Constants.GoogleAndroidClientId;
-                  //  redirectUri = Constants.GoogleAndroidRedirectUrl;
-                    break;
-            }
-           /* 
-            var authenticator = new OAuth2Authenticator(
-                clientId,
-                null,
-                Constants.Scope,
-                new Uri(Constants.GoogleAuthorizeUrl),
-                new Uri(redirectUri),
-                new Uri(Constants.GoogleTokenAccesoUrl),
-                null,
-                true);
-
-            authenticator.Completed += OnAuthCompleted;
-            authenticator.Error += OnAuthError;
-
-            AuthenticationState.Authenticator = authenticator;
-
-            var presenter = new Xamarin.Auth.Presenters.OAuthLoginPresenter();
-            presenter.Login(authenticator);
-            */
-        }
-
-        /*
-        async void OnAuthCompleted(object sender, AuthenticatorCompletedEventArgs e)
-        {
-            var authenticator = sender as OAuth2Authenticator;
-            if (authenticator != null)
-            {
-                authenticator.Completed -= OnAuthCompleted;
-                authenticator.Error -= OnAuthError;
-            }
-
-            Usuario user = null;
-            if (e.IsAuthenticated)
-            {
-                // If the user is authenticated, request their basic user data from Google
-                // UserInfoUrl = https://www.googleapis.com/oauth2/v2/userinfo
-                var request = new OAuth2Request("GET", new Uri(Constants.GoogleUserInfoUrl), null, e.Account);
-                var response = await request.GetResponseAsync();
-                if (response != null)
+                if (_servicioFacebook.IsLoggedIn)
                 {
-                    // Deserialize the data and store it in the account store
-                    // The users email address will be used to identify data in SimpleDB
-                    string userJson = await response.GetResponseTextAsync();
-                    user = JsonConvert.DeserializeObject<Usuario>(userJson);
+                    _servicioFacebook.Logout();
                 }
 
-                await storeService.SaveAccount(e.Account);
-                Settings.IsLoggedIn = true;
-                await Navigation.PushAsync(new EscapePage());
-                //  await DisplayAlert("Email address", user.Email, "OK");
-            }
-        }
+                EventHandler<FBEventArgs<string>> userDataDelegate = null;
 
-        void OnAuthError(object sender, AuthenticatorErrorEventArgs e)
-        {
-            var authenticator = sender as OAuth2Authenticator;
-            if (authenticator != null)
+                userDataDelegate = async (object sender, FBEventArgs<string> e) =>
+                {
+                    switch (e.Status)
+                    {
+                        case FacebookActionStatus.Completed:
+                            var facebookProfile = await Task.Run(() => JsonConvert.DeserializeObject<PerfilFacebook>(e.Data));
+                            var socialLoginData = new Usuario
+                            {
+                                Id = DateTime.Now.Millisecond,
+                                Avatar = facebookProfile.Picture.Data.Url,
+                                Email = facebookProfile.Email,
+                                Nombre = facebookProfile.FirstName
+                            };
+                            
+                            Application.Current.MainPage = new AppShell();
+                            break;
+                        case FacebookActionStatus.Canceled:
+                            await Application.Current.MainPage.DisplayAlert("Facebook Auth", "Canceled", "Ok");
+                            break;
+                        case FacebookActionStatus.Error:
+                            await Application.Current.MainPage.DisplayAlert("Facebook Auth", "Error", "Ok");
+                            break;
+                        case FacebookActionStatus.Unauthorized:
+                            await Application.Current.MainPage.DisplayAlert("Facebook Auth", "Unauthorized", "Ok");
+                            break;
+                    }
+
+                    _servicioFacebook.OnUserData -= userDataDelegate;
+                };
+
+                _servicioFacebook.OnUserData += userDataDelegate;
+
+                string[] fbRequestFields = { "email", "first_name", "picture", "gender", "last_name" };
+                string[] fbPermisions = { "email" };
+                await _servicioFacebook.RequestUserDataAsync(fbRequestFields, fbPermisions);
+            }
+            catch (Exception ex)
             {
-                authenticator.Completed -= OnAuthCompleted;
-                authenticator.Error -= OnAuthError;
+                Debug.WriteLine(ex.ToString());
             }
-
-            Debug.WriteLine("Authentication error: " + e.Message);
         }
-        */
+
+        private async void ReestablecerPassAsync()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new ResetPassPage());
+        }
+
+        public async void Registrar()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new RegistroPage());
+        }
     }
 }
 
