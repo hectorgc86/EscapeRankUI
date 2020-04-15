@@ -1,11 +1,8 @@
 ﻿using Xamarin.Forms;
-using EscapeRankUI.Estilos.Temas;
-using EscapeRankUI.ViewModels.Perfil;
-using System;
-using EscapeRankUI.ViewModels.Salas;
+using EscapeRankUI.ViewModels;
 using EscapeRankUI.Modelos;
 
-namespace EscapeRankUI.Views.Salas
+namespace EscapeRankUI.Views
 {
     public partial class SalaDetallePage : ContentPage
     {

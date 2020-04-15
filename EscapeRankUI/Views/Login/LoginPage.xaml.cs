@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EscapeRankUI.ViewModels.Login;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
+using EscapeRankUI.ViewModels;
 
-namespace EscapeRankUI.Views.Login
+namespace EscapeRankUI.Views
 {
     public partial class LoginPage : ContentPage
     {

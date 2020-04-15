@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using EscapeRankUI.Modelos;
-using Xamarin.Forms;
+﻿using EscapeRankUI.Modelos;
 
-namespace EscapeRankUI.ViewModels.Salas
+namespace EscapeRankUI.ViewModels
 {
     public class SalaDetalleViewModel : BaseViewModel
     {

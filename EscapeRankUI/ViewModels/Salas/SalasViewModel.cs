@@ -8,11 +8,10 @@ using System.Linq;
 using EscapeRankUI.Modelos;
 using System.Windows.Input;
 using System.Diagnostics;
-using EscapeRankUI.Views.Salas;
-using EscapeRankUI.Views.Perfil;
+using EscapeRankUI.Views;
 
 
-namespace EscapeRankUI.ViewModels.Salas
+namespace EscapeRankUI.ViewModels
 {
     public class SalasViewModel : BaseViewModel
     {
@@ -194,7 +193,7 @@ namespace EscapeRankUI.ViewModels.Salas
         {
             try
             {
-                List<Sala> salasCall = Servicios.ServicioFake.Salas; //await App.EscapeManager.GetEscapesAsync(offset);
+                List<Sala> salasCall = await App.SalasManager.GetEscapesAsync(offset); //Servicios.ServicioFake.Salas;
                 Salas = new ObservableCollection<Sala>(salasCall);
                 SalasFiltradas = new ObservableCollection<Sala>(salasCall);
                 offset += 10;
@@ -209,20 +208,16 @@ namespace EscapeRankUI.ViewModels.Salas
             }
         }
 
-        /* private async Task AddLoadEscapes()
+         private async Task AddLoadEscapes()
          {
-
              try
              {
+                 List<Sala> salasCall = await App.SalasManager.GetEscapesAsync(offset); //Servicios.ServicioFake.Salas;
 
-
-                 List<Sala> salasCall = Servicios.ServicioFake.Salas; //await App.EscapeManager.GetEscapesAsync(offset);
-
-                 List<Sala> newEscapes = new ObservableCollection<Sala>(salasCall);
-                 Salas.AddRange(newEscapes);
-                 SalasFiltradas.AddRange(newEscapes);
-                 offset += 10;
-             }
+                Salas = new ObservableCollection<Sala>(salasCall);
+                SalasFiltradas = new ObservableCollection<Sala>(salasCall);
+                offset += 10;
+            }
              catch (Exception e)
              {
                  await Application.Current.MainPage.DisplayAlert(
@@ -232,6 +227,6 @@ namespace EscapeRankUI.ViewModels.Salas
                  );
              }
 
-         }*/
+         }
     }
 }

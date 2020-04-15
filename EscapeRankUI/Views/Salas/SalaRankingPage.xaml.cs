@@ -1,7 +1,7 @@
-﻿using EscapeRankUI.ViewModels.Salas;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
+using EscapeRankUI.ViewModels;
 
-namespace EscapeRankUI.Views.Salas
+namespace EscapeRankUI.Views
 {
     public partial class SalaRankingPage : ContentPage
     {

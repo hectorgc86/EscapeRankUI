@@ -1,8 +1,7 @@
 ﻿using Xamarin.Forms;
-using EscapeRankUI.Estilos.Temas;
-using EscapeRankUI.ViewModels.Perfil;
+using EscapeRankUI.ViewModels;
 
-namespace EscapeRankUI.Views.Perfil
+namespace EscapeRankUI.Views
 {
     public partial class EquiposPage : ContentPage
     {

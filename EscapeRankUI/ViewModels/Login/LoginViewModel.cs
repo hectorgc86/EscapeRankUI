@@ -3,28 +3,28 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EscapeRankUI.Modelos;
-using EscapeRankUI.Views.Login;
+using EscapeRankUI.Servicios;
+using EscapeRankUI.Views;
 using Newtonsoft.Json;
 using Plugin.FacebookClient;
 using Xamarin.Forms;
 
-namespace EscapeRankUI.ViewModels.Login
+namespace EscapeRankUI.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-       //public ICredentialsService storeService;
+        public ICredencialesService storeService;
         public IFacebookClient _servicioFacebook = CrossFacebookClient.Current;
-
+        public Usuario Usuario { get; set; }
         public LoginViewModel()
         {
-            // storeService = App.CredentialsService;
-            // storeService.DeleteCredentials();
-            // Usuario = new Usuario();
-            LoginCommand = new Command(Login);
+            storeService = App.CredencialesService;
+            storeService.DeleteCredentials();
+            Usuario = new Usuario();
+            LoginCommand = new Command(LoginAsync);
             RegistrarCommand = new Command(Registrar);
             FacebookLoginCommand = new Command(FacebookLogin);
             ResetPassCommand = new Command(ReestablecerPassAsync);
-           
         }
 
         public ICommand LoginCommand { get; set; }
@@ -33,62 +33,54 @@ namespace EscapeRankUI.ViewModels.Login
         public ICommand ResetPassCommand { get; set; }
 
 
-        public void Login()
+        public async void LoginAsync()
         {
-            Application.Current.MainPage = new AppShell();
-            /*
-            Cargando = true;
-            Title = string.Empty;
+            Usuario.Email = "hector@mail.com";
+            Usuario.Contrasenya = "tor";
+
             try
             {
                 if (Usuario != null)
                 {
-                    if (Usuario.Nombre != null)
+                    if (Usuario.Email != null)
                     {
                         if (Usuario.Contrasenya != null)
                         {
-                            Login login = await App.AuthManager.GetLogin(Usuario.Nombre, Usuario.Contrasenya);
+                            Login login = await App.LoginManager.GetLogin(Usuario.Email, Usuario.Contrasenya);
                             if (login != null && login.TokenRefresco != null && login.TokenAcceso != null)
                             {
-
                                 await storeService.SaveCredentials(int.Parse(login.IdUsuario), Usuario.Nombre, Usuario.Contrasenya, login);
-
                              
-                                App.UsuarioPrincipal = await App.ProfileManager.GetUsuario();
+                                App.UsuarioPrincipal = await App.PerfilManager.GetUsuario();
 
-                                Application.Current.MainPage = new NavigationPage(new MainTabbedPage());
+                                Application.Current.MainPage = new AppShell();
                             }
                             else
                             {
-                                Message = "Usuario o contraseña incorrecta";
+                               await Application.Current.MainPage.DisplayAlert("Email o contraseña incorrecta",null, "Ok");
                             }
-                            Cargando = false;
                         }
                         else
                         {
-                            Cargando = false;
-                            Message = "Contraseña requerida";
+                            await Application.Current.MainPage.DisplayAlert("Contraseña requerida", null, "Ok");
                         }
                     }
                     else
                     {
-                        Cargando = false;
-                        Message = "Contraseña inválida";
+                        await Application.Current.MainPage.DisplayAlert("Contraseña inválida", null, "Ok");
                     }
 
                 }
                 else
                 {
-                    Cargando = false;
-                    Message = "Error Conectando al servidor";
+                    await Application.Current.MainPage.DisplayAlert("Error Conectando al servidor", null, "Ok");
                 }
             }
             catch (Exception e)
             {
-                Cargando = false;
                 Debug.WriteLine("ERROR {0}", e.Message);
-                await App.Current.MainPage.DisplayAlert("Error de conexión", e.Message, "Ok");
-            }*/
+                await Application.Current.MainPage.DisplayAlert("Error de conexión", e.Message, "Ok");
+            }
 
         }
 

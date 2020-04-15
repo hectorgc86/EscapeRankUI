@@ -75,7 +75,7 @@ namespace EscapeRankUI
         public static string CategoriesUrl = "categories/get";
         public static string AudiencesUrl = "audiences/get";
 
-        /*MATCHES*/
+        /*PARTIDAS*/
         public static string PartidasURL = "/partidas";
         public static string PartidasDetalleURL = "/partidas/";
         public static string MatchesSaveUrl = "matches/save";

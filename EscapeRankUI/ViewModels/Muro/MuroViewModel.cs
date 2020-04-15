@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using EscapeRankUI.Modelos;
 using Xamarin.Forms;
 
-namespace EscapeRankUI.ViewModels.Muro
+namespace EscapeRankUI.ViewModels
 {
     public class MuroViewModel : BaseViewModel
     {
@@ -23,7 +23,7 @@ namespace EscapeRankUI.ViewModels.Muro
 
         private async void GetNoticias()
         {
-            List<Noticia> noticiasCall = Servicios.ServicioFake.Noticias;    //await App.WallManager.GetNewsAsync();
+            List<Noticia> noticiasCall = await App.MuroManager.GetNoticiasAsync(); //Servicios.ServicioFake.Noticias;
             Noticias = new ObservableCollection<Noticia>(noticiasCall);
         }
 

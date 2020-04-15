@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Xamarin.Forms;
+using EscapeRankUI.ViewModels;
 using EscapeRankUI.Modelos;
-using EscapeRankUI.ViewModels.Perfil;
-using Xamarin.Forms;
 
-namespace EscapeRankUI.Views.Perfil
+namespace EscapeRankUI.Views
 {
     public partial class EquipoDetallePage : ContentPage
     {

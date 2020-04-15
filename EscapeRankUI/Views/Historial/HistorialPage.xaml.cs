@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Xamarin.Forms;
+using EscapeRankUI.ViewModels;
 
-using Xamarin.Forms;
-using EscapeRankUI.ViewModels.Historial;
-
-namespace EscapeRankUI.Views.Historial
+namespace EscapeRankUI.Views
 {
     public partial class HistorialPage : ContentPage
     {

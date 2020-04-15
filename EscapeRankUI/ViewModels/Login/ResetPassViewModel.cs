@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Input;
-using EscapeRankUI.Views.Login;
+using EscapeRankUI.Views;
 using Xamarin.Forms;
 
-namespace EscapeRankUI.ViewModels.Login
+namespace EscapeRankUI.ViewModels
 {
     public class ResetPassViewModel : BaseViewModel
     {

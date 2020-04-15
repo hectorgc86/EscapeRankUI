@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using EscapeRankUI.Modelos;
 
-namespace EscapeRankUI.ViewModels.Salas
+namespace EscapeRankUI.ViewModels
 {
     public class SalaRankingViewModel : BaseViewModel
     {
-        private ObservableCollection<Modelos.Partida> _partidas;
+        private ObservableCollection<Partida> _partidas;
 
         public SalaRankingViewModel()
         {
             GetRanking();
         }
 
-        public ObservableCollection<Modelos.Partida> Partidas
+        public ObservableCollection<Partida> Partidas
         {
             get { return _partidas; }
             set { SetProperty(ref _partidas, value); }
@@ -21,9 +22,9 @@ namespace EscapeRankUI.ViewModels.Salas
 
         private void GetRanking()
         {
-            List<Modelos.Partida> partidas = Servicios.ServicioFake.Equipos.SelectMany(p=>p.Partidas).Distinct().ToList();
+            List<Partida> partidas = Servicios.ServicioFake.Equipos.SelectMany(p=>p.Partidas).Distinct().ToList();
 
-            Partidas = new ObservableCollection<Modelos.Partida>(partidas);
+            Partidas = new ObservableCollection<Partida>(partidas);
         }
 
     }

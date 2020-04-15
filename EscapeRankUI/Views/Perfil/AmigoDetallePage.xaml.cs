@@ -1,10 +1,9 @@
-﻿using Xamarin.Forms;
-using EscapeRankUI.Estilos.Temas;
-using EscapeRankUI.ViewModels.Perfil;
-using System;
+﻿using System;
+using Xamarin.Forms;
+using EscapeRankUI.ViewModels;
 using EscapeRankUI.Modelos;
 
-namespace EscapeRankUI.Views.Perfil
+namespace EscapeRankUI.Views
 {
     public partial class AmigoDetallePage : ContentPage
     {

@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using EscapeRankUI.Estilos.Temas;
-using EscapeRankUI.ViewModels.Salas;
 using EscapeRankUI.Modelos;
+using EscapeRankUI.ViewModels;
 
-namespace EscapeRankUI.Views.Salas
+namespace EscapeRankUI.Views
 {
     public partial class SalasPage : ContentPage
     {

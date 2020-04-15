@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EscapeRankUI.Estilos.Temas;
-using EscapeRankUI.ViewModels.Partida;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
+using EscapeRankUI.ViewModels;
 
-namespace EscapeRankUI.Views.Partida
+namespace EscapeRankUI.Views
 {
     public partial class PartidaPage : ContentPage
     {

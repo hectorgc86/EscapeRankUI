@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using EscapeRankUI.Modelos;
 using Xamarin.Forms;
 
-namespace EscapeRankUI.ViewModels.Perfil
+namespace EscapeRankUI.ViewModels
 {
     public class AmigoDetalleViewModel : BaseViewModel
     {

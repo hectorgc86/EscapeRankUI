@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using EscapeRankUI.Modelos;
-using EscapeRankUI.Views.Perfil;
+using EscapeRankUI.Views;
 using Xamarin.Forms;
 
-namespace EscapeRankUI.ViewModels.Perfil
+namespace EscapeRankUI.ViewModels
 {
     public class EquiposViewModel : BaseViewModel
     {
@@ -36,7 +36,7 @@ namespace EscapeRankUI.ViewModels.Perfil
 
         private async void GetEquipos()
         {
-            List<Equipo> equiposCall = Servicios.ServicioFake.Usuarios[0].Equipos; //await App.ProfileManager.GetEquipos();
+            List<Equipo> equiposCall = await App.PerfilManager.GetEquiposAsync(); //Servicios.ServicioFake.Usuarios[0].Equipos; 
 
             Equipos = new ObservableCollection<Equipo>(equiposCall);
         }

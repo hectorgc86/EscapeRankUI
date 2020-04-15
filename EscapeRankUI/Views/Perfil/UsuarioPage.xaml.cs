@@ -1,9 +1,8 @@
-﻿using Xamarin.Forms;
-using EscapeRankUI.Estilos.Temas;
-using EscapeRankUI.ViewModels.Perfil;
-using System;
+﻿using System;
+using Xamarin.Forms;
+using EscapeRankUI.ViewModels;
 
-namespace EscapeRankUI.Views.Perfil
+namespace EscapeRankUI.Views
 {
     public partial class UsuarioPage : ContentPage
     {

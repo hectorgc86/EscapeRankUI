@@ -4,11 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:recursos="clr-namespace:EscapeRankUI.Recursos"
-    xmlns:muro="clr-namespace:EscapeRankUI.Views.Muro"
-    xmlns:salas="clr-namespace:EscapeRankUI.Views.Salas"
-    xmlns:partida="clr-namespace:EscapeRankUI.Views.Partida"
-    xmlns:historial="clr-namespace:EscapeRankUI.Views.Historial"
-    xmlns:perfil="clr-namespace:EscapeRankUI.Views.Perfil">
+    xmlns:views="clr-namespace:EscapeRankUI.Views">
 
     <Shell.Resources>
         <Style
@@ -32,35 +28,35 @@
         <Tab
             Title="{x:Static recursos:Strings.inicio}"
             Icon="{StaticResource icono_tab_muro}">
-            <ShellContent ContentTemplate="{DataTemplate muro:MuroPage}"/>
+            <ShellContent ContentTemplate="{DataTemplate views:MuroPage}"/>
         </Tab>
         <Tab
             Title="{x:Static recursos:Strings.explorar}"
             Icon="{StaticResource icono_tab_salas}">
-             <ShellContent ContentTemplate="{DataTemplate salas:SalasPage}" />
+             <ShellContent ContentTemplate="{DataTemplate views:SalasPage}" />
         </Tab>
         <Tab
             Title="{x:Static recursos:Strings.partida}"
             Icon="{StaticResource icono_tab_partida}">
-            <ShellContent ContentTemplate="{DataTemplate partida:PartidaPage}" />
+            <ShellContent ContentTemplate="{DataTemplate views:PartidaPage}" />
         </Tab>
          <Tab
             Title="{x:Static recursos:Strings.historial}"
             Icon="{StaticResource icono_tab_historial}">
-            <ShellContent ContentTemplate="{DataTemplate historial:HistorialPage}" />
+            <ShellContent ContentTemplate="{DataTemplate views:HistorialPage}" />
         </Tab>
         <Tab
             Title="{x:Static recursos:Strings.perfil}"
             Icon="{StaticResource icono_tab_perfil}">
             <ShellContent
                 Title="{x:Static recursos:Strings.datos}"
-                ContentTemplate="{DataTemplate perfil:UsuarioPage}" />
+                ContentTemplate="{DataTemplate views:UsuarioPage}" />
             <ShellContent
                 Title="{x:Static recursos:Strings.amigos}"
-                ContentTemplate="{DataTemplate perfil:AmigosPage}" />
+                ContentTemplate="{DataTemplate views:AmigosPage}" />
             <ShellContent
                 Title="{x:Static recursos:Strings.equipos}"
-                ContentTemplate="{DataTemplate perfil:EquiposPage}" />
+                ContentTemplate="{DataTemplate views:EquiposPage}" />
         </Tab>
     </TabBar>
 </Shell>

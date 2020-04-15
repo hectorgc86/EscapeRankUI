@@ -3,10 +3,10 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using EscapeRankUI.Estilos.Temas;
 using EscapeRankUI.Modelos;
-using EscapeRankUI.Views.Login;
+using EscapeRankUI.Views;
 using Xamarin.Forms;
 
-namespace EscapeRankUI.ViewModels.Perfil
+namespace EscapeRankUI.ViewModels
 {
     public class UsuarioViewModel : BaseViewModel
     {
@@ -59,7 +59,7 @@ namespace EscapeRankUI.ViewModels.Perfil
 
         private async void GetPerfil()
         {
-            Usuario = Servicios.ServicioFake.Usuarios[0]; //await App.ProfileManager.GetPerfil();
+            Usuario = App.UsuarioPrincipal; //Servicios.ServicioFake.Usuarios[0];
         }
 
         public async void Logout()
@@ -67,7 +67,7 @@ namespace EscapeRankUI.ViewModels.Perfil
             bool respuesta = await Application.Current.MainPage.DisplayAlert("Cerrar sesión", "¿Seguro de que desea cerrar sesión?","Si","No");
             if (respuesta)
             {
-                //await App.CredentialsService.DeleteCredentials();
+                await App.CredencialesService.DeleteCredentials();
                 Application.Current.MainPage = new NavigationPage(new LoginPage());
             }
         }

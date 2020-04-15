@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace EscapeRankUI.ViewModels.Partida
+namespace EscapeRankUI.ViewModels
 {
     public class PartidaViewModel :BaseViewModel
     {

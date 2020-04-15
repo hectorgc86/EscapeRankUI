@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Xamarin.Forms;
+using EscapeRankUI.ViewModels;
 
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using EscapeRankUI.Estilos.Temas;
-using EscapeRankUI.ViewModels.Muro;
-using System.Diagnostics;
-
-namespace EscapeRankUI.Views.Muro
+namespace EscapeRankUI.Views
 {
     public partial class MuroPage : ContentPage
     {
