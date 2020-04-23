@@ -24,6 +24,11 @@ namespace EscapeRankUI.Servicios
             return _servicio.GetSalasPromocionadasAsync(offset);
         }
 
+        public Task<List<Partida>> GetPartidasSalaAsync(string salaId)
+        {
+            return _servicio.GetPartidasSalaAsync(salaId);
+        }
+
         public Task<Sala> GetSalaAsync(string salaId)
         {
             return _servicio.GetSalaAsync(salaId);
@@ -41,6 +46,11 @@ namespace EscapeRankUI.Servicios
         public Task<List<Publico>> GetPublicoAsync()
         {
             return _servicio.GetPublicoAsync();
+        }
+
+        public Task<List<Dificultad>> GetDificultadesAsync()
+        {
+            return _servicio.GetDificultadesAsync();
         }
 
         public Task<List<Provincia>> GetProvinciasAsync()

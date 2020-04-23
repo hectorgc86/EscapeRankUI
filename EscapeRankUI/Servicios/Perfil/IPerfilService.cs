@@ -8,12 +8,14 @@ namespace EscapeRankUI.Servicios
     {
         Task<Usuario> GetUsuarioAsync();
 
-        Task<List<Usuario>> GetAmigosAsync();
-
         Task<Usuario> GetAmigoAsync(int amigoId);
+
+        Task<List<Usuario>> GetAmigosAsync();
 
         Task<List<Equipo>> GetEquiposAsync();
 
-        Task<Equipo> GetEquipoAsync(int equipoId);
+        Task<List<Usuario>> GetMiembrosEquipoAsync(int equipoId);
+
+        Task<List<Partida>> GetPartidasEquipoAsync(int equipoId);
     }
 }

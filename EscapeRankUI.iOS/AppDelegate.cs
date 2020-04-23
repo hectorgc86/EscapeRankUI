@@ -13,14 +13,14 @@ namespace EscapeRankUI.iOS
     {
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            Xamarin.Forms.Forms.SetFlags("Shell_Experimental", "Visual_Experimental", "CollectionView_Experimental", "FastRenderers_Experimental");
-
             Xamarin.Forms.Forms.Init();
 
             Xamarin.Forms.FormsMaterial.Init();
 
             LoadApplication(new App());
+
             FacebookClientManager.Initialize(app, options);
+            ZXing.Net.Mobile.Forms.iOS.Platform.Init();
 
             return base.FinishedLaunching(app, options);
         }

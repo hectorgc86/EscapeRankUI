@@ -18,8 +18,9 @@ namespace EscapeRankUI.ViewModels
 
         public AmigosViewModel()
         {
-            GetAmigos();
             VerAmigoCommand = new Command<Usuario>(VerAmigo);
+
+            GetAmigos();
         }
 
         //Getters & Setters
@@ -37,7 +38,6 @@ namespace EscapeRankUI.ViewModels
         private async void GetAmigos()
         {
             List<Usuario> amigosCall = await App.PerfilManager.GetAmigosAsync(); //Servicios.ServicioFake.Usuarios[0].Amigos; 
-
             Amigos = new ObservableCollection<Usuario>(amigosCall);
         }
 

@@ -10,6 +10,8 @@ namespace EscapeRankUI.Servicios
 
         Task<List<Sala>> GetSalasPromocionadasAsync(int offset);
 
+        Task<List<Partida>> GetPartidasSalaAsync(string salaId);
+
         Task<Sala> GetSalaAsync(string salaId);
 
         Task<List<Tematica>> GetTematicasAsync();
@@ -17,6 +19,8 @@ namespace EscapeRankUI.Servicios
         Task<List<Categoria>> GetCategoriasAsync();
 
         Task<List<Publico>> GetPublicoAsync();
+
+        Task<List<Dificultad>> GetDificultadesAsync();
 
         Task<List<Provincia>> GetProvinciasAsync();
     }

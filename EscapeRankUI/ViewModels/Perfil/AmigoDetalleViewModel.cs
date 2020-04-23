@@ -29,9 +29,14 @@ namespace EscapeRankUI.ViewModels
 
         //Funciones
 
-        private void GetAmigo(Usuario amigoSeleccionado)
+        private async void GetAmigo(Usuario amigoSeleccionado)
         {
-            Amigo = amigoSeleccionado;
+            Amigo = await App.PerfilManager.GetAmigoAsync(amigoSeleccionado.Id);
+
+            if (Amigo.Nacido != null)
+            {
+                Amigo.Edad = Utils.CalcularEdad(Amigo.Nacido.Value);
+            }
         }
 
     }

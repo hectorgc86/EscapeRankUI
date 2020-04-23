@@ -11,7 +11,7 @@
             <StackLayout Style="{StaticResource espacio_stack_normal}" Margin="0,20">
                 <Frame
                 CornerRadius="45"
-                OutlineColor="{DynamicResource variable3}"
+                OutlineColor="{DynamicResource variable4}"
                 Visual="Material"
                  HorizontalOptions="CenterAndExpand">
                     <Image
@@ -21,13 +21,13 @@
                    Aspect="AspectFill" />
                 </Frame>
 
-                <Label
+                <Label         Margin="0,10,0,0"
                                Text="{Binding Equipo.Nombre}"
                                Style="{StaticResource texto_cabecera3}"
                                HorizontalTextAlignment="Center"/>
 
               
-                <BoxView Margin="0,10,0,0"
+                <BoxView Margin="0,15,0,0"
                      BackgroundColor="{DynamicResource variable4}"
                             HeightRequest="1"/>
 
@@ -40,13 +40,13 @@
                  <FlexLayout
                                 Wrap="Wrap"
                                 JustifyContent="SpaceEvenly"
-                                BindableLayout.ItemsSource="{Binding Equipo.Usuarios}">
+                                BindableLayout.ItemsSource="{Binding MiembrosEquipo}">
 
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <StackLayout>
+                                <StackLayout WidthRequest="70">
                                     <Frame
-                                    OutlineColor="{DynamicResource variable3}"
+                                    OutlineColor="{DynamicResource variable4}"
                                     CornerRadius="36"
                                     Visual="Material">
                                         <Image
@@ -63,6 +63,10 @@
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </FlexLayout>
+
+                 <BoxView Margin="0,15,0,0"
+                     BackgroundColor="{DynamicResource variable4}"
+                            HeightRequest="1"/>
                  <Label
                                Text="Partidas"
                                Padding="15"
@@ -72,54 +76,49 @@
                  <FlexLayout
                                 Wrap="Wrap"
                                 JustifyContent="SpaceEvenly"
-                                BindableLayout.ItemsSource="{Binding Equipo.Partidas}">
+                                BindableLayout.ItemsSource="{Binding PartidasEquipo}">
 
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <StackLayout>
+                                <StackLayout Spacing="5">
                                     <Frame
-                                    OutlineColor="{DynamicResource variable3}"
-                                    Visual="Material">
+                                    OutlineColor="{DynamicResource variable4}"
+                                    Visual="Material"
+                                    HeightRequest="70">
                                         <Image
-                                        Source="{Binding Sala.ImagenAncha}"
-                                        WidthRequest="70"
-                                        HeightRequest="70"
+                                        Source="{Binding Sala.ImagenUriEstrecha}"
                                         Aspect="AspectFill" />
                                     </Frame>
                                     <Label
                                         HorizontalTextAlignment="Center"
                                         Text="{Binding Sala.Nombre}"
-                                         Style="{StaticResource texto_subtitulo3}" />
-
-                                     <StackLayout  Margin="0,0,0,12"
+                                        Style="{StaticResource texto_subtitulo3}"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="3"/>
+                                     <StackLayout
                                                     Orientation="Horizontal"
                                                     Spacing="5">
                                                 <Image
-                                                        Source="{StaticResource icono_ubicacion}"
+                                                        Source="{StaticResource icono_reloj}"
                                                         VerticalOptions="Start" />
                                                  <Label
                                                         Text="{x:Static recursos:Strings.realizado_en}"
-                                                        Style="{StaticResource texto_subtitulo5}"
-                                                        MaxLines="3"
+                                                        Style="{StaticResource texto_subtitulo9}"
                                                         LineBreakMode="TailTruncation" />
                                                 <Label
-                                                        Text="{Binding Horas}"
+                                                        Text="{Binding Horas,StringFormat='{0} :'}"
                                                         Style="{StaticResource texto_subtitulo5}"
-                                                        MaxLines="3"
                                                         LineBreakMode="TailTruncation" />
                                                 <Label
-                                                        Text="{Binding Minutos}"
+                                                        Text="{Binding Minutos,StringFormat='{0} :'}"
                                                         Style="{StaticResource texto_subtitulo5}"
-                                                        MaxLines="3"
                                                         LineBreakMode="TailTruncation" />
                                                 <Label
                                                         Text="{Binding Segundos}"
                                                         Style="{StaticResource texto_subtitulo5}"
-                                                        MaxLines="3"
                                                         LineBreakMode="TailTruncation" />
                                             </StackLayout>
                                      <StackLayout
-                                                    Margin="0,0,0,12"
                                                     Orientation="Horizontal"
                                                     Spacing="5">
                                     <Image
@@ -127,12 +126,11 @@
                                                         VerticalOptions="Start" />
                                      <Label
                                                         Text="{x:Static recursos:Strings.fecha}"
-                                                        Style="{StaticResource texto_subtitulo5}"
+                                                        Style="{StaticResource texto_subtitulo9}"
                                                         LineBreakMode="TailTruncation" />
                                     <Label
-                                                        Text="{Binding Segundos}"
+                                                        Text="{Binding Fecha,StringFormat='{}{0:dd-MM-yyyy}'}"
                                                         Style="{StaticResource texto_subtitulo5}"
-                                                        MaxLines="3"
                                                         LineBreakMode="TailTruncation" />
                                          </StackLayout>
                                 </StackLayout>

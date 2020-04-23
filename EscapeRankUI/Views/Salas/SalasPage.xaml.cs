@@ -19,16 +19,17 @@ namespace EscapeRankUI.Views
             InitializeComponent();
             BindingContext = svm;
 
-            ResultadoBusqueda.IsVisible = false;
-            listaSalas = new List<Sala>(svm.Salas);
+            //ResultadoBusqueda.IsVisible = false;
+            //listaSalas = new List<Sala>(svm.Salas);
 
-            filtroSeleccionado = "Todos";
-            Buscador.Placeholder = "Nombre, ciudad o compañia..";
+            //filtroSeleccionado = "Todos";
+            //Buscador.Placeholder = "Nombre, ciudad o compañia..";
         }
 
-        private void Buscador_TextChanged(object sender, TextChangedEventArgs e) {
+        private void Buscador_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
-            string letras = Buscador.Text;
+             string letras = Buscador.Text;
 
             List<Sala> salasFiltradas = new List<Sala>();
 
@@ -61,16 +62,16 @@ namespace EscapeRankUI.Views
             switch (filtroSeleccionado)
             {
                 case "Nombre":
-                    Buscador.Placeholder = "Introduzca nombre de sala..";
+                      Buscador.Placeholder = "Introduzca nombre de sala..";
                     break;
                 case "Ciudad":
-                    Buscador.Placeholder = "Introduzca ciudad..";
+                      Buscador.Placeholder = "Introduzca ciudad..";
                     break;
                 case "Compañia":
-                    Buscador.Placeholder = "Introduzca compañia..";
+                      Buscador.Placeholder = "Introduzca compañia..";
                     break;
                 case "Todos":
-                    Buscador.Placeholder = "Nombre, ciudad o compañia..";
+                      Buscador.Placeholder = "Nombre, ciudad o compañia..";
                     break;
             }
         }

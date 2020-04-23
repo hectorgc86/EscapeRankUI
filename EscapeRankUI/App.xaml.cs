@@ -11,14 +11,15 @@ namespace EscapeRankUI
 {
     public partial class App : Application
     {
-
-        public static SalasManager SalasManager { get; private set; }
+        public static Usuario UsuarioPrincipal { get; set; }
         public static LoginManager LoginManager { get; private set; }
         public static MuroManager MuroManager { get; private set; }
-        public static PerfilManager PerfilManager { get; private set; }
+        public static SalasManager SalasManager { get; private set; }
         public static PartidaManager PartidaManager { get; private set; }
+        public static HistorialManager HistorialManager { get; private set; }
+        public static PerfilManager PerfilManager { get; private set; }
+
         public static ICredencialesService CredencialesService { get; private set; }
-        public static Usuario UsuarioPrincipal { get; set; }
 
         public App()
         {
@@ -26,15 +27,16 @@ namespace EscapeRankUI
 
             DependencyService.Register<BaseViewModel>();
 
-            ServicioFake.RellenarDatos();
+            //ServicioFake.RellenarDatos();
 
             CredencialesService = new CredencialesService();
 
             LoginManager = new LoginManager(new LoginService());
-            SalasManager = new SalasManager(new SalasService());
             MuroManager = new MuroManager(new MuroService());
-            PerfilManager = new PerfilManager(new PerfilService());
+            SalasManager = new SalasManager(new SalasService());
             PartidaManager = new PartidaManager(new PartidaService());
+            HistorialManager = new HistorialManager(new HistorialService());
+            PerfilManager = new PerfilManager(new PerfilService());
 
             Login login = new Login();
 
@@ -56,7 +58,7 @@ namespace EscapeRankUI
             {
                 Task.Run(async () =>
                 {
-                    UsuarioPrincipal = await PerfilManager.GetUsuario();
+                    UsuarioPrincipal = await PerfilManager.GetUsuarioAsync();
                 }).Wait();
                 MainPage = new AppShell();
             }

@@ -23,12 +23,13 @@ namespace EscapeRankUI.Droid
 
             base.OnCreate(savedInstanceState);
 
-            //Forms.SetFlags("Shell_Experimental", "Visual_Experimental", "CollectionView_Experimental", "FastRenderers_Experimental");
-
+            Xamarin.Essentials.Platform.Init(Application);
+            ZXing.Net.Mobile.Forms.Android.Platform.Init();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            Forms.Init(this, savedInstanceState);
             //FacebookClientManager.Initialize(this);
+
             FormsMaterial.Init(this, savedInstanceState);
+            Forms.Init(this, savedInstanceState);
 
             LoadApplication(new App());
         }
@@ -36,6 +37,7 @@ namespace EscapeRankUI.Droid
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }

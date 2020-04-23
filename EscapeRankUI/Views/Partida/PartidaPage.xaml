@@ -3,6 +3,7 @@
     x:Class="EscapeRankUI.Views.PartidaPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sys="clr-namespace:System;assembly=netstandard"
     xmlns:recursos="clr-namespace:EscapeRankUI.Recursos"
     BackgroundColor="{DynamicResource variable1}">
 
@@ -26,9 +27,9 @@
                    HorizontalOptions="Start"
                    Style="{StaticResource texto_titulo1}"/>
 
-            <Picker ItemsSource="{Binding Usuario.ListaEquipos}"
+            <Picker ItemsSource="{Binding EquiposUsuario}"
                         ItemDisplayBinding="{Binding Nombre}"
-                        SelectedItem="{Binding Id}"
+                        SelectedItem="{Binding EquipoSeleccionado}"
                         Title="{x:Static recursos:Strings.selecciona_equipo}"
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="{DynamicResource variable2}"
@@ -38,65 +39,69 @@
             <Label Text="{x:Static recursos:Strings.fecha}" Style="{StaticResource texto_titulo1}"/>
 
             <DatePicker Format="D"
+                            MaximumDate="{x:Static sys:DateTime.Now}"
                             BackgroundColor="{DynamicResource variable2}"
-                            TextColor="{DynamicResource variable4}"/>
+                            TextColor="{DynamicResource variable4}"
+                            Date="{Binding FechaPartida}"
+                           />
 
             <Label Text="{x:Static recursos:Strings.hora}" Style="{StaticResource texto_titulo1}"/>
 
-            <TimePicker x:Name="_timePicker" Format="HH:mm"
+            <TimePicker     Format="HH:mm"
                             BackgroundColor="{DynamicResource variable2}"
-                            TextColor="{DynamicResource variable4}"/>
-
-            <Label Text="{x:Static recursos:Strings.duracion_sala}"
-                       Style="{StaticResource texto_titulo1}"
-                       HorizontalTextAlignment="Center"/>
-
-            <Label x:Name="_displayLabel"
-                       Text="{Binding Source={x:Reference duracionPartida},
-                       Path=Value, StringFormat='{0:F0} minutos'}"
-                       Style="{StaticResource texto_subtitulo5}"
-                       HorizontalTextAlignment="Center"/>
-
-            <StackLayout Orientation="Horizontal">
-                <Stepper x:Name="duracionPartida"
-                         Maximum="180" Increment="5" Value="60" Scale="0.75"
-                         HorizontalOptions="CenterAndExpand"/>
-            </StackLayout>
-
+                            TextColor="{DynamicResource variable4}"
+                            Time="{Binding HoraPartida}"
+                            />
 
             <Label Text="{x:Static recursos:Strings.duracion_partida}"
                        Style="{StaticResource texto_titulo1}"
                        HorizontalTextAlignment="Center"/>
 
-
-                <StackLayout>
-                    <Label x:Name="_displayPartidaMinutosLabel"
-                               Text="{Binding Source={x:Reference minutos}, Path=Value, StringFormat='{0:F0} minutos'}"
-                               Style="{StaticResource texto_subtitulo5}"
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                 <StackLayout>
+                    <Label
+                           Text="{Binding Source={x:Reference minutos}, Path=Value, StringFormat='{0:F0} minutos'}"
+                           Style="{StaticResource texto_subtitulo5}"
                            HorizontalTextAlignment="Center"/>
 
-                    <Stepper x:Name="minutos" Maximum="180"  Increment="1" Value="60" Scale="0.75" HorizontalOptions="Center"/>
+                    <Stepper x:Name="minutos" Maximum="180" Increment="1" Value="60" Scale="0.75" HorizontalOptions="Center"/>
                 </StackLayout>
 
-                <StackLayout>
-                    <Label x:Name="_displayPartidaSegundosLabel"
-                               Text="{Binding Source={x:Reference segundos}, Path=Value, StringFormat='{0:F0} segundos'}"
-                               Style="{StaticResource texto_subtitulo5}"
+                <StackLayout Grid.Column="1">
+                    <Label
+                           Text="{Binding Source={x:Reference segundos}, Path=Value, StringFormat='{0:F0} segundos'}"
+                           Style="{StaticResource texto_subtitulo5}"
                            HorizontalTextAlignment="Center"/>
                     <Stepper x:Name="segundos" Maximum="59" Increment="1" Value="30" Scale="0.75" HorizontalOptions="Center"/>
                 </StackLayout>
-                
+            </Grid>
+
+            <Button Text="{x:Static recursos:Strings.hacer_foto}"
+                            Style="{StaticResource estilo_boton1}"
+                            HorizontalOptions="Center"
+                            Command="{Binding HacerFotoCommand}"
+                            ImageSource="{StaticResource icono_camara}"
+                            Margin="0,10,0,0"
+                            Visual="Material"/>
+
             <Button Text="{x:Static recursos:Strings.validar_partida}"
                             Style="{StaticResource estilo_boton1}"
                             HorizontalOptions="Center"
-                      Margin="0,10"
+                            Command="{Binding ValidarCommand}"
+                            IsEnabled="{Binding BotonValidarActivado}"
+                            Margin="0,10"
                             Visual="Material"/>
 
             <Button Text="{x:Static recursos:Strings.guardar}"
-                            Style="{StaticResource estilo_boton1}" 
+                            Style="{StaticResource estilo_boton1}"
+                            Command="{Binding GuardarCommand}"
+                            IsEnabled="{Binding BotonGuardarActivado}"
                             HorizontalOptions="Center"
                             Visual="Material"/>
-
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

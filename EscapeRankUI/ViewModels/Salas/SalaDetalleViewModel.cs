@@ -1,4 +1,8 @@
-﻿using EscapeRankUI.Modelos;
+﻿using System;
+using System.Windows.Input;
+using EscapeRankUI.Modelos;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace EscapeRankUI.ViewModels
 {
@@ -8,8 +12,11 @@ namespace EscapeRankUI.ViewModels
 
         public SalaDetalleViewModel(Sala salaSeleccionada)
         {
-            GetSala(salaSeleccionada);
+            ContactoSalaCommand = new Command(ContactarSala);
+            GetInfo(salaSeleccionada);
         }
+
+        public ICommand ContactoSalaCommand { get; set; }
 
         public Sala Sala
         {
@@ -17,9 +24,16 @@ namespace EscapeRankUI.ViewModels
             set { SetProperty(ref _sala, value); }
         }
 
-        private async void GetSala(Sala salaSeleccionada)
+        //Funciones
+
+        private async void GetInfo(Sala salaSeleccionada)
         {
-            Sala = salaSeleccionada;
+           Sala = await App.SalasManager.GetSalaAsync(salaSeleccionada.Id);
+        }
+
+        private void ContactarSala()
+        {
+            Launcher.OpenAsync(Sala.UrlReserva);
         }
     }
 }

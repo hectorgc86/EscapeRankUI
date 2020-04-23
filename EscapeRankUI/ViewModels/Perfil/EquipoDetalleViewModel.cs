@@ -11,12 +11,17 @@ namespace EscapeRankUI.ViewModels
         //Variables
 
         private Equipo _equipo;
+        private ObservableCollection<Usuario> _miembrosEquipo;
+        private ObservableCollection<Partida> _partidasEquipo;
 
         //Constructor
 
         public EquipoDetalleViewModel(Equipo equipoSeleccionado)
         {
-            GetEquipo(equipoSeleccionado);
+            Equipo = equipoSeleccionado;
+
+            GetIntegrantes();
+            GetPartidas();
         }
 
         //Getters & Setters
@@ -27,12 +32,32 @@ namespace EscapeRankUI.ViewModels
             set { SetProperty(ref _equipo, value); }
         }
 
-        //Funciones
-
-        private void GetEquipo(Equipo equipoSeleccionado)
+        public ObservableCollection<Usuario> MiembrosEquipo
         {
-            Equipo = equipoSeleccionado;
+            get { return _miembrosEquipo; }
+            set { SetProperty(ref _miembrosEquipo, value); }
         }
 
+        public ObservableCollection<Partida> PartidasEquipo
+        {
+            get { return _partidasEquipo; }
+            set { SetProperty(ref _partidasEquipo, value); }
+        }
+
+        //Funciones
+
+        private async void GetIntegrantes()
+        {
+            List<Usuario> miembrosCall = await App.PerfilManager.GetMiembrosEquipoAsync(Equipo.Id);
+
+            MiembrosEquipo = new ObservableCollection<Usuario>(miembrosCall);
+        }
+
+        private async void GetPartidas()
+        {
+            List<Partida> partidasCall = await App.PerfilManager.GetPartidasEquipoAsync(Equipo.Id);
+
+            PartidasEquipo = new ObservableCollection<Partida>(partidasCall);
+        } 
     }
 }

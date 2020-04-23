@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace EscapeRankUI.Modelos
@@ -16,6 +17,8 @@ namespace EscapeRankUI.Modelos
         public int Activado { get; set; }
         public int? CodigoActivado { get; set; }
         public string Avatar { get; set; }
+        [JsonIgnore]
+        public int? Edad { get; set; }
         public Perfil Perfil { get; set; }
         public List<Equipo> Equipos { get; set; }
         public List<Noticia> Noticias { get; set; }

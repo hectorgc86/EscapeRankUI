@@ -18,8 +18,9 @@ namespace EscapeRankUI.ViewModels
 
         public EquiposViewModel()
         {
-            GetEquipos();
             VerEquipoCommand = new Command<Equipo>(VerEquipo);
+
+            GetEquipos();
         }
 
         //Getters & Setters
@@ -37,7 +38,6 @@ namespace EscapeRankUI.ViewModels
         private async void GetEquipos()
         {
             List<Equipo> equiposCall = await App.PerfilManager.GetEquiposAsync(); //Servicios.ServicioFake.Usuarios[0].Equipos; 
-
             Equipos = new ObservableCollection<Equipo>(equiposCall);
         }
 
@@ -45,7 +45,5 @@ namespace EscapeRankUI.ViewModels
         {
             await Application.Current.MainPage.Navigation.PushAsync(new EquipoDetallePage(equipoSeleccionado));
         }
-
-
     }
 }

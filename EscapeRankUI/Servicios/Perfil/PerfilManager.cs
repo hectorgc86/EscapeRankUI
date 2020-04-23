@@ -34,9 +34,14 @@ namespace EscapeRankUI.Servicios
             return _servicio.GetEquiposAsync();
         }
 
-        public Task<Equipo> GetEquipoAsync(int equipoId)
+        public Task<List<Usuario>> GetMiembrosEquipoAsync(int equipoId)
         {
-            return _servicio.GetEquipoAsync(equipoId);
+            return _servicio.GetMiembrosEquipoAsync(equipoId);
+        }
+
+        public Task<List<Partida>> GetPartidasEquipoAsync(int equipoId)
+        {
+            return _servicio.GetPartidasEquipoAsync(equipoId);
         }
     }
 }

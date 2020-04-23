@@ -11,5 +11,7 @@ namespace EscapeRankUI.Modelos
         public int Segundos { get; set; }
         public Equipo Equipo { get; set; }
         public Sala Sala { get; set; }
+        public TimeSpan DuracionPartida { get; set; }
+        public int PosicionRanking { get; set; }
     }
 }

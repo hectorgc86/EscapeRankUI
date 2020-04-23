@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using EscapeRankUI.ViewModels;
+using EscapeRankUI.Modelos;
 
 namespace EscapeRankUI.Views
 {
@@ -7,9 +8,9 @@ namespace EscapeRankUI.Views
     {
         public SalaRankingViewModel srvm;
 
-        public SalaRankingPage()
+        public SalaRankingPage(Sala salaSeleccionada)
         {
-            srvm = new SalaRankingViewModel();
+            srvm = new SalaRankingViewModel(salaSeleccionada);
             InitializeComponent();
             BindingContext = srvm;
         }

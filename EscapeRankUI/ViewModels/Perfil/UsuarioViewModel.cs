@@ -57,9 +57,14 @@ namespace EscapeRankUI.ViewModels
 
     //Funciones
 
-        private async void GetPerfil()
-        {
+        private void GetPerfil()
+        { 
             Usuario = App.UsuarioPrincipal; //Servicios.ServicioFake.Usuarios[0];
+
+            if (Usuario.Nacido != null)
+            {
+                Usuario.Edad = Utils.CalcularEdad(Usuario.Nacido.Value);
+            }
         }
 
         public async void Logout()

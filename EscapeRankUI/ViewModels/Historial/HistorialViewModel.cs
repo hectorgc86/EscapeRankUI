@@ -21,14 +21,10 @@ namespace EscapeRankUI.ViewModels
             set { SetProperty(ref _partidas, value); }
         }
 
-        private void GetHistorial()
+        private async void GetHistorial()
         {
-            if (Cargando)
-                return;
-
-            Cargando = true;
-
-            List<Partida> partidas = Servicios.ServicioFake.Equipos.SelectMany(p=>p.Partidas).Distinct().ToList();
+            List<Partida> partidas = await App.HistorialManager.GetHistorialAsync(App.UsuarioPrincipal.Id);
+            //Servicios.ServicioFake.Equipos.SelectMany(p=>p.Partidas).Distinct().ToList();
 
             Partidas = new ObservableCollection<Partida>(partidas);
         }

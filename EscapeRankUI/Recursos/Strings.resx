@@ -8,13 +8,15 @@
     <data name="inicio">Inicio</data>
     <data name="partida">Partida</data>
     <data name="popular_ahora">Popular ahora</data>
-    <data name="categorias">Categorías</data>
+    <data name="categoria">Categoría</data>
+    <data name="provincia">Provincia</data>
+    <data name="tematica">Temática</data>
+    <data name="dificultad">Dificultad</data>
     <data name="ver_todo">Ver todo</data>
     <data name="publico">Público</data>
     <data name="explorar">Explorar</data>
     <data name="login">Login</data>
     <data name="logout">Logout</data>
-    <data name="dificultad">Dificultad</data>
     <data name="salas">Salas</data>
     <data name="perfil">Perfil</data>
     <data name="datos">Datos</data>
@@ -55,10 +57,13 @@
     <data name="contrasenya">Contraseña</data>
     <data name="repetir_contrasenya">Contraseña</data>
     <data name="selecciona_equipo">Selecciona equipo...</data>
+    <data name="hacer_foto">Hacer una foto</data>
     <data name="contrasenya_olvidada">¿Has olvidado tu contraseña?</data>
     <data name="pregunta_cuenta">¿No tienes una cuenta?</data>
     <data name="pregunta_crea_cuenta">O crea una cuenta usando una red social</data>
     <data name="entrar_con_facebook">Entrar con facebook</data>
     <data name="cree_cuenta">Cree una cuenta antes de comenzar</data>
     <data name="instrucciones_contrasenya">Te enviaremos las instrucciones sobre como reestablecer tu contraseña al e-mail donde te hayas registrado con nosotros</data>
+
+
 </root>

@@ -18,296 +18,407 @@
     </Shell.TitleView>
 
     <ContentPage.Content>
-            <ScrollView>
-                <Grid
+        <ScrollView>
+            <Grid
                   Style="{DynamicResource espacio_grid_normal_izquierdo}"
                   RowSpacing="15">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="310" />
-                        <RowDefinition Height="205" />
-                        <RowDefinition Height="205" />
-                        <RowDefinition Height="205" />
-                    </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="310" />
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="205" />
+                    <RowDefinition Height="205" />
+                    <RowDefinition Height="205" />
+                </Grid.RowDefinitions>
 
-                    <StackLayout Padding="0,15">
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <SearchBar x:Name="Buscador"
+                <StackLayout Padding="0,15">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <SearchBar x:Name="Buscador"
                                Placeholder="{x:Static recursos:Strings.buscar}"
                                BackgroundColor="{DynamicResource variable1}"
                                TextColor="{DynamicResource variable5}"
                                TextChanged="Buscador_TextChanged"/>
 
-                            <ImageButton Source="{StaticResource icono_filtrar}"
+                        <ImageButton Source="{StaticResource icono_filtrar}"
                                HorizontalOptions="End"
                                BackgroundColor="{StaticResource variable1}"
                                Opacity=".8"
                                Aspect="AspectFit"
                                Clicked="ImageButton_ClickedAsync"/>
 
-                        </StackLayout>
-                        <CollectionView x:Name="ResultadoBusqueda"
+                    </StackLayout>
+                    <CollectionView x:Name="ResultadoBusqueda"
                                         ItemTemplate="{StaticResource SalaBusquedaTemplate}"
                                         SelectionMode="Single"
                                         SelectedItem="{Binding SalaSeleccionada,Mode=TwoWay}"/>
-                    </StackLayout>
-
-                    <StackLayout
-                        Grid.Row="1"
+                </StackLayout>
+                <StackLayout Grid.Row="1"
                         Spacing="15">
 
-                        <Label
+                    <Label
                             Text="{x:Static recursos:Strings.popular_ahora}"
                             Style="{StaticResource texto_cabecera1}" />
 
-                        <CollectionView
-                            ItemsSource="{Binding Salas}"
+                    <CollectionView
+                            ItemsSource="{Binding SalasPromocionadas}"
                             SelectionMode="Single"
                             SelectedItem="{Binding SalaSeleccionada,Mode=TwoWay}"
                             SelectionChangedCommand="{Binding VerSalaCommand}">
 
-                            <CollectionView.ItemsLayout>
-                                <GridItemsLayout Orientation="Horizontal" />
-                            </CollectionView.ItemsLayout>
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal" />
+                        </CollectionView.ItemsLayout>
 
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Frame
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
                                         Padding="7.5"
                                         BackgroundColor="transparent"
                                         HasShadow="False">
-                                        <Frame
+                                    <Frame
                                             CornerRadius="6"
                                             WidthRequest="208"
                                             BackgroundColor="{DynamicResource variable1}"
                                             Visual="Material"
                                             HasShadow="False">
-                                            <StackLayout Spacing="6">
-                                                <Frame
+                                        <StackLayout Spacing="6">
+                                            <Frame
                                                     CornerRadius="6"
                                                     Visual="Material"
                                                     HasShadow="False">
-                                                    <Image
-                                                        Source="{Binding ImagenAncha}"
+                                                <Image
+                                                        Source="{Binding ImagenUriAncha}"
                                                         Aspect="AspectFill"
                                                         HeightRequest="150" />
-                                                </Frame>
-                                                <Label
-                                                    Margin="0,0,0,2"
+                                            </Frame>
+                                            <Label
                                                     Text="{Binding Nombre}"
                                                     Style="{StaticResource texto_titulo1}"
                                                     LineBreakMode="TailTruncation" />
-                                                <Label
-                                                    Text="{Binding Ciudad.Nombre}"
-                                                    Style="{StaticResource texto_subtitulo5}"
+                                            <Label
+                                                    Text="{Binding Companyia.Ciudad.Nombre}"
+                                                    Style="{StaticResource texto_subtitulo6}"
                                                     LineBreakMode="TailTruncation" />
-                                                <StackLayout Orientation="Horizontal" Spacing="10">
-                                                    <Image
+
+                                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                                <Image
                                                         Source="{StaticResource icono_estrella}"
                                                         HorizontalOptions="Start"
                                                         VerticalOptions="Center" />
-                                                    <Label
-                                                        Text="{Binding MinimoJugadores}"
-                                                        Style="{StaticResource texto_subtitulo6}"
+                                                <Label
+                                                        Text="{Binding NumeroResenyas,TargetNullValue=0}"
+                                                        Style="{StaticResource texto_subtitulo5}"
                                                         HorizontalOptions="Start"
                                                         LineBreakMode="WordWrap" />
-                                                    <Image
+                                                <Image
                                                         Source="{StaticResource icono_minimo_usuarios}"
                                                         HorizontalOptions="Start"
                                                         VerticalOptions="Center" />
-                                                    <Label
+                                                <Label
                                                         Text="{Binding MinimoJugadores}"
                                                         Style="{StaticResource texto_subtitulo5}"
                                                         HorizontalOptions="Start"
                                                         LineBreakMode="WordWrap" />
-
-                                                </StackLayout>
                                             </StackLayout>
-                                        </Frame>
+                                        </StackLayout>
                                     </Frame>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
 
+                <StackLayout Grid.Row="2" Spacing="15">
                     <StackLayout
-                        Grid.Row="2"
-                        Spacing="15">
-
-                        <StackLayout
                             Padding="0,0,16,0"
                             Orientation="Horizontal">
-                            <Label
-                                Text="{x:Static recursos:Strings.categorias}"
+                        <Label
+                                Text="{x:Static recursos:Strings.provincia}"
                                 Style="{StaticResource texto_cabecera3}"
                                 HorizontalOptions="Start"
                                 VerticalOptions="Center" />
-                            <Label
+                        <Label
                                 Text="{x:Static recursos:Strings.ver_todo}"
                                 Style="{StaticResource texto_subtitulo6}"
                                 HorizontalOptions="EndAndExpand"
                                 VerticalOptions="Center" />
-                        </StackLayout>
-
-                        <CollectionView
+                    </StackLayout>
+                    <CollectionView
+                            ItemsSource="{Binding Provincias}"
                             SelectionMode="Single"
-                            ItemsSource="{Binding Categorias}">
-                            <CollectionView.ItemsLayout>
-                                <GridItemsLayout Orientation="Horizontal" />
-                            </CollectionView.ItemsLayout>
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Frame
+                            SelectedItem="{Binding ProvinciaSeleccionada,Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding VerSalaCommand}">
+
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal"/>
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="10,0"
+                                       BackgroundColor="transparent">
+                                <Frame
+                                            CornerRadius="6"
+                                            BackgroundColor="{DynamicResource variable2}"
+                                            Visual="Material"
+                                            HasShadow="False"
+                                            Padding="8,4">
+                                    <Label
+                                                    Text="{Binding Nombre}"
+                                                    Style="{StaticResource texto_titulo1}"
+                                                    HorizontalTextAlignment="Center"
+                                                    VerticalTextAlignment="Center"/>
+                                </Frame>
+                                      </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+
+                <StackLayout
+                        Grid.Row="3"
+                        Spacing="15">
+
+                    <StackLayout
+                            Padding="0,0,16,0"
+                            Orientation="Horizontal">
+                        <Label
+                                Text="{x:Static recursos:Strings.categoria}"
+                                Style="{StaticResource texto_cabecera3}"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center" />
+                        <Label
+                                Text="{x:Static recursos:Strings.ver_todo}"
+                                Style="{StaticResource texto_subtitulo6}"
+                                HorizontalOptions="EndAndExpand"
+                                VerticalOptions="Center" />
+                    </StackLayout>
+
+                    <CollectionView
+                            ItemsSource="{Binding Categorias}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding CategoriaSeleccionada,Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding VerSalaCommand}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
                                         Padding="7.5"
                                         HasShadow="False"
                                         Visual="Material"
                                         BackgroundColor="{DynamicResource variable1}">
-                                        <StackLayout Spacing="4">
-                                            <Frame
+                                    <StackLayout Spacing="4">
+                                        <Frame
                                                 Margin="0,0,0,4"
                                                 WidthRequest="88"
                                                 HeightRequest="88"
                                                 Visual="Material"
                                                 BackgroundColor="{DynamicResource variable2}">
-                                                <Image
+                                            <Image
                                                 Source="{Binding Icono}"                 
                                                 HorizontalOptions="Center"
                                                 Aspect="AspectFit"/>
-                                            </Frame>
+                                        </Frame>
 
-                                            <Label
+                                        <Label
                                                 Text="{Binding Tipo}"
                                                 Style="{StaticResource texto_titulo1}" />
 
-                                            <Label
+                                        <Label
+                                                Text="{Binding NumeroSalas}"
+                                                Style="{StaticResource texto_subtitulo5}" />
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <StackLayout
+                        Grid.Row="4"
+                        Spacing="15">
+
+                    <StackLayout
+                            Padding="0,0,16,0"
+                            Orientation="Horizontal">
+                        <Label
+                                Text="{x:Static recursos:Strings.tematica}"
+                                Style="{StaticResource texto_cabecera3}"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center" />
+                        <Label
+                                Text="{x:Static recursos:Strings.ver_todo}"
+                                Style="{StaticResource texto_subtitulo6}"
+                                HorizontalOptions="EndAndExpand"
+                                VerticalOptions="Center" />
+                    </StackLayout>
+
+                    <CollectionView
+                            ItemsSource="{Binding Tematicas}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding TematicaSeleccionada,Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding VerSalaCommand}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                        Padding="7.5"
+                                        HasShadow="False"
+                                        Visual="Material"
+                                        BackgroundColor="{DynamicResource variable1}">
+                                    <StackLayout Spacing="4">
+                                        <Frame
+                                                Margin="0,0,0,4"
+                                                WidthRequest="88"
+                                                HeightRequest="88"
+                                                Visual="Material"
+                                                BackgroundColor="{DynamicResource variable2}">
+                                            <Image
+                                                Source="{Binding Icono}"                 
+                                                HorizontalOptions="Center"
+                                                Aspect="AspectFit"/>
+                                        </Frame>
+
+                                        <Label
+                                                Text="{Binding Tipo}"
+                                                Style="{StaticResource texto_titulo1}" />
+
+                                        <Label
                                                 Text="{Binding NumeroSalas}"
                                                 Style="{StaticResource texto_subtitulo5}" />
 
-                                        </StackLayout>
-                                    </Frame>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </StackLayout>
-                    <StackLayout
-                        Grid.Row="3"
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <StackLayout
+                        Grid.Row="5"
                         Spacing="15">
 
-                        <StackLayout
+                    <StackLayout
                             Padding="0,0,16,0"
                             Orientation="Horizontal">
-                            <Label
+                        <Label
                                 Text="{x:Static recursos:Strings.publico}"
                                 Style="{StaticResource texto_cabecera3}"
                                 HorizontalOptions="Start"
                                 VerticalOptions="Center" />
-                            <Label
+                        <Label
                                 Text="{x:Static recursos:Strings.ver_todo}"
                                 Style="{StaticResource texto_subtitulo6}"
                                 HorizontalOptions="EndAndExpand"
                                 VerticalOptions="Center" />
-                        </StackLayout>
+                    </StackLayout>
 
-                        <CollectionView
+                    <CollectionView
+                            ItemsSource="{Binding Publico}"
                             SelectionMode="Single"
-                            ItemsSource="{Binding Publico}">
-                            <CollectionView.ItemsLayout>
-                                <GridItemsLayout Orientation="Horizontal" />
-                            </CollectionView.ItemsLayout>
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Frame
+                            SelectedItem="{Binding PublicoSeleccionado,Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding VerSalaCommand}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
                                         Padding="7.5"
                                         HasShadow="False"
                                         Visual="Material"
                                         BackgroundColor="{DynamicResource variable1}">
-                                        <StackLayout Spacing="4">
-                                            <Frame
+                                    <StackLayout Spacing="4">
+                                        <Frame
                                                 Margin="0,0,0,4"
                                                 WidthRequest="88"
                                                 HeightRequest="88"
                                                 Visual="Material"
                                                 BackgroundColor="{DynamicResource variable2}">
-                                                <Image
+                                            <Image
                                                 Source="{Binding Icono}"                 
                                                 HorizontalOptions="Center"
                                                 Aspect="AspectFit"/>
-                                            </Frame>
+                                        </Frame>
 
-                                            <Label
+                                        <Label
                                                 Text="{Binding Tipo}"
                                                 Style="{StaticResource texto_titulo1}" />
 
-                                            <Label
+                                        <Label
                                                 Text="{Binding NumeroSalas}"
                                                 Style="{StaticResource texto_subtitulo5}" />
 
-                                        </StackLayout>
-                                    </Frame>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </StackLayout>
-                    <StackLayout
-                        Grid.Row="4"
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <StackLayout
+                        Grid.Row="6"
                         Spacing="15">
 
-                        <StackLayout
+                    <StackLayout
                             Padding="0,0,16,0"
                             Orientation="Horizontal">
-                            <Label
+                        <Label
                                 Text="{x:Static recursos:Strings.dificultad}"
                                 Style="{StaticResource texto_cabecera3}"
                                 HorizontalOptions="Start"
                                 VerticalOptions="Center" />
-                            <Label
+                        <Label
                                 Text="{x:Static recursos:Strings.ver_todo}"
                                 Style="{StaticResource texto_subtitulo6}"
                                 HorizontalOptions="EndAndExpand"
                                 VerticalOptions="Center" />
-                        </StackLayout>
+                    </StackLayout>
 
-                        <CollectionView
+                    <CollectionView
+                            ItemsSource="{Binding Dificultades}"
                             SelectionMode="Single"
-                            ItemsSource="{Binding Dificultades}">
-                            <CollectionView.ItemsLayout>
-                                <GridItemsLayout Orientation="Horizontal" />
-                            </CollectionView.ItemsLayout>
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Frame
+                            SelectedItem="{Binding DificultadSeleccionada,Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding VerSalaCommand}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
                                         Padding="7.5"
                                         HasShadow="False"
                                         Visual="Material"
                                         BackgroundColor="{DynamicResource variable1}">
-                                        <StackLayout Spacing="4">
-                                            <Frame
+                                    <StackLayout Spacing="4">
+                                        <Frame
                                                 Margin="0,0,0,4"
                                                 WidthRequest="88"
                                                 HeightRequest="88"
                                                 Visual="Material"
                                                 BackgroundColor="{DynamicResource variable2}">
-                                                <Image
+                                            <Image
                                                 Source="{Binding Icono}"                 
                                                 HorizontalOptions="Center"
                                                 Aspect="AspectFit"/>
-                                            </Frame>
+                                        </Frame>
 
-                                            <Label
+                                        <Label
                                                 Text="{Binding Tipo}"
                                                 Style="{StaticResource texto_titulo1}" />
 
-                                            <Label
+                                        <Label
                                                 Text="{Binding NumeroSalas}"
                                                 Style="{StaticResource texto_subtitulo5}" />
 
-                                        </StackLayout>
-                                    </Frame>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </StackLayout>
-                </Grid>
-            </ScrollView>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

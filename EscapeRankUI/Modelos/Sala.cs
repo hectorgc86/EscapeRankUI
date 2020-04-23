@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace EscapeRankUI.Modelos
@@ -54,7 +55,6 @@ namespace EscapeRankUI.Modelos
         public List<Tematica> Tematicas { get; set; }
         public List<Publico> Publico { get; set; }
 
-
         public ImageSource ImagenUriAncha
         {
             get
@@ -74,5 +74,58 @@ namespace EscapeRankUI.Modelos
             }
             set { ImagenUriEstrecha = value; }
         }
+
+        public List<SalasCategorias> SalasCategorias {
+            set
+            {
+                Categorias = new List<Categoria>();
+
+               foreach(SalasCategorias sc in value)
+                {
+                    Categorias.Add(sc.Categoria);
+                }
+            }
+        }
+
+        public List<SalasPublico> SalasPublico
+        {
+            set
+            {
+                Publico = new List<Publico>();
+
+                foreach (SalasPublico sc in value)
+                {
+                    Publico.Add(sc.Publico);
+                }
+            }
+        }
+
+        public List<SalasTematicas> SalasTematicas
+        {
+            set
+            {
+                Tematicas = new List<Tematica>();
+
+                foreach (SalasTematicas sc in value)
+                {
+                    Tematicas.Add(sc.Tematica);
+                }
+            }
+        }
+    }
+
+    public class SalasCategorias
+    {
+        public Categoria Categoria { get; set; }
+    }
+
+    public class SalasTematicas
+    {
+        public Tematica Tematica { get; set; } 
+    }
+
+    public class SalasPublico
+    {
+        public Publico Publico { get; set; }
     }
 }

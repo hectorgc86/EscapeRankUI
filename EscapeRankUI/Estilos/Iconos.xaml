@@ -206,6 +206,13 @@
         Size="12"
         Color="#FDC900" />
 
+     <FontImageSource
+        x:Key="icono_camara"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f0100;"
+        Size="18"
+        Color="#B9BDC5" />
+
     <FontImageSource
         x:Key="icono_trofeo"
         FontFamily="{StaticResource FuenteIconosMD}"

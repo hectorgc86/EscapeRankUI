@@ -14,11 +14,6 @@ namespace EscapeRankUI.Views
             advm = new AmigoDetalleViewModel(amigoSeleccionado);
             InitializeComponent();
             BindingContext = advm;
-
-            if (advm.Amigo.Nacido.HasValue)
-            {
-                Edad.Text = (DateTime.Now.Year - advm.Amigo.Nacido.Value.Year).ToString();
-            }
         }
     }
 }

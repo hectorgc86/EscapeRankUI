@@ -96,7 +96,7 @@
     </Style>
 
     <Style x:Key="texto_subtitulo2" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource naranja1}" />
+        <Setter Property="TextColor" Value="{DynamicResource variable3}" />
         <Setter Property="FontSize" Value="{StaticResource subtitulo1}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_normal}" />
     </Style>
@@ -134,6 +134,12 @@
      <Style x:Key="texto_subtitulo8" TargetType="Label">
         <Setter Property="TextColor" Value="{DynamicResource blanco2}" />
         <Setter Property="FontSize" Value="{StaticResource subtitulo1}" />
+        <Setter Property="FontFamily" Value="{StaticResource fuente_negrita}" />
+    </Style>
+
+    <Style x:Key="texto_subtitulo9" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource gris1}" />
+        <Setter Property="FontSize" Value="{StaticResource subtitulo2}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_negrita}" />
     </Style>
 

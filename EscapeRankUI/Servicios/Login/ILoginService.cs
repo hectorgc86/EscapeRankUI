@@ -5,7 +5,7 @@ namespace EscapeRankUI.Servicios
 {
     public interface ILoginService
     {
-        Task<Login> GetLogin(string usuario, string contrasenya);
+        Task<Login> GetLoginAsync(string usuario, string contrasenya);
 
         Task<Login> GetTokenClientCredentialsAsync();
 

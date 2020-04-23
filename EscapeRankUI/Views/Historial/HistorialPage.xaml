@@ -54,7 +54,7 @@
                                             CornerRadius="6"
                                             Padding="0">
                                             <Image
-                                                    Source="{Binding Sala.ImagenAncha}"
+                                                    Source="{Binding Sala.ImagenUriEstrecha}"
                                                     Aspect="AspectFill"
                                                     HeightRequest="65"
                                                     WidthRequest="98" />
@@ -70,12 +70,37 @@
                                                         VerticalOptions="Start" />
                                                  <Label
                                                         Text="{x:Static recursos:Strings.equipo}"
-                                                        Style="{StaticResource texto_subtitulo6}" />
+                                                        Style="{StaticResource texto_subtitulo9}" />
                                                 <Label
                                                         Text="{Binding Equipo.Nombre}"
                                                         Style="{StaticResource texto_subtitulo5}"/>
                                             </StackLayout>
-
+                                            <StackLayout
+                                                    Orientation="Horizontal"
+                                                    VerticalOptions="EndAndExpand"
+                                                    Spacing="5">
+                                                <Image
+                                                        Source="{StaticResource icono_calendario_hoy}" />
+                                                <Label
+                                                        Text="{x:Static recursos:Strings.fecha}"
+                                                        Style="{StaticResource texto_subtitulo9}" />
+                                                <Label
+                                                        Text="{Binding Fecha,StringFormat='{}{0:dd-MM-yyyy}'}"
+                                                        Style="{StaticResource texto_subtitulo5}"/>
+                                            </StackLayout>
+                                            <StackLayout
+                                                    Orientation="Horizontal"
+                                                    VerticalOptions="EndAndExpand"
+                                                    Spacing="5">
+                                                <Image
+                                                        Source="{StaticResource icono_reloj_arena}" />
+                                                <Label
+                                                        Text="{x:Static recursos:Strings.tiempo_sala}"
+                                                        Style="{StaticResource texto_subtitulo9}"/>
+                                                <Label
+                                                        Text="{Binding Sala.Duracion}"
+                                                        Style="{StaticResource texto_subtitulo5}"/>
+                                            </StackLayout>
                                             <StackLayout
                                                     Orientation="Horizontal"
                                                     VerticalOptions="CenterAndExpand"
@@ -85,29 +110,15 @@
                                                         VerticalOptions="Start" />
                                                  <Label
                                                         Text="{x:Static recursos:Strings.realizado_en}"
+                                                        Style="{StaticResource texto_subtitulo9}"/>
+                                                <Label
+                                                        Text="{Binding Horas,StringFormat=' {0}:'}"
                                                         Style="{StaticResource texto_subtitulo5}"/>
                                                 <Label
-                                                        Text="{Binding Horas}"
-                                                        Style="{StaticResource texto_subtitulo5}"/>
-                                                <Label
-                                                        Text="{Binding Minutos}"
+                                                        Text="{Binding Minutos,StringFormat='{0}:'}"
                                                         Style="{StaticResource texto_subtitulo5}"/>
                                                 <Label
                                                         Text="{Binding Segundos}"
-                                                        Style="{StaticResource texto_subtitulo5}"/>
-                                            </StackLayout>
-
-                                            <StackLayout
-                                                    Orientation="Horizontal"
-                                                    VerticalOptions="EndAndExpand"
-                                                    Spacing="5">
-                                                <Image
-                                                        Source="{StaticResource icono_reloj_arena}" />
-                                                <Label
-                                                        Text="{x:Static recursos:Strings.tiempo_sala}"
-                                                        Style="{StaticResource texto_subtitulo5}"/>
-                                                <Label
-                                                        Text="{Binding Sala.Duracion}"
                                                         Style="{StaticResource texto_subtitulo5}"/>
                                             </StackLayout>
                                         </StackLayout>

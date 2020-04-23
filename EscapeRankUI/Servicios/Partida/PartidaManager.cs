@@ -6,31 +6,31 @@ namespace EscapeRankUI.Servicios
 {
 	public class PartidaManager
     {
-        IPartidaService restService;
+        private IPartidaService _servicio;
 
-        public PartidaManager(IPartidaService service)
+        public PartidaManager(IPartidaService servicio)
 		{
-			restService = service;
+			_servicio = servicio;
 		}
 
-		public Task<Partida> GetPartidaAsync(int id)
+		public Task<List<Partida>> GetPartidasAsync()
 		{
-			return restService.GetPartidaAsync(id);	
+			return _servicio.GetPartidasAsync();
 		}
 
-        public Task<List<Partida>> GetPartidasAsync()
-        {
-            return restService.GetPartidasAsync();
-        }
-      
-        public Task SavePartidaAsync(Partida item, bool isNewItem = false)
+		public Task<Partida> GetPartidaAsync(int partidaId)
 		{
-			return restService.SavePartidaAsync(item, isNewItem);
+			return _servicio.GetPartidaAsync(partidaId);	
 		}
 
-		public Task DeletePartidaAsync(int idTeam, Partida partida)
+        public Task PostPartidaAsync(Partida partida)
 		{
-			return restService.DeletePartidaAsync(idTeam, partida);
+			return _servicio.PostPartidaAsync(partida);
+		}
+
+		public Task DeletePartidaAsync(int equipoId, Partida partida)
+		{
+			return _servicio.DeletePartidaAsync(equipoId, partida);
 		}
     }
 }

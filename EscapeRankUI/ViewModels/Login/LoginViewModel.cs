@@ -46,12 +46,12 @@ namespace EscapeRankUI.ViewModels
                     {
                         if (Usuario.Contrasenya != null)
                         {
-                            Login login = await App.LoginManager.GetLogin(Usuario.Email, Usuario.Contrasenya);
+                            Login login = await App.LoginManager.GetLoginAsync(Usuario.Email, Usuario.Contrasenya);
                             if (login != null && login.TokenRefresco != null && login.TokenAcceso != null)
                             {
-                                await storeService.SaveCredentials(int.Parse(login.IdUsuario), Usuario.Nombre, Usuario.Contrasenya, login);
+                                await storeService.SaveCredentials(int.Parse(login.IdUsuario), Usuario.Email, Usuario.Contrasenya, login);
                              
-                                App.UsuarioPrincipal = await App.PerfilManager.GetUsuario();
+                                App.UsuarioPrincipal = await App.PerfilManager.GetUsuarioAsync();
 
                                 Application.Current.MainPage = new AppShell();
                             }

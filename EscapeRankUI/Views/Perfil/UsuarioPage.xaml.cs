@@ -13,11 +13,6 @@ namespace EscapeRankUI.Views
             uvm = new UsuarioViewModel();
             InitializeComponent();
             BindingContext = uvm;
-
-            if (uvm.Usuario.Nacido.HasValue)
-            {
-                Edad.Text = (DateTime.Now.Year - uvm.Usuario.Nacido.Value.Year).ToString();
-            }
         }
     }
 }

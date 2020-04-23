@@ -27,30 +27,29 @@ namespace EscapeRankUI.Servicios
             });
         }
 
-        public async Task DeletePartidaAsync(int idTeam, Partida Partida)
-        {
-            await Task.Run(() =>
-            {
-                //FakeData.Users.FirstOrDefault((arg) => arg.IdUsuarios.Equals(UserId)).
-                //TeamList.FirstOrDefault((arg) => arg.Id == idTeam).
-               // Partidas.Remove(Partida);
-            });
-        }
-
         public async Task<Partida> GetPartidaAsync(int id)
         {
             return await Task.Run(() =>
             {
-                return new Partida();// FakeData.Partidas.FirstOrDefault((arg) => arg.Id == id);
+                return new Partida();
             });
         }
 
-        public async Task SavePartidaAsync(Partida item, bool isNewItem)
+        public async Task PostPartidaAsync(Partida partida)
         {
-             await Task.Run(() =>
+            await Task.Run(() =>
             {
-                return null;// FakeData.Partidas.Add(item);
+                return null;
             });
         }
+
+        public async Task DeletePartidaAsync(int equipoId, Partida Partida)
+        {
+            await Task.Run(() =>
+            {
+
+            });
+        }
+
     }
 }

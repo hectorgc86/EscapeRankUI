@@ -6,9 +6,9 @@ namespace EscapeRankUI.Servicios
 {
     public interface IPartidaService
     {
-        Task<Partida> GetPartidaAsync(int id);
         Task<List<Partida>> GetPartidasAsync();
-        Task SavePartidaAsync(Partida item, bool isNewItem);
-        Task DeletePartidaAsync(int idTeam, Partida partida);
+        Task<Partida> GetPartidaAsync(int id);
+        Task PostPartidaAsync(Partida partida);
+        Task DeletePartidaAsync(int equipoId, Partida partida);
     }
 }

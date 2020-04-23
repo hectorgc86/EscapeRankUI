@@ -27,7 +27,7 @@
 
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <StackLayout WidthRequest="70">
+                                <StackLayout WidthRequest="70" Padding="5">
 
                                     <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer
@@ -38,7 +38,7 @@
 
                                     <Frame
                                     Margin="0,20"
-                                    OutlineColor="{DynamicResource variable3}"
+                                    OutlineColor="{DynamicResource variable4}"
                                     CornerRadius="36"
                                     Visual="Material">
                                         <Image
@@ -50,7 +50,7 @@
                                     <Label 
                                         HorizontalTextAlignment="Center"
                                         Text="{Binding Nombre}"
-                                         Style="{StaticResource texto_subtitulo3}" />
+                                        Style="{StaticResource texto_subtitulo3}" />
                                 </StackLayout>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>

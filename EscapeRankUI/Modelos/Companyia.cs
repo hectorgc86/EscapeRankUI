@@ -21,5 +21,7 @@ namespace EscapeRankUI.Modelos
         public string Puntuacion { get; set; }
         public string Rango { get; set; }
         public string CiudadId { get; set; }
+
+        public Ciudad Ciudad { get; set; }
     }
 }

@@ -25,7 +25,7 @@
                             <StackLayout Spacing="8">
 
                                 <Label Text="{x:Static recursos:Strings.email}" Style="{StaticResource texto_titulo2}" />
-                                <Entry Text="{Binding Email}" Style="{StaticResource texto_titulo1}" Keyboard="Email" />
+                                <Entry Text="{Binding Email}" Style="{StaticResource texto_entry1}" Keyboard="Email" />
 
                             </StackLayout>
 
@@ -37,14 +37,12 @@
 
                         <Label Style="{StaticResource texto_subtitulo8}" HorizontalTextAlignment="Center" Text="{x:Static recursos:Strings.pregunta_cuenta}"/>
 
-                        <Label x:Name="RegistrarLabel" Style="{StaticResource texto_subtitulo8}" Padding="8,0,0,0" HorizontalTextAlignment="End" Text="{x:Static recursos:Strings.registrate}">
+                        <Label Style="{StaticResource texto_subtitulo8}" Padding="8,0,0,0" HorizontalTextAlignment="End" Text="{x:Static recursos:Strings.registrate}">
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding RegistrarCommand}" CommandParameter="{x:Reference RegistrarLabel}" />
+                                <TapGestureRecognizer Command="{Binding RegistrarCommand}"/>
                             </Label.GestureRecognizers>
                         </Label>
-
                     </StackLayout>
-
                     </StackLayout>
         </FlexLayout>
     </RelativeLayout>

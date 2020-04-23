@@ -6,52 +6,52 @@ namespace EscapeRankUI.Servicios
 {
     public class LoginManager
     {
-        ILoginService authService;
+        ILoginService _servicio;
 
-        public LoginManager(ILoginService service)
+        public LoginManager(ILoginService servicio)
         {
-            authService = service;
+            _servicio = servicio;
         }
 
-        public Task<Login> GetLogin(string usuario, string contrasenya)
+        public Task<Login> GetLoginAsync(string usuario, string contrasenya)
         {
-            return authService.GetLogin(usuario,contrasenya);
+            return _servicio.GetLoginAsync(usuario,contrasenya);
         }
 
         public Task<Login> GetTokenClientCredentialsAsync()
         {
-            return authService.GetTokenClientCredentialsAsync();
+            return _servicio.GetTokenClientCredentialsAsync();
         }
-    
+
         public Task<Login> GetTokenRefreshTokenAsync(string refreshToken)
         {
-            return authService.GetTokenRefreshTokenAsync(refreshToken);
+            return _servicio.GetTokenRefreshTokenAsync(refreshToken);
         }
 
         public Task<Login> GetTokenImplicitAsync(string state = "", string redirectionUri = "")
         {
-            return authService.GetTokenImplicitAsync(state, redirectionUri);
+            return _servicio.GetTokenImplicitAsync(state, redirectionUri);
         }
-  
-        public  Task<Login> GetCodeAuthorizationCodeAsync(string state = "", string redirectionUri = "")
+
+        public Task<Login> GetCodeAuthorizationCodeAsync(string state = "", string redirectionUri = "")
         {
 
-            return authService.GetCodeAuthorizationCodeAsync(state, redirectionUri);
+            return _servicio.GetCodeAuthorizationCodeAsync(state, redirectionUri);
         }
-       
-        public  Task<Login> GetTokenAuthorizationCodeAsync(string code, string redirectionUri = "")
+
+        public Task<Login> GetTokenAuthorizationCodeAsync(string code, string redirectionUri = "")
         {
-            return authService.GetTokenAuthorizationCodeAsync(code, redirectionUri);
+            return _servicio.GetTokenAuthorizationCodeAsync(code, redirectionUri);
         }
         public async Task<Login> ValidateToken()
         {
-             return await authService.ValidateToken();
+            return await _servicio.ValidateToken();
         }
 
         public async Task<SignUpResponse> SignUpAsync(Usuario user)
         {
-            return await authService.SignUpAsync(user);
-           
+            return await _servicio.SignUpAsync(user);
+
         }
     }
 

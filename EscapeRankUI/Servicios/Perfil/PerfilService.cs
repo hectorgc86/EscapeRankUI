@@ -27,7 +27,7 @@ namespace EscapeRankUI.Servicios
 
         public async Task<Usuario> GetUsuarioAsync()
         {
-            int usuarioId = App.UsuarioPrincipal.Id;
+            int usuarioId = App.CredencialesService.IdUsuario;
             Usuario usuario = new Usuario();
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
@@ -86,12 +86,11 @@ namespace EscapeRankUI.Servicios
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
 
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.UsuarioDetalleURL));
+            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.UsuarioDetalleURL + amigoId));
 
-            string postBody = @"id=" + amigoId;
             try
             {
-                HttpResponseMessage resp = await client.PostAsync(uri, new StringContent(postBody, Encoding.UTF8, "application/x-www-form-urlencoded"));
+                HttpResponseMessage resp = await client.GetAsync(uri);
                 if (resp.IsSuccessStatusCode)
                 {
                     string aux = await resp.Content.ReadAsStringAsync();
@@ -115,7 +114,7 @@ namespace EscapeRankUI.Servicios
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
 
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.UsuarioDetalleURL + usuarioId + Constants.EquiposURL));
+            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.EquiposUsuarioURL + usuarioId));
             try
             {
                 HttpResponseMessage resp = await client.GetAsync(uri);
@@ -134,15 +133,15 @@ namespace EscapeRankUI.Servicios
             return equipos;
         }
 
-        //Llamada a la API para traer un equipo.
+        //Llamada a la API para traer los miembros de un equipo.
 
-        public async Task<Equipo> GetEquipoAsync(int equipoId)
+        public async Task<List<Usuario>> GetMiembrosEquipoAsync(int equipoId)
         {
-            Equipo equipo = new Equipo();
+            List<Usuario> miembros = new List<Usuario>();
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
 
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.EquiposDetalleURL + equipoId));
+            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.UsuariosEquipoURL + equipoId));
 
             try
             {
@@ -150,7 +149,7 @@ namespace EscapeRankUI.Servicios
                 if (resp.IsSuccessStatusCode)
                 {
                     string aux = await resp.Content.ReadAsStringAsync();
-                    equipo = JsonConvert.DeserializeObject<Equipo>(aux);
+                    miembros = JsonConvert.DeserializeObject<List<Usuario>>(aux);
                 }
             }
             catch (Exception ex)
@@ -158,7 +157,34 @@ namespace EscapeRankUI.Servicios
                 Debug.WriteLine(@"ERROR {0}", ex.Message);
             }
 
-            return equipo;
+            return miembros;
+        }
+
+        //Llamada a la API para traer las partidas de un equipo.
+
+        public async Task<List<Partida>> GetPartidasEquipoAsync(int equipoId)
+        {
+            List<Partida> partidas = new List<Partida>();
+
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
+
+            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.PartidasEquipoURL + equipoId));
+
+            try
+            {
+                HttpResponseMessage resp = await client.GetAsync(uri);
+                if (resp.IsSuccessStatusCode)
+                {
+                    string aux = await resp.Content.ReadAsStringAsync();
+                    partidas = JsonConvert.DeserializeObject<List<Partida>>(aux);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"ERROR {0}", ex.Message);
+            }
+
+            return partidas;
         }
     }
 }

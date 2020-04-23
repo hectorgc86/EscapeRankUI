@@ -65,9 +65,9 @@ namespace EscapeRankUI.Recursos {
             }
         }
         
-        internal static string categorias {
+        internal static string categoria {
             get {
-                return ResourceManager.GetString("categorias", resourceCulture);
+                return ResourceManager.GetString("categoria", resourceCulture);
             }
         }
         
@@ -358,7 +358,15 @@ namespace EscapeRankUI.Recursos {
                 return ResourceManager.GetString("entrar_con_facebook", resourceCulture);
             }
         }
-        
+
+        internal static string hacer_foto
+        {
+            get
+            {
+                return ResourceManager.GetString("hacer_foto", resourceCulture);
+            }
+        }
+
         internal static string cree_cuenta {
             get {
                 return ResourceManager.GetString("cree_cuenta", resourceCulture);
@@ -370,5 +378,20 @@ namespace EscapeRankUI.Recursos {
                 return ResourceManager.GetString("instrucciones_contrasenya", resourceCulture);
             }
         }
+
+        internal static string provincia {
+            get {
+                return ResourceManager.GetString("provincia", resourceCulture);
+            }
+        }
+
+        internal static string tematica
+        {
+            get
+            {
+                return ResourceManager.GetString("tematica", resourceCulture);
+            }
+        }
+
     }
 }
