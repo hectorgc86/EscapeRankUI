@@ -24,13 +24,16 @@ namespace EscapeRankUI.Servicios
 
         //Llamada a la API para traer todas las salas según su paginado.
 
-        public async Task<List<Sala>> GetSalasAsync (int offset)
+        public async Task<List<Sala>> GetSalasAsync (int offset, string busqueda)
 		{
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
 
             List<Sala> salas = new List<Sala>();
 
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.SalasConjuntoURL + offset));
+            Uri uri = new Uri(Constants.EscapeRankURL
+                + Constants.SalasURL
+                + Constants.OffsetQuery + offset
+                + Constants.BusquedaQuery + busqueda);
             try
             {
                 HttpResponseMessage resp = await client.GetAsync(uri);
@@ -54,7 +57,9 @@ namespace EscapeRankUI.Servicios
         public async Task<List<Sala>> GetSalasPromocionadasAsync(int offset)
         {
             List<Sala> salasPromocionadas = new List<Sala>();
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.SalasPromocionadasURL + offset));
+            Uri uri = new Uri(Constants.EscapeRankURL
+                + Constants.SalasPromocionadasURL
+                + Constants.OffsetQuery + offset);
             try
             {
                 HttpResponseMessage resp = await client.GetAsync(uri);
@@ -75,10 +80,13 @@ namespace EscapeRankUI.Servicios
 
         //Llamada a la API para traer todas las salas de una categoria
 
-        public async Task<List<Sala>> GetSalasCategoriaAsync(int categoriaId)
+        public async Task<List<Sala>> GetSalasCategoriaAsync(string categoriaId, int offset, string busqueda)
         {
             List<Sala> salasCategoria = new List<Sala>();
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.SalasCategoriaURL + categoriaId));
+            Uri uri = new Uri(Constants.EscapeRankURL
+                + Constants.SalasCategoriaURL + categoriaId
+                + Constants.OffsetQuery + offset
+                + Constants.BusquedaQuery + busqueda);
             try
             {
                 HttpResponseMessage resp = await client.GetAsync(uri);
@@ -99,10 +107,13 @@ namespace EscapeRankUI.Servicios
 
         //Llamada a la API para traer todas las salas de una tematica
 
-        public async Task<List<Sala>> GetSalasTematicaAsync(int tematicaId)
+        public async Task<List<Sala>> GetSalasTematicaAsync(string tematicaId, int offset, string busqueda)
         {
             List<Sala> salasTematica = new List<Sala>();
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.SalasTematicaURL + tematicaId));
+            Uri uri = new Uri(Constants.EscapeRankURL
+                + Constants.SalasTematicaURL + tematicaId
+                + Constants.OffsetQuery + offset
+                + Constants.BusquedaQuery + busqueda);
             try
             {
                 HttpResponseMessage resp = await client.GetAsync(uri);
@@ -123,10 +134,13 @@ namespace EscapeRankUI.Servicios
 
         //Llamada a la API para traer todas las salas de un publico
 
-        public async Task<List<Sala>> GetSalasPublicoAsync(int publicoId)
+        public async Task<List<Sala>> GetSalasPublicoAsync(string publicoId, int offset, string busqueda)
         {
             List<Sala> salasPublico = new List<Sala>();
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.SalasPublicoURL + publicoId));
+            Uri uri = new Uri(Constants.EscapeRankURL
+                + Constants.SalasPublicoURL + publicoId
+                + Constants.OffsetQuery + offset
+                + Constants.BusquedaQuery + busqueda);
             try
             {
                 HttpResponseMessage resp = await client.GetAsync(uri);
@@ -147,10 +161,13 @@ namespace EscapeRankUI.Servicios
 
         //Llamada a la API para traer todas las salas de una dificultad
 
-        public async Task<List<Sala>> GetSalasDificultadAsync(int dificultadId)
+        public async Task<List<Sala>> GetSalasDificultadAsync(string dificultadId, int offset, string busqueda)
         {
             List<Sala> salasDificultad = new List<Sala>();
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.SalasDificultadURL + dificultadId));
+            Uri uri = new Uri(Constants.EscapeRankURL
+                + Constants.SalasDificultadURL + dificultadId
+                + Constants.OffsetQuery + offset
+                + Constants.BusquedaQuery + busqueda);
             try
             {
                 HttpResponseMessage resp = await client.GetAsync(uri);
@@ -171,10 +188,12 @@ namespace EscapeRankUI.Servicios
 
         //Llamada a la API para traer todas las salas de una provincia
 
-        public async Task<List<Sala>> GetSalasProvinciaAsync(int provinciaId)
+        public async Task<List<Sala>> GetSalasProvinciaAsync(string provinciaId, int offset)
         {
             List<Sala> salasProvincia = new List<Sala>();
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.SalasProvinciaURL + provinciaId));
+            Uri uri = new Uri(Constants.EscapeRankURL
+                + Constants.SalasProvinciaURL + provinciaId
+                + Constants.OffsetQuery + offset);
             try
             {
                 HttpResponseMessage resp = await client.GetAsync(uri);
@@ -196,10 +215,12 @@ namespace EscapeRankUI.Servicios
 
         //Llamada a la API para traer todas las partidas de una sala
 
-        public async Task<List<Partida>> GetPartidasSalaAsync(string salaId)
+        public async Task<List<Partida>> GetPartidasSalaAsync(string salaId, int offset)
         {
             List<Partida> partidasSala = new List<Partida>();
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.PartidasSalaURL + salaId));
+            Uri uri = new Uri(Constants.EscapeRankURL
+                + Constants.PartidasSalaURL + salaId
+                + Constants.OffsetQuery + offset);
             try
             {
                 HttpResponseMessage resp = await client.GetAsync(uri);
@@ -226,7 +247,7 @@ namespace EscapeRankUI.Servicios
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
 
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.SalasDetalleURL + salaId));
+            Uri uri = new Uri(Constants.EscapeRankURL + Constants.SalasDetalleURL + salaId);
             try
             {
                 var response = await client.GetAsync(uri);
@@ -252,7 +273,7 @@ namespace EscapeRankUI.Servicios
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
 
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.TematicasURL));
+            Uri uri = new Uri(Constants.EscapeRankURL + Constants.TematicasURL);
             try
             {
                 HttpResponseMessage resp = await client.GetAsync(uri);
@@ -278,7 +299,7 @@ namespace EscapeRankUI.Servicios
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
 
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.CategoriasURL));
+            Uri uri = new Uri(Constants.EscapeRankURL + Constants.CategoriasURL);
             try
             {
                 HttpResponseMessage resp = await client.GetAsync(uri);
@@ -304,7 +325,7 @@ namespace EscapeRankUI.Servicios
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
 
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.PublicoURL));
+            Uri uri = new Uri(Constants.EscapeRankURL + Constants.PublicoURL);
 
             try
             {
@@ -331,7 +352,7 @@ namespace EscapeRankUI.Servicios
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
 
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.DificultadesURL));
+            Uri uri = new Uri(Constants.EscapeRankURL + Constants.DificultadesURL);
 
             try
             {

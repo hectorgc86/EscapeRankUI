@@ -11,17 +11,5 @@ namespace EscapeRankUI
 
             return retVal;
         }
-
-        public static int CalcularEdad(DateTime nacido)
-        {
-            DateTime now = DateTime.Now;
-            {
-                int edad = now.Year - nacido.Year;
-                if (now.Month < now.Month || (now.Month == nacido.Month && now.Day < nacido.Day))
-                    edad--;
-
-                return edad;
-            }
-        }
     }
 }

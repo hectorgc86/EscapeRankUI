@@ -13,11 +13,11 @@
                 Spacing="10" Margin="0,15">
 
                 <Frame
-                                        Visual="Material">
+                      Visual="Material">
                     <Image
-                                            Source="{Binding Sala.ImagenUriAncha}"
-                                            Aspect="AspectFill"
-                                            HeightRequest="180"/>
+                          Source="{Binding Sala.ImagenUriAncha}"
+                          Aspect="AspectFill"
+                          HeightRequest="180"/>
                 </Frame>
                 <Label HorizontalOptions="Center"
                        HorizontalTextAlignment="Center"

@@ -15,7 +15,12 @@ namespace EscapeRankUI.ViewModels
     {
         public ICredencialesService storeService;
         public IFacebookClient _servicioFacebook = CrossFacebookClient.Current;
+
         public Usuario Usuario { get; set; }
+        public string Email { get; set; }
+        public string Contrasenya { get; set; }
+
+
         public LoginViewModel()
         {
             storeService = App.CredencialesService;
@@ -27,29 +32,28 @@ namespace EscapeRankUI.ViewModels
             ResetPassCommand = new Command(ReestablecerPassAsync);
         }
 
-        public ICommand LoginCommand { get; set; }
-        public ICommand FacebookLoginCommand { get; set; }
-        public ICommand RegistrarCommand { get; set; }
-        public ICommand ResetPassCommand { get; set; }
+        public Command LoginCommand { get; }
+        public Command FacebookLoginCommand { get; }
+        public Command RegistrarCommand { get; }
+        public Command ResetPassCommand { get; }
+
 
 
         public async void LoginAsync()
         {
-            Usuario.Email = "hector@mail.com";
-            Usuario.Contrasenya = "tor";
+            Email = "hector@mail.com";
+            Contrasenya = "tor";
 
             try
             {
                 if (Usuario != null)
                 {
-                    if (Usuario.Email != null)
+                    if (!string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Contrasenya))
                     {
-                        if (Usuario.Contrasenya != null)
-                        {
-                            Login login = await App.LoginManager.GetLoginAsync(Usuario.Email, Usuario.Contrasenya);
+                            Login login = await App.LoginManager.GetLoginAsync(Email, Contrasenya);
                             if (login != null && login.TokenRefresco != null && login.TokenAcceso != null)
                             {
-                                await storeService.SaveCredentials(int.Parse(login.IdUsuario), Usuario.Email, Usuario.Contrasenya, login);
+                                await storeService.SaveCredentials(int.Parse(login.IdUsuario),Email, Contrasenya, login);
                              
                                 App.UsuarioPrincipal = await App.PerfilManager.GetUsuarioAsync();
 
@@ -59,17 +63,11 @@ namespace EscapeRankUI.ViewModels
                             {
                                await Application.Current.MainPage.DisplayAlert("Email o contraseña incorrecta",null, "Ok");
                             }
-                        }
-                        else
-                        {
-                            await Application.Current.MainPage.DisplayAlert("Contraseña requerida", null, "Ok");
-                        }
                     }
                     else
                     {
-                        await Application.Current.MainPage.DisplayAlert("Contraseña inválida", null, "Ok");
+                        await Application.Current.MainPage.DisplayAlert("Deben rellenarse todos los campos", null, "Ok");
                     }
-
                 }
                 else
                 {
@@ -81,7 +79,6 @@ namespace EscapeRankUI.ViewModels
                 Debug.WriteLine("ERROR {0}", e.Message);
                 await Application.Current.MainPage.DisplayAlert("Error de conexión", e.Message, "Ok");
             }
-
         }
 
         private async void FacebookLogin()

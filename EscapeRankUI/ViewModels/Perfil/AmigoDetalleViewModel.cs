@@ -10,7 +10,7 @@ namespace EscapeRankUI.ViewModels
     {
         //Variables
 
-        private Usuario _amigo;
+        public Usuario _amigo;
 
         //Constructor
 
@@ -18,8 +18,6 @@ namespace EscapeRankUI.ViewModels
         {
             GetAmigo(amigoSeleccionado);
         }
-
-        //Getters & Setters
 
         public Usuario Amigo
         {
@@ -32,12 +30,6 @@ namespace EscapeRankUI.ViewModels
         private async void GetAmigo(Usuario amigoSeleccionado)
         {
             Amigo = await App.PerfilManager.GetAmigoAsync(amigoSeleccionado.Id);
-
-            if (Amigo.Nacido != null)
-            {
-                Amigo.Edad = Utils.CalcularEdad(Amigo.Nacido.Value);
-            }
         }
-
     }
 }

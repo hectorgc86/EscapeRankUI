@@ -20,13 +20,14 @@
     <ContentPage.Content>
                 <CollectionView
                         ItemsSource="{Binding Noticias}"
+                        EmptyView="No hay noticias que mostrar"
                         SelectionMode="Single">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout Padding="0,15,0,0">
+                            <StackLayout Padding="10,10,10,0">
                                 <Frame
                                     Padding="15"
                                     BackgroundColor="{DynamicResource variable2}"

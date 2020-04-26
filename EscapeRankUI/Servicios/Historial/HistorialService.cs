@@ -28,8 +28,7 @@ namespace EscapeRankUI.Servicios
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
 
-                Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.PartidasUsuarioURL + usuarioId));
-
+                Uri uri = new Uri(Constants.EscapeRankURL + Constants.PartidasUsuarioURL + usuarioId);
                 try
                 {
                     HttpResponseMessage resp = await client.GetAsync(uri);

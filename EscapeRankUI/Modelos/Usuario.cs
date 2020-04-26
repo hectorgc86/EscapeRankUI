@@ -7,18 +7,17 @@ namespace EscapeRankUI.Modelos
 {
     public class Usuario
     {
-      
+        private DateTime? _nacido;
+
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Email { get; set; }
         public string Contrasenya { get; set; }
-        public DateTime? Nacido { get; set; }
         public string Telefono { get; set; }
-        public int Activado { get; set; }
         public int? CodigoActivado { get; set; }
         public string Avatar { get; set; }
-        [JsonIgnore]
         public int? Edad { get; set; }
+       
         public Perfil Perfil { get; set; }
         public List<Equipo> Equipos { get; set; }
         public List<Noticia> Noticias { get; set; }
@@ -36,6 +35,30 @@ namespace EscapeRankUI.Modelos
 
             }
             set { AvatarUri = value; }
+        }
+
+        public DateTime? Nacido
+        {
+            get => _nacido; set
+            {
+                if (value.HasValue)
+                {
+                    Edad = CalcularEdad((DateTime)value);
+                }
+                _nacido = value;
+            }
+        }
+
+        private int CalcularEdad(DateTime nacido)
+        {
+            DateTime now = DateTime.Now;
+            {
+                int edad = now.Year - nacido.Year;
+                if (now.Month < nacido.Month || (now.Month == nacido.Month && now.Day < nacido.Day))
+                    edad--;
+
+                return edad;
+            }
         }
     }
 }

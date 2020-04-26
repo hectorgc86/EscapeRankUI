@@ -20,7 +20,8 @@
     <ContentPage.Content>
                 <CollectionView
                     ItemsSource="{Binding Partidas}"
-                    SelectionMode="Single">
+                    SelectionMode="Single"
+                    EmptyView="No has registrado partidas todavía">
 
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" />

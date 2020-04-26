@@ -18,7 +18,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>EscapeRank</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.hector.escaperankui</string>
+	<string>com.hector.escaperank</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UIAppFonts</key>

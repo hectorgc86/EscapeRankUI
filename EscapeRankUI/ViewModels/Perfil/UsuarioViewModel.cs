@@ -14,9 +14,10 @@ namespace EscapeRankUI.ViewModels
     //Variables
 
         private bool _modoOscuro;
-        private Usuario _usuario;
+        public Usuario Usuario { get; set; }
+        public Command LogoutCommand { get; }
 
-    //Constructor
+        //Constructor
 
         public UsuarioViewModel()
         {
@@ -27,11 +28,6 @@ namespace EscapeRankUI.ViewModels
 
     //Getters & Setters
 
-        public Usuario Usuario
-        {
-            get { return _usuario; }
-            set { SetProperty(ref _usuario, value); }
-        }
 
         public bool ModoOscuro
         {
@@ -53,18 +49,12 @@ namespace EscapeRankUI.ViewModels
             }
         }
 
-        public ICommand LogoutCommand { get; set; }
 
     //Funciones
 
         private void GetPerfil()
         { 
             Usuario = App.UsuarioPrincipal; //Servicios.ServicioFake.Usuarios[0];
-
-            if (Usuario.Nacido != null)
-            {
-                Usuario.Edad = Utils.CalcularEdad(Usuario.Nacido.Value);
-            }
         }
 
         public async void Logout()

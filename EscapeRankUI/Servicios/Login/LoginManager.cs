@@ -13,9 +13,14 @@ namespace EscapeRankUI.Servicios
             _servicio = servicio;
         }
 
-        public Task<Login> GetLoginAsync(string usuario, string contrasenya)
+        public Task<Login> GetLoginAsync(string email, string contrasenya)
         {
-            return _servicio.GetLoginAsync(usuario,contrasenya);
+            return _servicio.GetLoginAsync(email, contrasenya);
+        }
+
+        public async Task<Login> PostRegistroAsync(string nombre ,string email, string contrasenya)
+        {
+            return await _servicio.PostRegistroAsync(nombre, email, contrasenya);
         }
 
         public Task<Login> GetTokenClientCredentialsAsync()
@@ -46,12 +51,6 @@ namespace EscapeRankUI.Servicios
         public async Task<Login> ValidateToken()
         {
             return await _servicio.ValidateToken();
-        }
-
-        public async Task<SignUpResponse> SignUpAsync(Usuario user)
-        {
-            return await _servicio.SignUpAsync(user);
-
         }
     }
 

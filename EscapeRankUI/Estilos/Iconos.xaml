@@ -45,32 +45,118 @@
     <!--"Categorías"-->
 
     <FontImageSource
-        x:Key="icono_cat_misterio"
+        x:Key="icono_cat_escape room"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f0a48;"
+        Size="44"
+        Color="#FE8C01" />
+
+    <FontImageSource
+        x:Key="icono_cat_hall escape"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f06e8;"
+        Size="44"
+        Color="#5AC7FB"  />
+
+    <FontImageSource
+        x:Key="icono_cat_aire libre"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f02f5;"
+        Size="44"
+        Color="#FF2D55" />
+
+    <FontImageSource
+        x:Key="icono_cat_portátil"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f0e10;"
+        Size="44"
+        Color="#5754D6"/>
+
+    <FontImageSource
+        x:Key="icono_cat_experiencias"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f133e;"
+        Size="44"
+        Color="#00BB2D"/>
+
+    <FontImageSource
+        x:Key="icono_cat_realidad virtual"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f0894;"
+        Size="44"
+        Color="#FE8C01" />
+
+      <!--"Temáticas"-->
+
+    <FontImageSource
+        x:Key="icono_tem_misterio"
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f0ba5;"
         Size="44"
         Color="#FE8C01" />
 
     <FontImageSource
-        x:Key="icono_cat_miedo"
+        x:Key="icono_tem_criminal"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="&#x000f068c;"
+        Glyph="&#x000f09fb;"
         Size="44"
-        Color="#5AC7FB" />
+        Color="#5AC7FB"  />
 
     <FontImageSource
-        x:Key="icono_cat_niños"
+        x:Key="icono_tem_aventuras"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="&#x000f02e7;"
+        Glyph="&#x000f011a;"
         Size="44"
         Color="#FF2D55" />
 
     <FontImageSource
-        x:Key="icono_cat_familiar"
+        x:Key="icono_tem_miedo"
         FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="&#x000f138c;"
+        Glyph="&#x000f02a0;"
         Size="44"
-        Color="#5754D6" />
+        Color="#5754D6"/>
+
+    <FontImageSource
+        x:Key="icono_tem_apocalíptico"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f06a4;"
+        Size="44"
+        Color="#00BB2D"/>
+
+    <FontImageSource
+        x:Key="icono_tem_fantasía"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f0a08;"
+        Size="44"
+        Color="#FE8C01" />
+
+    <FontImageSource
+        x:Key="icono_tem_histórico"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f01e7;"
+        Size="44"
+        Color="#5AC7FB"  />
+
+    <FontImageSource
+        x:Key="icono_tem_ficción"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f0fce;"
+        Size="44"
+        Color="#FF2D55" />
+
+    <FontImageSource
+        x:Key="icono_tem_infantil"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f068f;"
+        Size="44"
+        Color="#5754D6"/>
+
+    <FontImageSource
+        x:Key="icono_tem_adultos"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f0e05;"
+        Size="44"
+        Color="#00BB2D"/>
 
       <!--"Público"-->
 
@@ -103,7 +189,7 @@
         Color="#5754D6"/>
 
     <FontImageSource
-        x:Key="icono_pub_grupos_grandes"
+        x:Key="icono_pub_grupos grandes"
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f0849;"
         Size="44"
@@ -149,13 +235,19 @@
         Size="23"
         Color="#B9BDC5" />
 
+     <FontImageSource
+        x:Key="icono_luna"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f0f65;"
+        Size="18"
+        Color="{DynamicResource blanco1}"/>
 
     <FontImageSource
         x:Key="icono_filtrar"
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f0236;"
         Size="23"
-        Color="#B9BDC5" />
+        Color="{DynamicResource variable4}" />
 
     <FontImageSource
         x:Key="icono_ubicacion"

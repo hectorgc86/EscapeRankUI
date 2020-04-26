@@ -19,10 +19,7 @@ namespace EscapeRankUI.ViewModels
 
         private int offset;
         private Sala _salaSeleccionada;
-        private Categoria _categoriaSeleccionada;
-        private Tematica _tematicaSeleccionada;
-        private Dificultad _dificultadSeleccionada;
-        private Publico _publicoSeleccionado;
+
         private ObservableCollection<Sala> _salas;
         private ObservableCollection<Sala> _salasPromocionadas;
         private ObservableCollection<Sala> _salasFiltradas;
@@ -30,8 +27,14 @@ namespace EscapeRankUI.ViewModels
         private ObservableCollection<Publico> _publico;
         private ObservableCollection<Dificultad> _dificultades;
         private ObservableCollection<Tematica> _tematicas;
-
         private ObservableCollection<Provincia> _provincias;
+
+        public object ObjetoSeleccionado { get; set; }
+        public Categoria CategoriaSeleccionada { get; set; }
+        public Tematica TematicaSeleccionada { get; set; }
+        public Publico PublicoSeleccionado { get; set; }
+        public Dificultad DificultadSeleccionada { get; set; }
+        public Provincia ProvinciaSeleccionada { get; set; }
 
         //Constructor
 
@@ -40,6 +43,8 @@ namespace EscapeRankUI.ViewModels
             offset = 0;
             SalaSeleccionada = new Sala();
             VerSalaCommand = new Command(VerSala);
+            VerFiltradasCommand = new Command(VerFiltradas);
+            VerTodasCommand = new Command(VerTodas);
 
             GetSalasPromocionadas();
             GetCategorias();
@@ -47,35 +52,14 @@ namespace EscapeRankUI.ViewModels
             GetPublico();
             GetDificultades();
             GetProvincias();
-
-
-            /*
-            MessagingCenter.Subscribe<FilteListViewModel, string>(this, "BuscarPorProvincia", (sender, arg) =>
-            {
-                BuscarPorProvincia(arg);
-            });
-            MessagingCenter.Subscribe<FilteListViewModel, string>(this, "BuscarPorTematica", (sender, arg) =>
-            {
-                BuscarPorTematica(arg);
-            });
-            MessagingCenter.Subscribe<FilteListViewModel, string>(this, "BuscarPorCategoria", (sender, arg) =>
-            {
-                BuscarPorCategorias(arg);
-            });
-            MessagingCenter.Subscribe<FilteListViewModel, string>(this, "BuscarPorPublico", (sender, arg) =>
-            {
-                BuscarPoPublico(arg);
-            });
-            MessagingCenter.Subscribe<FilteListViewModel>(this, "ResetFiltro", (sender) =>
-            {
-                ResetFiltro();
-            });
-            */
         }
 
+        
         //Getters & Setters
 
-        public ICommand VerSalaCommand { get; set; }
+        public Command VerSalaCommand { get; }
+        public Command VerFiltradasCommand { get; }
+        public Command VerTodasCommand { get; }
 
         public Sala SalaSeleccionada
         {
@@ -101,22 +85,10 @@ namespace EscapeRankUI.ViewModels
             set { SetProperty(ref _salasFiltradas, value); }
         }
 
-        public Categoria CategoriaSeleccionada
-        {
-            get { return _categoriaSeleccionada; }
-            set { SetProperty(ref _categoriaSeleccionada, value); }
-        }
-
         public ObservableCollection<Categoria> Categorias
         {
             get { return _categorias; }
             set { SetProperty(ref _categorias, value); }
-        }
-
-        public Publico PublicoSeleccionado
-        {
-            get { return _publicoSeleccionado; }
-            set { SetProperty(ref _publicoSeleccionado, value); }
         }
 
         public ObservableCollection<Publico> Publico
@@ -125,19 +97,11 @@ namespace EscapeRankUI.ViewModels
             set { SetProperty(ref _publico, value); }
         }
 
-        public Tematica TematicaSeleccionada
-        {
-            get { return _tematicaSeleccionada; }
-            set { SetProperty(ref _tematicaSeleccionada, value); }
-        }
-
         public ObservableCollection<Tematica> Tematicas
         {
             get { return _tematicas; }
             set { SetProperty(ref _tematicas, value); }
         }
-
-        public Dificultad DificultadSeleccionada { get; set; }
 
         public ObservableCollection<Dificultad> Dificultades
         {
@@ -145,7 +109,6 @@ namespace EscapeRankUI.ViewModels
             set { SetProperty(ref _dificultades, value); }
         }
 
-        public Provincia ProvinciaSeleccionada { get; set; }
 
         public ObservableCollection<Provincia> Provincias
         {
@@ -156,31 +119,12 @@ namespace EscapeRankUI.ViewModels
 
         //Funciones
 
-        private async void GetSalas()
-        {
-            try
-            {
-                List<Sala> salasCall = await App.SalasManager.GetSalasAsync(offset); //Servicios.ServicioFake.Salas;
-
-                Salas = new ObservableCollection<Sala>(salasCall);
-                SalasFiltradas = new ObservableCollection<Sala>(salasCall);
-                offset += 10;
-            }
-            catch (Exception e)
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    "An error occurred",
-                    e.Message,
-                    "Ok"
-                );
-            }
-
-        }
 
         public async void GetSalasPromocionadas()
         {
             try
             {
+
                 List<Sala> salasPromocionadasCall = await App.SalasManager.GetSalasPromocionadasAsync(offset); //Servicios.ServicioFake.Salas;
                 SalasPromocionadas = new ObservableCollection<Sala>(salasPromocionadasCall);
                 offset += 10;
@@ -193,6 +137,7 @@ namespace EscapeRankUI.ViewModels
                     "Ok"
                 );
             }
+
         }
 
         private async void VerSala()
@@ -212,44 +157,14 @@ namespace EscapeRankUI.ViewModels
             await Application.Current.MainPage.Navigation.PushAsync(tp);
         }
 
-
-        public ObservableCollection<Sala> Buscar(string valor)
+        private async void VerFiltradas()
         {
-
-            return new ObservableCollection<Sala>(SalasFiltradas.Where(
-            i => i.Nombre.ToLower().Contains(valor.ToLower()) ||
-                i.Provincia.Nombre.ToLower().Contains(valor.ToLower()) ||
-                i.Companyia.Nombre.ToLower().Contains(valor.ToLower()) ||
-               i.Ciudad.Nombre.ToLower().Contains(valor.ToLower()) ||
-                i.Tematicas.Any(t => t.Tipo.ToLower() == valor.ToLower()) ||
-            //    i.Categorias.Any(t => t.Tipo.ToLower() == valor.ToLower()) ||
-                i.Publico.Any(t => t.Tipo.ToLower() == valor.ToLower())
-            ));
-
-        }
-        public void BuscarPorProvincia(string valor)
-        {
-            SalasFiltradas = new ObservableCollection<Sala>(SalasFiltradas.Where(i => i.Provincia.Nombre == valor));
+            await Application.Current.MainPage.Navigation.PushAsync(new SalasFiltradasPage(ObjetoSeleccionado));
         }
 
-        public void BuscarPorTematica(string valor)
+        private async void VerTodas()
         {
-            SalasFiltradas = new ObservableCollection<Sala>(SalasFiltradas.Where(e => e.Tematicas.Any(t => t.Tipo == valor)));
-        }
-
-        public void BuscarPorCategoria(string valor)
-        {
-            //SalasFiltradas = new ObservableCollection<Sala>(SalasFiltradas.Where(e => e.Categorias.Any(t => t.Tipo == valor)));
-        }
-
-        public void BuscarPorPublico(string valor)
-        {
-            SalasFiltradas = new ObservableCollection<Sala>(SalasFiltradas.Where(e => e.Publico.Any(t => t.Tipo == valor)));
-        }
-
-        public void ResetFiltro()
-        {
-            SalasFiltradas = Salas;
+            await Application.Current.MainPage.Navigation.PushAsync(new SalasFiltradasPage(null));
         }
 
         public async void GetCategorias()
@@ -261,13 +176,15 @@ namespace EscapeRankUI.ViewModels
 
         public async void GetTematicas()
         {
-            List<Tematica> tematicasCall = await App.SalasManager.GetTematicasAsync();//Servicios.ServicioFake.Tematicas;
+            List<Tematica> tematicasCall = await App.SalasManager.GetTematicasAsync();
+            //Servicios.ServicioFake.Tematicas;
             Tematicas = new ObservableCollection<Tematica>(tematicasCall);
         }
 
         public async void GetPublico()
         {
-            List<Publico> publicoCall = await App.SalasManager.GetPublicoAsync();//Servicios.ServicioFake.Publico;
+            List<Publico> publicoCall = await App.SalasManager.GetPublicoAsync();
+            //Servicios.ServicioFake.Publico;
             Publico = new ObservableCollection<Publico>(publicoCall);
         }
 
@@ -282,6 +199,7 @@ namespace EscapeRankUI.ViewModels
         {
             List<Provincia> provinciasCall = await App.SalasManager.GetProvinciasAsync();//Servicios.ServicioFake.Provincias;
             Provincias = new ObservableCollection<Provincia>(provinciasCall);
+
         }
 
 

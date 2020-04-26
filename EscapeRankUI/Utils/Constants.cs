@@ -7,9 +7,8 @@ namespace EscapeRankUI
         public static string AppName = "EscapeRank";
 
         //CONEXIONES
-
         public static string IP = "192.168.0.18"; //"localhost"; //"10.0.2.2";
-        public static string EscapeRankURL = "http://" + IP + ":5000/api{0}";
+        public static string EscapeRankURL = "http://" + IP + ":5000/api";
         public static string ImagenesAnchasURL = "http://" + IP + "/archivos/img/anchas/";
         public static string ImagenesEstrechasURL = "http://" + IP + "/archivos/img/estrechas/";
 
@@ -26,7 +25,6 @@ namespace EscapeRankUI
         public static string SalasURL = "/salas";
         public static string SalasDetalleURL = "/salas/";
         public static string SalasPromocionadasURL = "/salas/promocionadas/";
-        public static string SalasConjuntoURL = "/salas/conjunto/";
         public static string SalasCategoriaURL = "/salas/categoria/";
         public static string SalasTematicaURL = "/salas/tematica/";
         public static string SalasPublicoURL = "/salas/publico/";
@@ -94,5 +92,8 @@ namespace EscapeRankUI
         public static string FriendsUpdateUrl = "friends/update";
         public static string FriendsDeleteUrl = "friends/delete";
 
+        //OTROS
+        public static string OffsetQuery = "?offset=";
+        public static string BusquedaQuery = "&busqueda=";
     }
 }

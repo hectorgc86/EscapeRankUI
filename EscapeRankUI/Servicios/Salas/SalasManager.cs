@@ -14,9 +14,9 @@ namespace EscapeRankUI.Servicios
             _servicio = servicio;
 		}
 
-		public Task<List<Sala>> GetSalasAsync(int offset)
+		public Task<List<Sala>> GetSalasAsync(int offset, string busqueda)
 		{
-			return _servicio.GetSalasAsync(offset);	
+			return _servicio.GetSalasAsync(offset, busqueda);	
 		}
 
         public Task<List<Sala>> GetSalasPromocionadasAsync(int offset)
@@ -24,9 +24,34 @@ namespace EscapeRankUI.Servicios
             return _servicio.GetSalasPromocionadasAsync(offset);
         }
 
-        public Task<List<Partida>> GetPartidasSalaAsync(string salaId)
+        public Task<List<Sala>> GetSalasCategoriaAsync(string categoriaId, int offset, string busqueda)
         {
-            return _servicio.GetPartidasSalaAsync(salaId);
+            return _servicio.GetSalasCategoriaAsync(categoriaId, offset, busqueda);
+        }
+
+        public Task<List<Sala>> GetSalasTematicaAsync(string tematicaId, int offset, string busqueda)
+        {
+            return _servicio.GetSalasTematicaAsync(tematicaId, offset, busqueda);
+        }
+
+        public Task<List<Sala>> GetSalasPublicoAsync(string publicoId, int offset, string busqueda)
+        {
+            return _servicio.GetSalasPublicoAsync(publicoId, offset, busqueda);
+        }
+
+        public Task<List<Sala>> GetSalasDificultadAsync(string dificultadId, int offset, string busqueda)
+        {
+            return _servicio.GetSalasDificultadAsync(dificultadId, offset, busqueda);
+        }
+
+        public Task<List<Sala>> GetSalasProvinciaAsync(string provinciaId, int offset)
+        {
+            return _servicio.GetSalasProvinciaAsync(provinciaId, offset);
+        }
+
+        public Task<List<Partida>> GetPartidasSalaAsync(string salaId, int offset)
+        {
+            return _servicio.GetPartidasSalaAsync(salaId, offset);
         }
 
         public Task<Sala> GetSalaAsync(string salaId)

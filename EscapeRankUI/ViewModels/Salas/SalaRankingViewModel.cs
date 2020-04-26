@@ -23,7 +23,9 @@ namespace EscapeRankUI.ViewModels
 
         private async void GetRanking(Sala salaSeleccionada)
         {
-            List<Partida> partidas = await App.SalasManager.GetPartidasSalaAsync(salaSeleccionada.Id);
+            int offset = 0;
+
+            List<Partida> partidas = await App.SalasManager.GetPartidasSalaAsync(salaSeleccionada.Id, offset);
             //Servicios.ServicioFake.Equipos.SelectMany(p=>p.Partidas).Distinct().ToList();
 
             foreach (Partida p in partidas)

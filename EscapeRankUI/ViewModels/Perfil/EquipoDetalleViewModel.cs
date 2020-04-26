@@ -10,7 +10,8 @@ namespace EscapeRankUI.ViewModels
     {
         //Variables
 
-        private Equipo _equipo;
+        public Equipo Equipo { get; set; }
+
         private ObservableCollection<Usuario> _miembrosEquipo;
         private ObservableCollection<Partida> _partidasEquipo;
 
@@ -25,12 +26,6 @@ namespace EscapeRankUI.ViewModels
         }
 
         //Getters & Setters
-
-        public Equipo Equipo
-        {
-            get { return _equipo; }
-            set { SetProperty(ref _equipo, value); }
-        }
 
         public ObservableCollection<Usuario> MiembrosEquipo
         {

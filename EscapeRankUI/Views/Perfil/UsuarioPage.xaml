@@ -14,10 +14,12 @@
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
             </Label>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                 <Image HorizontalOptions="Center" Source="{StaticResource icono_luna}"/>
             <Switch x:Name="BotonOscuro"
                 IsToggled="{Binding ModoOscuro}"
-                OnColor="{StaticResource variable2}"
-                HorizontalOptions="End"/>
+                OnColor="{StaticResource variable2}"/>
+            </StackLayout>
         </Grid>
     </Shell.TitleView>
 

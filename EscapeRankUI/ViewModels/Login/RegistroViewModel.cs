@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Input;
+using EscapeRankUI.Modelos;
+using EscapeRankUI.Servicios;
 using EscapeRankUI.Views;
 using Xamarin.Forms;
 
@@ -11,22 +13,26 @@ namespace EscapeRankUI.ViewModels
 
     //Variables
 
-        //public ICredentialsService storeService;
+        public ICredencialesService storeService;
 
     //Constructor
 
         public RegistroViewModel()
         {
-            //storeService = App.CredentialsService;
-            //storeService.DeleteCredentials();
+            storeService = App.CredencialesService;
+            storeService.DeleteCredentials();
             LoginCommand = new Command(Login);
             RegistrarCommand = new Command(Registrar);
         }
 
-    //Getters & Setters
+        //Getters & Setters
 
-        public ICommand RegistrarCommand { get; set; }
-        public ICommand LoginCommand { get; set; }
+        public string Nombre { get; set; }
+        public string Email { get; set; }
+        public string Contrasenya { get; set; }
+        public string RepContrasenya { get; set; }
+        public Command RegistrarCommand { get; set; }
+        public Command LoginCommand { get; set; }
 
     //Funciones
 
@@ -35,69 +41,38 @@ namespace EscapeRankUI.ViewModels
             await Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
         }
 
-        public void Registrar()
+        public async void Registrar()
         {
-            Debug.WriteLine("Has hecho Registrar");
-            Cargando = true;
-            /*
-            // Sign up logic goes here
-
-            var signUpSucceeded = await AreDetailsValid(User);
-            if (signUpSucceeded.Status=="ok")
+            try
             {
-                var rootPage = Navigation.NavigationStack.FirstOrDefault();
-                if (rootPage != null)
+                if (!string.IsNullOrEmpty(Nombre) && !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Contrasenya) && !string.IsNullOrEmpty(RepContrasenya) && Contrasenya == RepContrasenya)
                 {
+                    Login login = await App.LoginManager.PostRegistroAsync(Nombre, Email, Contrasenya);
 
-                    LoginResponse login = await App.AuthManager.GetLogin(User.Nombre, User.Contrasenya);
-                    if (login.Estado == "ok" && login.Datos.TokenRefresco != null && login.Datos.TokenAcceso != null)
+                    if (login != null && login.TokenRefresco != null && login.TokenAcceso != null)
                     {
-                        //await storeService.SaveCredentials(login.Data.IdUsuario, User.Username, User.Password, login);
-                        App.UsuarioPrincipal = await App.ProfileManager.GetUsuario();
-                        Application.Current.MainPage = new NavigationPage(new MainTabbedPage());
+                        await storeService.SaveCredentials(int.Parse(login.IdUsuario), Email, Contrasenya, login);
+
+                        App.UsuarioPrincipal = await App.PerfilManager.GetUsuarioAsync();
+
+                        Application.Current.MainPage = new AppShell();
                     }
-                    // App.IsUserLoggedIn = true;
-                   // Navigation.InsertPageBefore(new MainPage(), Navigation.NavigationStack.First());
-                   //await Navigation.PopToRootAsync();
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Error registrando usuario", null, "Ok");
+                    }
                 }
-            }
-            else
-            {
-                Message = "Fallo en registro. "+signUpSucceeded.Result;
-            }
-
-            Cargando = false;
-
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error validación", null, "Ok");
+                }
             }
             catch (Exception e)
             {
-                Cargando = false;
                 Debug.WriteLine("ERROR {0}", e.Message);
-                await App.Current.MainPage.DisplayAlert("Error de conexión", e.Message, "Ok");
+                await Application.Current.MainPage.DisplayAlert("Error de conexión", e.Message, "Ok");
             }
-            */
         }
-        /*
-        async Task<SignUpResponse> AreDetailsValid(Usuario user)
-        {
-            var signUpResponse = new SignUpResponse();
-            if (user == null)
-            {
-                signUpResponse.Status = "error";
-                signUpResponse.Result = "Error conectando al servidor.";
-            }else if (!string.IsNullOrWhiteSpace(user.Email) && !string.IsNullOrWhiteSpace(user.Contrasenya) &&
-                !string.IsNullOrWhiteSpace(user.Nombre) &&
-                !string.IsNullOrWhiteSpace(user.Email) && user.Email.Contains("@"))
-            {
-                signUpResponse= await App.AuthManager.SignUpAsync(user);
 
-            }
-            else
-            {
-                signUpResponse.Status = "error";
-                signUpResponse.Result = "e-Mail y Contraseña requeridos.";
-            }
-            return signUpResponse;
-        }*/
     }
 }

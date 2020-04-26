@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EscapeRankUI.Views.SalasFiltradasPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:recursos="clr-namespace:EscapeRankUI.Recursos"
+    BackgroundColor="{DynamicResource variable1}"
+    Title="{Binding Titulo}">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid Style="{DynamicResource espacio_grid_normal}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Frame Visual="Material" Margin="0,15"
+                       CornerRadius="25"
+                       BackgroundColor="{DynamicResource variable2}">
+                     <SearchBar x:Name="BarraBusqueda"
+                               Text="{Binding Busqueda}"
+                               Placeholder="Sala, compañia o ciudad.."
+                               PlaceholderColor="{DynamicResource gris2}"
+                               TextColor="{DynamicResource variable5}"
+                               SearchCommand="{Binding BuscarSalasCommand}"/>
+                </Frame>
+                   
+                    <!--TextChanged="Buscador_TextChanged"-->
+
+                <StackLayout Grid.Row="1">
+
+                    <ActivityIndicator Color="{DynamicResource variable3}" IsVisible="{Binding Cargando}" IsRunning="{Binding Cargando}"/>
+
+                    <CollectionView 
+                                    ItemsSource="{Binding Salas}"
+                                    SelectionMode="Single"
+                                    SelectedItem="{Binding SalaSeleccionada,Mode=TwoWay}"
+                                    SelectionChangedCommand="{Binding VerSalaCommand}"
+                                    ItemTemplate="{StaticResource SalasFiltradasTemplate}"
+                                    RemainingItemsThresholdReachedCommand="{Binding CargarSalasCommand}"
+                                    RemainingItemsThreshold="{Binding Umbral}"
+                                    EmptyView="No hay salas que mostrar"/>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

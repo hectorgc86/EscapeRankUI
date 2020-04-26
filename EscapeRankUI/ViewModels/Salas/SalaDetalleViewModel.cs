@@ -16,7 +16,7 @@ namespace EscapeRankUI.ViewModels
             GetInfo(salaSeleccionada);
         }
 
-        public ICommand ContactoSalaCommand { get; set; }
+        public Command ContactoSalaCommand { get; }
 
         public Sala Sala
         {

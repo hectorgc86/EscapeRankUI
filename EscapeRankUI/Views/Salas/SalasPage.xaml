@@ -23,15 +23,15 @@
                   Style="{DynamicResource espacio_grid_normal_izquierdo}"
                   RowSpacing="15">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="310" />
-                    <RowDefinition Height="80" />
+                    <RowDefinition Height="315" />
                     <RowDefinition Height="205" />
                     <RowDefinition Height="205" />
                     <RowDefinition Height="205" />
+                    <RowDefinition Height="205" />
+                    <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
 
-                <StackLayout Padding="0,15">
+                <!--<StackLayout Padding="0,15">
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                         <SearchBar x:Name="Buscador"
                                Placeholder="{x:Static recursos:Strings.buscar}"
@@ -51,13 +51,23 @@
                                         ItemTemplate="{StaticResource SalaBusquedaTemplate}"
                                         SelectionMode="Single"
                                         SelectedItem="{Binding SalaSeleccionada,Mode=TwoWay}"/>
-                </StackLayout>
-                <StackLayout Grid.Row="1"
+                </StackLayout>-->
+                <StackLayout Margin="0,20,0,0"
                         Spacing="15">
 
-                    <Label
+                    <StackLayout Orientation="Horizontal">
+                         <Label
                             Text="{x:Static recursos:Strings.popular_ahora}"
-                            Style="{StaticResource texto_cabecera1}" />
+                            Style="{StaticResource texto_cabecera1}"
+                            HorizontalOptions="StartAndExpand"/>
+
+                        <ImageButton Source="{StaticResource icono_filtrar}"
+                               Padding="15,0"
+                               HorizontalOptions="End"
+                               BackgroundColor="{DynamicResource variable1}"
+                               Opacity=".8"
+                               Aspect="AspectFit"/>
+                    </StackLayout>
 
                     <CollectionView
                             ItemsSource="{Binding SalasPromocionadas}"
@@ -75,6 +85,7 @@
                                         Padding="7.5"
                                         BackgroundColor="transparent"
                                         HasShadow="False">
+
                                     <Frame
                                             CornerRadius="6"
                                             WidthRequest="208"
@@ -101,6 +112,7 @@
                                                     LineBreakMode="TailTruncation" />
 
                                             <StackLayout Orientation="Horizontal" Spacing="10">
+                                                                                                                     
                                                 <Image
                                                         Source="{StaticResource icono_estrella}"
                                                         HorizontalOptions="Start"
@@ -128,7 +140,7 @@
                     </CollectionView>
                 </StackLayout>
 
-                <StackLayout Grid.Row="2" Spacing="15">
+                <!--<StackLayout Grid.Row="2" Spacing="15">
                     <StackLayout
                             Padding="0,0,16,0"
                             Orientation="Horizontal">
@@ -173,32 +185,23 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                </StackLayout>
+                </StackLayout>-->
 
                 <StackLayout
-                        Grid.Row="3"
+                        Grid.Row="1"
                         Spacing="15">
 
-                    <StackLayout
-                            Padding="0,0,16,0"
-                            Orientation="Horizontal">
                         <Label
                                 Text="{x:Static recursos:Strings.categoria}"
                                 Style="{StaticResource texto_cabecera3}"
                                 HorizontalOptions="Start"
                                 VerticalOptions="Center" />
-                        <Label
-                                Text="{x:Static recursos:Strings.ver_todo}"
-                                Style="{StaticResource texto_subtitulo6}"
-                                HorizontalOptions="EndAndExpand"
-                                VerticalOptions="Center" />
-                    </StackLayout>
-
+                     
                     <CollectionView
                             ItemsSource="{Binding Categorias}"
                             SelectionMode="Single"
-                            SelectedItem="{Binding CategoriaSeleccionada,Mode=TwoWay}"
-                            SelectionChangedCommand="{Binding VerSalaCommand}">
+                            SelectedItem="{Binding ObjetoSeleccionado,Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding VerFiltradasCommand}">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout Orientation="Horizontal" />
                         </CollectionView.ItemsLayout>
@@ -227,8 +230,112 @@
                                                 Style="{StaticResource texto_titulo1}" />
 
                                         <Label
-                                                Text="{Binding NumeroSalas}"
+                                                Text="{Binding NumeroSalas,StringFormat='{0} Salas'}"
                                                 Style="{StaticResource texto_subtitulo5}" />
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <StackLayout
+                        Grid.Row="2"
+                        Spacing="15">
+
+                        <Label
+                                Text="{x:Static recursos:Strings.tematica}"
+                                Style="{StaticResource texto_cabecera3}"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center" />
+
+                    <CollectionView
+                            ItemsSource="{Binding Tematicas}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding ObjetoSeleccionado,Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding VerFiltradasCommand}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                        Padding="7.5"
+                                        HasShadow="False"
+                                        Visual="Material"
+                                        BackgroundColor="{DynamicResource variable1}">
+                                    <StackLayout Spacing="4">
+                                        <Frame
+                                                Margin="0,0,0,4"
+                                                WidthRequest="88"
+                                                HeightRequest="88"
+                                                Visual="Material"
+                                                BackgroundColor="{DynamicResource variable2}">
+                                            <Image
+                                                Source="{Binding Icono}"                 
+                                                HorizontalOptions="Center"
+                                                Aspect="AspectFit"/>
+                                        </Frame>
+
+                                        <Label
+                                                Text="{Binding Tipo}"
+                                                Style="{StaticResource texto_titulo1}" />
+
+                                        <Label
+                                                Text="{Binding NumeroSalas,StringFormat='{0} Salas'}"
+                                                Style="{StaticResource texto_subtitulo5}" />
+
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <StackLayout
+                        Grid.Row="3"
+                        Spacing="15">
+
+                        <Label
+                                Text="{x:Static recursos:Strings.publico}"
+                                Style="{StaticResource texto_cabecera3}"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center" />
+
+                    <CollectionView
+                            ItemsSource="{Binding Publico}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding ObjetoSeleccionado,Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding VerFiltradasCommand}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                        Padding="7.5"
+                                        HasShadow="False"
+                                        Visual="Material"
+                                        BackgroundColor="{DynamicResource variable1}">
+                                    <StackLayout Spacing="4">
+                                        <Frame
+                                                Margin="0,0,0,4"
+                                                WidthRequest="88"
+                                                HeightRequest="88"
+                                                Visual="Material"
+                                                BackgroundColor="{DynamicResource variable2}">
+                                            <Image
+                                                Source="{Binding Icono}"                 
+                                                HorizontalOptions="Center"
+                                                Aspect="AspectFit"/>
+                                        </Frame>
+
+                                        <Label
+                                                Text="{Binding Tipo}"
+                                                Style="{StaticResource texto_titulo1}" />
+
+                                        <Label
+                                                Text="{Binding NumeroSalas,StringFormat='{0} Salas'}"
+                                                Style="{StaticResource texto_subtitulo5}" />
+
                                     </StackLayout>
                                 </Frame>
                             </DataTemplate>
@@ -239,148 +346,17 @@
                         Grid.Row="4"
                         Spacing="15">
 
-                    <StackLayout
-                            Padding="0,0,16,0"
-                            Orientation="Horizontal">
-                        <Label
-                                Text="{x:Static recursos:Strings.tematica}"
-                                Style="{StaticResource texto_cabecera3}"
-                                HorizontalOptions="Start"
-                                VerticalOptions="Center" />
-                        <Label
-                                Text="{x:Static recursos:Strings.ver_todo}"
-                                Style="{StaticResource texto_subtitulo6}"
-                                HorizontalOptions="EndAndExpand"
-                                VerticalOptions="Center" />
-                    </StackLayout>
-
-                    <CollectionView
-                            ItemsSource="{Binding Tematicas}"
-                            SelectionMode="Single"
-                            SelectedItem="{Binding TematicaSeleccionada,Mode=TwoWay}"
-                            SelectionChangedCommand="{Binding VerSalaCommand}">
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout Orientation="Horizontal" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Frame
-                                        Padding="7.5"
-                                        HasShadow="False"
-                                        Visual="Material"
-                                        BackgroundColor="{DynamicResource variable1}">
-                                    <StackLayout Spacing="4">
-                                        <Frame
-                                                Margin="0,0,0,4"
-                                                WidthRequest="88"
-                                                HeightRequest="88"
-                                                Visual="Material"
-                                                BackgroundColor="{DynamicResource variable2}">
-                                            <Image
-                                                Source="{Binding Icono}"                 
-                                                HorizontalOptions="Center"
-                                                Aspect="AspectFit"/>
-                                        </Frame>
-
-                                        <Label
-                                                Text="{Binding Tipo}"
-                                                Style="{StaticResource texto_titulo1}" />
-
-                                        <Label
-                                                Text="{Binding NumeroSalas}"
-                                                Style="{StaticResource texto_subtitulo5}" />
-
-                                    </StackLayout>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </StackLayout>
-                <StackLayout
-                        Grid.Row="5"
-                        Spacing="15">
-
-                    <StackLayout
-                            Padding="0,0,16,0"
-                            Orientation="Horizontal">
-                        <Label
-                                Text="{x:Static recursos:Strings.publico}"
-                                Style="{StaticResource texto_cabecera3}"
-                                HorizontalOptions="Start"
-                                VerticalOptions="Center" />
-                        <Label
-                                Text="{x:Static recursos:Strings.ver_todo}"
-                                Style="{StaticResource texto_subtitulo6}"
-                                HorizontalOptions="EndAndExpand"
-                                VerticalOptions="Center" />
-                    </StackLayout>
-
-                    <CollectionView
-                            ItemsSource="{Binding Publico}"
-                            SelectionMode="Single"
-                            SelectedItem="{Binding PublicoSeleccionado,Mode=TwoWay}"
-                            SelectionChangedCommand="{Binding VerSalaCommand}">
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout Orientation="Horizontal" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Frame
-                                        Padding="7.5"
-                                        HasShadow="False"
-                                        Visual="Material"
-                                        BackgroundColor="{DynamicResource variable1}">
-                                    <StackLayout Spacing="4">
-                                        <Frame
-                                                Margin="0,0,0,4"
-                                                WidthRequest="88"
-                                                HeightRequest="88"
-                                                Visual="Material"
-                                                BackgroundColor="{DynamicResource variable2}">
-                                            <Image
-                                                Source="{Binding Icono}"                 
-                                                HorizontalOptions="Center"
-                                                Aspect="AspectFit"/>
-                                        </Frame>
-
-                                        <Label
-                                                Text="{Binding Tipo}"
-                                                Style="{StaticResource texto_titulo1}" />
-
-                                        <Label
-                                                Text="{Binding NumeroSalas}"
-                                                Style="{StaticResource texto_subtitulo5}" />
-
-                                    </StackLayout>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </StackLayout>
-                <StackLayout
-                        Grid.Row="6"
-                        Spacing="15">
-
-                    <StackLayout
-                            Padding="0,0,16,0"
-                            Orientation="Horizontal">
                         <Label
                                 Text="{x:Static recursos:Strings.dificultad}"
                                 Style="{StaticResource texto_cabecera3}"
                                 HorizontalOptions="Start"
                                 VerticalOptions="Center" />
-                        <Label
-                                Text="{x:Static recursos:Strings.ver_todo}"
-                                Style="{StaticResource texto_subtitulo6}"
-                                HorizontalOptions="EndAndExpand"
-                                VerticalOptions="Center" />
-                    </StackLayout>
 
                     <CollectionView
                             ItemsSource="{Binding Dificultades}"
                             SelectionMode="Single"
-                            SelectedItem="{Binding DificultadSeleccionada,Mode=TwoWay}"
-                            SelectionChangedCommand="{Binding VerSalaCommand}">
+                            SelectedItem="{Binding ObjetoSeleccionado,Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding VerFiltradasCommand}">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout Orientation="Horizontal" />
                         </CollectionView.ItemsLayout>
@@ -409,7 +385,7 @@
                                                 Style="{StaticResource texto_titulo1}" />
 
                                         <Label
-                                                Text="{Binding NumeroSalas}"
+                                                Text="{Binding NumeroSalas,StringFormat='{0} Salas'}"
                                                 Style="{StaticResource texto_subtitulo5}" />
 
                                     </StackLayout>
@@ -417,6 +393,13 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
+                </StackLayout>
+                <StackLayout Grid.Row="5" Padding="0,0,15,0">
+                    <Button Visual="Material"
+                            BackgroundColor="{DynamicResource variable2}"
+                            TextColor="{DynamicResource variable3}"
+                            Command="{Binding VerTodasCommand}"
+                            Text="Ver todas"/>
                 </StackLayout>
             </Grid>
         </ScrollView>

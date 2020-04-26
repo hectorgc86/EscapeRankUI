@@ -11,8 +11,6 @@ namespace EscapeRankUI.ViewModels
 {
     public class PartidaViewModel : BaseViewModel
     {
-        private DateTime _horaPartida;
-        private DateTime _fechaPartida;
         private Equipo _equipoSeleccionado;
         private Sala _salaEscaneada;
         private bool _botonValidarActivado;
@@ -34,9 +32,9 @@ namespace EscapeRankUI.ViewModels
 
         public DateTime HoraPartida { get; set; }
         public DateTime FechaPartida { get; set; }
-        public ICommand ValidarCommand { get; set; }
-        public ICommand GuardarCommand { get; set; }
-        public ICommand HacerFotoCommand { get; set; }
+        public Command ValidarCommand { get; }
+        public Command GuardarCommand { get; }
+        public Command HacerFotoCommand { get; }
 
         public bool BotonValidarActivado
         {

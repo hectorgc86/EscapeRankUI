@@ -6,11 +6,21 @@ namespace EscapeRankUI.Servicios
 {
 	public interface ISalasService
 	{
-		Task<List<Sala>> GetSalasAsync (int offset);
+		Task<List<Sala>> GetSalasAsync(int offset, string busqueda);
 
         Task<List<Sala>> GetSalasPromocionadasAsync(int offset);
 
-        Task<List<Partida>> GetPartidasSalaAsync(string salaId);
+        Task<List<Sala>> GetSalasCategoriaAsync(string categoriaId, int offset, string busqueda);
+        
+        Task<List<Sala>> GetSalasTematicaAsync(string tematicaId, int offset, string busqueda);
+
+        Task<List<Sala>> GetSalasPublicoAsync(string publicoId, int offset, string busqueda);
+
+        Task<List<Sala>> GetSalasDificultadAsync(string dificultadId, int offset, string busqueda);
+
+        Task<List<Sala>> GetSalasProvinciaAsync(string provinciaId, int offset);
+
+        Task<List<Partida>> GetPartidasSalaAsync(string salaId, int offset);
 
         Task<Sala> GetSalaAsync(string salaId);
 

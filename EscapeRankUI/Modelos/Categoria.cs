@@ -6,11 +6,9 @@ namespace EscapeRankUI.Modelos
 {
     public class Categoria
     {
-        private string tipo;
         public string Id { get; set; }
+        public string Tipo { get; set; }
         public int NumeroSalas { get; set; }
-
-        public string Tipo { get => tipo; set => tipo = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value.ToLower()); }
 
         public FontImageSource Icono
         {

@@ -10,9 +10,9 @@ namespace EscapeRankUI.ViewModels
 {
     public class AmigosViewModel : BaseViewModel
     {
-        //Variables
-
         private ObservableCollection<Usuario> _amigos;
+
+        public Command VerAmigoCommand { get; }
 
         //Constructor
 
@@ -23,9 +23,6 @@ namespace EscapeRankUI.ViewModels
             GetAmigos();
         }
 
-        //Getters & Setters
-
-        public ICommand VerAmigoCommand { get; set; }
 
         public ObservableCollection<Usuario> Amigos
         {

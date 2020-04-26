@@ -7,7 +7,8 @@
     BackgroundColor="{DynamicResource variable1}">
 
     <ContentPage.Content>
-                <CollectionView ItemsSource="{Binding Partidas}" SelectionMode="Single">
+                <CollectionView ItemsSource="{Binding Partidas}" SelectionMode="Single"
+                                 EmptyView="No hay partidas registradas en esta sala">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" />
                     </CollectionView.ItemsLayout>

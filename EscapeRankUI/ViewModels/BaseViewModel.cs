@@ -23,7 +23,6 @@ namespace EscapeRankUI.ViewModels
             get { return _cargando; }
             set
             {
-                _cargando = value;
                 SetProperty(ref _cargando, value);
             }
         }

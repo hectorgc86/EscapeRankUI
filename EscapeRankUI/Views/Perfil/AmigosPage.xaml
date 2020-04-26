@@ -51,7 +51,7 @@
                                     <Label 
                                         HorizontalTextAlignment="Center"
                                         Text="{Binding Nombre}"
-                                         Style="{StaticResource texto_subtitulo3}" />
+                                        Style="{StaticResource texto_subtitulo3}" />
                                    
                                 </StackLayout>
                             </DataTemplate>

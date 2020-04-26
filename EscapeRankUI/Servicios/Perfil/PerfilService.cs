@@ -32,7 +32,7 @@ namespace EscapeRankUI.Servicios
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
 
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.UsuarioDetalleURL + usuarioId));
+            Uri uri = new Uri(Constants.EscapeRankURL + Constants.UsuarioDetalleURL + usuarioId);
 
             try
             {
@@ -51,33 +51,7 @@ namespace EscapeRankUI.Servicios
             return usuario;
         }
 
-        //Llamada a la API para traer los amigos del usuario principal de la app.
-
-        public async Task<List<Usuario>> GetAmigosAsync()
-        {
-            int usuarioId = App.UsuarioPrincipal.Id;
-            List<Usuario> amigos = new List<Usuario>();
-
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
-
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.UsuarioDetalleURL + usuarioId + Constants.AmigosURL));
-            try
-            {
-                HttpResponseMessage resp = await client.GetAsync(uri);
-                if (resp.IsSuccessStatusCode)
-                {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    amigos = JsonConvert.DeserializeObject<List<Usuario>>(aux);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
-
-            return amigos;
-        }
-
+        
         //Llamada a la API para traer a un amigo.
 
         public async Task<Usuario> GetAmigoAsync(int amigoId)
@@ -86,7 +60,7 @@ namespace EscapeRankUI.Servicios
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
 
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.UsuarioDetalleURL + amigoId));
+            Uri uri = new Uri(Constants.EscapeRankURL + Constants.UsuarioDetalleURL + amigoId);
 
             try
             {
@@ -105,6 +79,34 @@ namespace EscapeRankUI.Servicios
             return amigo;
         }
 
+        //Llamada a la API para traer los amigos del usuario principal de la app.
+
+        public async Task<List<Usuario>> GetAmigosAsync()
+        {
+            int usuarioId = App.UsuarioPrincipal.Id;
+            List<Usuario> amigos = new List<Usuario>();
+
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
+
+            Uri uri = new Uri(Constants.EscapeRankURL
+                + Constants.UsuarioDetalleURL + usuarioId
+                + Constants.AmigosURL);
+            try
+            {
+                HttpResponseMessage resp = await client.GetAsync(uri);
+                if (resp.IsSuccessStatusCode)
+                {
+                    string aux = await resp.Content.ReadAsStringAsync();
+                    amigos = JsonConvert.DeserializeObject<List<Usuario>>(aux);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"ERROR {0}", ex.Message);
+            }
+
+            return amigos;
+        }
         //Llamada a la API para traer los equipos del usuario principal de la app.
 
         public async Task<List<Equipo>> GetEquiposAsync()
@@ -114,7 +116,7 @@ namespace EscapeRankUI.Servicios
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
 
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.EquiposUsuarioURL + usuarioId));
+            Uri uri = new Uri(Constants.EscapeRankURL + Constants.EquiposUsuarioURL + usuarioId);
             try
             {
                 HttpResponseMessage resp = await client.GetAsync(uri);
@@ -141,7 +143,7 @@ namespace EscapeRankUI.Servicios
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
 
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.UsuariosEquipoURL + equipoId));
+            Uri uri = new Uri(Constants.EscapeRankURL + Constants.UsuariosEquipoURL + equipoId);
 
             try
             {
@@ -168,7 +170,7 @@ namespace EscapeRankUI.Servicios
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
 
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.PartidasEquipoURL + equipoId));
+            Uri uri = new Uri(Constants.EscapeRankURL + Constants.PartidasEquipoURL + equipoId);
 
             try
             {
