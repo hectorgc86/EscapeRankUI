@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
+using System.Web;
 using System.Threading.Tasks;
 using EscapeRankUI.Modelos;
 using Newtonsoft.Json;
@@ -26,190 +27,234 @@ namespace EscapeRankUI.Servicios
 
         public async Task<List<Sala>> GetSalasAsync (int offset, string busqueda)
 		{
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
 
             List<Sala> salas = new List<Sala>();
 
-            Uri uri = new Uri(Constants.EscapeRankURL
-                + Constants.SalasURL
-                + Constants.OffsetQuery + offset
-                + Constants.BusquedaQuery + busqueda);
+            Uri uri = new Uri(Constantes.EscapeRankURL
+                + Constantes.SalasURL
+                + Constantes.OffsetQuery + offset
+                + Constantes.BusquedaQuery + busqueda);
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
 
-                if (resp.IsSuccessStatusCode)
+                switch (resp.StatusCode)
                 {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    salas = JsonConvert.DeserializeObject<List<Sala>>(aux);
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        salas = JsonConvert.DeserializeObject<List<Sala>>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
 
-            return salas;
+                return salas;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         //Llamada a la API para traer todas las salas que cumplen con el estado "promocionada"
 
         public async Task<List<Sala>> GetSalasPromocionadasAsync(int offset)
         {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
+
             List<Sala> salasPromocionadas = new List<Sala>();
-            Uri uri = new Uri(Constants.EscapeRankURL
-                + Constants.SalasPromocionadasURL
-                + Constants.OffsetQuery + offset);
+
+            Uri uri = new Uri(Constantes.EscapeRankURL
+                + Constantes.SalasPromocionadasURL
+                + Constantes.OffsetQuery + offset);
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
 
-                if (resp.IsSuccessStatusCode)
+                switch (resp.StatusCode)
                 {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    salasPromocionadas = JsonConvert.DeserializeObject<List<Sala>>(aux);
+                    case HttpStatusCode.OK:
+                            string aux = await resp.Content.ReadAsStringAsync();
+                            salasPromocionadas = JsonConvert.DeserializeObject<List<Sala>>(aux);
+                            break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
 
-            return salasPromocionadas;
+                return salasPromocionadas;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         //Llamada a la API para traer todas las salas de una categoria
 
         public async Task<List<Sala>> GetSalasCategoriaAsync(string categoriaId, int offset, string busqueda)
         {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
+
             List<Sala> salasCategoria = new List<Sala>();
-            Uri uri = new Uri(Constants.EscapeRankURL
-                + Constants.SalasCategoriaURL + categoriaId
-                + Constants.OffsetQuery + offset
-                + Constants.BusquedaQuery + busqueda);
+
+            Uri uri = new Uri(Constantes.EscapeRankURL
+                + Constantes.SalasCategoriaURL + categoriaId
+                + Constantes.OffsetQuery + offset
+                + Constantes.BusquedaQuery + busqueda);
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
 
-                if (resp.IsSuccessStatusCode)
+                switch (resp.StatusCode)
                 {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    salasCategoria = JsonConvert.DeserializeObject<List<Sala>>(aux);
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        salasCategoria = JsonConvert.DeserializeObject<List<Sala>>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
 
-            return salasCategoria;
+                return salasCategoria;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         //Llamada a la API para traer todas las salas de una tematica
 
         public async Task<List<Sala>> GetSalasTematicaAsync(string tematicaId, int offset, string busqueda)
         {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
+
             List<Sala> salasTematica = new List<Sala>();
-            Uri uri = new Uri(Constants.EscapeRankURL
-                + Constants.SalasTematicaURL + tematicaId
-                + Constants.OffsetQuery + offset
-                + Constants.BusquedaQuery + busqueda);
+
+            Uri uri = new Uri(Constantes.EscapeRankURL
+                + Constantes.SalasTematicaURL + tematicaId
+                + Constantes.OffsetQuery + offset
+                + Constantes.BusquedaQuery + busqueda);
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
 
-                if (resp.IsSuccessStatusCode)
+                switch (resp.StatusCode)
                 {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    salasTematica = JsonConvert.DeserializeObject<List<Sala>>(aux);
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        salasTematica = JsonConvert.DeserializeObject<List<Sala>>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
 
-            return salasTematica;
+                return salasTematica;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         //Llamada a la API para traer todas las salas de un publico
 
         public async Task<List<Sala>> GetSalasPublicoAsync(string publicoId, int offset, string busqueda)
         {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
+
             List<Sala> salasPublico = new List<Sala>();
-            Uri uri = new Uri(Constants.EscapeRankURL
-                + Constants.SalasPublicoURL + publicoId
-                + Constants.OffsetQuery + offset
-                + Constants.BusquedaQuery + busqueda);
+
+            Uri uri = new Uri(Constantes.EscapeRankURL
+                + Constantes.SalasPublicoURL + publicoId
+                + Constantes.OffsetQuery + offset
+                + Constantes.BusquedaQuery + busqueda);
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
 
-                if (resp.IsSuccessStatusCode)
+                switch (resp.StatusCode)
                 {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    salasPublico = JsonConvert.DeserializeObject<List<Sala>>(aux);
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        salasPublico = JsonConvert.DeserializeObject<List<Sala>>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
 
-            return salasPublico;
+                return salasPublico;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         //Llamada a la API para traer todas las salas de una dificultad
 
         public async Task<List<Sala>> GetSalasDificultadAsync(string dificultadId, int offset, string busqueda)
         {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
+
             List<Sala> salasDificultad = new List<Sala>();
-            Uri uri = new Uri(Constants.EscapeRankURL
-                + Constants.SalasDificultadURL + dificultadId
-                + Constants.OffsetQuery + offset
-                + Constants.BusquedaQuery + busqueda);
+            Uri uri = new Uri(Constantes.EscapeRankURL
+                + Constantes.SalasDificultadURL + dificultadId
+                + Constantes.OffsetQuery + offset
+                + Constantes.BusquedaQuery + busqueda);
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
 
-                if (resp.IsSuccessStatusCode)
+                switch (resp.StatusCode)
                 {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    salasDificultad = JsonConvert.DeserializeObject<List<Sala>>(aux);
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        salasDificultad = JsonConvert.DeserializeObject<List<Sala>>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
 
-            return salasDificultad;
+                return salasDificultad;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         //Llamada a la API para traer todas las salas de una provincia
 
         public async Task<List<Sala>> GetSalasProvinciaAsync(string provinciaId, int offset)
         {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
+
             List<Sala> salasProvincia = new List<Sala>();
-            Uri uri = new Uri(Constants.EscapeRankURL
-                + Constants.SalasProvinciaURL + provinciaId
-                + Constants.OffsetQuery + offset);
+            Uri uri = new Uri(Constantes.EscapeRankURL
+                + Constantes.SalasProvinciaURL + provinciaId
+                + Constantes.OffsetQuery + offset);
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
 
-                if (resp.IsSuccessStatusCode)
+                switch (resp.StatusCode)
                 {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    salasProvincia = JsonConvert.DeserializeObject<List<Sala>>(aux);
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        salasProvincia = JsonConvert.DeserializeObject<List<Sala>>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
 
-            return salasProvincia;
+                return salasProvincia;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
 
@@ -217,52 +262,64 @@ namespace EscapeRankUI.Servicios
 
         public async Task<List<Partida>> GetPartidasSalaAsync(string salaId, int offset)
         {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
+
             List<Partida> partidasSala = new List<Partida>();
-            Uri uri = new Uri(Constants.EscapeRankURL
-                + Constants.PartidasSalaURL + salaId
-                + Constants.OffsetQuery + offset);
+
+            Uri uri = new Uri(Constantes.EscapeRankURL
+                + Constantes.PartidasSalaURL + salaId
+                + Constantes.OffsetQuery + offset);
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
 
-                if (resp.IsSuccessStatusCode)
+                switch (resp.StatusCode)
                 {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    partidasSala = JsonConvert.DeserializeObject<List<Partida>>(aux);
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        partidasSala = JsonConvert.DeserializeObject<List<Partida>>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
 
-            return partidasSala;
+                return partidasSala;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         //Llamada a la API para traer una sala.
 
         public async Task<Sala> GetSalaAsync(string salaId)
         {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
+
             Sala sala = new Sala();
 
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
-
-            Uri uri = new Uri(Constants.EscapeRankURL + Constants.SalasDetalleURL + salaId);
+            Uri uri = new Uri(Constantes.EscapeRankURL + Constantes.SalasDetalleURL + salaId);
             try
             {
-                var response = await client.GetAsync(uri);
-                if (response.IsSuccessStatusCode)
-                {
-                    var content = await response.Content.ReadAsStringAsync();
-                    sala = JsonConvert.DeserializeObject<Sala>(content);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
 
-            return sala;
+                switch (resp.StatusCode)
+                {
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        sala = JsonConvert.DeserializeObject<Sala>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
+                }
+
+                return sala;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         //Llamada a la API para traer todas las temáticas de juego.
@@ -271,24 +328,29 @@ namespace EscapeRankUI.Servicios
         {
             List<Tematica> tematicas = new List<Tematica>();
 
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
 
-            Uri uri = new Uri(Constants.EscapeRankURL + Constants.TematicasURL);
+            Uri uri = new Uri(Constantes.EscapeRankURL + Constantes.TematicasURL);
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
-                if (resp.IsSuccessStatusCode)
-                {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    tematicas = JsonConvert.DeserializeObject<List<Tematica>>(aux);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
 
-            return tematicas;
+                switch (resp.StatusCode)
+                {
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        tematicas = JsonConvert.DeserializeObject<List<Tematica>>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
+                }
+
+                return tematicas;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         //Llamada a la API para traer todas las categorias de juego.
@@ -297,107 +359,120 @@ namespace EscapeRankUI.Servicios
         {
             List<Categoria> categorias = new List<Categoria>();
 
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
 
-            Uri uri = new Uri(Constants.EscapeRankURL + Constants.CategoriasURL);
+            Uri uri = new Uri(Constantes.EscapeRankURL + Constantes.CategoriasURL);
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
-                if (resp.IsSuccessStatusCode)
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
+                switch (resp.StatusCode)
                 {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    categorias = JsonConvert.DeserializeObject<List<Categoria>>(aux);
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        categorias = JsonConvert.DeserializeObject<List<Categoria>>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
+
+                return categorias;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
+                throw;
             }
 
-            return categorias;
         }
 
         //Llamada a la API para traer tipo de público.
 
         public async Task<List<Publico>> GetPublicoAsync()
         {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
+
             List<Publico> publico = new List<Publico>();
 
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
-
-            Uri uri = new Uri(Constants.EscapeRankURL + Constants.PublicoURL);
-
+            Uri uri = new Uri(Constantes.EscapeRankURL + Constantes.PublicoURL);
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
-                if (resp.IsSuccessStatusCode)
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
+                switch (resp.StatusCode)
                 {
-                   string aux = await resp.Content.ReadAsStringAsync();
-                   publico = JsonConvert.DeserializeObject<List<Publico>>(aux);
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        publico = JsonConvert.DeserializeObject<List<Publico>>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
 
-            return publico;
+                return publico;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         //Llamada a la API para traer tipos de dificultad.
 
         public async Task<List<Dificultad>> GetDificultadesAsync()
         {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
+
             List<Dificultad> dificultades = new List<Dificultad>();
 
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
-
-            Uri uri = new Uri(Constants.EscapeRankURL + Constants.DificultadesURL);
-
+            Uri uri = new Uri(Constantes.EscapeRankURL + Constantes.DificultadesURL);
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
-                if (resp.IsSuccessStatusCode)
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
+                switch (resp.StatusCode)
                 {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    dificultades = JsonConvert.DeserializeObject<List<Dificultad>>(aux);
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        dificultades = JsonConvert.DeserializeObject<List<Dificultad>>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
 
-            return dificultades;
+                return dificultades;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         //Llamada a la API para traer todas las provincias.
 
         public async Task<List<Provincia>> GetProvinciasAsync()
         {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
+
             List<Provincia> provincias = new List<Provincia>();
 
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
-
-            Uri uri = new Uri(string.Format(Constants.EscapeRankURL, Constants.ProvinciasURL));
-
+            Uri uri = new Uri(string.Format(Constantes.EscapeRankURL, Constantes.ProvinciasURL));
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
 
-                if (resp.IsSuccessStatusCode)
+                switch (resp.StatusCode)
                 {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    provincias = JsonConvert.DeserializeObject<List<Provincia>>(aux);
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        provincias = JsonConvert.DeserializeObject<List<Provincia>>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
-                
+
+                return provincias;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
+                throw;
             }
-           
-            return provincias;
         }
     }
 }

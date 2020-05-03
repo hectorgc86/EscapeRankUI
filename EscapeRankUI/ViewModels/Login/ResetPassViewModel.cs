@@ -8,18 +8,14 @@ namespace EscapeRankUI.ViewModels
 {
     public class ResetPassViewModel : BaseViewModel
     {
+        public Command ResetPassCommand { get; }
+        public Command RegistrarCommand { get; }
+
         public ResetPassViewModel()
         {
-            // storeService = App.CredentialsService;
-            // storeService.DeleteCredentials();
-            // Usuario = new Usuario();
             ResetPassCommand = new Command(ReestablecerPass);
             RegistrarCommand = new Command(Registrar);
-            
         }
-
-        public ICommand ResetPassCommand { get; set; }
-        public ICommand RegistrarCommand { get; set; }
 
         private void ReestablecerPass()
         {

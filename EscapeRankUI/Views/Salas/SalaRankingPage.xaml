@@ -4,11 +4,14 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:recursos="clr-namespace:EscapeRankUI.Recursos"
-    BackgroundColor="{DynamicResource variable1}">
+    BackgroundColor="{DynamicResource variable1}"
+    Title="Ranking">
 
     <ContentPage.Content>
-                <CollectionView ItemsSource="{Binding Partidas}" SelectionMode="Single"
-                                 EmptyView="No hay partidas registradas en esta sala">
+        <Grid>
+                <CollectionView ItemsSource="{Binding Partidas}"
+                                SelectionMode="Single"
+                                EmptyView="No hay partidas registradas en esta sala">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
@@ -20,17 +23,19 @@
                                 <Frame Padding="16"
                                         BackgroundColor="{DynamicResource variable2}"
                                         CornerRadius="8"
-                                        Visual="Material"
-                                        HasShadow="True">
+                                        Visual="Material">
                                     <StackLayout Orientation="Horizontal">
-                                         <StackLayout Orientation="Horizontal" VerticalOptions="Center"
-                                                     HorizontalOptions="Center" WidthRequest="100" Spacing="20">
+                                         <StackLayout Orientation="Horizontal"
+                                                      VerticalOptions="Center"
+                                                      HorizontalOptions="Center"
+                                                      WidthRequest="100" Spacing="20">
                                              <Image
                                                         Source="{StaticResource icono_trofeo}"
                                                         VerticalOptions="Start" />
                                                 <Label
                                                         Text="{Binding PosicionRanking}"
                                                         Style="{StaticResource texto_titulo1}"
+                                                        TextColor="{DynamicResource variable3}"
                                                         LineBreakMode="TailTruncation"
                                                         MaxLines="2" />
                                                 
@@ -66,11 +71,13 @@
                                                 <Label
                                                         Text="{x:Static recursos:Strings.equipo}"
                                                         Style="{StaticResource texto_subtitulo9}"
+                                                        TextColor="{StaticResource gris1}"
                                                         MaxLines="3"
                                                         LineBreakMode="TailTruncation" />
                                                 <Label
                                                         Text="{Binding Equipo.Nombre}"
                                                         Style="{StaticResource texto_subtitulo5}"
+                                                        TextColor="{DynamicResource variable4}"
                                                         MaxLines="3"
                                                         LineBreakMode="TailTruncation" />
 
@@ -85,21 +92,13 @@
                                                 <Label
                                                         Text="{x:Static recursos:Strings.realizado_en}"
                                                         Style="{StaticResource texto_subtitulo9}"
+                                                        TextColor="{StaticResource gris1}"
                                                         MaxLines="3"
                                                         LineBreakMode="TailTruncation" />
                                                 <Label
-                                                        Text="{Binding Horas,StringFormat=' {0}:'}"
+                                                        Text="{Binding DuracionPartida,StringFormat='{}{0:h\\:mm\\:ss}'}"
                                                         Style="{StaticResource texto_subtitulo5}"
-                                                        MaxLines="3"
-                                                        LineBreakMode="TailTruncation" />
-                                                <Label
-                                                        Text="{Binding Minutos,StringFormat='{0}:'}"
-                                                        Style="{StaticResource texto_subtitulo5}"
-                                                        MaxLines="3"
-                                                        LineBreakMode="TailTruncation" />
-                                                <Label
-                                                        Text="{Binding Segundos}"
-                                                        Style="{StaticResource texto_subtitulo5}"
+                                                        TextColor="{DynamicResource variable4}"
                                                         MaxLines="3"
                                                         LineBreakMode="TailTruncation" />
                                             </StackLayout>
@@ -110,5 +109,11 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+        <BoxView Color="{DynamicResource variable1}" Opacity="0.9" IsVisible ="{Binding Cargando}"/>
+            <ActivityIndicator Color="{DynamicResource variable3}"
+                               Scale="0.1"
+                               IsRunning="{Binding Cargando}"
+                               IsVisible ="{Binding Cargando}"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

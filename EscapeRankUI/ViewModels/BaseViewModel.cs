@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using EscapeRankUI.Estilos.Temas;
+using System.Threading;
+using System.Threading.Tasks;
+using EscapeRankUI.Estilos;
 using EscapeRankUI.Modelos;
+using EscapeRankUI.Views;
 using Xamarin.Forms;
 
 namespace EscapeRankUI.ViewModels
@@ -12,11 +15,6 @@ namespace EscapeRankUI.ViewModels
     public class BaseViewModel : BindableObject
     {
         private bool _cargando;
-
-        public BaseViewModel()
-        {
-           // _usuario = ServicioFake.Usuarios.FirstOrDefault<Usuario>((arg) => arg.Id == App.CredentialsService.IdUsuario);
-        }
 
         public bool Cargando
         {
@@ -41,5 +39,15 @@ namespace EscapeRankUI.ViewModels
             return true;
         }
 
+        public async void ErrorCredenciales() {
+
+            if (Cargando)
+            {
+                await Application.Current.MainPage.DisplayAlert("Su sesión ha caducado", "Debe volver a hacer login", "Ok");
+                Application.Current.MainPage = new NavigationPage(new LoginPage());
+
+                Cargando = false;
+            }
+        }
     }
 }

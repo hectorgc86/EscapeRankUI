@@ -4,185 +4,217 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:recursos="clr-namespace:EscapeRankUI.Recursos"
-    BackgroundColor="{DynamicResource variable1}">
+    BackgroundColor="{DynamicResource variable1}"
+    Title="Info">
 
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout
+        <Grid>
+            <ScrollView>
+                <StackLayout
                 Style="{StaticResource espacio_stack_normal}"
                 Spacing="10" Margin="0,15">
 
-                <Frame
+                    <Frame
                       Visual="Material">
-                    <Image
+                        <Image
                           Source="{Binding Sala.ImagenUriAncha}"
                           Aspect="AspectFill"
                           HeightRequest="180"/>
-                </Frame>
-                <Label HorizontalOptions="Center"
+                    </Frame>
+                    <Label HorizontalOptions="Center"
                        HorizontalTextAlignment="Center"
-                                    Text="{Binding Sala.Nombre}"
-                                    Style="{StaticResource texto_cabecera3}"/>
+                       Text="{Binding Sala.Nombre}"
+                       Style="{StaticResource texto_cabecera3}"
+                       TextColor="{DynamicResource variable3}"/>
 
-                <Label HorizontalOptions="Center"
+                    <Label HorizontalOptions="Center"
                                 Text="{Binding Sala.Companyia.Nombre}"
-                                Style="{StaticResource texto_subtitulo4}" />
+                                Style="{StaticResource texto_subtitulo4}"
+                                TextColor="{DynamicResource variable4}" />
 
-                <Label HorizontalOptions="Center"
+                    <Label HorizontalOptions="Center"
                                 Text="{Binding Sala.Companyia.Ciudad.Nombre}"
-                                Style="{StaticResource texto_subtitulo6}" />
+                                Style="{StaticResource texto_subtitulo6}"
+                                TextColor="{DynamicResource variable4}" />
 
-                  <BoxView
+                    <BoxView
                             Margin="0,10"
                             BackgroundColor="{DynamicResource variable4}"
                             HeightRequest="1" />
 
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <StackLayout>
-                        <Label
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout>
+                            <Label
                                         Text="Categoria"
                                         HorizontalTextAlignment="Center"
-                                        Style="{StaticResource texto_subtitulo3}" />
-                     <StackLayout BindableLayout.ItemsSource="{Binding Sala.Categorias}">
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate>
-                                      <Label
+                                        Style="{StaticResource texto_subtitulo3}"
+                                        TextColor="{DynamicResource variable3}" />
+                            <StackLayout BindableLayout.ItemsSource="{Binding Sala.Categorias}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Label
                                         Text="{Binding Tipo}"
                                         HorizontalTextAlignment="Center"
-                                        Style="{StaticResource texto_subtitulo5}" />
-                            </DataTemplate>
-                        </BindableLayout.ItemTemplate>
+                                        Style="{StaticResource texto_subtitulo5}"
+                                        TextColor="{DynamicResource variable4}" />
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
 
-                    </StackLayout>
-                    </StackLayout>
-                   <StackLayout Grid.Column="1">
-                        <Label
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1">
+                            <Label
                                         Text="Temática"
                                         HorizontalTextAlignment="Center"
-                                        Style="{StaticResource texto_subtitulo3}" />
-                     <StackLayout BindableLayout.ItemsSource="{Binding Sala.Tematicas}">
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate>
-                                      <Label
+                                        Style="{StaticResource texto_subtitulo3}"
+                                        TextColor="{DynamicResource variable3}" />
+                            <StackLayout BindableLayout.ItemsSource="{Binding Sala.Tematicas}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Label
                                         Text="{Binding Tipo}"
                                         HorizontalTextAlignment="Center"
-                                        Style="{StaticResource texto_subtitulo5}" />
-                            </DataTemplate>
-                        </BindableLayout.ItemTemplate>
+                                        Style="{StaticResource texto_subtitulo5}"
+                                        TextColor="{DynamicResource variable4}" />
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
 
-                    </StackLayout>
-                    </StackLayout>
-                     <StackLayout Grid.Column="2">
-                        <Label
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2">
+                            <Label
                                         Text="Público"
                                         HorizontalTextAlignment="Center"
-                                        Style="{StaticResource texto_subtitulo3}" />
-                     <StackLayout BindableLayout.ItemsSource="{Binding Sala.Publico}">
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate>
-                                      <Label
+                                        Style="{StaticResource texto_subtitulo3}"
+                                        TextColor="{DynamicResource variable3}" />
+                            <StackLayout BindableLayout.ItemsSource="{Binding Sala.Publico}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Label
                                         Text="{Binding Tipo}"
                                         HorizontalTextAlignment="Center"
-                                        Style="{StaticResource texto_subtitulo5}" />
-                            </DataTemplate>
-                        </BindableLayout.ItemTemplate>
-                    </StackLayout>
-                    </StackLayout>
+                                        Style="{StaticResource texto_subtitulo5}"
+                                        TextColor="{DynamicResource variable4}" />
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </StackLayout>
 
-                </Grid>
+                    </Grid>
 
 
-                <BoxView
+                    <BoxView
                             Margin="0,10,0,0"
                             BackgroundColor="{DynamicResource variable4}"
                             HeightRequest="1" />
 
-                <Label HorizontalOptions="Center" TextType="Html"
+                    <Label HorizontalOptions="Center" TextType="Html"
                                 Text="{Binding Sala.Descripcion}"
-                                Style="{StaticResource texto_subtitulo5}" />
+                                Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}" />
 
-                <StackLayout Orientation="Horizontal">
-                    <StackLayout
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout
                                 Orientation="Vertical"
                                 Spacing="12">
 
-                        <Label
+                            <Label
                                 Text="Duración"
-                                Style="{StaticResource texto_subtitulo3}" />
-                        <Label
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
+                            <Label
                                 Text="Jugadores"
-                                Style="{StaticResource texto_subtitulo3}" />
-                        <Label
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
+                            <Label
                                 Text="Precio"
-                                Style="{StaticResource texto_subtitulo3}" />
-                        <Label
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
+                            <Label
                                 Text="Dificultad"
-                                Style="{StaticResource texto_subtitulo3}" />
-                        <Label
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
+                            <Label
                                 Text="Jugador adicional"
-                                Style="{StaticResource texto_subtitulo3}" />
-                        <Label
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
+                            <Label
                                 Text="Edad público"
-                                Style="{StaticResource texto_subtitulo3}" />
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
 
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand"
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand"
                                Spacing="16">
 
-                        <Label Text="{Binding Sala.Duracion,StringFormat='{0} minutos'}"
-                                Style="{StaticResource texto_subtitulo5}" />
-
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Sala.MinimoJugadores,StringFormat='{0}',TargetNullValue=Sin mínimo}"
+                            <Label Text="{Binding Sala.Duracion,StringFormat='{0} minutos'}"
                                 Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}" />
+
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Sala.MinimoJugadores,StringFormat='{0}',TargetNullValue=Sin mínimo}"
+                                   Style="{StaticResource texto_subtitulo5}"
+                                   TextColor="{DynamicResource variable4}"/>
+
+                                <Label Text="{Binding Sala.MaximoJugadores,StringFormat=' - {0}',TargetNullValue=Sin máximo}"
+                                   Style="{StaticResource texto_subtitulo5}"
+                                   TextColor="{DynamicResource variable4}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Sala.PrecioMinimo,StringFormat='{0}€',TargetNullValue=Sin mínimo}"
+                                   Style="{StaticResource texto_subtitulo5}"
+                                   TextColor="{DynamicResource variable4}"
                                      />
-                            <Label Text="{Binding Sala.MaximoJugadores,StringFormat=' - {0}',TargetNullValue=Sin máximo}"
-                                Style="{StaticResource texto_subtitulo5}"
+                                <Label Text="{Binding Sala.PrecioMaximo,StringFormat=' - {0}€',TargetNullValue=Sin máximo}"
+                                   Style="{StaticResource texto_subtitulo5}"
+                                   TextColor="{DynamicResource variable4}"
                                   />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Sala.PrecioMinimo,StringFormat='{0}€',TargetNullValue=Sin mínimo}"
+                            </StackLayout>
+
+                            <Label  Text="{Binding Sala.Dificultad.Tipo,TargetNullValue=Consultar}"
                                 Style="{StaticResource texto_subtitulo5}"
-                                     />
-                            <Label Text="{Binding Sala.PrecioMaximo,StringFormat=' - {0}€',TargetNullValue=Sin máximo}"
+                                TextColor="{DynamicResource variable4}" />
+
+                            <Label  Text="{Binding Sala.PrecioJugadorAdicional,StringFormat='{0}€',TargetNullValue=No}"
                                 Style="{StaticResource texto_subtitulo5}"
-                                  />
+                                TextColor="{DynamicResource variable4}" />
+
+                            <Label  Text="{Binding Sala.EdadPublico,TargetNullValue=Preguntar}"
+                                Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}" />
+
                         </StackLayout>
-
-                        <Label Text="{Binding Sala.Dificultad.Tipo,TargetNullValue=Consultar}"
-                                Style="{StaticResource texto_subtitulo5}" />
-
-                        <Label Text="{Binding Sala.PrecioJugadorAdicional,StringFormat='{0}€',TargetNullValue=No}"
-                                Style="{StaticResource texto_subtitulo5}" />
-
-                        <Label Text="{Binding Sala.EdadPublico,TargetNullValue=Preguntar}"
-                                Style="{StaticResource texto_subtitulo5}" />
-
                     </StackLayout>
-                </StackLayout>
-                <BoxView/>
-                <Label 
-                                Text="Reservas"
-                                HorizontalTextAlignment="Center"
-                                Style="{StaticResource texto_subtitulo3}" />
+                    <BoxView/>
+                    <Label 
+                            Text="Reservas"
+                            HorizontalTextAlignment="Center"
+                            Style="{StaticResource texto_subtitulo3}"
+                            TextColor="{DynamicResource variable3}" />
 
-                <Label HorizontalTextAlignment="Center"
+                    <Label HorizontalTextAlignment="Center"
                         Style="{StaticResource texto_subtitulo5}"
                         Text="{Binding Sala.UrlReserva,TargetNullValue=No hay link disponible}"
                         TextColor="Blue"
                         TextDecorations="Underline">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
                             Command="{Binding ContactoSalaCommand}"/>
-                    </Label.GestureRecognizers>
-                </Label>
-                <BoxView/>
-            </StackLayout>
-        </ScrollView>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <BoxView/>
+                </StackLayout>
+            </ScrollView>
+            <BoxView Color="{DynamicResource variable1}" Opacity="0.9" IsVisible ="{Binding Cargando}"/>
+            <ActivityIndicator Color="{DynamicResource variable3}"
+                               Scale="0.1"
+                               IsRunning="{Binding Cargando}"
+                               IsVisible ="{Binding Cargando}"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -141,7 +141,6 @@ namespace EscapeRankUI.Servicios
                     Sala = Salas[x],
                     Fecha = new DateTime(2019, x, 10),
                     Id = x,
-                    Horas = 0,
                     Minutos = 40 + x,
                     Segundos = 20
                 });

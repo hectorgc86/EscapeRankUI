@@ -12,13 +12,13 @@ namespace EscapeRankUI
     public partial class App : Application
     {
         public static Usuario UsuarioPrincipal { get; set; }
-        public static LoginManager LoginManager { get; private set; }
-        public static MuroManager MuroManager { get; private set; }
-        public static SalasManager SalasManager { get; private set; }
-        public static PartidaManager PartidaManager { get; private set; }
-        public static HistorialManager HistorialManager { get; private set; }
-        public static PerfilManager PerfilManager { get; private set; }
 
+        public static ILoginService LoginService { get; private set; }
+        public static IMuroService MuroService { get; private set; }
+        public static ISalasService SalasService { get; private set; }
+        public static IPartidaService PartidaService { get; private set; }
+        public static IHistorialService HistorialService { get; private set; }
+        public static IPerfilService PerfilService { get; private set; }
         public static ICredencialesService CredencialesService { get; private set; }
 
         public App()
@@ -29,43 +29,35 @@ namespace EscapeRankUI
 
             //ServicioFake.RellenarDatos();
 
+            LoginService = new LoginService();
+            MuroService = new MuroService();
+            SalasService = new SalasService();
+            PartidaService = new PartidaService();
+            HistorialService = new HistorialService();
+            PerfilService = new PerfilService();
             CredencialesService = new CredencialesService();
 
-            LoginManager = new LoginManager(new LoginService());
-            MuroManager = new MuroManager(new MuroService());
-            SalasManager = new SalasManager(new SalasService());
-            PartidaManager = new PartidaManager(new PartidaService());
-            HistorialManager = new HistorialManager(new HistorialService());
-            PerfilManager = new PerfilManager(new PerfilService());
-
-            Login login = new Login();
+            bool existenCredenciales = false;
 
             Task.Run(async () =>
             {
+                existenCredenciales = await CredencialesService.ComprobarCredenciales();
 
-            }).ContinueWith(async (arg) => {
-                if (login != null && login.TokenAcceso != null)
+            }).ContinueWith((arg) => {
+
+                if (existenCredenciales)
                 {
-                    // await CredencialesService.SaveToken(login.TokenAcceso);
+                    Task.Run(async () =>
+                    {
+                       UsuarioPrincipal = await PerfilService.GetUsuarioAsync();
+                    }).Wait();
+                    MainPage = new AppShell();
                 }
                 else
                 {
-                    await CredencialesService.DeleteCredentials();
+                    MainPage = new NavigationPage(new LoginPage());
                 }
             }).Wait();
-
-            if (CredencialesService.DoCredentialsExist())
-            {
-                Task.Run(async () =>
-                {
-                    UsuarioPrincipal = await PerfilManager.GetUsuarioAsync();
-                }).Wait();
-                MainPage = new AppShell();
-            }
-            else
-            {
-                MainPage = new NavigationPage(new LoginPage());
-            }
         }
     }
 }

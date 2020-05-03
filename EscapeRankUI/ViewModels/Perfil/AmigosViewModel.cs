@@ -23,7 +23,6 @@ namespace EscapeRankUI.ViewModels
             GetAmigos();
         }
 
-
         public ObservableCollection<Usuario> Amigos
         {
             get { return _amigos; }
@@ -34,8 +33,22 @@ namespace EscapeRankUI.ViewModels
 
         private async void GetAmigos()
         {
-            List<Usuario> amigosCall = await App.PerfilManager.GetAmigosAsync(); //Servicios.ServicioFake.Usuarios[0].Amigos; 
-            Amigos = new ObservableCollection<Usuario>(amigosCall);
+            Cargando = true;
+
+            try
+            {
+                List<Usuario> amigosCall = await App.PerfilService.GetAmigosAsync(); //Servicios.ServicioFake.Usuarios[0].Amigos; 
+                Amigos = new ObservableCollection<Usuario>(amigosCall);
+            }
+            catch (HttpUnauthorizedException)
+            {
+                ErrorCredenciales();
+            }
+            finally
+            {
+                Cargando = false;
+            }
+
         }
 
         private async void VerAmigo(Usuario amigoSeleccionado)

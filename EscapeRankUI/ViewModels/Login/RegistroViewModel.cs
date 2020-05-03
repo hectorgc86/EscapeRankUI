@@ -10,31 +10,24 @@ namespace EscapeRankUI.ViewModels
 {
     public class RegistroViewModel : BaseViewModel
     {
-
-    //Variables
-
-        public ICredencialesService storeService;
-
-    //Constructor
-
-        public RegistroViewModel()
-        {
-            storeService = App.CredencialesService;
-            storeService.DeleteCredentials();
-            LoginCommand = new Command(Login);
-            RegistrarCommand = new Command(Registrar);
-        }
-
-        //Getters & Setters
-
         public string Nombre { get; set; }
         public string Email { get; set; }
         public string Contrasenya { get; set; }
         public string RepContrasenya { get; set; }
+        private string ContrasenyaEncriptada { get; set; }
+
+        //Constructor
+
+        public RegistroViewModel()
+        {
+            LoginCommand = new Command(Login);
+            RegistrarCommand = new Command(Registrar);
+        }
+
         public Command RegistrarCommand { get; set; }
         public Command LoginCommand { get; set; }
 
-    //Funciones
+        //Funciones
 
         private async void Login(object obj)
         {
@@ -43,23 +36,32 @@ namespace EscapeRankUI.ViewModels
 
         public async void Registrar()
         {
-            try
-            {
-                if (!string.IsNullOrEmpty(Nombre) && !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Contrasenya) && !string.IsNullOrEmpty(RepContrasenya) && Contrasenya == RepContrasenya)
+                if (!string.IsNullOrEmpty(Nombre) &&
+                    !string.IsNullOrEmpty(Email) &&
+                    !string.IsNullOrEmpty(Contrasenya) &&
+                    !string.IsNullOrEmpty(RepContrasenya) &&
+                    Contrasenya == RepContrasenya)
                 {
-                    Login login = await App.LoginManager.PostRegistroAsync(Nombre, Email, Contrasenya);
+                    ContrasenyaEncriptada = Utils.CalcularMD5(Contrasenya);
+                try
+                {
+                        Login login = await App.LoginService.PostRegistroAsync(Nombre, Email, ContrasenyaEncriptada);
 
-                    if (login != null && login.TokenRefresco != null && login.TokenAcceso != null)
-                    {
-                        await storeService.SaveCredentials(int.Parse(login.IdUsuario), Email, Contrasenya, login);
-
-                        App.UsuarioPrincipal = await App.PerfilManager.GetUsuarioAsync();
-
-                        Application.Current.MainPage = new AppShell();
+                        if (login.UsuarioId != null)
+                        {
+                            await App.CredencialesService.GuardarCredenciales(Email, ContrasenyaEncriptada, login);
+                            App.UsuarioPrincipal = await App.PerfilService.GetUsuarioAsync();
+                            await Application.Current.MainPage.DisplayAlert("Usuario registrado con éxito", null, "Ok");
+                            Application.Current.MainPage = new AppShell();
+                        }
+                        else
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Error en la conexión", null, "Ok");
+                        }
                     }
-                    else
+                    catch (HttpConflictException)
                     {
-                        await Application.Current.MainPage.DisplayAlert("Error registrando usuario", null, "Ok");
+                        await Application.Current.MainPage.DisplayAlert("Ya existe un usuario registrado con ese Email", null, "Ok");
                     }
                 }
                 else
@@ -67,12 +69,6 @@ namespace EscapeRankUI.ViewModels
                     await Application.Current.MainPage.DisplayAlert("Error validación", null, "Ok");
                 }
             }
-            catch (Exception e)
-            {
-                Debug.WriteLine("ERROR {0}", e.Message);
-                await Application.Current.MainPage.DisplayAlert("Error de conexión", e.Message, "Ok");
-            }
-        }
 
     }
 }

@@ -10,23 +10,30 @@ namespace EscapeRankUI.ViewModels
     {
         private ObservableCollection<Partida> _partidas;
 
-        public HistorialViewModel()
-        {
-            GetHistorial();
-        }
-
         public ObservableCollection<Partida> Partidas
         {
             get { return _partidas; }
             set { SetProperty(ref _partidas, value); }
         }
 
-        private async void GetHistorial()
+        public async void GetHistorial()
         {
-            List<Partida> partidas = await App.HistorialManager.GetHistorialAsync(App.UsuarioPrincipal.Id);
-            //Servicios.ServicioFake.Equipos.SelectMany(p=>p.Partidas).Distinct().ToList();
+            Cargando = true;
 
-            Partidas = new ObservableCollection<Partida>(partidas);
+            try
+            {
+                List<Partida> partidas = await App.HistorialService.GetHistorialAsync(App.UsuarioPrincipal.Id);
+                //Servicios.ServicioFake.Equipos.SelectMany(p=>p.Partidas).Distinct().ToList();
+                Partidas = new ObservableCollection<Partida>(partidas);
+            }
+            catch (HttpUnauthorizedException)
+            {
+                ErrorCredenciales();
+            }
+            finally
+            {
+                Cargando = false;
+            }
         }
 
     }

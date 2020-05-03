@@ -26,9 +26,11 @@ namespace EscapeRankUI.Droid
             Xamarin.Essentials.Platform.Init(Application);
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+           
             //FacebookClientManager.Initialize(this);
 
             FormsMaterial.Init(this, savedInstanceState);
+            Forms.SetFlags("UseLegacyRenderers");
             Forms.Init(this, savedInstanceState);
 
             LoadApplication(new App());

@@ -1867,6 +1867,7 @@ namespace EscapeRankUI.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Style.Animation_AppCompat_DropDownUp = global::EscapeRankUI.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Animation_AppCompat_Tooltip = global::EscapeRankUI.Droid.Resource.Style.Animation_AppCompat_Tooltip;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Animation_Design_BottomSheetDialog = global::EscapeRankUI.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.AppCompatDialogStyle = global::EscapeRankUI.Droid.Resource.Style.AppCompatDialogStyle;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_AlertDialog_AppCompat = global::EscapeRankUI.Droid.Resource.Style.Base_AlertDialog_AppCompat;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_AlertDialog_AppCompat_Light = global::EscapeRankUI.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Animation_AppCompat_Dialog = global::EscapeRankUI.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
@@ -2059,7 +2060,8 @@ namespace EscapeRankUI.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Style.CardView_Dark = global::EscapeRankUI.Droid.Resource.Style.CardView_Dark;
 			global::Xamarin.Forms.Material.Android.Resource.Style.CardView_Light = global::EscapeRankUI.Droid.Resource.Style.CardView_Light;
 			global::Xamarin.Forms.Material.Android.Resource.Style.collectionViewStyle = global::EscapeRankUI.Droid.Resource.Style.collectionViewStyle;
-			global::Xamarin.Forms.Material.Android.Resource.Style.NestedScrollBarStyle = global::EscapeRankUI.Droid.Resource.Style.NestedScrollBarStyle;
+			global::Xamarin.Forms.Material.Android.Resource.Style.MainTheme = global::EscapeRankUI.Droid.Resource.Style.MainTheme;
+			global::Xamarin.Forms.Material.Android.Resource.Style.MainTheme_Base = global::EscapeRankUI.Droid.Resource.Style.MainTheme_Base;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Platform_AppCompat = global::EscapeRankUI.Droid.Resource.Style.Platform_AppCompat;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Platform_AppCompat_Light = global::EscapeRankUI.Droid.Resource.Style.Platform_AppCompat_Light;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Platform_MaterialComponents = global::EscapeRankUI.Droid.Resource.Style.Platform_MaterialComponents;
@@ -4439,6 +4441,7 @@ namespace EscapeRankUI.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Animation_AppCompat_DropDownUp = global::EscapeRankUI.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Animation_AppCompat_Tooltip = global::EscapeRankUI.Droid.Resource.Style.Animation_AppCompat_Tooltip;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Animation_Design_BottomSheetDialog = global::EscapeRankUI.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.AppCompatDialogStyle = global::EscapeRankUI.Droid.Resource.Style.AppCompatDialogStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_AlertDialog_AppCompat = global::EscapeRankUI.Droid.Resource.Style.Base_AlertDialog_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_AlertDialog_AppCompat_Light = global::EscapeRankUI.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Animation_AppCompat_Dialog = global::EscapeRankUI.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
@@ -4631,7 +4634,8 @@ namespace EscapeRankUI.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.CardView_Dark = global::EscapeRankUI.Droid.Resource.Style.CardView_Dark;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.CardView_Light = global::EscapeRankUI.Droid.Resource.Style.CardView_Light;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.collectionViewStyle = global::EscapeRankUI.Droid.Resource.Style.collectionViewStyle;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.NestedScrollBarStyle = global::EscapeRankUI.Droid.Resource.Style.NestedScrollBarStyle;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.MainTheme = global::EscapeRankUI.Droid.Resource.Style.MainTheme;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.MainTheme_Base = global::EscapeRankUI.Droid.Resource.Style.MainTheme_Base;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Platform_AppCompat = global::EscapeRankUI.Droid.Resource.Style.Platform_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Platform_AppCompat_Light = global::EscapeRankUI.Droid.Resource.Style.Platform_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Platform_MaterialComponents = global::EscapeRankUI.Droid.Resource.Style.Platform_MaterialComponents;
@@ -7002,6 +7006,7 @@ namespace EscapeRankUI.Droid
 			global::Xamarin.Forms.Platform.Resource.Style.Animation_AppCompat_DropDownUp = global::EscapeRankUI.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
 			global::Xamarin.Forms.Platform.Resource.Style.Animation_AppCompat_Tooltip = global::EscapeRankUI.Droid.Resource.Style.Animation_AppCompat_Tooltip;
 			global::Xamarin.Forms.Platform.Resource.Style.Animation_Design_BottomSheetDialog = global::EscapeRankUI.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
+			global::Xamarin.Forms.Platform.Resource.Style.AppCompatDialogStyle = global::EscapeRankUI.Droid.Resource.Style.AppCompatDialogStyle;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_AlertDialog_AppCompat = global::EscapeRankUI.Droid.Resource.Style.Base_AlertDialog_AppCompat;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_AlertDialog_AppCompat_Light = global::EscapeRankUI.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_Animation_AppCompat_Dialog = global::EscapeRankUI.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
@@ -7194,7 +7199,8 @@ namespace EscapeRankUI.Droid
 			global::Xamarin.Forms.Platform.Resource.Style.CardView_Dark = global::EscapeRankUI.Droid.Resource.Style.CardView_Dark;
 			global::Xamarin.Forms.Platform.Resource.Style.CardView_Light = global::EscapeRankUI.Droid.Resource.Style.CardView_Light;
 			global::Xamarin.Forms.Platform.Resource.Style.collectionViewStyle = global::EscapeRankUI.Droid.Resource.Style.collectionViewStyle;
-			global::Xamarin.Forms.Platform.Resource.Style.NestedScrollBarStyle = global::EscapeRankUI.Droid.Resource.Style.NestedScrollBarStyle;
+			global::Xamarin.Forms.Platform.Resource.Style.MainTheme = global::EscapeRankUI.Droid.Resource.Style.MainTheme;
+			global::Xamarin.Forms.Platform.Resource.Style.MainTheme_Base = global::EscapeRankUI.Droid.Resource.Style.MainTheme_Base;
 			global::Xamarin.Forms.Platform.Resource.Style.Platform_AppCompat = global::EscapeRankUI.Droid.Resource.Style.Platform_AppCompat;
 			global::Xamarin.Forms.Platform.Resource.Style.Platform_AppCompat_Light = global::EscapeRankUI.Droid.Resource.Style.Platform_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Resource.Style.Platform_MaterialComponents = global::EscapeRankUI.Droid.Resource.Style.Platform_MaterialComponents;
@@ -13526,49 +13532,49 @@ namespace EscapeRankUI.Droid
 			public const int MainTheme = 2131558598;
 			
 			// aapt resource value: 0x7F0D00C7
-			public const int MessengerButton = 2131558599;
-			
-			// aapt resource value: 0x7F0D00CE
-			public const int MessengerButtonText = 2131558606;
-			
-			// aapt resource value: 0x7F0D00CF
-			public const int MessengerButtonText_Blue = 2131558607;
-			
-			// aapt resource value: 0x7F0D00D0
-			public const int MessengerButtonText_Blue_Large = 2131558608;
-			
-			// aapt resource value: 0x7F0D00D1
-			public const int MessengerButtonText_Blue_Small = 2131558609;
-			
-			// aapt resource value: 0x7F0D00D2
-			public const int MessengerButtonText_White = 2131558610;
-			
-			// aapt resource value: 0x7F0D00D3
-			public const int MessengerButtonText_White_Large = 2131558611;
-			
-			// aapt resource value: 0x7F0D00D4
-			public const int MessengerButtonText_White_Small = 2131558612;
+			public const int MainTheme_Base = 2131558599;
 			
 			// aapt resource value: 0x7F0D00C8
-			public const int MessengerButton_Blue = 2131558600;
+			public const int MessengerButton = 2131558600;
 			
-			// aapt resource value: 0x7F0D00C9
-			public const int MessengerButton_Blue_Large = 2131558601;
+			// aapt resource value: 0x7F0D00CF
+			public const int MessengerButtonText = 2131558607;
 			
-			// aapt resource value: 0x7F0D00CA
-			public const int MessengerButton_Blue_Small = 2131558602;
+			// aapt resource value: 0x7F0D00D0
+			public const int MessengerButtonText_Blue = 2131558608;
 			
-			// aapt resource value: 0x7F0D00CB
-			public const int MessengerButton_White = 2131558603;
+			// aapt resource value: 0x7F0D00D1
+			public const int MessengerButtonText_Blue_Large = 2131558609;
 			
-			// aapt resource value: 0x7F0D00CC
-			public const int MessengerButton_White_Large = 2131558604;
+			// aapt resource value: 0x7F0D00D2
+			public const int MessengerButtonText_Blue_Small = 2131558610;
 			
-			// aapt resource value: 0x7F0D00CD
-			public const int MessengerButton_White_Small = 2131558605;
+			// aapt resource value: 0x7F0D00D3
+			public const int MessengerButtonText_White = 2131558611;
+			
+			// aapt resource value: 0x7F0D00D4
+			public const int MessengerButtonText_White_Large = 2131558612;
 			
 			// aapt resource value: 0x7F0D00D5
-			public const int NestedScrollBarStyle = 2131558613;
+			public const int MessengerButtonText_White_Small = 2131558613;
+			
+			// aapt resource value: 0x7F0D00C9
+			public const int MessengerButton_Blue = 2131558601;
+			
+			// aapt resource value: 0x7F0D00CA
+			public const int MessengerButton_Blue_Large = 2131558602;
+			
+			// aapt resource value: 0x7F0D00CB
+			public const int MessengerButton_Blue_Small = 2131558603;
+			
+			// aapt resource value: 0x7F0D00CC
+			public const int MessengerButton_White = 2131558604;
+			
+			// aapt resource value: 0x7F0D00CD
+			public const int MessengerButton_White_Large = 2131558605;
+			
+			// aapt resource value: 0x7F0D00CE
+			public const int MessengerButton_White_Small = 2131558606;
 			
 			// aapt resource value: 0x7F0D00D6
 			public const int Platform_AppCompat = 2131558614;

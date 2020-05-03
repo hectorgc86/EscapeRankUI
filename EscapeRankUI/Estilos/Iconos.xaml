@@ -4,7 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <!-- Fuente iconos-->
+     <!-- Fuente iconos-->
 
     <OnPlatform
         x:Key="FuenteIconosMD"
@@ -218,7 +218,6 @@
         Size="44"
         Color="#FF2D55" />
 
-
     <!--Iconos SUELTOS-->
 
     <FontImageSource
@@ -226,63 +225,64 @@
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f00c3;"
         Size="23"
-        Color="{DynamicResource variable4}" />
+        Color="#9F9F9F"/>
 
     <FontImageSource
         x:Key="icono_anyadir"
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f0419;"
         Size="23"
-        Color="#B9BDC5" />
+        Color="#B9BDC5"/>
 
      <FontImageSource
         x:Key="icono_luna"
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f0f65;"
         Size="18"
-        Color="{DynamicResource blanco1}"/>
+        Color="#FFFFFF"/>
 
     <FontImageSource
         x:Key="icono_filtrar"
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f0236;"
         Size="23"
-        Color="{DynamicResource variable4}" />
+        Color="#9F9F9F"/>
 
     <FontImageSource
         x:Key="icono_ubicacion"
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f034e;"
         Size="14"
-        Color="{DynamicResource variable4}" />
+        Color="#9F9F9F"/>
 
     <FontImageSource
         x:Key="icono_equipo"
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f0004;"
         Size="14"
-        Color="{DynamicResource variable4}" />
+        Color="#9F9F9F"/>
 
     <FontImageSource
         x:Key="icono_reloj"
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f13ab;"
         Size="14"
-        Color="{DynamicResource variable4}" />
+        Color="#9F9F9F"/>
+    
 
     <FontImageSource
         x:Key="icono_reloj_arena"
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f078c;"
         Size="14"
-        Color="{DynamicResource variable4}" />
+        Color="#9F9F9F"/>
 
     <FontImageSource
         x:Key="icono_calendario_hoy"
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f00f6;"
         Size="14"
-        Color="{DynamicResource variable4}" />
+        Color="#9F9F9F"/>
 
     <FontImageSource
         x:Key="icono_facebook"
@@ -325,15 +325,5 @@
         Glyph="&#x000f103a;"
         Size="12"
         Color="#FDC900" />
-
-    <Label
-        x:Key="label_prueba"
-        FontFamily="{StaticResource FuenteIconosMD}"
-        Text="\U000f0004"
-        TextColor="Red"
-        BackgroundColor="Black"
-        Opacity="0"
-        FontSize="44"
-        />
 
 </ResourceDictionary>

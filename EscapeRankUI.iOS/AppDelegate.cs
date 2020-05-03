@@ -40,5 +40,7 @@ namespace EscapeRankUI.iOS
         {
             return FacebookClientManager.OpenUrl(application, url, sourceApplication, annotation);
         }
+
+       
     }
 }

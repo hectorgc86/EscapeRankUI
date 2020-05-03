@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using EscapeRankUI.Modelos;
 using Xamarin.Forms;
 
@@ -21,8 +22,8 @@ namespace EscapeRankUI.ViewModels
         {
             Equipo = equipoSeleccionado;
 
-            GetIntegrantes();
-            GetPartidas();
+                GetIntegrantes();
+                GetPartidas();
         }
 
         //Getters & Setters
@@ -43,16 +44,34 @@ namespace EscapeRankUI.ViewModels
 
         private async void GetIntegrantes()
         {
-            List<Usuario> miembrosCall = await App.PerfilManager.GetMiembrosEquipoAsync(Equipo.Id);
+            Cargando = true;
 
-            MiembrosEquipo = new ObservableCollection<Usuario>(miembrosCall);
+            try
+            {
+                List<Usuario> miembrosCall = await App.PerfilService.GetMiembrosEquipoAsync(Equipo.Id);
+                MiembrosEquipo = new ObservableCollection<Usuario>(miembrosCall);
+            }
+            catch (HttpUnauthorizedException)
+            {
+                ErrorCredenciales();
+            }
         }
 
         private async void GetPartidas()
         {
-            List<Partida> partidasCall = await App.PerfilManager.GetPartidasEquipoAsync(Equipo.Id);
-
-            PartidasEquipo = new ObservableCollection<Partida>(partidasCall);
+            try
+            {
+                List<Partida> partidasCall = await App.PerfilService.GetPartidasEquipoAsync(Equipo.Id);
+                PartidasEquipo = new ObservableCollection<Partida>(partidasCall);
+            }
+            catch (HttpUnauthorizedException)
+            {
+                ErrorCredenciales();
+            }
+            finally
+            {
+                Cargando = false;
+            }
         } 
     }
 }

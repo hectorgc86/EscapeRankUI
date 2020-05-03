@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using EscapeRankUI.ViewModels;
+using System;
 
 namespace EscapeRankUI.Views
 {

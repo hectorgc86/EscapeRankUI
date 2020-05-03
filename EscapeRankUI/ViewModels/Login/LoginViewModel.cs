@@ -13,18 +13,18 @@ namespace EscapeRankUI.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        public ICredencialesService storeService;
         public IFacebookClient _servicioFacebook = CrossFacebookClient.Current;
 
         public Usuario Usuario { get; set; }
         public string Email { get; set; }
         public string Contrasenya { get; set; }
+        private string ContrasenyaEncriptada { get; set; }
 
 
         public LoginViewModel()
         {
-            storeService = App.CredencialesService;
-            storeService.DeleteCredentials();
+            App.CredencialesService.BorrarCredenciales();
+
             Usuario = new Usuario();
             LoginCommand = new Command(LoginAsync);
             RegistrarCommand = new Command(Registrar);
@@ -37,47 +37,38 @@ namespace EscapeRankUI.ViewModels
         public Command RegistrarCommand { get; }
         public Command ResetPassCommand { get; }
 
-
-
         public async void LoginAsync()
         {
             Email = "hector@mail.com";
             Contrasenya = "tor";
 
-            try
+            if (!string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Contrasenya))
             {
-                if (Usuario != null)
-                {
-                    if (!string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Contrasenya))
-                    {
-                            Login login = await App.LoginManager.GetLoginAsync(Email, Contrasenya);
-                            if (login != null && login.TokenRefresco != null && login.TokenAcceso != null)
-                            {
-                                await storeService.SaveCredentials(int.Parse(login.IdUsuario),Email, Contrasenya, login);
-                             
-                                App.UsuarioPrincipal = await App.PerfilManager.GetUsuarioAsync();
+                ContrasenyaEncriptada = Utils.CalcularMD5(Contrasenya);
 
-                                Application.Current.MainPage = new AppShell();
-                            }
-                            else
-                            {
-                               await Application.Current.MainPage.DisplayAlert("Email o contraseña incorrecta",null, "Ok");
-                            }
+                try
+                {
+                    Login login = await App.LoginService.GetLoginAsync(Email, ContrasenyaEncriptada);
+
+                    if (login.UsuarioId != null)
+                    {
+                        await App.CredencialesService.GuardarCredenciales(Email, ContrasenyaEncriptada, login);
+                        App.UsuarioPrincipal = await App.PerfilService.GetUsuarioAsync();
+                        Application.Current.MainPage = new AppShell();
                     }
                     else
                     {
-                        await Application.Current.MainPage.DisplayAlert("Deben rellenarse todos los campos", null, "Ok");
+                        await Application.Current.MainPage.DisplayAlert("Error en la conexión", null, "Ok");
                     }
                 }
-                else
+                catch (HttpBadRequestException)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Error Conectando al servidor", null, "Ok");
+                    await Application.Current.MainPage.DisplayAlert("Email o contraseña incorrecta", null, "Ok");
                 }
             }
-            catch (Exception e)
+            else
             {
-                Debug.WriteLine("ERROR {0}", e.Message);
-                await Application.Current.MainPage.DisplayAlert("Error de conexión", e.Message, "Ok");
+                await Application.Current.MainPage.DisplayAlert("Deben rellenarse todos los campos", null, "Ok");
             }
         }
 
@@ -90,9 +81,7 @@ namespace EscapeRankUI.ViewModels
                     _servicioFacebook.Logout();
                 }
 
-                EventHandler<FBEventArgs<string>> userDataDelegate = null;
-
-                userDataDelegate = async (object sender, FBEventArgs<string> e) =>
+                async void userDataDelegate(object sender, FBEventArgs<string> e)
                 {
                     switch (e.Status)
                     {
@@ -105,7 +94,7 @@ namespace EscapeRankUI.ViewModels
                                 Email = facebookProfile.Email,
                                 Nombre = facebookProfile.FirstName
                             };
-                            
+
                             Application.Current.MainPage = new AppShell();
                             break;
                         case FacebookActionStatus.Canceled:
@@ -120,7 +109,7 @@ namespace EscapeRankUI.ViewModels
                     }
 
                     _servicioFacebook.OnUserData -= userDataDelegate;
-                };
+                }
 
                 _servicioFacebook.OnUserData += userDataDelegate;
 

@@ -25,7 +25,7 @@ namespace EscapeRankUI.ViewModels
 
         //Getters & Setters
 
-        public ICommand VerEquipoCommand { get; set; }
+        public Command VerEquipoCommand { get; }
 
         public ObservableCollection<Equipo> Equipos
         {
@@ -37,8 +37,22 @@ namespace EscapeRankUI.ViewModels
 
         private async void GetEquipos()
         {
-            List<Equipo> equiposCall = await App.PerfilManager.GetEquiposAsync(); //Servicios.ServicioFake.Usuarios[0].Equipos; 
-            Equipos = new ObservableCollection<Equipo>(equiposCall);
+            Cargando = true;
+
+            try
+            {
+                List<Equipo> equiposCall = await App.PerfilService.GetEquiposAsync(); //Servicios.ServicioFake.Usuarios[0].Equipos; 
+                Equipos = new ObservableCollection<Equipo>(equiposCall);
+            }
+            catch (HttpUnauthorizedException)
+            {
+                ErrorCredenciales();
+            }
+            finally
+            {
+                Cargando = false;
+            }
+            
         }
 
         private async void VerEquipo(Equipo equipoSeleccionado)

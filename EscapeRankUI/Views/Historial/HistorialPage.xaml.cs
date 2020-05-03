@@ -13,5 +13,10 @@ namespace EscapeRankUI.Views
             InitializeComponent();
             BindingContext = hvm;
         }
+
+        protected override void OnAppearing()
+        {
+            hvm.GetHistorial();
+        }
     }
 }

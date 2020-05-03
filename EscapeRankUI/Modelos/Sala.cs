@@ -59,7 +59,9 @@ namespace EscapeRankUI.Modelos
         {
             get
             {
-                var url = Constants.ImagenesAnchasURL + ImagenAncha;
+                ImagenAncha = (string.IsNullOrEmpty(ImagenAncha)) ? "default.png" : ImagenAncha;
+
+                var url = Constantes.ImagenesAnchasURL + ImagenAncha;
                 return ImageSource.FromUri(new Uri(url, UriKind.Absolute));
             }
             set { ImagenUriAncha = value; }
@@ -69,7 +71,9 @@ namespace EscapeRankUI.Modelos
         {
             get
             {
-                var url = Constants.ImagenesEstrechasURL + ImagenEstrecha;
+                ImagenEstrecha = (string.IsNullOrEmpty(ImagenEstrecha)) ? "default.png" : ImagenEstrecha;
+
+                var url = Constantes.ImagenesEstrechasURL + ImagenEstrecha;
                 return ImageSource.FromUri(new Uri(url, UriKind.Absolute));
             }
             set { ImagenUriEstrecha = value; }

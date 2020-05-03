@@ -26,7 +26,6 @@
         <On Platform="iOS" Value="ProductSans-BoldItalic" />
     </OnPlatform>
 
-
     <!--Tamaños fuente-->
 
     <x:Double x:Key="h1">96</x:Double>
@@ -48,118 +47,75 @@
     <!--Estilos texto-->
 
      <Style x:Key="texto_cabecera1" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource variable3}" />
         <Setter Property="FontSize" Value="{StaticResource h4}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_normal}" />
     </Style>
 
-    <Style x:Key="texto_cabecera2" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource variable4}" />
-        <Setter Property="FontSize" Value="{StaticResource h4}" />
-        <Setter Property="FontFamily" Value="{StaticResource fuente_negrita}" />
-    </Style>
 
     <Style x:Key="texto_cabecera3" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource variable3}" />
         <Setter Property="FontSize" Value="{StaticResource h6}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_negrita}" />
     </Style>
 
     <Style x:Key="texto_cabecera4" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource blanco1}" />
         <Setter Property="FontSize" Value="{StaticResource h6}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_negrita}" />
     </Style>
 
      <Style x:Key="texto_cabecera5" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource naranja1}" />
         <Setter Property="FontSize" Value="{StaticResource h5}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_negrita}" />
     </Style>
 
     <Style x:Key="texto_titulo1" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource variable3}" />
         <Setter Property="FontSize" Value="{StaticResource titulo}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_normal}" />
     </Style>
 
     <Style x:Key="texto_titulo2" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource blanco2}" />
         <Setter Property="FontSize" Value="{StaticResource titulo}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_negrita}" />
     </Style>
 
-    <Style x:Key="texto_subtitulo1" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource azul1}" />
-        <Setter Property="FontSize" Value="{StaticResource subtitulo1}" />
-        <Setter Property="FontFamily" Value="{StaticResource fuente_normal}" />
-    </Style>
-
-    <Style x:Key="texto_subtitulo2" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource variable3}" />
-        <Setter Property="FontSize" Value="{StaticResource subtitulo1}" />
-        <Setter Property="FontFamily" Value="{StaticResource fuente_normal}" />
-    </Style>
-
     <Style x:Key="texto_subtitulo3" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource variable3}" />
         <Setter Property="FontSize" Value="{StaticResource subtitulo1}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_negrita}" />
     </Style>
 
     <Style x:Key="texto_subtitulo4" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource variable4}" />
         <Setter Property="FontSize" Value="{StaticResource subtitulo1}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_negrita}" />
     </Style>
 
     <Style x:Key="texto_subtitulo5" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource variable4}" />
         <Setter Property="FontSize" Value="{StaticResource subtitulo2}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_normal}" />
     </Style>
 
     <Style x:Key="texto_subtitulo6" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource variable4}" />
-        <Setter Property="FontSize" Value="{StaticResource subtitulo2}" />
-        <Setter Property="FontFamily" Value="{StaticResource fuente_negrita}" />
-    </Style>
-
-    <Style x:Key="texto_subtitulo7" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource azul1}" />
         <Setter Property="FontSize" Value="{StaticResource subtitulo2}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_negrita}" />
     </Style>
 
      <Style x:Key="texto_subtitulo8" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource blanco2}" />
         <Setter Property="FontSize" Value="{StaticResource subtitulo1}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_negrita}" />
     </Style>
 
     <Style x:Key="texto_subtitulo9" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource gris1}" />
         <Setter Property="FontSize" Value="{StaticResource subtitulo2}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_negrita}" />
     </Style>
 
      <Style x:Key="texto_entry1" TargetType="Entry">
-        <Setter Property="TextColor" Value="{DynamicResource blanco2}" />
         <Setter Property="FontSize" Value="{StaticResource subtitulo1}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_negrita}" />
     </Style>
 
      <Style x:Key="estilo_boton1" TargetType="Button">
-        <Setter Property="TextColor" Value="{DynamicResource blanco1}" />
         <Setter Property="FontSize" Value="{StaticResource subtitulo1}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_normal}" />
         <Setter Property="CornerRadius" Value="15" />
-    </Style>
-
-     <Style x:Key="estilo_boton2" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource azul1}" />
-        <Setter Property="FontSize" Value="{StaticResource boton2}" />
-        <Setter Property="FontFamily" Value="{StaticResource fuente_normal}" />
     </Style>
 
 </ResourceDictionary>

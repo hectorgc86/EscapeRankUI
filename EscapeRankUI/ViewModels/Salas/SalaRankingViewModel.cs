@@ -25,22 +25,30 @@ namespace EscapeRankUI.ViewModels
         {
             int offset = 0;
 
-            List<Partida> partidas = await App.SalasManager.GetPartidasSalaAsync(salaSeleccionada.Id, offset);
-            //Servicios.ServicioFake.Equipos.SelectMany(p=>p.Partidas).Distinct().ToList();
+            Cargando = true;
 
-            foreach (Partida p in partidas)
+            try
             {
-                p.DuracionPartida = new TimeSpan(p.Horas, p.Minutos, p.Segundos);
+                List<Partida> partidas = (await App.SalasService.GetPartidasSalaAsync(salaSeleccionada.Id, offset))
+                    .OrderBy(d => d.DuracionPartida).ToList();
+                //Servicios.ServicioFake.Equipos.SelectMany(p=>p.Partidas).Distinct().ToList();
+
+                for (int i = 0; i < partidas.Count; i++)
+                {
+                    partidas[i].PosicionRanking = i + 1;
+                }
+
+                Partidas = new ObservableCollection<Partida>(partidas);
             }
-
-            List<Partida> partidasOrdenadas = partidas.OrderBy(d => d.DuracionPartida).ToList();
-
-            for(int i = 0;i < partidasOrdenadas.Count; i++)
+            catch (HttpUnauthorizedException)
             {
-                partidasOrdenadas[i].PosicionRanking = i + 1;
+                ErrorCredenciales();
             }
-
-            Partidas = new ObservableCollection<Partida>(partidasOrdenadas);
+            finally
+            {
+                Cargando = false;
+            }
+            
         }
     }
 }

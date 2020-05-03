@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows.Input;
-using EscapeRankUI.Estilos.Temas;
+using EscapeRankUI.Estilos;
 using EscapeRankUI.Modelos;
 using EscapeRankUI.Views;
 using Xamarin.Forms;
@@ -11,7 +12,7 @@ namespace EscapeRankUI.ViewModels
     public class UsuarioViewModel : BaseViewModel
     {
 
-    //Variables
+        //Variables
 
         private bool _modoOscuro;
         public Usuario Usuario { get; set; }
@@ -23,11 +24,10 @@ namespace EscapeRankUI.ViewModels
         {
             LogoutCommand = new Command(Logout);
 
-            GetPerfil();
+            Usuario = App.UsuarioPrincipal;
         }
 
-    //Getters & Setters
-
+        //Getters & Setters
 
         public bool ModoOscuro
         {
@@ -49,20 +49,14 @@ namespace EscapeRankUI.ViewModels
             }
         }
 
-
-    //Funciones
-
-        private void GetPerfil()
-        { 
-            Usuario = App.UsuarioPrincipal; //Servicios.ServicioFake.Usuarios[0];
-        }
+        //Funciones
 
         public async void Logout()
         {
-            bool respuesta = await Application.Current.MainPage.DisplayAlert("Cerrar sesión", "¿Seguro de que desea cerrar sesión?","Si","No");
+            bool respuesta = await Application.Current.MainPage.DisplayAlert("Cerrar sesión", "¿Seguro de que desea cerrar sesión?", "Si", "No");
+
             if (respuesta)
             {
-                await App.CredencialesService.DeleteCredentials();
                 Application.Current.MainPage = new NavigationPage(new LoginPage());
             }
         }

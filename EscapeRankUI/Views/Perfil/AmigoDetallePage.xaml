@@ -8,95 +8,119 @@
     Title="{Binding Amigo.Nombre}">
 
     <ContentPage.Content>
-        <FlexLayout Direction="Column"
+        <Grid>
+            <FlexLayout Direction="Column"
                     AlignItems="Center"
                     JustifyContent="SpaceEvenly">
-            <StackLayout>
-                <Frame
-                CornerRadius="45"
-                Margin="10"
-                OutlineColor="{DynamicResource variable4}"
-                Visual="Material"
-                HorizontalOptions="Center">
-                    <Image
-                   Source="{Binding Amigo.Avatar}"
-                   WidthRequest="90"
-                   HeightRequest="90"
-                   Aspect="AspectFill" />
-                </Frame>
+                <StackLayout>
+                    <Frame
+                            CornerRadius="45"
+                            Margin="10"
+                            OutlineColor="{DynamicResource variable4}"
+                            Visual="Material"
+                            HorizontalOptions="Center">
+                        <Image
+                               Source="{Binding Amigo.Avatar}"
+                               WidthRequest="90"
+                               HeightRequest="90"
+                               Aspect="AspectFill" />
+                    </Frame>
 
-                <Label
+                        <Label
                                Text="{Binding Amigo.Nombre}"
-                               Style="{StaticResource texto_cabecera3}"/>
+                               Style="{StaticResource texto_cabecera3}"
+                               TextColor="{DynamicResource variable3}"/>
 
-                <Label
+                        <Label
                                 Text="{Binding Amigo.Perfil.Nick}"
                                 Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}"
                                 HorizontalTextAlignment="Center"/>
 
-                <Label 
+                        <Label 
                                 Text="{Binding Amigo.Email}"
                                 Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}"
                                 HorizontalTextAlignment="Center"/>
 
-                <BoxView Margin="0,10,0,0"
-                     BackgroundColor="{DynamicResource variable4}"
-                            HeightRequest="1"/>
-            </StackLayout>
+                    <BoxView Margin="0,10,0,0"
+                             BackgroundColor="{DynamicResource variable4}"
+                             HeightRequest="1"/>
+                </StackLayout>
 
-            <StackLayout Orientation="Horizontal"
+                <StackLayout Orientation="Horizontal"
                         Spacing="110">
-                <StackLayout
+                    <StackLayout
                                 Orientation="Vertical"
                                 Spacing="12">
-                    <Label
+                        <Label
                                 Text="{x:Static recursos:Strings.edad}"
-                                Style="{StaticResource texto_subtitulo3}" />
-                    <Label
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
+                        <Label
                                 Text="{x:Static recursos:Strings.fecha_nacimiento}"
-                                Style="{StaticResource texto_subtitulo3}" />
-                    <Label
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
+                        <Label
                                 Text="{x:Static recursos:Strings.telefono}"
-                                Style="{StaticResource texto_subtitulo3}" />
-                    <Label
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
+                        <Label
                                 Text="{x:Static recursos:Strings.partidas_ganadas}"
-                                Style="{StaticResource texto_subtitulo3}" />
-                    <Label
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
+                        <Label
                                 Text="{x:Static recursos:Strings.partidas_perdidas}"
-                                Style="{StaticResource texto_subtitulo3}" />
-                    <Label
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
+                        <Label
                                 Text="{x:Static recursos:Strings.total_partidas}"
-                                Style="{StaticResource texto_subtitulo3}" />
-                    <Label
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
+                        <Label
                                 Text="{x:Static recursos:Strings.mejor_tiempo}"
-                                Style="{StaticResource texto_subtitulo3}" />
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
 
-                </StackLayout>
-                <StackLayout Orientation="Vertical"
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical"
                                Spacing="16">
 
-                    <Label      Text="{Binding Amigo.Edad}"
-                                Style="{StaticResource texto_subtitulo5}" />
+                        <Label  Text="{Binding Amigo.Edad}"
+                                Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}" />
 
-                    <Label Text="{Binding Amigo.Nacido,StringFormat='{}{0:dd-MM-yyyy}'}"
-                                Style="{StaticResource texto_subtitulo5}" />
+                        <Label Text="{Binding Amigo.Nacido,StringFormat='{}{0:dd-MM-yyyy}'}"
+                                Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}" />
 
-                    <Label Text="{Binding Amigo.Telefono}"
-                                Style="{StaticResource texto_subtitulo5}" />
+                        <Label Text="{Binding Amigo.Telefono}"
+                                Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}" />
 
-                    <Label Text="{Binding Amigo.Perfil.PartidasGanadas}"
-                                Style="{StaticResource texto_subtitulo5}" />
+                        <Label Text="{Binding Amigo.Perfil.PartidasGanadas}"
+                                Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}" />
 
-                    <Label Text="{Binding Amigo.Perfil.PartidasPerdidas}"
-                                Style="{StaticResource texto_subtitulo5}" />
+                        <Label Text="{Binding Amigo.Perfil.PartidasPerdidas}"
+                                Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}" />
 
-                    <Label Text="{Binding Amigo.Perfil.NumeroPartidas}"
-                                Style="{StaticResource texto_subtitulo5}" />
+                        <Label Text="{Binding Amigo.Perfil.NumeroPartidas}"
+                                Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}" />
 
-                    <Label Text="{Binding Amigo.Perfil.MejorTiempo,StringFormat='{}{0:mm:ss}'}"
-                                Style="{StaticResource texto_subtitulo5}" />
+                        <Label Text="{Binding Amigo.Perfil.MejorTiempo,StringFormat='{}{0:mm:ss}'}"
+                                Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}" />
+                    </StackLayout>
                 </StackLayout>
-            </StackLayout>
-        </FlexLayout>
+            </FlexLayout>
+            <BoxView Color="{DynamicResource variable1}" Opacity="0.9" IsVisible ="{Binding Cargando}"/>
+            <ActivityIndicator Color="{DynamicResource variable3}"
+                               Scale="0.1"
+                               IsRunning="{Binding Cargando}"
+                               IsVisible ="{Binding Cargando}"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

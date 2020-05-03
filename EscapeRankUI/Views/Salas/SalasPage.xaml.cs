@@ -9,13 +9,18 @@ namespace EscapeRankUI.Views
 {
     public partial class SalasPage : ContentPage
     {
-        public SalasViewModel svm;
+        private readonly SalasViewModel svm;
 
         public SalasPage()
         {
             svm = new SalasViewModel();
             InitializeComponent();
             BindingContext = svm;
+        }
+
+        protected override void OnAppearing()
+        {
+            svm.GetSalasPromocionadas();
         }
     }
 }

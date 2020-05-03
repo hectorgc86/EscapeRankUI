@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -27,28 +28,32 @@ namespace EscapeRankUI.Servicios
 
         public async Task<Usuario> GetUsuarioAsync()
         {
-            int usuarioId = App.CredencialesService.IdUsuario;
+            string usuarioId = await App.CredencialesService.GetUsuarioId();
+
             Usuario usuario = new Usuario();
 
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
 
-            Uri uri = new Uri(Constants.EscapeRankURL + Constants.UsuarioDetalleURL + usuarioId);
-
+            Uri uri = new Uri(Constantes.EscapeRankURL + Constantes.UsuarioDetalleURL + usuarioId);
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
-                if (resp.IsSuccessStatusCode)
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
+                switch (resp.StatusCode)
                 {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    usuario = JsonConvert.DeserializeObject<Usuario>(aux);
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        usuario = JsonConvert.DeserializeObject<Usuario>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
 
-            return usuario;
+                return usuario;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         
@@ -56,137 +61,153 @@ namespace EscapeRankUI.Servicios
 
         public async Task<Usuario> GetAmigoAsync(int amigoId)
         {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
+
             Usuario amigo = new Usuario();
 
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
-
-            Uri uri = new Uri(Constants.EscapeRankURL + Constants.UsuarioDetalleURL + amigoId);
-
+            Uri uri = new Uri(Constantes.EscapeRankURL + Constantes.UsuarioDetalleURL + amigoId);
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
-                if (resp.IsSuccessStatusCode)
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
+                switch (resp.StatusCode)
                 {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    amigo = JsonConvert.DeserializeObject<Usuario>(aux);
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        amigo = JsonConvert.DeserializeObject<Usuario>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
 
-            return amigo;
+                return amigo;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         //Llamada a la API para traer los amigos del usuario principal de la app.
 
         public async Task<List<Usuario>> GetAmigosAsync()
         {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
+
             int usuarioId = App.UsuarioPrincipal.Id;
             List<Usuario> amigos = new List<Usuario>();
 
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
-
-            Uri uri = new Uri(Constants.EscapeRankURL
-                + Constants.UsuarioDetalleURL + usuarioId
-                + Constants.AmigosURL);
+            Uri uri = new Uri(Constantes.EscapeRankURL
+                + Constantes.UsuarioDetalleURL + usuarioId
+                + Constantes.AmigosURL);
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
-                if (resp.IsSuccessStatusCode)
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
+                switch (resp.StatusCode)
                 {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    amigos = JsonConvert.DeserializeObject<List<Usuario>>(aux);
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        amigos = JsonConvert.DeserializeObject<List<Usuario>>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
 
-            return amigos;
+                return amigos;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         //Llamada a la API para traer los equipos del usuario principal de la app.
 
         public async Task<List<Equipo>> GetEquiposAsync()
         {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
+
             int usuarioId = App.UsuarioPrincipal.Id;
             List<Equipo> equipos = new List<Equipo>();
 
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
-
-            Uri uri = new Uri(Constants.EscapeRankURL + Constants.EquiposUsuarioURL + usuarioId);
+            Uri uri = new Uri(Constantes.EscapeRankURL + Constantes.EquiposUsuarioURL + usuarioId);
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
-
-                if (resp.IsSuccessStatusCode)
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
+                switch (resp.StatusCode)
                 {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    equipos = JsonConvert.DeserializeObject<List<Equipo>>(aux);
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        equipos = JsonConvert.DeserializeObject<List<Equipo>>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
 
-            return equipos;
+                return equipos;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         //Llamada a la API para traer los miembros de un equipo.
 
         public async Task<List<Usuario>> GetMiembrosEquipoAsync(int equipoId)
         {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
+
             List<Usuario> miembros = new List<Usuario>();
 
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
-
-            Uri uri = new Uri(Constants.EscapeRankURL + Constants.UsuariosEquipoURL + equipoId);
-
+            Uri uri = new Uri(Constantes.EscapeRankURL + Constantes.UsuariosEquipoURL + equipoId);
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
-                if (resp.IsSuccessStatusCode)
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
+                switch (resp.StatusCode)
                 {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    miembros = JsonConvert.DeserializeObject<List<Usuario>>(aux);
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        miembros = JsonConvert.DeserializeObject<List<Usuario>>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
 
-            return miembros;
+                return miembros;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         //Llamada a la API para traer las partidas de un equipo.
 
         public async Task<List<Partida>> GetPartidasEquipoAsync(int equipoId)
         {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
+
             List<Partida> partidas = new List<Partida>();
 
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
-
-            Uri uri = new Uri(Constants.EscapeRankURL + Constants.PartidasEquipoURL + equipoId);
-
+            Uri uri = new Uri(Constantes.EscapeRankURL + Constantes.PartidasEquipoURL + equipoId);
             try
             {
-                HttpResponseMessage resp = await client.GetAsync(uri);
-                if (resp.IsSuccessStatusCode)
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
+                switch (resp.StatusCode)
                 {
-                    string aux = await resp.Content.ReadAsStringAsync();
-                    partidas = JsonConvert.DeserializeObject<List<Partida>>(aux);
+                    case HttpStatusCode.OK:
+                        string aux = await resp.Content.ReadAsStringAsync();
+                        partidas = JsonConvert.DeserializeObject<List<Partida>>(aux);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
 
-            return partidas;
+                return partidas;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

@@ -28,7 +28,21 @@ namespace EscapeRankUI.ViewModels
 
         private async void GetInfo(Sala salaSeleccionada)
         {
-           Sala = await App.SalasManager.GetSalaAsync(salaSeleccionada.Id);
+            Cargando = true;
+
+            try
+            {
+                Sala = await App.SalasService.GetSalaAsync(salaSeleccionada.Id);
+            }
+            catch (HttpUnauthorizedException)
+            {
+                ErrorCredenciales();
+            }
+            finally
+            {
+                Cargando = false;
+            }
+
         }
 
         private void ContactarSala()

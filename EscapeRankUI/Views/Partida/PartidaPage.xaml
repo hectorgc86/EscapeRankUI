@@ -9,9 +9,10 @@
 
     <Shell.TitleView>
         <Grid>
-             <Label
+            <Label
                 Text="{x:Static recursos:Strings.partida}"
                 Style="{StaticResource texto_cabecera4}"
+                TextColor="{StaticResource blanco1}"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
             </Label>
@@ -19,15 +20,17 @@
     </Shell.TitleView>
 
     <ContentPage.Content>
-        <FlexLayout Direction="Column"
+        <Grid>
+            <FlexLayout Direction="Column"
                JustifyContent="SpaceEvenly"
                Style="{StaticResource espacio_flex_normal}">
 
-            <Label Text="{x:Static recursos:Strings.equipos}"
+                <Label Text="{x:Static recursos:Strings.equipos}"
                    HorizontalOptions="Start"
-                   Style="{StaticResource texto_titulo1}"/>
+                   Style="{StaticResource texto_titulo1}"
+                   TextColor="{DynamicResource variable3}"/>
 
-            <Picker ItemsSource="{Binding EquiposUsuario}"
+                <Picker ItemsSource="{Binding EquiposUsuario}"
                         ItemDisplayBinding="{Binding Nombre}"
                         SelectedItem="{Binding EquipoSeleccionado}"
                         Title="{x:Static recursos:Strings.selecciona_equipo}"
@@ -36,51 +39,59 @@
                         TextColor="{DynamicResource variable4}"
                         TitleColor="{DynamicResource variable4}"/>
 
-            <Label Text="{x:Static recursos:Strings.fecha}" Style="{StaticResource texto_titulo1}"/>
+                <Label Text="{x:Static recursos:Strings.fecha}"
+                   Style="{StaticResource texto_titulo1}"
+                   TextColor="{DynamicResource variable3}"/>
 
-            <DatePicker Format="D"
+                <DatePicker Format="D"
                             MaximumDate="{x:Static sys:DateTime.Now}"
                             BackgroundColor="{DynamicResource variable2}"
                             TextColor="{DynamicResource variable4}"
-                            Date="{Binding FechaPartida}"
-                           />
+                            Date="{Binding FechaPartida, Mode=TwoWay}"/>
 
-            <Label Text="{x:Static recursos:Strings.hora}" Style="{StaticResource texto_titulo1}"/>
+                <Label Text="{x:Static recursos:Strings.hora}"
+                   Style="{StaticResource texto_titulo1}"
+                   TextColor="{DynamicResource variable3}"/>
 
-            <TimePicker     Format="HH:mm"
+                <TimePicker     Format="HH:mm"
                             BackgroundColor="{DynamicResource variable2}"
                             TextColor="{DynamicResource variable4}"
-                            Time="{Binding HoraPartida}"
-                            />
+                            Time="{Binding HoraPartida, Mode=TwoWay}"/>
 
-            <Label Text="{x:Static recursos:Strings.duracion_partida}"
+                <Label Text="{x:Static recursos:Strings.duracion_partida}"
                        Style="{StaticResource texto_titulo1}"
+                       TextColor="{DynamicResource variable3}"
                        HorizontalTextAlignment="Center"/>
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                 <StackLayout>
-                    <Label
-                           Text="{Binding Source={x:Reference minutos}, Path=Value, StringFormat='{0:F0} minutos'}"
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout>
+                        <Label
+                           Text="{Binding Source={x:Reference Minutos}, Path=Value, StringFormat='{0:F0} minutos'}"
                            Style="{StaticResource texto_subtitulo5}"
+                           TextColor="{DynamicResource variable4}"
                            HorizontalTextAlignment="Center"/>
+                        <Stepper x:Name="Minutos" Value="{Binding MinutosPartida}"
+                             Maximum="180" Increment="1" Scale="0.75"
+                             HorizontalOptions="Center"/>
+                    </StackLayout>
 
-                    <Stepper x:Name="minutos" Maximum="180" Increment="1" Value="60" Scale="0.75" HorizontalOptions="Center"/>
-                </StackLayout>
-
-                <StackLayout Grid.Column="1">
-                    <Label
-                           Text="{Binding Source={x:Reference segundos}, Path=Value, StringFormat='{0:F0} segundos'}"
+                    <StackLayout Grid.Column="1">
+                        <Label
+                           Text="{Binding Source={x:Reference Segundos}, Path=Value, StringFormat='{0:F0} segundos'}"
                            Style="{StaticResource texto_subtitulo5}"
+                           TextColor="{DynamicResource variable4}"
                            HorizontalTextAlignment="Center"/>
-                    <Stepper x:Name="segundos" Maximum="59" Increment="1" Value="30" Scale="0.75" HorizontalOptions="Center"/>
-                </StackLayout>
-            </Grid>
+                        <Stepper x:Name="Segundos" Value="{Binding SegundosPartida}"
+                             Maximum="59" Increment="1" Scale="0.75"
+                             HorizontalOptions="Center"/>
+                    </StackLayout>
+                </Grid>
 
-            <Button Text="{x:Static recursos:Strings.hacer_foto}"
+                <Button Text="{x:Static recursos:Strings.hacer_foto}"
                             Style="{StaticResource estilo_boton1}"
                             HorizontalOptions="Center"
                             Command="{Binding HacerFotoCommand}"
@@ -88,7 +99,7 @@
                             Margin="0,10,0,0"
                             Visual="Material"/>
 
-            <Button Text="{x:Static recursos:Strings.validar_partida}"
+                <Button Text="{x:Static recursos:Strings.validar_partida}"
                             Style="{StaticResource estilo_boton1}"
                             HorizontalOptions="Center"
                             Command="{Binding ValidarCommand}"
@@ -96,12 +107,18 @@
                             Margin="0,10"
                             Visual="Material"/>
 
-            <Button Text="{x:Static recursos:Strings.guardar}"
+                <Button Text="{x:Static recursos:Strings.guardar}"
                             Style="{StaticResource estilo_boton1}"
                             Command="{Binding GuardarCommand}"
                             IsEnabled="{Binding BotonGuardarActivado}"
                             HorizontalOptions="Center"
                             Visual="Material"/>
-        </FlexLayout>
+            </FlexLayout>
+            <BoxView Color="{DynamicResource variable1}" Opacity="0.9" IsVisible ="{Binding Cargando}"/>
+            <ActivityIndicator Color="{DynamicResource variable3}"
+                               Scale="0.1"
+                               IsRunning="{Binding Cargando}"
+                               IsVisible ="{Binding Cargando}"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

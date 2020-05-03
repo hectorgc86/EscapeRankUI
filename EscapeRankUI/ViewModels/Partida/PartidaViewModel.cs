@@ -12,7 +12,8 @@ namespace EscapeRankUI.ViewModels
     public class PartidaViewModel : BaseViewModel
     {
         private Equipo _equipoSeleccionado;
-        private Sala _salaEscaneada;
+        private TimeSpan _horaPartida;
+        private DateTime _fechaPartida;
         private bool _botonValidarActivado;
         private bool _botonGuardarActivado;
 
@@ -25,13 +26,17 @@ namespace EscapeRankUI.ViewModels
             HacerFotoCommand = new Command(HacerFoto);
 
             BotonGuardarActivado = false;
-            FechaPartida = DateTime.Now;
-
             GetEquipos();
+            FechaPartida = DateTime.Now;
+            HoraPartida = DateTime.Now.TimeOfDay;
+            MinutosPartida = 60;
+            SegundosPartida = 30;
         }
 
-        public DateTime HoraPartida { get; set; }
-        public DateTime FechaPartida { get; set; }
+        public Sala SalaEscaneada { get; set; }
+        public int MinutosPartida { get; set; }
+        public int SegundosPartida { get; set; }
+
         public Command ValidarCommand { get; }
         public Command GuardarCommand { get; }
         public Command HacerFotoCommand { get; }
@@ -48,11 +53,23 @@ namespace EscapeRankUI.ViewModels
             set { SetProperty(ref _botonGuardarActivado, value); }
         }
 
+        public TimeSpan HoraPartida
+        {
+            get { return _horaPartida; }
+            set { SetProperty(ref _horaPartida, value); }
+        }
+        public DateTime FechaPartida
+        {
+            get { return _fechaPartida; }
+            set { SetProperty(ref _fechaPartida, value); }
+        }
+
         public Equipo EquipoSeleccionado
         {
             get { return _equipoSeleccionado; }
             set { SetProperty(ref _equipoSeleccionado, value); }
         }
+
 
         public ObservableCollection<Equipo> EquiposUsuario
         {
@@ -62,21 +79,35 @@ namespace EscapeRankUI.ViewModels
 
         //Funciones
 
-        private async void GetEquipos()
+        public async void GetEquipos()
         {
-            List<Equipo> equiposCall = await App.PerfilManager.GetEquiposAsync();
-            EquiposUsuario = new ObservableCollection<Equipo>(equiposCall);
+            Cargando = true;
 
-            if (EquiposUsuario.Count > 0)
+            try
             {
-                BotonValidarActivado = true;
-                EquipoSeleccionado = EquiposUsuario[0];
+                List<Equipo> equiposCall = await App.PerfilService.GetEquiposAsync();
+                EquiposUsuario = new ObservableCollection<Equipo>(equiposCall);
+
+                if (EquiposUsuario.Count > 0)
+                {
+                    BotonValidarActivado = true;
+                    EquipoSeleccionado = EquiposUsuario[0];
+                }
+                else
+                {
+                    BotonValidarActivado = false;
+                    await Application.Current.MainPage.DisplayAlert("¡No tan rapido!", "No puedes registrar partida si no perteneces a un equipo", "OK");
+                }
             }
-            else
+            catch(HttpUnauthorizedException)
             {
-                BotonValidarActivado = false;
-                await Application.Current.MainPage.DisplayAlert("¡No tan rapido!", "No puedes registrar partida si no perteneces a un equipo", "OK");
+                ErrorCredenciales();
             }
+            finally
+            {
+              Cargando = false;
+            }
+            
         }
 
         private async void HacerFoto(object obj)
@@ -120,13 +151,24 @@ namespace EscapeRankUI.ViewModels
             {
                 qr.IsScanning = false;
 
-                _salaEscaneada = await App.SalasManager.GetSalaAsync(result.Text);
-                
+                try
+                {
+                    SalaEscaneada = await App.SalasService.GetSalaAsync(result.Text);
+                }
+                catch (HttpNotFoundException)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error","Sala no registrada", "OK");
+                }
+                catch (HttpUnauthorizedException)
+                {
+                    ErrorCredenciales();
+                }
+
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     Application.Current.MainPage.Navigation.PopAsync();
 
-                    Application.Current.MainPage.DisplayAlert("Código escaneado", "Sala: \""+ _salaEscaneada.Nombre + "\" ha autorizado correctamente esta partida.", "OK");
+                    Application.Current.MainPage.DisplayAlert("Código escaneado", "Sala: \""+ SalaEscaneada.Nombre + "\" ha autorizado correctamente esta partida.", "OK");
 
                     BotonGuardarActivado = true;
                 });
@@ -136,11 +178,43 @@ namespace EscapeRankUI.ViewModels
         }
 
         //Guardar partida en BBDD
-        private void GuardarPartida()
-        {
-            Partida partida = new Partida();
 
-            App.PartidaManager.PostPartidaAsync(partida);
+        private async void GuardarPartida()
+        {
+            FechaPartida.Add(HoraPartida);
+
+            Partida partida = new Partida
+            {
+                Fecha = FechaPartida,
+                Minutos = MinutosPartida,
+                Segundos = SegundosPartida,
+                Sala = SalaEscaneada,
+                Equipo = EquipoSeleccionado
+            };
+
+            try
+            {
+                Cargando = true;
+
+                if (await App.PartidaService.PostPartidaAsync(partida))
+                {
+                    await Application.Current.MainPage.DisplayAlert("¡Enhorabuena!", "Partida registrada correctamente", "OK");
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "Se ha producido un error registrando partida", "OK");
+                }
+            }
+            catch(HttpUnauthorizedException)
+            {
+                ErrorCredenciales();
+            }
+            finally
+            {
+                Cargando = false;
+            }
+
+            BotonGuardarActivado = false;
         }
     }
 }

@@ -3,130 +3,59 @@ using System.Linq;
 using System.Threading.Tasks;
 using EscapeRankUI.Modelos;
 using Xamarin.Auth;
+using Xamarin.Essentials;
 
 namespace EscapeRankUI.Servicios
 {
     public class CredencialesService : ICredencialesService
     {
-        public int IdUsuario
+        public async Task<string> GetUsuarioId()
         {
-            get
+            return await SecureStorage.GetAsync("UsuarioId");
+        }
+
+        public async Task<string> GetToken()
+        {
+            return await SecureStorage.GetAsync("TokenAcceso");
+        }
+
+        public async Task GuardarCredenciales(string email, string contrasenya, Login login)
+        {
+            await SecureStorage.SetAsync("UsuarioId", login.UsuarioId);
+            await SecureStorage.SetAsync("Email", email);
+            await SecureStorage.SetAsync("Contrasenya", contrasenya);
+            await SecureStorage.SetAsync("TokenAcceso", login.TokenAcceso);
+        }
+
+        public void BorrarCredenciales()
+        {
+            SecureStorage.RemoveAll();
+        }
+
+        public async Task<bool> ComprobarCredenciales()
+        {
+            bool existen;
+
+            string email = await SecureStorage.GetAsync("Email");
+            string contrasenya = await SecureStorage.GetAsync("Contrasenya");
+
+            if (!string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(contrasenya))
             {
-                var account = AccountStore.Create().FindAccountsForService(Constants.AppName).FirstOrDefault();
-                if (account?.Username != "")
-                    return Convert.ToInt32(account?.Username);
-                else
-                    return 0;
-            }
-        }
+                Login login = await App.LoginService.GetLoginAsync(email, contrasenya);
 
-        public string Nombre
-        {
-            get
+                if (login.UsuarioId != null)
+                {
+                    await GuardarCredenciales(email, contrasenya, login);
+                }
+
+                existen = true;
+            }
+            else
             {
-                var account = AccountStore.Create().FindAccountsForService(Constants.AppName).FirstOrDefault();
-                return (account != null) ? account.Properties["UserName"] : null;
+                existen = false;
             }
-        }
 
-        public string Contrasenya
-        {
-            get
-            {
-                var account = AccountStore.Create().FindAccountsForService(Constants.AppName).FirstOrDefault();
-                return (account != null) ? account.Properties["Password"] : null;
-            }
-        }
-
-        public string TokenAcceso 
-        {
-            get
-            {
-                var account = AccountStore.Create().FindAccountsForService(Constants.AppName).FirstOrDefault();
-                if (account != null)
-                {
-                    return string.IsNullOrEmpty(account.Properties["TokenAcceso"]) ? null : account.Properties["TokenAcceso"];
-                }
-                return null;
-            }
-        }
-
-        public string TokenRefresco
-        {
-            get
-            {
-                var account = AccountStore.Create().FindAccountsForService(Constants.AppName).FirstOrDefault();
-                if (account != null)
-                {
-                    return string.IsNullOrEmpty(account.Properties["refreshToken"]) ? null : account.Properties["refreshToken"];
-                }
-                return null;
-            }
-        }
-
-       
-
-        public async Task SaveCredentials(int idUsuario, string userName, string password, Login token)
-        {
-            if (!string.IsNullOrWhiteSpace(idUsuario.ToString()))
-            {
-                Account account = new Account
-                {
-                    Username = idUsuario.ToString()
-                };
-                if (!String.IsNullOrWhiteSpace(token.TokenAcceso)){
-                    account.Properties.Add("TokenAcceso", token.TokenAcceso);
-                }
-                if (!String.IsNullOrWhiteSpace(token.TokenRefresco))
-                {
-                    account.Properties.Add("refreshToken", token.TokenRefresco);
-                }
-               
-                    account.Properties.Add("idUsuario", idUsuario.ToString());
-            
-                if (!String.IsNullOrWhiteSpace(userName))
-                {
-                    account.Properties.Add("UserName", token.TokenAcceso);
-                }
-                account.Properties.Add("Password", password);
-                await AccountStore.Create().SaveAsync(account, Constants.AppName);
-            }
-        }
-
-        public async Task SaveToken(Login token)
-        {
-            var account = AccountStore.Create().FindAccountsForService(Constants.AppName).FirstOrDefault();
-
-                if (!String.IsNullOrWhiteSpace(token.TokenAcceso))
-                {
-                    account.Properties["TokenAcceso"] = token.TokenAcceso;
-
-                }
-                if (!String.IsNullOrWhiteSpace(token.TokenRefresco))
-                {
-                account.Properties["refreshToken"] = token.TokenRefresco;
-                }
-                await AccountStore.Create().SaveAsync(account, Constants.AppName);
-
-        }
-
-        public async Task DeleteCredentials()
-        {
-            var account = AccountStore.Create().FindAccountsForService(Constants.AppName).FirstOrDefault();
-            if (account != null)
-            {
-                await AccountStore.Create().DeleteAsync(account, Constants.AppName);
-            }
-        }
-
-        public bool DoCredentialsExist()
-        {
-            return AccountStore.Create().FindAccountsForService(Constants.AppName).Any() ? true : false;
-        }
-
-        public async Task SaveAccount(Account account)
-        {
-            await AccountStore.Create().SaveAsync(account, Constants.AppName);
+            return existen;
         }
     }
 }

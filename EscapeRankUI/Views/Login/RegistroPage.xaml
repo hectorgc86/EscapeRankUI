@@ -17,44 +17,85 @@
 
             <StackLayout VerticalOptions="CenterAndExpand">
 
-                <Label Text="{x:Static recursos:Strings.registrarse}" Style="{StaticResource texto_cabecera5}" HorizontalTextAlignment="Center"/>
+                <Label Text="{x:Static recursos:Strings.registrarse}"
+                       Style="{StaticResource texto_cabecera5}"
+                       TextColor="{StaticResource naranja1}"
+                       HorizontalTextAlignment="Center"/>
 
-                <Label Padding="0,24,0,16" Style="{StaticResource texto_titulo2}" HorizontalTextAlignment="Center" Text="{x:Static recursos:Strings.cree_cuenta}"/>
+                <Label Padding="0,24,0,16" Style="{StaticResource texto_titulo2}"
+                       TextColor="{StaticResource blanco2}"
+                       HorizontalTextAlignment="Center"
+                       Text="{x:Static recursos:Strings.cree_cuenta}"/>
 
                 <StackLayout x:Name="FormLayout" Spacing="16" VerticalOptions="CenterAndExpand">
                     <Grid ColumnSpacing="16"/>
                     <StackLayout Spacing="8">
 
-                        <Label Text="{x:Static recursos:Strings.nombre}" Style="{StaticResource texto_titulo2}"/>
-                        <Entry Text="{Binding Nombre}" Style="{StaticResource texto_entry1}" Keyboard="Text"/>
+                        <Label Text="{x:Static recursos:Strings.nombre}"
+                               Style="{StaticResource texto_titulo2}"
+                               TextColor="{StaticResource blanco2}"/>
+
+                        <Entry Text="{Binding Nombre}"
+                               Style="{StaticResource texto_entry1}"
+                               TextColor="{StaticResource blanco2}"
+                               Keyboard="Text"/>
 
                     </StackLayout>
                     <StackLayout Spacing="8">
 
-                        <Label Text="{x:Static recursos:Strings.email}" Style="{StaticResource texto_titulo2}"/>
-                        <Entry Text="{Binding Email}" Style="{StaticResource texto_entry1}" Keyboard="Email" />
+                        <Label Text="{x:Static recursos:Strings.email}"
+                               Style="{StaticResource texto_titulo2}"
+                               TextColor="{StaticResource blanco2}"/>
+
+                        <Entry Text="{Binding Email}"
+                               Style="{StaticResource texto_entry1}"
+                               TextColor="{StaticResource blanco2}"
+                               Keyboard="Email" />
 
                     </StackLayout>
                     <StackLayout Spacing="8">
 
-                        <Label Text="{x:Static recursos:Strings.contrasenya}" Style="{StaticResource texto_titulo2}"/>
-                        <Entry Text="{Binding Contrasenya}" Style="{StaticResource texto_entry1}" IsPassword="True" Keyboard="Text" />
+                        <Label Text="{x:Static recursos:Strings.contrasenya}"
+                               Style="{StaticResource texto_titulo2}"
+                               TextColor="{StaticResource blanco2}"/>
+
+                        <Entry Text="{Binding Contrasenya}"
+                               Style="{StaticResource texto_entry1}"
+                               TextColor="{StaticResource blanco2}"
+                               IsPassword="True" Keyboard="Text" />
 
                     </StackLayout>
                     <StackLayout Spacing="8">
-                        <Label Text="{x:Static recursos:Strings.repetir_contrasenya}" Style="{StaticResource texto_titulo2}"/>
-                        <Entry Text="{Binding RepContrasenya}" Style="{StaticResource texto_entry1}" IsPassword="True" Keyboard="Text" />
+                        <Label Text="{x:Static recursos:Strings.repetir_contrasenya}"
+                               Style="{StaticResource texto_titulo2}"
+                               TextColor="{StaticResource blanco2}"/>
+
+                        <Entry Text="{Binding RepContrasenya}"
+                               Style="{StaticResource texto_entry1}"
+                               TextColor="{StaticResource blanco2}"
+                               IsPassword="True" Keyboard="Text" />
+
                     </StackLayout>
 
-                    <Button x:Name="RegistrarButton" Command="{Binding RegistrarCommand}" Style="{StaticResource estilo_boton1}" VerticalOptions="EndAndExpand" Text="{x:Static recursos:Strings.registrar}" />
+                    <Button x:Name="RegistrarButton" Command="{Binding RegistrarCommand}"
+                            Style="{StaticResource estilo_boton1}"
+                            TextColor="{StaticResource blanco1}"
+                            VerticalOptions="EndAndExpand"
+                            Text="{x:Static recursos:Strings.registrar}" />
 
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="0,16">
 
-                    <Label HorizontalTextAlignment="Center" Style="{StaticResource texto_subtitulo8}" Text="{x:Static recursos:Strings.pregunta_cuenta}"/>
+                    <Label HorizontalTextAlignment="Center"
+                           Style="{StaticResource texto_subtitulo8}"
+                           TextColor="{StaticResource blanco2}"
+                           Text="{x:Static recursos:Strings.pregunta_cuenta}"/>
 
-                    <Label Padding="8,0,0,0" Style="{StaticResource texto_subtitulo8}" HorizontalTextAlignment="End" Text="{x:Static recursos:Strings.ingresar}">
+                    <Label Padding="8,0,0,0" Style="{StaticResource texto_subtitulo8}"
+                           TextColor="{StaticResource blanco2}"
+                           HorizontalTextAlignment="End"
+                           Text="{x:Static recursos:Strings.ingresar}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding LoginCommand}"/>
                         </Label.GestureRecognizers>

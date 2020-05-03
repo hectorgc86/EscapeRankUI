@@ -16,8 +16,7 @@ namespace EscapeRankUI.Views
 
         protected override void OnAppearing()
         {
-            base.OnAppearing();
+            mvm.GetNoticias();
         }
     }
-
 }

@@ -11,6 +11,7 @@
            <Label
                 Text="{x:Static recursos:Strings.inicio}"
                 Style="{StaticResource texto_cabecera4}"
+                TextColor="{StaticResource blanco1}"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
             </Label>
@@ -18,10 +19,10 @@
   </Shell.TitleView>
 
     <ContentPage.Content>
+        <Grid>
                 <CollectionView
                         ItemsSource="{Binding Noticias}"
-                        EmptyView="No hay noticias que mostrar"
-                        SelectionMode="Single">
+                        EmptyView="No hay noticias que mostrar">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
@@ -32,36 +33,35 @@
                                     Padding="15"
                                     BackgroundColor="{DynamicResource variable2}"
                                     Visual="Material"
-                                    HasShadow="True"
                                     CornerRadius="6">
                                     <StackLayout Spacing="10">
-                                        <Frame
-                                        Visual="Material">
+                                        <Frame Visual="Material">
                                             <Image
                                             Source="{Binding Imagen}"
                                             Aspect="AspectFill"
                                             HeightRequest="180"/>
                                         </Frame>
                                         <StackLayout Orientation="Horizontal">
-                                            <Label
-                                                        Text="{Binding Titular}"
-                                                        Style="{StaticResource texto_titulo1}"
-                                                        LineBreakMode="TailTruncation"
-                                                        MaxLines="2" />
+                                            <Label Text="{Binding Titular}"
+                                                   Style="{StaticResource texto_titulo1}"
+                                                   TextColor="{DynamicResource variable3}"
+                                                   LineBreakMode="TailTruncation"
+                                                   MaxLines="2" />
                                         </StackLayout>
                                         <StackLayout
                                                     Margin="0,0,0,12"
                                                     Orientation="Horizontal"
                                                     Spacing="5">
                                             <Image
-                                                        Margin="0,-1,0,0"
-                                                        Source="{StaticResource icono_calendario_hoy}"
-                                                        VerticalOptions="Start" />
+                                                    Margin="0,-1,0,0"
+                                                    Source="{StaticResource icono_calendario_hoy}"
+                                                    VerticalOptions="Start" />
                                             <Label
-                                                        Text="{Binding Fecha}"
-                                                        Style="{StaticResource texto_subtitulo5}"
-                                                        MaxLines="3"
-                                                        LineBreakMode="TailTruncation" />
+                                                    Text="{Binding Fecha}"
+                                                    Style="{StaticResource texto_subtitulo5}"
+                                                    TextColor="{DynamicResource variable4}"
+                                                    MaxLines="3"
+                                                    LineBreakMode="TailTruncation" />
                                         </StackLayout>
 
                                         <StackLayout
@@ -74,19 +74,26 @@
                                                 <Label
                                                         Text="{Binding TextoCorto}"
                                                         Style="{StaticResource texto_subtitulo6}"
+                                                        TextColor="{DynamicResource variable4}"
                                                         LineBreakMode="WordWrap"/>
                                             </StackLayout>
                                             <Label Padding="17,0,0,0"
-                                                        Text="{Binding TextoLargo}"
-                                                        Style="{StaticResource texto_subtitulo5}"
-                                                        LineBreakMode="WordWrap" />
+                                                   Text="{Binding TextoLargo}"
+                                                   Style="{StaticResource texto_subtitulo5}"
+                                                   TextColor="{DynamicResource variable4}"
+                                                   LineBreakMode="WordWrap" />
                                         </StackLayout>
-
                                     </StackLayout>
                                 </Frame>
                             </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+             <BoxView Color="{DynamicResource variable1}" Opacity="0.9" IsVisible ="{Binding Cargando}"/>
+            <ActivityIndicator Color="{DynamicResource variable3}"
+                               Scale="0.1"
+                               IsRunning="{Binding Cargando}"
+                               IsVisible ="{Binding Cargando}"/>
+            </Grid>
     </ContentPage.Content>
 </ContentPage>

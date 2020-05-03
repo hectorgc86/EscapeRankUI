@@ -11,14 +11,17 @@
             <Label
                 Text="{x:Static recursos:Strings.datos}"
                 Style="{StaticResource texto_cabecera4}"
+                TextColor="{StaticResource blanco1}"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
             </Label>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                 <Image HorizontalOptions="Center" Source="{StaticResource icono_luna}"/>
-            <Switch x:Name="BotonOscuro"
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="End">
+                 <Image VerticalOptions="Center"
+                        Source="{StaticResource icono_luna}"/>
+            <Switch x:Name="BotonOscuro" VerticalOptions="Center"
                 IsToggled="{Binding ModoOscuro}"
-                OnColor="{StaticResource variable2}"/>
+                OnColor="{DynamicResource variable2}"/>
             </StackLayout>
         </Grid>
     </Shell.TitleView>
@@ -43,27 +46,31 @@
                 </Frame>
                 <StackLayout Orientation="Horizontal" Spacing="5">
                     <Label
-                                    Text="{Binding Usuario.Nombre}"
-                                    Style="{StaticResource texto_cabecera3}"/>
+                            Text="{Binding Usuario.Nombre}"
+                            Style="{StaticResource texto_cabecera3}"
+                            TextColor="{DynamicResource variable3}"/>
                     <Label
-                                    Text="{x:Static recursos:Strings.editar}"
-                                    Style="{StaticResource texto_subtitulo4}"
-                                    VerticalOptions="Center" />
+                            Text="{x:Static recursos:Strings.editar}"
+                            Style="{StaticResource texto_subtitulo4}"
+                            TextColor="{DynamicResource variable4}"
+                            VerticalOptions="Center" />
                 </StackLayout>
 
-                <Label
-                                Text="{Binding Usuario.Perfil.Nick}"
-                                Style="{StaticResource texto_subtitulo5}"
-                HorizontalTextAlignment="Center"/>
+                    <Label
+                            Text="{Binding Usuario.Perfil.Nick}"
+                            Style="{StaticResource texto_subtitulo5}"
+                            TextColor="{DynamicResource variable4}"
+                            HorizontalTextAlignment="Center"/>
 
                 <Label HorizontalOptions="Center"
                                 Text="{Binding Usuario.Email}"
                                 Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}"
                    HorizontalTextAlignment="Center"/>
 
                 <BoxView Margin="0,10"
-                     BackgroundColor="{DynamicResource variable4}"
-                            HeightRequest="1"/>
+                         BackgroundColor="{DynamicResource variable4}"
+                         HeightRequest="1"/>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal"
@@ -71,55 +78,73 @@
                 <StackLayout
                                 Orientation="Vertical"
                                 Spacing="12">
-                    <Label
+                        <Label
                                 Text="{x:Static recursos:Strings.edad}"
-                                Style="{StaticResource texto_subtitulo3}" />
-                    <Label
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
+                        <Label
                                 Text="{x:Static recursos:Strings.fecha_nacimiento}"
-                                Style="{StaticResource texto_subtitulo3}" />
-                    <Label
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
+                        <Label
                                 Text="{x:Static recursos:Strings.telefono}"
-                                Style="{StaticResource texto_subtitulo3}" />
-                    <Label
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
+                        <Label
                                 Text="{x:Static recursos:Strings.partidas_ganadas}"
-                                Style="{StaticResource texto_subtitulo3}" />
-                    <Label
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
+                        <Label
                                 Text="{x:Static recursos:Strings.partidas_perdidas}"
-                                Style="{StaticResource texto_subtitulo3}" />
-                    <Label
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
+                        <Label
                                 Text="{x:Static recursos:Strings.total_partidas}"
-                                Style="{StaticResource texto_subtitulo3}" />
-                    <Label
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
+                        <Label
                                 Text="{x:Static recursos:Strings.mejor_tiempo}"
-                                Style="{StaticResource texto_subtitulo3}" />
+                                Style="{StaticResource texto_subtitulo3}"
+                                TextColor="{DynamicResource variable3}" />
 
                 </StackLayout>
                 <StackLayout Orientation="Vertical"
                                Spacing="16">
 
-                    <Label Text="{Binding Usuario.Edad}"
-                                Style="{StaticResource texto_subtitulo5}" />
+                        <Label  Text="{Binding Usuario.Edad}"
+                                Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}" />
 
-                    <Label Text="{Binding Usuario.Nacido,StringFormat='{}{0:dd-MM-yyyy}'}"
-                                Style="{StaticResource texto_subtitulo5}" />
+                        <Label  Text="{Binding Usuario.Nacido,StringFormat='{}{0:dd-MM-yyyy}'}"
+                                Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}" />
 
-                    <Label Text="{Binding Usuario.Telefono}"
-                                Style="{StaticResource texto_subtitulo5}" />
+                        <Label  Text="{Binding Usuario.Telefono}"
+                                Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}" />
 
-                    <Label Text="{Binding Usuario.Perfil.PartidasGanadas}"
-                                Style="{StaticResource texto_subtitulo5}" />
+                        <Label  Text="{Binding Usuario.Perfil.PartidasGanadas}"
+                                Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}" />
 
-                    <Label Text="{Binding Usuario.Perfil.PartidasPerdidas}"
-                                Style="{StaticResource texto_subtitulo5}" />
+                        <Label  Text="{Binding Usuario.Perfil.PartidasPerdidas}"
+                                Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}" />
 
-                    <Label Text="{Binding Usuario.Perfil.NumeroPartidas}"
-                                Style="{StaticResource texto_subtitulo5}" />
+                        <Label  Text="{Binding Usuario.Perfil.NumeroPartidas}"
+                                Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}" />
 
-                    <Label Text="{Binding Usuario.Perfil.MejorTiempo,StringFormat='{}{0:mm:ss}'}"
-                                Style="{StaticResource texto_subtitulo5}" />
+                        <Label  Text="{Binding Usuario.Perfil.MejorTiempo,StringFormat='{}{0:mm:ss}'}"
+                                Style="{StaticResource texto_subtitulo5}"
+                                TextColor="{DynamicResource variable4}" />
                 </StackLayout>
             </StackLayout>
-                <Label HorizontalOptions="Center" Style="{StaticResource texto_subtitulo4}" HorizontalTextAlignment="End" Text="{x:Static recursos:Strings.logout}">
+                <Label HorizontalOptions="Center"
+                       Style="{StaticResource texto_subtitulo4}"
+                       TextColor="{DynamicResource variable4}"
+                       HorizontalTextAlignment="End"
+                       Text="{x:Static recursos:Strings.logout}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding LogoutCommand}"/>
                     </Label.GestureRecognizers>

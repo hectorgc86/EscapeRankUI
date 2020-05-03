@@ -27,9 +27,22 @@ namespace EscapeRankUI.ViewModels
 
         //Funciones
 
-        private async void GetAmigo(Usuario amigoSeleccionado)
+        public async void GetAmigo(Usuario amigoSeleccionado)
         {
-            Amigo = await App.PerfilManager.GetAmigoAsync(amigoSeleccionado.Id);
+            Cargando = true;
+
+            try
+            {
+                Amigo = await App.PerfilService.GetAmigoAsync(amigoSeleccionado.Id);
+            }
+            catch (HttpUnauthorizedException)
+            {
+                ErrorCredenciales();
+            }
+            finally
+            {
+                Cargando = false;
+            }
         }
     }
 }

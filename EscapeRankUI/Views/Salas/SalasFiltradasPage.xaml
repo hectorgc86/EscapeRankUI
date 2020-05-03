@@ -8,34 +8,32 @@
     Title="{Binding Titulo}">
 
     <ContentPage.Content>
+        <Grid>
         <ScrollView>
-            <Grid Style="{DynamicResource espacio_grid_normal}">
+            <Grid Style="{StaticResource espacio_grid_normal}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Frame Visual="Material" Margin="0,15"
+                <Frame Visual="Material"
+                       Margin="0,15"
                        CornerRadius="25"
                        BackgroundColor="{DynamicResource variable2}">
-                     <SearchBar x:Name="BarraBusqueda"
+                     <SearchBar
                                Text="{Binding Busqueda}"
                                Placeholder="Sala, compañia o ciudad.."
-                               PlaceholderColor="{DynamicResource gris2}"
+                               PlaceholderColor="{StaticResource gris2}"
                                TextColor="{DynamicResource variable5}"
                                SearchCommand="{Binding BuscarSalasCommand}"/>
                 </Frame>
                    
-                    <!--TextChanged="Buscador_TextChanged"-->
-
                 <StackLayout Grid.Row="1">
-
-                    <ActivityIndicator Color="{DynamicResource variable3}" IsVisible="{Binding Cargando}" IsRunning="{Binding Cargando}"/>
 
                     <CollectionView 
                                     ItemsSource="{Binding Salas}"
                                     SelectionMode="Single"
-                                    SelectedItem="{Binding SalaSeleccionada,Mode=TwoWay}"
+                                    SelectedItem="{Binding SalaSeleccionada}"
                                     SelectionChangedCommand="{Binding VerSalaCommand}"
                                     ItemTemplate="{StaticResource SalasFiltradasTemplate}"
                                     RemainingItemsThresholdReachedCommand="{Binding CargarSalasCommand}"
@@ -44,5 +42,11 @@
                 </StackLayout>
             </Grid>
         </ScrollView>
+           <BoxView Color="{DynamicResource variable1}" Opacity="0.5" IsVisible ="{Binding Cargando}"/>
+            <ActivityIndicator Color="{DynamicResource variable3}"
+                               Scale="0.1"
+                               IsRunning="{Binding Cargando}"
+                               IsVisible ="{Binding Cargando}"/>
+            </Grid>
     </ContentPage.Content>
 </ContentPage>

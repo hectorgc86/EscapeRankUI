@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -24,27 +23,30 @@ namespace EscapeRankUI.Servicios
 
         public async Task<List<Partida>> GetHistorialAsync(int usuarioId)
         {
-                List<Partida> partidasUsuario = new List<Partida>();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
 
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.CredencialesService.TokenAcceso);
+            List<Partida> partidasUsuario = new List<Partida>();
 
-                Uri uri = new Uri(Constants.EscapeRankURL + Constants.PartidasUsuarioURL + usuarioId);
-                try
+            Uri uri = new Uri(Constantes.EscapeRankURL + Constantes.PartidasUsuarioURL + usuarioId);
+            try
+            {
+                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
+                switch (resp.StatusCode)
                 {
-                    HttpResponseMessage resp = await client.GetAsync(uri);
-                    if (resp.IsSuccessStatusCode)
-                    {
+                    case HttpStatusCode.OK:
                         string aux = await resp.Content.ReadAsStringAsync();
                         partidasUsuario = JsonConvert.DeserializeObject<List<Partida>>(aux);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(@"ERROR {0}", ex.Message);
+                        break;
+                    case HttpStatusCode.Unauthorized:
+                        throw new HttpUnauthorizedException();
                 }
 
                 return partidasUsuario;
-           
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

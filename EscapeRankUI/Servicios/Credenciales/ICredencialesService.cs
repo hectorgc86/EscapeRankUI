@@ -7,24 +7,14 @@ namespace EscapeRankUI.Servicios
 {
     public interface ICredencialesService
     {
-        int IdUsuario { get; }
+        Task<string> GetUsuarioId();
 
-        string Nombre { get; }
+        Task<string> GetToken();
 
-        string Contrasenya { get; }
+        Task GuardarCredenciales(string email, string contrasenya, Login login);
 
-        string TokenAcceso { get; }
+        void BorrarCredenciales();
 
-        string TokenRefresco { get; }
-
-        Task SaveCredentials(int IdUsuario, string nombre, string contrasenya, Login token);
-
-        Task SaveToken(Login token);
-
-        Task SaveAccount(Account account);
-
-        Task DeleteCredentials();
-
-        bool DoCredentialsExist();
+        Task<bool> ComprobarCredenciales();
     }
 }

@@ -12,6 +12,7 @@
              <Label
                 Text="{x:Static recursos:Strings.equipos}"
                 Style="{StaticResource texto_cabecera4}"
+                 TextColor="{StaticResource blanco1}"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
             </Label>
@@ -19,6 +20,7 @@
     </Shell.TitleView>
 
      <ContentPage.Content>
+         <Grid>
                 <ScrollView>
                     <FlexLayout x:Name="FlexEquipos"
                                 Wrap="Wrap"
@@ -50,11 +52,18 @@
                                     <Label 
                                         HorizontalTextAlignment="Center"
                                         Text="{Binding Nombre}"
-                                        Style="{StaticResource texto_subtitulo3}" />
+                                        Style="{StaticResource texto_subtitulo3}"
+                                        TextColor="{DynamicResource variable3}"/>
                                 </StackLayout>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </FlexLayout>
                 </ScrollView>
+                   <BoxView Color="{DynamicResource variable1}" Opacity="0.9" IsVisible ="{Binding Cargando}"/>
+            <ActivityIndicator Color="{DynamicResource variable3}"
+                               Scale="0.1"
+                               IsRunning="{Binding Cargando}"
+                               IsVisible ="{Binding Cargando}"/>
+             </Grid>
     </ContentPage.Content>
 </ContentPage>

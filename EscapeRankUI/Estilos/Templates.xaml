@@ -4,7 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <DataTemplate x:Key="SalasFiltradasTemplate">
+     <DataTemplate x:Key="SalasFiltradasTemplate">
         <Grid Padding="0,0,0,10">
             <Frame Padding="15"
                    BackgroundColor="{DynamicResource variable2}"
@@ -24,10 +24,12 @@
                                      Spacing="5">
                             <Label
                                    Text="Sala "
-                                   Style="{StaticResource texto_subtitulo9}" />
+                                   Style="{StaticResource texto_subtitulo9}"
+                                   TextColor="{StaticResource gris1}" />
                             <Label
                                    Text="{Binding Nombre}"
-                                   Style="{StaticResource texto_subtitulo5}"/>
+                                   Style="{StaticResource texto_subtitulo5}"
+                                   TextColor="{DynamicResource variable4}"/>
                         </StackLayout>
                         <StackLayout
                                     Orientation="Horizontal"
@@ -35,10 +37,12 @@
                                     Spacing="5">
                             <Label
                                    Text="Compañia "
-                                   Style="{StaticResource texto_subtitulo9}" />
+                                   Style="{StaticResource texto_subtitulo9}"
+                                   TextColor="{StaticResource gris1}" />
                             <Label
                                    Text="{Binding Companyia.Nombre}"
-                                   Style="{StaticResource texto_subtitulo5}"/>
+                                   Style="{StaticResource texto_subtitulo5}"
+                                   TextColor="{DynamicResource variable4}"/>
                         </StackLayout>
                         <StackLayout
                                      Orientation="Horizontal"
@@ -46,10 +50,12 @@
                                      Spacing="5">
                             <Label
                                 Text="Ciudad "
-                                Style="{StaticResource texto_subtitulo9}"/>
+                                Style="{StaticResource texto_subtitulo9}"
+                                TextColor="{StaticResource gris1}"/>
                             <Label
                                    Text="{Binding Companyia.Ciudad.Nombre}"
-                                   Style="{StaticResource texto_subtitulo5}"/>
+                                   Style="{StaticResource texto_subtitulo5}"
+                                   TextColor="{DynamicResource variable4}"/>
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>

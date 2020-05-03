@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Xamarin.Forms;
-using System.Linq;
-//using MvvmAspire;
 using EscapeRankUI.Modelos;
-using System.Windows.Input;
-using System.Diagnostics;
 using EscapeRankUI.Views;
 
 
@@ -17,24 +12,20 @@ namespace EscapeRankUI.ViewModels
     {
         //Variables
 
-        private int offset;
-        private Sala _salaSeleccionada;
-
+        private readonly int offset;
         private ObservableCollection<Sala> _salas;
         private ObservableCollection<Sala> _salasPromocionadas;
-        private ObservableCollection<Sala> _salasFiltradas;
         private ObservableCollection<Categoria> _categorias;
+        private ObservableCollection<Tematica> _tematicas;
         private ObservableCollection<Publico> _publico;
         private ObservableCollection<Dificultad> _dificultades;
-        private ObservableCollection<Tematica> _tematicas;
-        private ObservableCollection<Provincia> _provincias;
 
-        public object ObjetoSeleccionado { get; set; }
-        public Categoria CategoriaSeleccionada { get; set; }
-        public Tematica TematicaSeleccionada { get; set; }
-        public Publico PublicoSeleccionado { get; set; }
-        public Dificultad DificultadSeleccionada { get; set; }
-        public Provincia ProvinciaSeleccionada { get; set; }
+        public Sala SalaSeleccionada { get; set; }
+        public object FiltroSeleccionado { get; set; }
+
+        public Command VerSalaCommand { get; }
+        public Command VerFiltradasCommand { get; }
+        public Command VerTodasCommand { get; }
 
         //Constructor
 
@@ -46,25 +37,12 @@ namespace EscapeRankUI.ViewModels
             VerFiltradasCommand = new Command(VerFiltradas);
             VerTodasCommand = new Command(VerTodas);
 
-            GetSalasPromocionadas();
+            SalasPromocionadas = new ObservableCollection<Sala>();
+
             GetCategorias();
             GetTematicas();
             GetPublico();
             GetDificultades();
-            GetProvincias();
-        }
-
-        
-        //Getters & Setters
-
-        public Command VerSalaCommand { get; }
-        public Command VerFiltradasCommand { get; }
-        public Command VerTodasCommand { get; }
-
-        public Sala SalaSeleccionada
-        {
-            get { return _salaSeleccionada; }
-            set { SetProperty(ref _salaSeleccionada, value); }
         }
 
         public ObservableCollection<Sala> Salas
@@ -77,12 +55,6 @@ namespace EscapeRankUI.ViewModels
         {
             get { return _salasPromocionadas; }
             set { SetProperty(ref _salasPromocionadas, value); }
-        }
-
-        public ObservableCollection<Sala> SalasFiltradas
-        {
-            get { return _salasFiltradas; }
-            set { SetProperty(ref _salasFiltradas, value); }
         }
 
         public ObservableCollection<Categoria> Categorias
@@ -101,7 +73,7 @@ namespace EscapeRankUI.ViewModels
         {
             get { return _tematicas; }
             set { SetProperty(ref _tematicas, value); }
-        }
+        } 
 
         public ObservableCollection<Dificultad> Dificultades
         {
@@ -109,48 +81,40 @@ namespace EscapeRankUI.ViewModels
             set { SetProperty(ref _dificultades, value); }
         }
 
-
-        public ObservableCollection<Provincia> Provincias
-        {
-            get { return _provincias; }
-            set { SetProperty(ref _provincias, value); }
-        }
-
-
         //Funciones
-
 
         public async void GetSalasPromocionadas()
         {
+            Cargando = true;
+
             try
             {
-
-                List<Sala> salasPromocionadasCall = await App.SalasManager.GetSalasPromocionadasAsync(offset); //Servicios.ServicioFake.Salas;
+                List<Sala> salasPromocionadasCall = await App.SalasService.GetSalasPromocionadasAsync(offset); //Servicios.ServicioFake.Salas;
                 SalasPromocionadas = new ObservableCollection<Sala>(salasPromocionadasCall);
-                offset += 10;
             }
-            catch (Exception e)
+            catch (HttpUnauthorizedException)
             {
-                await Application.Current.MainPage.DisplayAlert(
-                    "An error occurred",
-                    e.Message,
-                    "Ok"
-                );
+                ErrorCredenciales();
             }
-
+            finally
+            {
+                Cargando = false;
+            }
         }
 
         private async void VerSala()
         {
-            TabbedPage tp = new TabbedPage();
 
-            SalaDetallePage detalle = new SalaDetallePage(_salaSeleccionada);
-            SalaRankingPage ranking = new SalaRankingPage(_salaSeleccionada);
+            TabbedPage tp = new TabbedPage {
+                BarBackgroundColor = (Color)Utils.GetResourceValue("azul1"),
+                BarTextColor = (Color)Utils.GetResourceValue("blanco1"),
+                UnselectedTabColor = (Color)Utils.GetResourceValue("gris2")
+            };
+        
+            SalaDetallePage detalle = new SalaDetallePage(SalaSeleccionada);
+            SalaRankingPage ranking = new SalaRankingPage(SalaSeleccionada);
 
-            detalle.Title = "Info";
-            ranking.Title = "Ranking";
-
-            tp.Title = _salaSeleccionada.Nombre;
+            tp.Title = SalaSeleccionada.Nombre;
             tp.Children.Add(detalle);
             tp.Children.Add(ranking);
 
@@ -159,7 +123,7 @@ namespace EscapeRankUI.ViewModels
 
         private async void VerFiltradas()
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new SalasFiltradasPage(ObjetoSeleccionado));
+            await Application.Current.MainPage.Navigation.PushAsync(new SalasFiltradasPage(FiltroSeleccionado));
         }
 
         private async void VerTodas()
@@ -167,41 +131,66 @@ namespace EscapeRankUI.ViewModels
             await Application.Current.MainPage.Navigation.PushAsync(new SalasFiltradasPage(null));
         }
 
-        public async void GetCategorias()
+        private async void GetCategorias()
         {
-            List<Categoria> categoriasCall = await App.SalasManager.GetCategoriasAsync();
-            //Servicios.ServicioFake.Categorias;
-            Categorias = new ObservableCollection<Categoria>(categoriasCall);
+            Cargando = true;
+
+            try
+            {
+                List<Categoria> categoriasCall = await App.SalasService.GetCategoriasAsync();
+                //Servicios.ServicioFake.Categorias;
+                Categorias = new ObservableCollection<Categoria>(categoriasCall);
+            }
+            catch
+            {
+                ErrorCredenciales();
+                Cargando = false;
+            }    
         }
 
-        public async void GetTematicas()
+        private async void GetTematicas()
         {
-            List<Tematica> tematicasCall = await App.SalasManager.GetTematicasAsync();
-            //Servicios.ServicioFake.Tematicas;
-            Tematicas = new ObservableCollection<Tematica>(tematicasCall);
+            try
+            {
+                List<Tematica> tematicasCall = await App.SalasService.GetTematicasAsync();
+                //Servicios.ServicioFake.Tematicas;
+                Tematicas = new ObservableCollection<Tematica>(tematicasCall);
+            }
+            catch
+            {
+                ErrorCredenciales();
+                Cargando = false;
+            }
         }
 
-        public async void GetPublico()
+        private async void GetPublico()
         {
-            List<Publico> publicoCall = await App.SalasManager.GetPublicoAsync();
-            //Servicios.ServicioFake.Publico;
-            Publico = new ObservableCollection<Publico>(publicoCall);
-        }
-
-
-        public async void GetDificultades()
-        {
-            List<Dificultad> dificultadesCall = await App.SalasManager.GetDificultadesAsync();//Servicios.ServicioFake.Dificultades;
-            Dificultades = new ObservableCollection<Dificultad>(dificultadesCall);
-        }
-
-        public async void GetProvincias()
-        {
-            List<Provincia> provinciasCall = await App.SalasManager.GetProvinciasAsync();//Servicios.ServicioFake.Provincias;
-            Provincias = new ObservableCollection<Provincia>(provinciasCall);
+            try
+            {
+                List<Publico> publicoCall = await App.SalasService.GetPublicoAsync();
+                //Servicios.ServicioFake.Publico;
+                Publico = new ObservableCollection<Publico>(publicoCall);
+            }
+            catch
+            {
+                ErrorCredenciales();
+                Cargando = false;
+            }
 
         }
 
-
+        private async void GetDificultades()
+        {
+            try
+            {
+                List<Dificultad> dificultadesCall = await App.SalasService.GetDificultadesAsync();//Servicios.ServicioFake.Dificultades;
+                Dificultades = new ObservableCollection<Dificultad>(dificultadesCall);
+            }
+            catch
+            {
+                ErrorCredenciales();
+                Cargando = false;
+            }
+        }
     }
 }

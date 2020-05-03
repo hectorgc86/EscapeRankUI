@@ -6,130 +6,132 @@
     xmlns:recursos="clr-namespace:EscapeRankUI.Recursos"
     BackgroundColor="{DynamicResource variable1}">
 
-  <Shell.TitleView>
-      <Grid>
-          <Label
+    <Shell.TitleView>
+        <Grid>
+            <Label
                 Text="{x:Static recursos:Strings.historial}"
                 Style="{StaticResource texto_cabecera4}"
+                TextColor="{StaticResource blanco1}"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
             </Label>
-      </Grid>
-  </Shell.TitleView>
+        </Grid>
+    </Shell.TitleView>
 
     <ContentPage.Content>
-                <CollectionView
+        <Grid>
+            <CollectionView
                     ItemsSource="{Binding Partidas}"
-                    SelectionMode="Single"
                     EmptyView="No has registrado partidas todavía">
 
-                    <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame Padding="16,8"
-                                    BackgroundColor="{DynamicResource variable1}"
-                                    HasShadow="False">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="15,6"
+                               BackgroundColor="{DynamicResource variable1}"
+                               HasShadow="False">
 
-                                <Frame Padding="16"
+                            <Frame Padding="15,15,0,15"
                                         BackgroundColor="{DynamicResource variable2}"
                                         CornerRadius="8"
-                                        Visual="Material"
-                                        HasShadow="True">
-                                   
-                                   <StackLayout Spacing="10">
-                                       <StackLayout Orientation="Horizontal" Spacing="5" >
-                                        <Label
-                                                        Text="{x:Static recursos:Strings.ganada_en}"
-                                                        Style="{StaticResource texto_titulo1}"/>
-                                                 <Label
-                                                        Text="{Binding Sala.Nombre}"
-                                                        Style="{StaticResource texto_titulo1}"/>
-                                           </StackLayout>
-                                 
-                                    <StackLayout Orientation="Horizontal" Spacing="16">
-                                         
+                                        Visual="Material">
+
+                                <StackLayout Spacing="10">
+                                    <StackLayout Orientation="Horizontal" Spacing="5" >
+                                        <Label Text="{x:Static recursos:Strings.ganada_en}"
+                                               Style="{StaticResource texto_titulo1}"
+                                               TextColor="{DynamicResource variable3}"/>
+
+                                        <Label Text="{Binding Sala.Nombre}"
+                                               Style="{StaticResource texto_titulo1}"
+                                               TextColor="{DynamicResource variable3}"/>
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal" Spacing="10">
+
                                         <Frame
                                             Visual="Material"
-                                            CornerRadius="6"
-                                            Padding="0">
+                                            CornerRadius="6">
                                             <Image
                                                     Source="{Binding Sala.ImagenUriEstrecha}"
                                                     Aspect="AspectFill"
-                                                    HeightRequest="65"
                                                     WidthRequest="98" />
                                         </Frame>
                                         <StackLayout Spacing="2">
-                                           
-                                             <StackLayout
+                                            <StackLayout
                                                     Orientation="Horizontal"
-                                                    VerticalOptions="StartAndExpand"
                                                     Spacing="5">
                                                 <Image
                                                         Source="{StaticResource icono_equipo}"
-                                                        VerticalOptions="Start" />
-                                                 <Label
+                                                        VerticalOptions="Start"/>
+                                                <Label
                                                         Text="{x:Static recursos:Strings.equipo}"
-                                                        Style="{StaticResource texto_subtitulo9}" />
+                                                        Style="{StaticResource texto_subtitulo9}"
+                                                        TextColor="{StaticResource gris1}"
+                                                        LineBreakMode="TailTruncation"/>
                                                 <Label
                                                         Text="{Binding Equipo.Nombre}"
-                                                        Style="{StaticResource texto_subtitulo5}"/>
+                                                        Style="{StaticResource texto_subtitulo5}"
+                                                        TextColor="{DynamicResource variable4}"/>
                                             </StackLayout>
                                             <StackLayout
                                                     Orientation="Horizontal"
-                                                    VerticalOptions="EndAndExpand"
                                                     Spacing="5">
                                                 <Image
-                                                        Source="{StaticResource icono_calendario_hoy}" />
+                                                        Source="{StaticResource icono_calendario_hoy}"/>
                                                 <Label
                                                         Text="{x:Static recursos:Strings.fecha}"
-                                                        Style="{StaticResource texto_subtitulo9}" />
+                                                        Style="{StaticResource texto_subtitulo9}"
+                                                        TextColor="{StaticResource gris1}" />
                                                 <Label
                                                         Text="{Binding Fecha,StringFormat='{}{0:dd-MM-yyyy}'}"
-                                                        Style="{StaticResource texto_subtitulo5}"/>
+                                                        Style="{StaticResource texto_subtitulo5}"
+                                                        TextColor="{DynamicResource variable4}"/>
                                             </StackLayout>
                                             <StackLayout
                                                     Orientation="Horizontal"
-                                                    VerticalOptions="EndAndExpand"
                                                     Spacing="5">
                                                 <Image
                                                         Source="{StaticResource icono_reloj_arena}" />
                                                 <Label
                                                         Text="{x:Static recursos:Strings.tiempo_sala}"
-                                                        Style="{StaticResource texto_subtitulo9}"/>
+                                                        Style="{StaticResource texto_subtitulo9}"
+                                                        TextColor="{StaticResource gris1}"/>
                                                 <Label
-                                                        Text="{Binding Sala.Duracion}"
-                                                        Style="{StaticResource texto_subtitulo5}"/>
+                                                        Text="{Binding Sala.Duracion,StringFormat='{0} min'}"
+                                                        Style="{StaticResource texto_subtitulo5}"
+                                                        TextColor="{DynamicResource variable4}"/>
                                             </StackLayout>
                                             <StackLayout
                                                     Orientation="Horizontal"
-                                                    VerticalOptions="CenterAndExpand"
                                                     Spacing="5">
                                                 <Image
-                                                        Source="{StaticResource icono_reloj}"
-                                                        VerticalOptions="Start" />
-                                                 <Label
+                                                        Source="{StaticResource icono_reloj}"/>
+                                                <Label
                                                         Text="{x:Static recursos:Strings.realizado_en}"
-                                                        Style="{StaticResource texto_subtitulo9}"/>
+                                                        Style="{StaticResource texto_subtitulo9}"
+                                                        TextColor="{StaticResource gris1}"/>
                                                 <Label
-                                                        Text="{Binding Horas,StringFormat=' {0}:'}"
-                                                        Style="{StaticResource texto_subtitulo5}"/>
-                                                <Label
-                                                        Text="{Binding Minutos,StringFormat='{0}:'}"
-                                                        Style="{StaticResource texto_subtitulo5}"/>
-                                                <Label
-                                                        Text="{Binding Segundos}"
-                                                        Style="{StaticResource texto_subtitulo5}"/>
+                                                        Text="{Binding DuracionPartida,StringFormat='{}{0:h\\:mm\\:ss}'}"
+                                                        Style="{StaticResource texto_subtitulo5}"
+                                                        TextColor="{DynamicResource variable4}"/>
+                                               
                                             </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
-                        </StackLayout>           
-
-                                </Frame>
+                                </StackLayout>
                             </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+              <BoxView Color="{DynamicResource variable1}" Opacity="0.9" IsVisible ="{Binding Cargando}"/>
+            <ActivityIndicator Color="{DynamicResource variable3}"
+                               Scale="0.1"
+                               IsRunning="{Binding Cargando}"
+                               IsVisible ="{Binding Cargando}"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

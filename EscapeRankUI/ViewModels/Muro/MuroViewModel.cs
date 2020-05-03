@@ -9,23 +9,29 @@ namespace EscapeRankUI.ViewModels
     {
         private ObservableCollection<Noticia> _noticias;
 
-        public MuroViewModel()
-        {
-            GetNoticias();
-        }
-
         public ObservableCollection<Noticia> Noticias
         {
             get { return _noticias; }
             set { SetProperty(ref _noticias, value); }
         }
 
-
-        private async void GetNoticias()
+        public async void GetNoticias()
         {
-            List<Noticia> noticiasCall = await App.MuroManager.GetNoticiasAsync(); //Servicios.ServicioFake.Noticias;
-            Noticias = new ObservableCollection<Noticia>(noticiasCall);
-        }
+            Cargando = true;
 
+            try
+            {
+                List<Noticia> noticiasCall = await App.MuroService.GetNoticiasAsync(); //Servicios.ServicioFake.Noticias;
+                Noticias = new ObservableCollection<Noticia>(noticiasCall);
+            }
+            catch(HttpUnauthorizedException)
+            {
+                ErrorCredenciales();
+            }
+            finally
+            {
+                Cargando = false;
+            }
+        }
     }
 }

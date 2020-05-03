@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Linq;
 using EscapeRankUI.Modelos;
-using System.Diagnostics;
 using EscapeRankUI.Views;
 
 
@@ -14,16 +13,16 @@ namespace EscapeRankUI.ViewModels
     public class SalasFiltradasViewModel : BaseViewModel
     {
         private int _umbral;
-        private object _filtro;
         private string _titulo;
         private string _busqueda;
+        private readonly object _filtro;
         private Sala _salaSeleccionada;
+
+        public ObservableCollection<Sala> Salas { get; set; }
 
         public Command VerSalaCommand { get; }
         public Command BuscarSalasCommand { get; }
         public Command CargarSalasCommand { get; }
-
-        public ObservableCollection<Sala> Salas { get; set; }
 
         //Constructor
 
@@ -83,11 +82,14 @@ namespace EscapeRankUI.ViewModels
 
         //Funciones
 
-
-
         private async void VerSala()
         {
-            TabbedPage tp = new TabbedPage();
+            TabbedPage tp = new TabbedPage
+            {
+                BarBackgroundColor = (Color)Utils.GetResourceValue("azul1"),
+                BarTextColor = (Color)Utils.GetResourceValue("blanco1"),
+                UnselectedTabColor = (Color)Utils.GetResourceValue("gris2")
+            };
 
             SalaDetallePage detalle = new SalaDetallePage(SalaSeleccionada);
             SalaRankingPage ranking = new SalaRankingPage(SalaSeleccionada);
@@ -115,23 +117,23 @@ namespace EscapeRankUI.ViewModels
 
                 if (_filtro is Categoria categoriaFiltro)
                 {
-                    salasCall = await App.SalasManager.GetSalasCategoriaAsync(categoriaFiltro.Id, Salas.Count, Busqueda);
+                    salasCall = await App.SalasService.GetSalasCategoriaAsync(categoriaFiltro.Id, Salas.Count, Busqueda);
                 }
                 else if (_filtro is Tematica tematicaFiltro)
                 {
-                    salasCall = await App.SalasManager.GetSalasTematicaAsync(tematicaFiltro.Id, Salas.Count, Busqueda);
+                    salasCall = await App.SalasService.GetSalasTematicaAsync(tematicaFiltro.Id, Salas.Count, Busqueda);
                 }
                 else if (_filtro is Publico publicoFiltro)
                 {
-                    salasCall = await App.SalasManager.GetSalasPublicoAsync(publicoFiltro.Id, Salas.Count, Busqueda);
+                    salasCall = await App.SalasService.GetSalasPublicoAsync(publicoFiltro.Id, Salas.Count, Busqueda);
                 }
                 else if (_filtro is Dificultad dificultadFiltro)
                 {
-                    salasCall = await App.SalasManager.GetSalasDificultadAsync(dificultadFiltro.Id, Salas.Count, Busqueda);
+                    salasCall = await App.SalasService.GetSalasDificultadAsync(dificultadFiltro.Id, Salas.Count, Busqueda);
                 }
                 else
                 {
-                    salasCall = await App.SalasManager.GetSalasAsync(Salas.Count, Busqueda);
+                    salasCall = await App.SalasService.GetSalasAsync(Salas.Count, Busqueda);
                 }
 
                 foreach (Sala sala in salasCall)
@@ -145,15 +147,16 @@ namespace EscapeRankUI.ViewModels
                     return;
                 }
             }
-            catch (Exception ex)
+            catch (HttpUnauthorizedException)
             {
-                Debug.WriteLine(ex);
+               ErrorCredenciales();
             }
             finally
             {
                 Cargando = false;
             }
         }
+
         private void CargarSalasFiltradas()
         {
              Umbral = 1;

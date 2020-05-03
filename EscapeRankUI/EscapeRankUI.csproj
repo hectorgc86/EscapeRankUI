@@ -18,9 +18,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.657" />  
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.726" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.1" />  
-    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.5.0.657" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.6.0.726" />
     <PackageReference Include="Plugin.FacebookClient" Version="2.2.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Xamarin.Auth" Version="1.7.0" />
@@ -29,4 +29,14 @@
     <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
   </ItemGroup>
     
+  <ItemGroup>
+    <Compile Remove="Servicios\ServicioFake.cs" />
+    <Compile Remove="Estilos\IconFont.cs" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <None Include="Servicios\ServicioFake.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <None Include="Estilos\IconFont.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+  </ItemGroup>
+
 </Project>
