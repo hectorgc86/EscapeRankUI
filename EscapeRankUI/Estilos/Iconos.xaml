@@ -227,18 +227,11 @@
         Size="23"
         Color="#9F9F9F"/>
 
-    <FontImageSource
-        x:Key="icono_anyadir"
-        FontFamily="{StaticResource FuenteIconosMD}"
-        Glyph="&#x000f0419;"
-        Size="23"
-        Color="#B9BDC5"/>
-
      <FontImageSource
         x:Key="icono_luna"
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f0f65;"
-        Size="18"
+        Size="20"
         Color="#FFFFFF"/>
 
     <FontImageSource
@@ -263,13 +256,41 @@
         Color="#9F9F9F"/>
 
     <FontImageSource
+        x:Key="icono_mas"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f0417;"
+        Size="24"
+        Color="#FFFFFF"/>
+
+    <FontImageSource
+        x:Key="icono_menos"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f0376;"
+        Size="24"
+        Color="#FFFFFF"/>
+
+    <FontImageSource
+        x:Key="icono_borrar"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f0376;"
+        Size="24"
+        Color="DarkRed"/>
+
+    <FontImageSource
+        x:Key="icono_interrogante"
+        FontFamily="{StaticResource FuenteIconosMD}"
+        Glyph="&#x000f02d7;"
+        Size="24"
+        Color="RoyalBlue"/>
+
+    
+    <FontImageSource
         x:Key="icono_reloj"
         FontFamily="{StaticResource FuenteIconosMD}"
         Glyph="&#x000f13ab;"
         Size="14"
         Color="#9F9F9F"/>
     
-
     <FontImageSource
         x:Key="icono_reloj_arena"
         FontFamily="{StaticResource FuenteIconosMD}"

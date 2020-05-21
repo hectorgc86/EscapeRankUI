@@ -13,5 +13,11 @@ namespace EscapeRankUI.Views
             InitializeComponent();
             BindingContext = evm;
         }
+
+        protected async override void OnAppearing()
+        {
+            await evm.GetEquipos();
+            evm.ModoEliminar = false;
+        }
     }
 }

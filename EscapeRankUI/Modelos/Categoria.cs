@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace EscapeRankUI.Modelos
@@ -10,6 +11,7 @@ namespace EscapeRankUI.Modelos
         public string Tipo { get; set; }
         public int NumeroSalas { get; set; }
 
+        [JsonIgnore]
         public FontImageSource Icono
         {
             get

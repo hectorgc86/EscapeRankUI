@@ -14,5 +14,20 @@ namespace EscapeRankUI.Views
             InitializeComponent();
             BindingContext = pvm;
         }
+
+        protected override void OnAppearing()
+        {
+                pvm.GetEquipos();
+        }
+
+        protected void Picker_SelectedIndexChanged(object obj , EventArgs a)
+        {
+            Picker picker = obj as Picker;
+
+            if(picker.SelectedIndex != -1)
+            {
+                pvm.NumeroEquipoSeleccionado = picker.SelectedIndex;
+            }
+        }
     }
 }

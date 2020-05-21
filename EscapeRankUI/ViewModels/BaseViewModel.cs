@@ -15,14 +15,18 @@ namespace EscapeRankUI.ViewModels
     public class BaseViewModel : BindableObject
     {
         private bool _cargando;
+        private Sala _salaSeleccionada;
 
         public bool Cargando
         {
             get { return _cargando; }
-            set
-            {
-                SetProperty(ref _cargando, value);
-            }
+            set { SetProperty(ref _cargando, value); }
+        }
+
+        public Sala SalaSeleccionada
+        {
+            get { return _salaSeleccionada; }
+            set { SetProperty(ref _salaSeleccionada, value); }
         }
 
         protected bool SetProperty<T>(
@@ -39,7 +43,7 @@ namespace EscapeRankUI.ViewModels
             return true;
         }
 
-        public async void ErrorCredenciales() {
+        protected async void ErrorCredenciales() {
 
             if (Cargando)
             {
@@ -48,6 +52,20 @@ namespace EscapeRankUI.ViewModels
 
                 Cargando = false;
             }
+        }
+
+        protected async void VerSala()
+        {
+            TabbedPage tp = new TabbedPage
+            {
+                BarBackgroundColor = (Color)Utils.GetResourceValue("azul1"),
+                BarTextColor = (Color)Utils.GetResourceValue("blanco1"),
+                UnselectedTabColor = (Color)Utils.GetResourceValue("gris2"),
+                Title = SalaSeleccionada.Nombre,
+                Children = { new SalaDetallePage(SalaSeleccionada), new SalaRankingPage(SalaSeleccionada) }
+            };
+
+            await Application.Current.MainPage.Navigation.PushAsync(tp);
         }
     }
 }

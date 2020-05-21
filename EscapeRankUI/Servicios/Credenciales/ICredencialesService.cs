@@ -11,6 +11,10 @@ namespace EscapeRankUI.Servicios
 
         Task<string> GetToken();
 
+        Task<string> GetTema();
+
+        Task GuardarTema(string tema);
+
         Task GuardarCredenciales(string email, string contrasenya, Login login);
 
         void BorrarCredenciales();

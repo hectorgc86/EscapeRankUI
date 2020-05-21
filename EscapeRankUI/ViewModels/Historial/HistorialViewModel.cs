@@ -24,6 +24,7 @@ namespace EscapeRankUI.ViewModels
             {
                 List<Partida> partidas = await App.HistorialService.GetHistorialAsync(App.UsuarioPrincipal.Id);
                 //Servicios.ServicioFake.Equipos.SelectMany(p=>p.Partidas).Distinct().ToList();
+
                 Partidas = new ObservableCollection<Partida>(partidas);
             }
             catch (HttpUnauthorizedException)

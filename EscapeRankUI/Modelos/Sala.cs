@@ -7,6 +7,9 @@ namespace EscapeRankUI.Modelos
 {
     public partial class Sala
     {
+        private string imagenAncha;
+        private string imagenEstrecha;
+
         public string Id { get; set; }
         public string Nombre { get; set; }
         public int Mostrada { get; set; }
@@ -33,8 +36,6 @@ namespace EscapeRankUI.Modelos
         public string AdaptadoSordos { get; set; }
         public string AdaptadoEmbarazadas { get; set; }
         public string NoClaustrofobicos { get; set; }
-        public string ImagenAncha { get; set; }
-        public string ImagenEstrecha { get; set; }
         public string JugadoresIncluidos { get; set; }
         public string PrecioJugadorAdicional { get; set; }
         public string Validez { get; set; }
@@ -50,41 +51,54 @@ namespace EscapeRankUI.Modelos
         public Dificultad Dificultad { get; set; }
         public Provincia Provincia { get; set; }
         public Ciudad Ciudad { get; set; }
+
         public List<Partida> Partidas { get; set; }
         public List<Categoria> Categorias { get; set; }
         public List<Tematica> Tematicas { get; set; }
         public List<Publico> Publico { get; set; }
 
-        public ImageSource ImagenUriAncha
+        public string DescripcioniOS
         {
             get
             {
-                ImagenAncha = (string.IsNullOrEmpty(ImagenAncha)) ? "default.png" : ImagenAncha;
+                Color color = (Color)Utils.GetResourceValue("variable4");
 
-                var url = Constantes.ImagenesAnchasURL + ImagenAncha;
-                return ImageSource.FromUri(new Uri(url, UriKind.Absolute));
+                return "<div style=\"" +
+                    "color: RGB(" + color.R * 255 + "," + color.G * 255 + "," + color.B * 255 + "); " +
+                    "font-size:120%\">"
+                    + Descripcion + "</div>";
             }
-            set { ImagenUriAncha = value; }
+            set { DescripcioniOS = value; }
         }
 
-        public ImageSource ImagenUriEstrecha
+        public string ImagenAncha
         {
-            get
-            {
-                ImagenEstrecha = (string.IsNullOrEmpty(ImagenEstrecha)) ? "default.png" : ImagenEstrecha;
+            get => imagenAncha;
 
-                var url = Constantes.ImagenesEstrechasURL + ImagenEstrecha;
-                return ImageSource.FromUri(new Uri(url, UriKind.Absolute));
-            }
-            set { ImagenUriEstrecha = value; }
+            set {  imagenAncha = (string.IsNullOrEmpty(value)) ?
+                    Constantes.ImagenDefaultURL :
+                    Constantes.ImagenesSalaAnchasURL + value; }
         }
 
-        public List<SalasCategorias> SalasCategorias {
+        public string ImagenEstrecha
+        {
+            get => imagenEstrecha;
+
+            set
+            {
+                imagenEstrecha = (string.IsNullOrEmpty(value)) ?
+                 Constantes.ImagenDefaultURL :
+                 Constantes.ImagenesSalaEstrechasURL + value;
+            }
+        }
+
+        public List<SalasCategorias> SalasCategorias
+        {
             set
             {
                 Categorias = new List<Categoria>();
 
-               foreach(SalasCategorias sc in value)
+                foreach (SalasCategorias sc in value)
                 {
                     Categorias.Add(sc.Categoria);
                 }
@@ -125,7 +139,7 @@ namespace EscapeRankUI.Modelos
 
     public class SalasTematicas
     {
-        public Tematica Tematica { get; set; } 
+        public Tematica Tematica { get; set; }
     }
 
     public class SalasPublico

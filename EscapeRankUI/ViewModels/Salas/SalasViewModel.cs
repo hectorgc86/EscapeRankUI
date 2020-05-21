@@ -5,7 +5,6 @@ using Xamarin.Forms;
 using EscapeRankUI.Modelos;
 using EscapeRankUI.Views;
 
-
 namespace EscapeRankUI.ViewModels
 {
     public class SalasViewModel : BaseViewModel
@@ -20,7 +19,6 @@ namespace EscapeRankUI.ViewModels
         private ObservableCollection<Publico> _publico;
         private ObservableCollection<Dificultad> _dificultades;
 
-        public Sala SalaSeleccionada { get; set; }
         public object FiltroSeleccionado { get; set; }
 
         public Command VerSalaCommand { get; }
@@ -102,24 +100,7 @@ namespace EscapeRankUI.ViewModels
             }
         }
 
-        private async void VerSala()
-        {
-
-            TabbedPage tp = new TabbedPage {
-                BarBackgroundColor = (Color)Utils.GetResourceValue("azul1"),
-                BarTextColor = (Color)Utils.GetResourceValue("blanco1"),
-                UnselectedTabColor = (Color)Utils.GetResourceValue("gris2")
-            };
         
-            SalaDetallePage detalle = new SalaDetallePage(SalaSeleccionada);
-            SalaRankingPage ranking = new SalaRankingPage(SalaSeleccionada);
-
-            tp.Title = SalaSeleccionada.Nombre;
-            tp.Children.Add(detalle);
-            tp.Children.Add(ranking);
-
-            await Application.Current.MainPage.Navigation.PushAsync(tp);
-        }
 
         private async void VerFiltradas()
         {

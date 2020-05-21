@@ -16,9 +16,7 @@ namespace EscapeRankUI.ViewModels
         private string _titulo;
         private string _busqueda;
         private readonly object _filtro;
-        private Sala _salaSeleccionada;
-
-        public ObservableCollection<Sala> Salas { get; set; }
+        private ObservableCollection<Sala> _salas;
 
         public Command VerSalaCommand { get; }
         public Command BuscarSalasCommand { get; }
@@ -50,10 +48,10 @@ namespace EscapeRankUI.ViewModels
             _ = CargarSalas();
         }
 
-        public Sala SalaSeleccionada
+        public ObservableCollection<Sala> Salas
         {
-            get { return _salaSeleccionada; }
-            set { SetProperty(ref _salaSeleccionada, value); }
+            get { return _salas; }
+            set { SetProperty(ref _salas, value); }
         }
 
         public string Busqueda
@@ -81,28 +79,6 @@ namespace EscapeRankUI.ViewModels
         }
 
         //Funciones
-
-        private async void VerSala()
-        {
-            TabbedPage tp = new TabbedPage
-            {
-                BarBackgroundColor = (Color)Utils.GetResourceValue("azul1"),
-                BarTextColor = (Color)Utils.GetResourceValue("blanco1"),
-                UnselectedTabColor = (Color)Utils.GetResourceValue("gris2")
-            };
-
-            SalaDetallePage detalle = new SalaDetallePage(SalaSeleccionada);
-            SalaRankingPage ranking = new SalaRankingPage(SalaSeleccionada);
-
-            detalle.Title = "Info";
-            ranking.Title = "Ranking";
-
-            tp.Title = SalaSeleccionada.Nombre;
-            tp.Children.Add(detalle);
-            tp.Children.Add(ranking);
-
-            await Application.Current.MainPage.Navigation.PushAsync(tp);
-        }
 
         private async Task CargarSalas()
         {

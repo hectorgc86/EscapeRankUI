@@ -22,5 +22,9 @@ namespace EscapeRankUI.Views
         {
             svm.GetSalasPromocionadas();
         }
+
+        void CollectionView_PropertyChanged(System.Object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+        }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
+using System.IO;
 using EscapeRankUI.Modelos;
 using Plugin.Media;
+using Plugin.Media.Abstractions;
 using Xamarin.Forms;
 using ZXing.Net.Mobile.Forms;
 
@@ -16,6 +17,7 @@ namespace EscapeRankUI.ViewModels
         private DateTime _fechaPartida;
         private bool _botonValidarActivado;
         private bool _botonGuardarActivado;
+        public int NumeroEquipoSeleccionado { get; set; }
 
         private ObservableCollection<Equipo> _equiposUsuario;
 
@@ -25,8 +27,8 @@ namespace EscapeRankUI.ViewModels
             GuardarCommand = new Command(GuardarPartida);
             HacerFotoCommand = new Command(HacerFoto);
 
+            NumeroEquipoSeleccionado = 0;
             BotonGuardarActivado = false;
-            GetEquipos();
             FechaPartida = DateTime.Now;
             HoraPartida = DateTime.Now.TimeOfDay;
             MinutosPartida = 60;
@@ -34,9 +36,10 @@ namespace EscapeRankUI.ViewModels
         }
 
         public Sala SalaEscaneada { get; set; }
+        public byte[] FotoPartida { get; set; }
         public int MinutosPartida { get; set; }
         public int SegundosPartida { get; set; }
-
+        
         public Command ValidarCommand { get; }
         public Command GuardarCommand { get; }
         public Command HacerFotoCommand { get; }
@@ -70,7 +73,6 @@ namespace EscapeRankUI.ViewModels
             set { SetProperty(ref _equipoSeleccionado, value); }
         }
 
-
         public ObservableCollection<Equipo> EquiposUsuario
         {
             get { return _equiposUsuario; }
@@ -91,7 +93,8 @@ namespace EscapeRankUI.ViewModels
                 if (EquiposUsuario.Count > 0)
                 {
                     BotonValidarActivado = true;
-                    EquipoSeleccionado = EquiposUsuario[0];
+
+                    EquipoSeleccionado = EquiposUsuario[NumeroEquipoSeleccionado];
                 }
                 else
                 {
@@ -110,35 +113,22 @@ namespace EscapeRankUI.ViewModels
             
         }
 
-        private async void HacerFoto(object obj)
+        private async void HacerFoto()
         {
-            Image image = new Image();
+            await CrossMedia.Current.Initialize();
 
-                await CrossMedia.Current.Initialize();
+             MediaFile foto = await CrossMedia.Current.TakePhotoAsync
+                (new StoreCameraMediaOptions() {
+                    CompressionQuality=70,
+                    PhotoSize = PhotoSize.Small,
+                    CustomPhotoSize = 70
+                    });
 
-                if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
-                {
-                    await Application.Current.MainPage.DisplayAlert("No Camera", ":( No camera available.", "OK");
-                    return;
-                }
+            if (foto != null)
+            {
+                FotoPartida = File.ReadAllBytes(foto.Path);
+            }
 
-                var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
-                {
-                    Directory = "Sample",
-                    Name = "test.jpg"
-                });
-
-                if (file == null)
-                    return;
-
-            await Application.Current.MainPage.DisplayAlert("File Location", file.Path, "OK");
-
-                image.Source = ImageSource.FromStream(() =>
-                {
-                    var stream = file.GetStream();
-                    return stream;
-                });
-            
         }
 
         //Escanear QR de sala
@@ -168,7 +158,8 @@ namespace EscapeRankUI.ViewModels
                 {
                     Application.Current.MainPage.Navigation.PopAsync();
 
-                    Application.Current.MainPage.DisplayAlert("Código escaneado", "Sala: \""+ SalaEscaneada.Nombre + "\" ha autorizado correctamente esta partida.", "OK");
+                    Application.Current.MainPage.DisplayAlert("Código escaneado",
+                        "Sala: \""+ SalaEscaneada.Nombre + "\" ha autorizado correctamente esta partida.", "OK");
 
                     BotonGuardarActivado = true;
                 });
@@ -191,6 +182,10 @@ namespace EscapeRankUI.ViewModels
                 Sala = SalaEscaneada,
                 Equipo = EquipoSeleccionado
             };
+
+            if (FotoPartida != null) {
+                partida.Foto = FotoPartida;
+            }
 
             try
             {

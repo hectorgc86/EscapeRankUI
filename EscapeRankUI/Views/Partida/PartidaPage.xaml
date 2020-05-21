@@ -33,6 +33,7 @@
                 <Picker ItemsSource="{Binding EquiposUsuario}"
                         ItemDisplayBinding="{Binding Nombre}"
                         SelectedItem="{Binding EquipoSeleccionado}"
+                        SelectedIndexChanged="Picker_SelectedIndexChanged"
                         Title="{x:Static recursos:Strings.selecciona_equipo}"
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="{DynamicResource variable2}"

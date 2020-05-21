@@ -225,39 +225,6 @@ namespace EscapeRankUI.Servicios
             }
         }
 
-        //Llamada a la API para traer todas las salas de una provincia
-
-        public async Task<List<Sala>> GetSalasProvinciaAsync(string provinciaId, int offset)
-        {
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
-
-            List<Sala> salasProvincia = new List<Sala>();
-            Uri uri = new Uri(Constantes.EscapeRankURL
-                + Constantes.SalasProvinciaURL + provinciaId
-                + Constantes.OffsetQuery + offset);
-            try
-            {
-                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
-
-                switch (resp.StatusCode)
-                {
-                    case HttpStatusCode.OK:
-                        string aux = await resp.Content.ReadAsStringAsync();
-                        salasProvincia = JsonConvert.DeserializeObject<List<Sala>>(aux);
-                        break;
-                    case HttpStatusCode.Unauthorized:
-                        throw new HttpUnauthorizedException();
-                }
-
-                return salasProvincia;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-
         //Llamada a la API para traer todas las partidas de una sala
 
         public async Task<List<Partida>> GetPartidasSalaAsync(string salaId, int offset)

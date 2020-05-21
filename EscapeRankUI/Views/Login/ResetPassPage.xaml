@@ -6,67 +6,67 @@
              NavigationPage.HasNavigationBar="false"
              Visual="Material">
 
-    <RelativeLayout>
+    <Grid>
         <Image Source="fondo.png" Aspect="Fill"/>
 
-        <FlexLayout Direction="Column"
-                    JustifyContent="SpaceEvenly"
-                    Style="{StaticResource espacio_flex_normal}"
+        <Grid
+                    Style="{StaticResource espacio_grid_normal}"
                     BackgroundColor="{StaticResource azul4}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-                    <StackLayout VerticalOptions="CenterAndExpand">
+            <StackLayout VerticalOptions="CenterAndExpand">
 
-                        <Label Text="{x:Static recursos:Strings.contrasenya_olvidada}"
+                <Label Text="{x:Static recursos:Strings.contrasenya_olvidada}"
                                Style="{StaticResource texto_cabecera5}"
                                HorizontalTextAlignment="Center"
                                TextColor="{StaticResource naranja1}" />
 
-                        <Label Padding="0,24,0,16"
+                <Label
                                Style="{StaticResource texto_titulo2}"
                                TextColor="{StaticResource blanco2}"
                                HorizontalTextAlignment="Center"
                                Text="{x:Static recursos:Strings.instrucciones_contrasenya}" />
+            </StackLayout>
 
-                        <StackLayout x:Name="FormLayout" Spacing="16" VerticalOptions="CenterAndExpand">
-                            <Grid ColumnSpacing="16"></Grid>
-                            <StackLayout Spacing="8">
 
-                                <Label Text="{x:Static recursos:Strings.email}"
-                                       Style="{StaticResource texto_titulo2}"
-                                       TextColor="{StaticResource blanco2}" />
+            <StackLayout Grid.Row="1"
+                            Spacing="20">
 
-                                <Entry Text="{Binding Email}"
-                                       Style="{StaticResource texto_entry1}"
-                                       TextColor="{StaticResource blanco2}"
-                                       Keyboard="Email" />
+                <Entry Text="{Binding Email}"
+                                   Style="{StaticResource texto_entry1}"
+                                   Placeholder="E-mail"
+                                   Keyboard="Email"
+                                   MaxLength="40"/>
 
-                            </StackLayout>
-
-                            <Button x:Name="EnviarButton" Command="{Binding ResetPassCommand}"
+                <Button Command="{Binding ResetPassCommand}"
                                     Style="{StaticResource estilo_boton1}"
                                     TextColor="{StaticResource blanco1}"
-                                    VerticalOptions="EndAndExpand"
                                     Text="{x:Static recursos:Strings.enviar}" />
 
-                        </StackLayout>
+            </StackLayout>
 
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="0,16">
+            <StackLayout Grid.Row="2"
+                                 Spacing="8"
+                                 VerticalOptions="CenterAndExpand"
+                                 Orientation="Horizontal"
+                                 HorizontalOptions="Center" >
 
-                        <Label Style="{StaticResource texto_subtitulo8}"
+                <Label Style="{StaticResource texto_subtitulo8}"
                                TextColor="{StaticResource blanco2}"
-                               HorizontalTextAlignment="Center"
                                Text="{x:Static recursos:Strings.pregunta_cuenta}"/>
 
-                        <Label Style="{StaticResource texto_subtitulo8}"
-                               TextColor="{StaticResource blanco2}"
-                               Padding="8,0,0,0" HorizontalTextAlignment="End"
+                <Label Style="{StaticResource texto_subtitulo8}"
+                               TextColor="{StaticResource naranja1}"
                                Text="{x:Static recursos:Strings.registrate}">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding RegistrarCommand}"/>
-                            </Label.GestureRecognizers>
-                        </Label>
-                    </StackLayout>
-                    </StackLayout>
-        </FlexLayout>
-    </RelativeLayout>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding RegistrarCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </Grid>
+    </Grid>
 </ContentPage>

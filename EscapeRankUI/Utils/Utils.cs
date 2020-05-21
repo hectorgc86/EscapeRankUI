@@ -2,13 +2,15 @@
 using System.Text;
 using Xamarin.Forms;
 using System.Security.Cryptography;
-using System.Collections.Generic;
-using EscapeRankUI.Estilos;
 
 namespace EscapeRankUI
 {
     public static class Utils
     {
+        public static string RegexEmail = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
+
+        public static string RegexNacido = @"^([0-2][0-9]|3[0-1])(\/)(0[1-9]|1[0-2])\2(\d{4})$";
+
         public static object GetResourceValue(string recurso)
         {
             if (Application.Current.Resources.TryGetValue(recurso, out var retVal)) { }

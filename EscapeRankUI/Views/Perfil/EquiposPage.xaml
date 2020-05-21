@@ -16,17 +16,38 @@
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
             </Label>
+             <StackLayout Orientation="Horizontal"
+                          Padding="10,0"
+                          Spacing="10"
+                          HorizontalOptions="End">
+                 <ImageButton VerticalOptions="Center"
+                              Padding="-2"
+                              CornerRadius="{OnPlatform Android=36}"
+                              Source="{StaticResource icono_mas}"
+                              Command="{Binding ModoAnyadirCommand}"
+                              BackgroundColor="{OnPlatform Android=Black}"/>
+                 <ImageButton VerticalOptions="Center"
+                              Padding="-2"
+                              CornerRadius="{OnPlatform Android=36}"
+                              Source="{StaticResource icono_menos}"
+                              Command="{Binding ModoEliminarCommand}"
+                              BackgroundColor="{OnPlatform Android=Black}"/>
+            </StackLayout>
         </Grid>
     </Shell.TitleView>
 
      <ContentPage.Content>
          <Grid>
                 <ScrollView>
-                    <FlexLayout x:Name="FlexEquipos"
+                    <FlexLayout
                                 Wrap="Wrap"
                                 JustifyContent="SpaceEvenly"
                                 BindableLayout.ItemsSource="{Binding Equipos}">
-
+                        <BindableLayout.EmptyView>
+                                      <Label VerticalTextAlignment="Center"
+                                             Text="Todavia no perteneces a un equipo"
+                                             TextColor="{DynamicResource variable5}"/>
+                        </BindableLayout.EmptyView>
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout WidthRequest="70" Padding="5">
@@ -38,17 +59,30 @@
                                                 CommandParameter="{Binding .}"/>
                                     </StackLayout.GestureRecognizers>
 
-                                    <Frame
-                                    Margin="0,20"
-                                    OutlineColor="{DynamicResource variable4}"
-                                    CornerRadius="36"
-                                    Visual="Material">
-                                        <Image
-                                        Source="{Binding Avatar}"
-                                        WidthRequest="70"
-                                        HeightRequest="70"
-                                        Aspect="AspectFill" />
-                                    </Frame>
+                                    <Grid>
+                                        <Frame
+                                        Margin="0,20"
+                                        OutlineColor="{DynamicResource variable4}"
+                                        CornerRadius="36"
+                                        Visual="Material">
+                                            <Image
+                                                    Source="{Binding AvatarEquipo}"
+                                                    WidthRequest="70"
+                                                    HeightRequest="70"
+                                                    Aspect="AspectFill" />
+                                        </Frame>
+                                        <ImageButton 
+                                                     IsEnabled="{Binding Source={x:Reference EquiposPageRef},
+                                                     Path=BindingContext.ModoEliminar}"
+                                                     IsVisible="{Binding Source={x:Reference EquiposPageRef},
+                                                     Path=BindingContext.ModoEliminar}"
+                                                     HorizontalOptions="End"
+                                                     VerticalOptions="Start"
+                                                     Source="{StaticResource icono_borrar}"
+                                                     Command="{Binding Source={x:Reference EquiposPageRef},
+                                                     Path=BindingContext.EliminarEquipoCommand}"
+                                                     CommandParameter="{Binding .}"/>
+                                    </Grid>
                                     <Label 
                                         HorizontalTextAlignment="Center"
                                         Text="{Binding Nombre}"

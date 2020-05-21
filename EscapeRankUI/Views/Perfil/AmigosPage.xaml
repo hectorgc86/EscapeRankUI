@@ -16,17 +16,39 @@
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
             </Label>
+            <StackLayout Orientation="Horizontal"
+                          Padding="10,0"
+                          Spacing="10"
+                          HorizontalOptions="End">
+                 <ImageButton VerticalOptions="Center"
+                              Padding="-2"
+                              CornerRadius="{OnPlatform Android=36}"
+                              Source="{StaticResource icono_mas}"
+                              Command="{Binding ModoAnyadirCommand}"
+                              BackgroundColor="{OnPlatform Android=Black}"/>
+                 <ImageButton VerticalOptions="Center"
+                              Padding="-2"
+                              CornerRadius="{OnPlatform Android=36}"
+                              Source="{StaticResource icono_menos}"
+                              Command="{Binding ModoEliminarCommand}"
+                              BackgroundColor="{OnPlatform Android=Black}"/>
+            </StackLayout>
         </Grid>
     </Shell.TitleView>
 
     <ContentPage.Content>
         <Grid>
                 <ScrollView>
-                    <FlexLayout x:Name="FlexAmigos"
+                    <StackLayout Style="{StaticResource espacio_stack_normal}">
+                        <FlexLayout 
                                 Wrap="Wrap"
                                 JustifyContent="SpaceEvenly"
                                 BindableLayout.ItemsSource="{Binding Amigos}">
-
+                        <BindableLayout.EmptyView>
+                                      <Label VerticalTextAlignment="Center"
+                                           Text="Todavia no tienes amigos"
+                                            TextColor="{DynamicResource variable5}"/>
+                        </BindableLayout.EmptyView>
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout WidthRequest="70" Padding="5">
@@ -38,21 +60,98 @@
                                                 CommandParameter="{Binding .}"/>
                                     </StackLayout.GestureRecognizers>
 
-                                    <Frame
-                                    Margin="0,20"
-                                    OutlineColor="{DynamicResource variable4}"
-                                    CornerRadius="36"
-                                    Visual="Material">
-                                        <Image
-                                        Source="{Binding Avatar}"
-                                        WidthRequest="70"
-                                        HeightRequest="70"
-                                        Aspect="AspectFill" />
-                                    </Frame>
+                                    <Grid>
+                                        <Frame
+                                            Margin="0,20"
+                                            OutlineColor="{DynamicResource variable4}"
+                                            CornerRadius="36"
+                                            Visual="Material">
+                                                <Image
+                                                Source="{Binding Perfil.AvatarPerfil}"
+                                                WidthRequest="70"
+                                                HeightRequest="70"
+                                                Aspect="AspectFill" />
+                                        </Frame>
+                                        <ImageButton
+                                                         IsEnabled="{Binding Source={x:Reference AmigosPageRef},
+                                                         Path=BindingContext.ModoEliminar}"
+                                                         IsVisible="{Binding Source={x:Reference AmigosPageRef},
+                                                         Path=BindingContext.ModoEliminar}"
+                                                         HorizontalOptions="End"
+                                                         VerticalOptions="Start"
+                                                         Source="{StaticResource icono_borrar}"
+                                                         Command="{Binding Source={x:Reference AmigosPageRef},
+                                                         Path=BindingContext.EliminarAmigoCommand}"
+                                                         CommandParameter="{Binding .}"/>
+                                    </Grid>
                                    
                                     <Label 
                                         HorizontalTextAlignment="Center"
-                                        Text="{Binding Nombre}"
+                                        Text="{Binding Perfil.Nombre}"
+                                        Style="{StaticResource texto_subtitulo3}"
+                                        TextColor="{DynamicResource variable3}"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="2"/>
+                                   
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+
+                         <BoxView Margin="0,15,0,0"
+                         BackgroundColor="{DynamicResource variable4}"
+                         HeightRequest="1"/>
+
+                        <Label
+                         Text="Solicitudes pendientes"
+                         Padding="15"
+                         Style="{StaticResource texto_cabecera3}"
+                         TextColor="{DynamicResource variable3}"
+                         HorizontalTextAlignment="Center"/>
+
+                        <FlexLayout 
+                                Wrap="Wrap"
+                                JustifyContent="SpaceEvenly"
+                                BindableLayout.ItemsSource="{Binding AmigosPendientes}">
+                        <BindableLayout.EmptyView>
+                                      <Label 
+                                          VerticalTextAlignment="Center"
+                                            Text="No hay solicitudes pendientes"
+                                            TextColor="{DynamicResource variable5}"/>
+                        </BindableLayout.EmptyView>
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout WidthRequest="70" Padding="5">
+
+                                   <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding Source={x:Reference AmigosPageRef},
+                                                Path=BindingContext.AceptarAmigoCommand}"
+                                                CommandParameter="{Binding .}"/>
+                                    </StackLayout.GestureRecognizers>
+
+                                    <Grid>
+                                        <Frame
+                                            Margin="0,20"
+                                            OutlineColor="{DynamicResource variable4}"
+                                            CornerRadius="36"
+                                            Visual="Material">
+                                                <Image
+                                                Source="{Binding Perfil.AvatarPerfil}"
+                                                WidthRequest="70"
+                                                HeightRequest="70"
+                                                Aspect="AspectFill"
+                                                Opacity="0.2"/>
+                                        </Frame>
+                                             <Image 
+                                                     HorizontalOptions="End"
+                                                     VerticalOptions="Start"
+                                                     Source="{StaticResource icono_interrogante}"/>
+                                        </Grid>
+                                   
+                                    <Label 
+                                        HorizontalTextAlignment="Center"
+                                        Text="{Binding Perfil.Nombre}"
                                         Style="{StaticResource texto_subtitulo3}"
                                         TextColor="{DynamicResource variable3}" />
                                    
@@ -60,8 +159,11 @@
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </FlexLayout>
+                    </StackLayout>
                 </ScrollView>
-          <BoxView Color="{DynamicResource variable1}" Opacity="0.9" IsVisible ="{Binding Cargando}"/>
+          <BoxView Color="{DynamicResource variable1}"
+                   Opacity="0.9"
+                   IsVisible ="{Binding Cargando}"/>
             <ActivityIndicator Color="{DynamicResource variable3}"
                                Scale="0.1"
                                IsRunning="{Binding Cargando}"

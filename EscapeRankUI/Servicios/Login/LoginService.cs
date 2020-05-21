@@ -22,15 +22,15 @@ namespace EscapeRankUI.Servicios
             };
         }
 
-        //Llamada a la API para mandar email y contraseña y recibir autorización para loguearse.
+        //Llamada a la API para mandar usuario y contraseña y recibir autorización para loguearse.
 
-        public async Task<Login> GetLoginAsync(string email, string contrasenya)
+        public async Task<Login> GetLoginAsync(string usuario, string contrasenya)
         {
             Login login = new Login();
 
             Uri uri = new Uri(Constantes.EscapeRankURL + Constantes.LoginURL);
 
-            string req = JsonConvert.SerializeObject(new { email , contrasenya });
+            string req = JsonConvert.SerializeObject(new { usuario, contrasenya });
             try
             {
                 HttpResponseMessage resp = await client.PostAsync(uri, new StringContent(req, Encoding.UTF8, "application/json"));
@@ -54,13 +54,13 @@ namespace EscapeRankUI.Servicios
 
         //Llamada a la API para mandar nombre, email y contraseña y registrar un usuario.
 
-        public async Task<Login> PostRegistroAsync(string nombre, string email, string contrasenya)
+        public async Task<Login> PostRegistroAsync(Usuario usuario)
         {
             Login login = new Login();
 
             Uri uri = new Uri(Constantes.EscapeRankURL + Constantes.RegistroURL);
 
-            string req = JsonConvert.SerializeObject(new { nombre, email, contrasenya });
+            string req = JsonConvert.SerializeObject(usuario);
             try
             {
                 HttpResponseMessage resp = await client.PostAsync(uri, new StringContent(req, Encoding.UTF8, "application/json"));

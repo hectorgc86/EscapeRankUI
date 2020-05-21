@@ -19,7 +19,7 @@
                          HorizontalOptions="End">
                  <Image VerticalOptions="Center"
                         Source="{StaticResource icono_luna}"/>
-            <Switch x:Name="BotonOscuro" VerticalOptions="Center"
+            <Switch VerticalOptions="Center"
                 IsToggled="{Binding ModoOscuro}"
                 OnColor="{DynamicResource variable2}"/>
             </StackLayout>
@@ -39,14 +39,14 @@
                 Visual="Material"
                 HorizontalOptions="Center">
                     <Image
-                   Source="{Binding Usuario.Avatar}"
+                   Source="{Binding Usuario.Perfil.AvatarPerfil}"
                    WidthRequest="90"
                    HeightRequest="90"
                    Aspect="AspectFill" />
                 </Frame>
                 <StackLayout Orientation="Horizontal" Spacing="5">
                     <Label
-                            Text="{Binding Usuario.Nombre}"
+                            Text="{Binding Usuario.Perfil.Nombre}"
                             Style="{StaticResource texto_cabecera3}"
                             TextColor="{DynamicResource variable3}"/>
                     <Label
@@ -57,7 +57,7 @@
                 </StackLayout>
 
                     <Label
-                            Text="{Binding Usuario.Perfil.Nick}"
+                            Text="{Binding Usuario.Nick}"
                             Style="{StaticResource texto_subtitulo5}"
                             TextColor="{DynamicResource variable4}"
                             HorizontalTextAlignment="Center"/>
@@ -102,24 +102,20 @@
                                 Text="{x:Static recursos:Strings.total_partidas}"
                                 Style="{StaticResource texto_subtitulo3}"
                                 TextColor="{DynamicResource variable3}" />
-                        <Label
-                                Text="{x:Static recursos:Strings.mejor_tiempo}"
-                                Style="{StaticResource texto_subtitulo3}"
-                                TextColor="{DynamicResource variable3}" />
 
                 </StackLayout>
                 <StackLayout Orientation="Vertical"
                                Spacing="16">
 
-                        <Label  Text="{Binding Usuario.Edad}"
+                        <Label  Text="{Binding Usuario.Perfil.Edad}"
                                 Style="{StaticResource texto_subtitulo5}"
                                 TextColor="{DynamicResource variable4}" />
 
-                        <Label  Text="{Binding Usuario.Nacido,StringFormat='{}{0:dd-MM-yyyy}'}"
+                        <Label  Text="{Binding Usuario.Perfil.Nacido,StringFormat='{}{0:dd-MM-yyyy}'}"
                                 Style="{StaticResource texto_subtitulo5}"
                                 TextColor="{DynamicResource variable4}" />
 
-                        <Label  Text="{Binding Usuario.Telefono}"
+                        <Label  Text="{Binding Usuario.Perfil.Telefono}"
                                 Style="{StaticResource texto_subtitulo5}"
                                 TextColor="{DynamicResource variable4}" />
 
@@ -132,10 +128,6 @@
                                 TextColor="{DynamicResource variable4}" />
 
                         <Label  Text="{Binding Usuario.Perfil.NumeroPartidas}"
-                                Style="{StaticResource texto_subtitulo5}"
-                                TextColor="{DynamicResource variable4}" />
-
-                        <Label  Text="{Binding Usuario.Perfil.MejorTiempo,StringFormat='{}{0:mm:ss}'}"
                                 Style="{StaticResource texto_subtitulo5}"
                                 TextColor="{DynamicResource variable4}" />
                 </StackLayout>

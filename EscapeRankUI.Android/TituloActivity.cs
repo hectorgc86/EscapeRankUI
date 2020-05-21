@@ -15,7 +15,6 @@ namespace EscapeRankUI.Droid
         {
             base.OnCreate(savedInstanceState);
             StartActivity(typeof(MainActivity));
-
         }
     }
 }

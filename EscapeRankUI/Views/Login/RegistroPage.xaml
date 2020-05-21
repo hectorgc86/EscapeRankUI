@@ -2,107 +2,165 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EscapeRankUI.Views.RegistroPage"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
              xmlns:recursos="clr-namespace:EscapeRankUI.Recursos"
              NavigationPage.HasNavigationBar="false"
              Visual="Material">
 
-    <RelativeLayout>
+    <Grid>
         <Image Source="fondo.png" Aspect="Fill"/>
+        <Grid BackgroundColor="{StaticResource azul4}"
+             Style="{StaticResource espacio_grid_normal}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <FlexLayout
-            Direction="Column"
-            JustifyContent="SpaceEvenly"
-            Style="{StaticResource espacio_flex_normal}"
-            BackgroundColor="{StaticResource azul4}">
-
-            <StackLayout VerticalOptions="CenterAndExpand">
-
+            <StackLayout Spacing="20"
+                            VerticalOptions="CenterAndExpand">
                 <Label Text="{x:Static recursos:Strings.registrarse}"
-                       Style="{StaticResource texto_cabecera5}"
-                       TextColor="{StaticResource naranja1}"
-                       HorizontalTextAlignment="Center"/>
+                           Style="{StaticResource texto_cabecera5}"
+                           TextColor="{StaticResource naranja1}"
+                           HorizontalTextAlignment="Center"/>
 
-                <Label Padding="0,24,0,16" Style="{StaticResource texto_titulo2}"
-                       TextColor="{StaticResource blanco2}"
-                       HorizontalTextAlignment="Center"
-                       Text="{x:Static recursos:Strings.cree_cuenta}"/>
+                <Label Text="{x:Static recursos:Strings.cree_cuenta}"
+                           Style="{StaticResource texto_titulo2}"
+                           TextColor="{StaticResource blanco2}"
+                           HorizontalTextAlignment="Center"/>
+            </StackLayout>
 
-                <StackLayout x:Name="FormLayout" Spacing="16" VerticalOptions="CenterAndExpand">
-                    <Grid ColumnSpacing="16"/>
-                    <StackLayout Spacing="8">
+            <StackLayout Grid.Row="1"
+                             Spacing="20">
 
-                        <Label Text="{x:Static recursos:Strings.nombre}"
-                               Style="{StaticResource texto_titulo2}"
-                               TextColor="{StaticResource blanco2}"/>
+                <StackLayout Spacing="5">
 
-                        <Entry Text="{Binding Nombre}"
-                               Style="{StaticResource texto_entry1}"
-                               TextColor="{StaticResource blanco2}"
-                               Keyboard="Text"/>
+                    <Grid>
+                        <Entry Text="{Binding Nick}"
+                                       Style="{StaticResource texto_entry1}"
+                                       Placeholder="Nombre de usuario"
+                                       MaxLength="15"/>
 
-                    </StackLayout>
-                    <StackLayout Spacing="8">
-
-                        <Label Text="{x:Static recursos:Strings.email}"
-                               Style="{StaticResource texto_titulo2}"
-                               TextColor="{StaticResource blanco2}"/>
-
+                        <Label    TextColor="{StaticResource naranja1}"
+                                   VerticalOptions="Center"
+                                   Text="&#x2022;"
+                                   FontSize="28"
+                                   HorizontalOptions="Start"/>
+                    </Grid>
+                    <Grid>
                         <Entry Text="{Binding Email}"
+                                   Style="{StaticResource texto_entry1}"
+                                   Placeholder="E-mail"
+                                   Keyboard="Email"
+                                   MaxLength="30"/>
+
+
+                        <Label     TextColor="{StaticResource naranja1}"
+                                   VerticalOptions="Center"
+                                   Text="&#x2022;"
+                                   FontSize="28"
+                                   HorizontalOptions="Start"/>
+                    </Grid>
+
+                    <Grid ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Entry Grid.Column="0" Text="{Binding Contrasenya}"
                                Style="{StaticResource texto_entry1}"
-                               TextColor="{StaticResource blanco2}"
-                               Keyboard="Email" />
+                               Placeholder="Contraseña"
+                               IsPassword="True"
+                               MaxLength="15"/>
 
-                    </StackLayout>
-                    <StackLayout Spacing="8">
+                         <Label Grid.Column="0" TextColor="{StaticResource naranja1}"
+                                   VerticalOptions="Center"
+                                   Text="&#x2022;"
+                                   FontSize="28"
+                                   HorizontalOptions="Start"/>
 
-                        <Label Text="{x:Static recursos:Strings.contrasenya}"
-                               Style="{StaticResource texto_titulo2}"
-                               TextColor="{StaticResource blanco2}"/>
-
-                        <Entry Text="{Binding Contrasenya}"
+                        <Entry Grid.Column="1" Text="{Binding RepContrasenya}"
                                Style="{StaticResource texto_entry1}"
-                               TextColor="{StaticResource blanco2}"
-                               IsPassword="True" Keyboard="Text" />
+                               Placeholder="Repetir contraseña"
+                               IsPassword="True"
+                               MaxLength="15"/>
 
-                    </StackLayout>
-                    <StackLayout Spacing="8">
-                        <Label Text="{x:Static recursos:Strings.repetir_contrasenya}"
-                               Style="{StaticResource texto_titulo2}"
-                               TextColor="{StaticResource blanco2}"/>
+                         <Label Grid.Column="1" TextColor="{StaticResource naranja1}"
+                                   VerticalOptions="Center"
+                                   Text="&#x2022;"
+                                   FontSize="28"
+                                   HorizontalOptions="Start"/>
+                    </Grid>
 
-                        <Entry Text="{Binding RepContrasenya}"
+
+                    <Entry Text="{Binding Nombre}"
                                Style="{StaticResource texto_entry1}"
-                               TextColor="{StaticResource blanco2}"
-                               IsPassword="True" Keyboard="Text" />
+                               Placeholder="Nombre y apellido"
+                               MaxLength="40"/>
 
-                    </StackLayout>
+                    <Grid ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Button x:Name="RegistrarButton" Command="{Binding RegistrarCommand}"
+                        <Entry Grid.Column="0" Text="{Binding Telefono}"
+                               Style="{StaticResource texto_entry1}"
+                               Placeholder="Teléfono"
+                               Keyboard="Telephone"
+                               MaxLength="9"/>
+
+                        <Entry Grid.Column="1"
+                               x:Name="EntryNacimiento"
+                               Text="{Binding Nacido}"
+                               Focused="Entry_Focused"
+                               Unfocused="Entry_Unfocused"
+                               Style="{StaticResource texto_entry1}"
+                               Placeholder="Fecha nacimiento"
+                               Keyboard="Telephone"
+                               MaxLength="10"/>
+                    </Grid>
+                </StackLayout>
+
+                <Button Command="{Binding RegistrarCommand}"
                             Style="{StaticResource estilo_boton1}"
                             TextColor="{StaticResource blanco1}"
                             VerticalOptions="EndAndExpand"
                             Text="{x:Static recursos:Strings.registrar}" />
 
-                </StackLayout>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="0,16">
-
-                    <Label HorizontalTextAlignment="Center"
-                           Style="{StaticResource texto_subtitulo8}"
-                           TextColor="{StaticResource blanco2}"
-                           Text="{x:Static recursos:Strings.pregunta_cuenta}"/>
-
-                    <Label Padding="8,0,0,0" Style="{StaticResource texto_subtitulo8}"
-                           TextColor="{StaticResource blanco2}"
-                           HorizontalTextAlignment="End"
-                           Text="{x:Static recursos:Strings.ingresar}">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding LoginCommand}"/>
-                        </Label.GestureRecognizers>
-                    </Label>
-                </StackLayout>
-
+                <Label     Style="{StaticResource texto_subtitulo6}"
+                           TextColor="{StaticResource naranja1}"
+                           HorizontalTextAlignment="Center" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="&#x2022; " FontSize="28"/>
+                                    <Span Text="Campos obligatorios"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                </Label>
             </StackLayout>
-        </FlexLayout>
-    </RelativeLayout>
+
+            <StackLayout Grid.Row="2"
+                             Spacing="8"
+                             VerticalOptions="CenterAndExpand"
+                             Orientation="Horizontal"
+                             HorizontalOptions="Center">
+
+                <Label Style="{StaticResource texto_subtitulo8}"
+                           TextColor="{StaticResource blanco2}"
+                           Text="¿Ya tienes una cuenta?"/>
+
+
+                <Label Style="{StaticResource texto_subtitulo8}"
+                           TextColor="{StaticResource naranja1}"
+                           Text="{x:Static recursos:Strings.ingresar}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LoginCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </Grid>
+    </Grid>
 </ContentPage>

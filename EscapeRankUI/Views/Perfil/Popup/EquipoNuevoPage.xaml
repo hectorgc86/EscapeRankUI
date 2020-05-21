@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             x:Class="EscapeRankUI.Views.EquipoNuevoPage"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:recursos="clr-namespace:EscapeRankUI.Recursos">
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation DurationIn="400" DurationOut="300"
+                                   EasingIn="SinOut" EasingOut="SinIn"
+                                   HasBackgroundAnimation="True"
+                                   PositionIn="Center" PositionOut="Center"
+                                   ScaleIn="1.2" ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+
+    <pages:PopupPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="{StaticResource azul4}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </pages:PopupPage.Resources>
+
+
+    <StackLayout Spacing="20"
+                 Scale="0.9"
+                 Padding="15"
+                 VerticalOptions="CenterAndExpand"
+                 HorizontalOptions="Fill"
+                 BackgroundColor="{DynamicResource variable2}">
+
+        <Label Text="Crear equipo"
+                   HorizontalOptions="Center"
+                   Style="{StaticResource texto_cabecera5}"
+                   TextColor="{DynamicResource variable3}"/>
+
+        <Label Text="Nombre"
+                       HorizontalOptions="Start"
+                       Style="{StaticResource texto_titulo1}"
+                       TextColor="{DynamicResource variable3}"/>
+
+        <Entry
+                           Text="{Binding NombreEquipo}"
+                           Placeholder="Introduzca nombre de equipo.."
+                           PlaceholderColor="{DynamicResource variable4}"
+                           BackgroundColor="{DynamicResource variable1}"
+                           HorizontalOptions="Fill"
+                           Style="{StaticResource texto_entry1}"
+                           TextColor="{DynamicResource variable5}"/>
+
+        <Label Text="Integrantes"
+                           HorizontalOptions="Start"
+                           Style="{StaticResource texto_titulo1}"
+                           TextColor="{DynamicResource variable3}"/>
+
+        <ScrollView>
+            <CollectionView
+                                  ItemsSource="{Binding AmigosUsuario}"
+                                  SelectionMode="Multiple"
+                                  SelectedItems="{Binding MiembrosSeleccionados}"
+                                  HeightRequest="100"
+                                  BackgroundColor="{DynamicResource variable1}">
+                <CollectionView.EmptyView>
+                    <Label
+                           Text="Todavia no se dispone de amigos"
+                           TextColor="{DynamicResource variable5}"/>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+
+                            <Label Text="{Binding Perfil.Nombre}"
+                                   Padding="0,5"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="{DynamicResource variable5}"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+
+        <Button     Text="Crear"
+                            Margin="0,20,0,0"
+                            Style="{StaticResource estilo_boton1}"
+                            Command="{Binding CrearEquipoCommand}"
+                            HorizontalOptions="Fill"
+                            Visual="Material"/>
+    </StackLayout>
+
+</pages:PopupPage>

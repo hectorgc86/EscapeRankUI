@@ -16,7 +16,7 @@
     <Color x:Key="azul1">#344955</Color>
     <Color x:Key="azul2">#232F34</Color>
     <Color x:Key="azul3">#4A6572</Color>
-    <Color x:Key="azul4">#CC344955</Color>
+    <Color x:Key="azul4">#EB344955</Color>
     <Color x:Key="naranja1">#F9AA33</Color>
 
 </ResourceDictionary>

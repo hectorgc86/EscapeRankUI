@@ -21,8 +21,13 @@
     <ContentPage.Content>
         <Grid>
                 <CollectionView
-                        ItemsSource="{Binding Noticias}"
-                        EmptyView="No hay noticias que mostrar">
+                        ItemsSource="{Binding Noticias}">
+                        <CollectionView.EmptyView>
+                                      <Label HorizontalTextAlignment="Center"
+                                             VerticalTextAlignment="Center"
+                                             Text="No hay noticias que mostrar"
+                                             TextColor="{DynamicResource variable5}"/>
+                        </CollectionView.EmptyView>
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
@@ -37,7 +42,7 @@
                                     <StackLayout Spacing="10">
                                         <Frame Visual="Material">
                                             <Image
-                                            Source="{Binding Imagen}"
+                                            Source="{Binding ImagenNoticia}"
                                             Aspect="AspectFill"
                                             HeightRequest="180"/>
                                         </Frame>

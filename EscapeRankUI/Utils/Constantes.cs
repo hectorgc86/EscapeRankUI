@@ -9,8 +9,12 @@ namespace EscapeRankUI
         //CONEXIONES
         public static string IP = "192.168.0.18"; //"localhost"; //"10.0.2.2";
         public static string EscapeRankURL = "http://" + IP + ":5000/api";
-        public static string ImagenesAnchasURL = "http://" + IP + "/archivos/img/anchas/";
-        public static string ImagenesEstrechasURL = "http://" + IP + "/archivos/img/estrechas/";
+        public static string ImagenesSalaAnchasURL = "http://" + IP + "/archivos/img/salas/anchas/";
+        public static string ImagenesSalaEstrechasURL = "http://" + IP + "/archivos/img/salas/estrechas/";
+        public static string ImagenesPartidasURL = "http://" + IP + "/archivos/img/partidas/";
+        public static string ImagenesCompanyiasURL = "http://" + IP + "/archivos/img/companyias/";
+        public static string ImagenDefaultURL = "http://" + IP + "/archivos/img/default.png";
+
 
         //LOGIN
         public static string LoginURL = "/login";
@@ -75,5 +79,7 @@ namespace EscapeRankUI
         //OTROS
         public static string OffsetQuery = "?offset=";
         public static string BusquedaQuery = "&busqueda=";
+        public static string RutaFotosRandom = "https://picsum.photos/200/300?random=";
+
     }
 }

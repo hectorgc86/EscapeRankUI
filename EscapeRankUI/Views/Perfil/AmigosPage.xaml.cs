@@ -13,5 +13,11 @@ namespace EscapeRankUI.Views
             InitializeComponent();
             BindingContext = avm;
         }
+
+        protected override void OnAppearing()
+        {
+            avm.GetAmigos();
+            avm.ModoEliminar = false;
+        }
     }
 }

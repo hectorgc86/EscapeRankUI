@@ -38,9 +38,7 @@ namespace EscapeRankUI.Servicios
                 switch (resp.StatusCode)
                 {
                     case HttpStatusCode.OK:
-                        string aux = await resp.Content.ReadAsStringAsync();
-                        guardada = JsonConvert.DeserializeObject<bool>(aux);
-
+                        guardada = true;
                         break;
                     case HttpStatusCode.Unauthorized:
                         throw new HttpUnauthorizedException();

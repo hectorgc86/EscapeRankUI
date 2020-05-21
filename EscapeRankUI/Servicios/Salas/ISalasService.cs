@@ -18,8 +18,6 @@ namespace EscapeRankUI.Servicios
 
         Task<List<Sala>> GetSalasDificultadAsync(string dificultadId, int offset, string busqueda);
 
-        Task<List<Sala>> GetSalasProvinciaAsync(string provinciaId, int offset);
-
         Task<List<Partida>> GetPartidasSalaAsync(string salaId, int offset);
 
         Task<Sala> GetSalaAsync(string salaId);

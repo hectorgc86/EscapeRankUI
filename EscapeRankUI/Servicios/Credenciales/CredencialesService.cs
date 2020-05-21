@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using EscapeRankUI.Estilos;
 using EscapeRankUI.Modelos;
 using Xamarin.Auth;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace EscapeRankUI.Servicios
 {
@@ -19,33 +21,47 @@ namespace EscapeRankUI.Servicios
             return await SecureStorage.GetAsync("TokenAcceso");
         }
 
-        public async Task GuardarCredenciales(string email, string contrasenya, Login login)
+        public async Task<string> GetTema()
+        {
+            return await SecureStorage.GetAsync("Tema");
+        }
+
+        public async Task GuardarCredenciales(string usuario, string contrasenya, Login login)
         {
             await SecureStorage.SetAsync("UsuarioId", login.UsuarioId);
-            await SecureStorage.SetAsync("Email", email);
+            await SecureStorage.SetAsync("Usuario", usuario);
             await SecureStorage.SetAsync("Contrasenya", contrasenya);
             await SecureStorage.SetAsync("TokenAcceso", login.TokenAcceso);
         }
 
+        public async Task GuardarTema(string tema)
+        {
+            await SecureStorage.SetAsync("Tema", tema);
+        }
+
         public void BorrarCredenciales()
         {
-            SecureStorage.RemoveAll();
+            SecureStorage.Remove("UsuarioId");
+            SecureStorage.Remove("Usuario");
+            SecureStorage.Remove("Contrasenya");
+            SecureStorage.Remove("TokenAcceso");
         }
 
         public async Task<bool> ComprobarCredenciales()
         {
             bool existen;
 
-            string email = await SecureStorage.GetAsync("Email");
+            string usuario = await SecureStorage.GetAsync("Usuario");
             string contrasenya = await SecureStorage.GetAsync("Contrasenya");
+            string tema = await SecureStorage.GetAsync("Tema");
 
-            if (!string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(contrasenya))
+            if (!string.IsNullOrWhiteSpace(usuario) && !string.IsNullOrWhiteSpace(contrasenya))
             {
-                Login login = await App.LoginService.GetLoginAsync(email, contrasenya);
+                Login login = await App.LoginService.GetLoginAsync(usuario, contrasenya);
 
                 if (login.UsuarioId != null)
                 {
-                    await GuardarCredenciales(email, contrasenya, login);
+                    await GuardarCredenciales(usuario, contrasenya, login);
                 }
 
                 existen = true;
@@ -53,6 +69,11 @@ namespace EscapeRankUI.Servicios
             else
             {
                 existen = false;
+            }
+
+            if (tema == "Oscuro")
+            {
+                Application.Current.Resources = new Oscuro();
             }
 
             return existen;

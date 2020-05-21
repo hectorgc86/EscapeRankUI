@@ -21,9 +21,13 @@
     <ContentPage.Content>
         <Grid>
             <CollectionView
-                    ItemsSource="{Binding Partidas}"
-                    EmptyView="No has registrado partidas todavía">
-
+                    ItemsSource="{Binding Partidas}">
+                 <CollectionView.EmptyView>
+                                      <Label HorizontalTextAlignment="Center"
+                                             VerticalTextAlignment="Center"
+                                             Text="No has registrado partidas todavía"
+                                             TextColor="{DynamicResource variable5}"/>
+                </CollectionView.EmptyView>
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
@@ -40,13 +44,13 @@
 
                                 <StackLayout Spacing="10">
                                     <StackLayout Orientation="Horizontal" Spacing="5" >
-                                        <Label Text="{x:Static recursos:Strings.ganada_en}"
+                                        <Label Text="Partida jugada en"
                                                Style="{StaticResource texto_titulo1}"
                                                TextColor="{DynamicResource variable3}"/>
 
                                         <Label Text="{Binding Sala.Nombre}"
                                                Style="{StaticResource texto_titulo1}"
-                                               TextColor="{DynamicResource variable3}"/>
+                                               TextColor="{DynamicResource variable4}"/>
                                     </StackLayout>
 
                                     <StackLayout Orientation="Horizontal" Spacing="10">
@@ -55,7 +59,7 @@
                                             Visual="Material"
                                             CornerRadius="6">
                                             <Image
-                                                    Source="{Binding Sala.ImagenUriEstrecha}"
+                                                    Source="{Binding Sala.ImagenEstrecha}"
                                                     Aspect="AspectFill"
                                                     WidthRequest="98" />
                                         </Frame>

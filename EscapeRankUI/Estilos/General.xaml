@@ -9,7 +9,6 @@
         <ResourceDictionary Source="Iconos.xaml" />
         <ResourceDictionary Source="Colores.xaml" />
         <ResourceDictionary Source="Espacios.xaml" />
-        <ResourceDictionary Source="Templates.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

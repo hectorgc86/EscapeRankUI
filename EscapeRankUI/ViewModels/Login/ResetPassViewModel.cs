@@ -17,11 +17,12 @@ namespace EscapeRankUI.ViewModels
             RegistrarCommand = new Command(Registrar);
         }
 
-        private void ReestablecerPass()
+        private async void ReestablecerPass()
         {
-            Debug.WriteLine("Has hecho reset");
+            await Application.Current.MainPage.DisplayAlert("Esta función estará disponible en versiones futuras", null, "Ok");
         }
-        public async void Registrar()
+
+        private async void Registrar()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new RegistroPage());
         }

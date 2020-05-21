@@ -43,6 +43,8 @@
     <x:Double x:Key="normal4">10</x:Double>
     <x:Double x:Key="boton1">16</x:Double>
     <x:Double x:Key="boton2">14</x:Double>
+    <x:Double x:Key="entry">17</x:Double>
+
 
     <!--Estilos texto-->
 
@@ -108,8 +110,11 @@
     </Style>
 
      <Style x:Key="texto_entry1" TargetType="Entry">
-        <Setter Property="FontSize" Value="{StaticResource subtitulo1}" />
+        <Setter Property="FontSize" Value="{StaticResource entry}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_negrita}" />
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="PlaceholderColor" Value="White"/>
     </Style>
 
      <Style x:Key="estilo_boton1" TargetType="Button">

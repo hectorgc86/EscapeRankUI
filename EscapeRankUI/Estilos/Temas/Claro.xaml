@@ -12,5 +12,6 @@
     <Color x:Key="variable3">#232F34</Color>
     <Color x:Key="variable4">#56565A</Color>
     <Color x:Key="variable5">#000000</Color>
+    <Color x:Key="variable6">#0645AD</Color>
 
 </ResourceDictionary>

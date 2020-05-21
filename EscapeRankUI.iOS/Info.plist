@@ -21,6 +21,8 @@
 	<string>com.hector.escaperank</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Dark</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>ProductSans-Bold.ttf</string>
@@ -54,14 +56,18 @@
 			</array>
 		</dict>
 	</array>
-	<key>FacebookAppID</key>
-	<string>189786668963302</string>
-	<key>FacebookDisplayName</key>
-	<string>EscapeRank</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Esta aplicación necesita acceso para utilizar la cámara.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Esta aplicación necesita acceso a las fotos.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Esta aplicación necesita acceso al micrófono.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Esta aplicación necesita acceso a la libreria de fotos.</string>
 </dict>
 </plist>

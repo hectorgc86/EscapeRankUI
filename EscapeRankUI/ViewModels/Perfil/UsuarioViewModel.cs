@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Windows.Input;
+﻿using System.Threading.Tasks;
 using EscapeRankUI.Estilos;
 using EscapeRankUI.Modelos;
 using EscapeRankUI.Views;
@@ -14,6 +11,7 @@ namespace EscapeRankUI.ViewModels
 
         //Variables
 
+        string _tema;
         private bool _modoOscuro;
         public Usuario Usuario { get; set; }
         public Command LogoutCommand { get; }
@@ -25,6 +23,20 @@ namespace EscapeRankUI.ViewModels
             LogoutCommand = new Command(Logout);
 
             Usuario = App.UsuarioPrincipal;
+
+            Task.Run(async () =>
+            {
+                _tema = await App.CredencialesService.GetTema();
+
+            }).ContinueWith((arg) =>
+            {
+                if (_tema == "Oscuro")
+                {
+                    ModoOscuro = true;
+                }
+
+            }).Wait();
+
         }
 
         //Getters & Setters
@@ -38,13 +50,13 @@ namespace EscapeRankUI.ViewModels
 
                 if (_modoOscuro)
                 {
-                    Application.Current.Resources.Clear();
                     Application.Current.Resources = new Oscuro();
+                    App.CredencialesService.GuardarTema("Oscuro");
                 }
                 else
                 {
-                    Application.Current.Resources.Clear();
                     Application.Current.Resources = new Claro();
+                    App.CredencialesService.GuardarTema("Claro");
                 }
             }
         }
