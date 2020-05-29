@@ -1,4 +1,8 @@
-﻿using Xamarin.Forms;
+﻿
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
 
 namespace EscapeRankUI
 {
@@ -6,15 +10,29 @@ namespace EscapeRankUI
     {
         public static string AppName = "EscapeRank";
 
-        //CONEXIONES
-        public static string IP = "192.168.0.18"; //"localhost"; //"10.0.2.2";
-        public static string EscapeRankURL = "http://" + IP + ":5000/api";
-        public static string ImagenesSalaAnchasURL = "http://" + IP + "/archivos/img/salas/anchas/";
-        public static string ImagenesSalaEstrechasURL = "http://" + IP + "/archivos/img/salas/estrechas/";
-        public static string ImagenesPartidasURL = "http://" + IP + "/archivos/img/partidas/";
-        public static string ImagenesCompanyiasURL = "http://" + IP + "/archivos/img/companyias/";
-        public static string ImagenDefaultURL = "http://" + IP + "/archivos/img/default.png";
+        //Rutas de llamada a la API
 
+        //CONEXIONES
+
+#if DEBUG
+        private static readonly string IP = Device.RuntimePlatform == Device.iOS
+            ? "http://localhost:5000"
+            : "http://10.0.2.2:5000";
+        private static readonly StorageURL = Device.RuntimePlatform == Device.iOS
+            ? "http://localhost/archivos"
+            : "http://10.0.2.2/archivos";
+#else
+        private static readonly string IP = "https://apiescaperank.azurewebsites.net";
+        private static readonly string StorageURL = "https://escaperankstorage.blob.core.windows.net";
+
+#endif
+
+        public static string EscapeRankURL = IP + "/api";
+        public static string ImagenesSalaAnchasURL = StorageURL + "/img/salas/anchas/";
+        public static string ImagenesSalaEstrechasURL = StorageURL + "/img/salas/estrechas/";
+        public static string ImagenesPartidasURL = StorageURL + "/img/partidas/";
+        public static string ImagenesCompanyiasURL = StorageURL + "/img/companyias/";
+        public static string ImagenDefaultURL = StorageURL + "/img/default.png";
 
         //LOGIN
         public static string LoginURL = "/login";

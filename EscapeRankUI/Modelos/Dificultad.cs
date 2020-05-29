@@ -1,6 +1,10 @@
-﻿
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Xamarin.Forms;
+
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
 
 namespace EscapeRankUI.Modelos
 {

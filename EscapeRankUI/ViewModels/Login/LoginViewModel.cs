@@ -1,13 +1,12 @@
-﻿using System;
-using System.Diagnostics;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Net.Http;
 using EscapeRankUI.Modelos;
-using EscapeRankUI.Servicios;
 using EscapeRankUI.Views;
-using Newtonsoft.Json;
 using Xamarin.Forms;
+
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
 
 namespace EscapeRankUI.ViewModels
 {
@@ -36,11 +35,10 @@ namespace EscapeRankUI.ViewModels
 
         private async void LoginAsync()
         {
-            //Usuario = "hector@mail.com";
-            //Contrasenya = "tor";
-
             if (!string.IsNullOrEmpty(Usuario) && !string.IsNullOrEmpty(Contrasenya))
             {
+                Cargando = true;
+
                 ContrasenyaEncriptada = Utils.CalcularMD5(Contrasenya);
 
                 try
@@ -61,6 +59,10 @@ namespace EscapeRankUI.ViewModels
                 catch (HttpRequestException)
                 {
                     await Application.Current.MainPage.DisplayAlert("Error en la conexión", null, "Ok");
+                }
+                finally
+                {
+                    Cargando = false;
                 }
             }
             else

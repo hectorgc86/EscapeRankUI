@@ -1,7 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using EscapeRankUI.Modelos;
-using Xamarin.Auth;
+
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
 
 namespace EscapeRankUI.Servicios
 {

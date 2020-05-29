@@ -1,11 +1,16 @@
 ﻿using Xamarin.Forms;
 using EscapeRankUI.ViewModels;
 
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
+
 namespace EscapeRankUI.Views
 {
     public partial class HistorialPage : ContentPage
     {
-        public HistorialViewModel hvm;
+        private readonly HistorialViewModel hvm;
 
         public HistorialPage()
         {

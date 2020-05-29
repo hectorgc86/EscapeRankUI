@@ -1,4 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
              x:Class="EscapeRankUI.Views.EquipoNuevoPage"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -40,26 +46,26 @@
                  HorizontalOptions="Fill"
                  BackgroundColor="{DynamicResource variable2}">
 
-        <Label Text="Crear equipo"
+        <Label Text="{x:Static recursos:Strings.crear_equipo}"
                    HorizontalOptions="Center"
                    Style="{StaticResource texto_cabecera5}"
                    TextColor="{DynamicResource variable3}"/>
 
-        <Label Text="Nombre"
+        <Label Text="{x:Static recursos:Strings.nombre}"
                        HorizontalOptions="Start"
                        Style="{StaticResource texto_titulo1}"
                        TextColor="{DynamicResource variable3}"/>
 
         <Entry
                            Text="{Binding NombreEquipo}"
-                           Placeholder="Introduzca nombre de equipo.."
+                           Placeholder="{x:Static recursos:Strings.introduzca_nombre_equipo}"
                            PlaceholderColor="{DynamicResource variable4}"
                            BackgroundColor="{DynamicResource variable1}"
                            HorizontalOptions="Fill"
                            Style="{StaticResource texto_entry1}"
                            TextColor="{DynamicResource variable5}"/>
 
-        <Label Text="Integrantes"
+        <Label Text="{x:Static recursos:Strings.integrantes}"
                            HorizontalOptions="Start"
                            Style="{StaticResource texto_titulo1}"
                            TextColor="{DynamicResource variable3}"/>
@@ -73,14 +79,14 @@
                                   BackgroundColor="{DynamicResource variable1}">
                 <CollectionView.EmptyView>
                     <Label
-                           Text="Todavia no se dispone de amigos"
+                           Text="{x:Static recursos:Strings.todavia_no_dispone_amigos}"
                            TextColor="{DynamicResource variable5}"/>
                 </CollectionView.EmptyView>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
 
-                            <Label Text="{Binding Perfil.Nombre}"
+                            <Label Text="{Binding Nick}"
                                    Padding="0,5"
                                    HorizontalTextAlignment="Center"
                                    TextColor="{DynamicResource variable5}"/>
@@ -90,7 +96,7 @@
             </CollectionView>
         </ScrollView>
 
-        <Button     Text="Crear"
+        <Button     Text="{x:Static recursos:Strings.crear}"
                             Margin="0,20,0,0"
                             Style="{StaticResource estilo_boton1}"
                             Command="{Binding CrearEquipoCommand}"

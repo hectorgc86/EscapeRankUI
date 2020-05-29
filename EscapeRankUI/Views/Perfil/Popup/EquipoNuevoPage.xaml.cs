@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using EscapeRankUI.ViewModels;
-using Xamarin.Forms;
+﻿using EscapeRankUI.ViewModels;
+
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
 
 namespace EscapeRankUI.Views
 {
     public partial class EquipoNuevoPage
     {
-        public EquipoNuevoViewModel envm;
+        private readonly EquipoNuevoViewModel envm;
 
         public EquipoNuevoPage()
         {

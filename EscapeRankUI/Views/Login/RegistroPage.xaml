@@ -1,8 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EscapeRankUI.Views.RegistroPage"
-             xmlns:sys="clr-namespace:System;assembly=netstandard"
              xmlns:recursos="clr-namespace:EscapeRankUI.Recursos"
              NavigationPage.HasNavigationBar="false"
              Visual="Material">
@@ -38,7 +43,7 @@
                     <Grid>
                         <Entry Text="{Binding Nick}"
                                        Style="{StaticResource texto_entry1}"
-                                       Placeholder="Nombre de usuario"
+                                       Placeholder="{x:Static recursos:Strings.nombre_usuario}"
                                        MaxLength="15"/>
 
                         <Label    TextColor="{StaticResource naranja1}"
@@ -50,7 +55,7 @@
                     <Grid>
                         <Entry Text="{Binding Email}"
                                    Style="{StaticResource texto_entry1}"
-                                   Placeholder="E-mail"
+                                   Placeholder="{x:Static recursos:Strings.email}"
                                    Keyboard="Email"
                                    MaxLength="30"/>
 
@@ -64,17 +69,17 @@
 
                     <Grid ColumnSpacing="10">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="140"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
                         <Entry Grid.Column="0" Text="{Binding Contrasenya}"
                                Style="{StaticResource texto_entry1}"
-                               Placeholder="Contraseña"
+                               Placeholder="{x:Static recursos:Strings.contrasenya}"
                                IsPassword="True"
                                MaxLength="15"/>
 
-                         <Label Grid.Column="0" TextColor="{StaticResource naranja1}"
+                        <Label Grid.Column="0" TextColor="{StaticResource naranja1}"
                                    VerticalOptions="Center"
                                    Text="&#x2022;"
                                    FontSize="28"
@@ -82,11 +87,11 @@
 
                         <Entry Grid.Column="1" Text="{Binding RepContrasenya}"
                                Style="{StaticResource texto_entry1}"
-                               Placeholder="Repetir contraseña"
+                               Placeholder="{x:Static recursos:Strings.repetir_contrasenya}"
                                IsPassword="True"
                                MaxLength="15"/>
 
-                         <Label Grid.Column="1" TextColor="{StaticResource naranja1}"
+                        <Label Grid.Column="1" TextColor="{StaticResource naranja1}"
                                    VerticalOptions="Center"
                                    Text="&#x2022;"
                                    FontSize="28"
@@ -96,18 +101,18 @@
 
                     <Entry Text="{Binding Nombre}"
                                Style="{StaticResource texto_entry1}"
-                               Placeholder="Nombre y apellido"
+                               Placeholder="{x:Static recursos:Strings.nombre_apellido}"
                                MaxLength="40"/>
 
                     <Grid ColumnSpacing="10">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="120"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
                         <Entry Grid.Column="0" Text="{Binding Telefono}"
                                Style="{StaticResource texto_entry1}"
-                               Placeholder="Teléfono"
+                               Placeholder="{x:Static recursos:Strings.telefono}"
                                Keyboard="Telephone"
                                MaxLength="9"/>
 
@@ -117,8 +122,8 @@
                                Focused="Entry_Focused"
                                Unfocused="Entry_Unfocused"
                                Style="{StaticResource texto_entry1}"
-                               Placeholder="Fecha nacimiento"
-                               Keyboard="Telephone"
+                               Placeholder="{x:Static recursos:Strings.fecha_nacimiento}"
+                               Keyboard="Plain"
                                MaxLength="10"/>
                     </Grid>
                 </StackLayout>
@@ -129,16 +134,15 @@
                             VerticalOptions="EndAndExpand"
                             Text="{x:Static recursos:Strings.registrar}" />
 
-
                 <Label     Style="{StaticResource texto_subtitulo6}"
                            TextColor="{StaticResource naranja1}"
                            HorizontalTextAlignment="Center" >
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="&#x2022; " FontSize="28"/>
-                                    <Span Text="Campos obligatorios"/>
-                                </FormattedString>
-                            </Label.FormattedText>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&#x2022; " FontSize="28"/>
+                            <Span Text="{x:Static recursos:Strings.campos_obligatorios}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
                 </Label>
             </StackLayout>
 
@@ -150,7 +154,7 @@
 
                 <Label Style="{StaticResource texto_subtitulo8}"
                            TextColor="{StaticResource blanco2}"
-                           Text="¿Ya tienes una cuenta?"/>
+                           Text="{x:Static recursos:Strings.pregunta_tienes_cuenta}"/>
 
 
                 <Label Style="{StaticResource texto_subtitulo8}"
@@ -162,5 +166,10 @@
                 </Label>
             </StackLayout>
         </Grid>
+        <BoxView Color="{DynamicResource variable1}" Opacity="0.5" IsVisible ="{Binding Cargando}"/>
+            <ActivityIndicator Color="{DynamicResource variable3}"
+                               Scale="0.1"
+                               IsRunning="{Binding Cargando}"
+                               IsVisible ="{Binding Cargando}"/>
     </Grid>
 </ContentPage>

@@ -1,6 +1,10 @@
-﻿using System;
-using Rg.Plugins.Popup.Services;
+﻿using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
 
 namespace EscapeRankUI.ViewModels
 {
@@ -20,7 +24,6 @@ namespace EscapeRankUI.ViewModels
             get { return _emailSolicitud; }
             set { SetProperty(ref _emailSolicitud, value); }
         }
-
 
         private async void EnviarSolicitud()
         {

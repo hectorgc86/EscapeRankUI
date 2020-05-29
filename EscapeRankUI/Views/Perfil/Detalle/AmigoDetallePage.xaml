@@ -1,17 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <ContentPage
     x:Class="EscapeRankUI.Views.AmigoDetallePage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:recursos="clr-namespace:EscapeRankUI.Recursos"
     BackgroundColor="{DynamicResource variable1}"
-    Title="{Binding Amigo.Nombre}">
+    Title="{Binding Amigo.Nick}">
 
     <ContentPage.Content>
         <Grid>
             <FlexLayout Direction="Column"
                     AlignItems="Center"
-                    JustifyContent="SpaceEvenly">
+                    JustifyContent="SpaceEvenly"
+                    Style="{StaticResource espacio_flex_normal}">
                 <StackLayout>
                     <Frame
                             CornerRadius="45"
@@ -26,22 +33,31 @@
                                Aspect="AspectFill" />
                     </Frame>
 
-                        <Label
-                               Text="{Binding Amigo.Perfil.Nombre}"
-                               Style="{StaticResource texto_cabecera3}"
-                               TextColor="{DynamicResource variable3}"/>
+              <Grid Style="{StaticResource espacio_grid_normal}" ColumnSpacing="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <Label
-                                Text="{Binding Amigo.Nick}"
-                                Style="{StaticResource texto_subtitulo5}"
-                                TextColor="{DynamicResource variable4}"
-                                HorizontalTextAlignment="Center"/>
+                    <Label  Grid.Column="1"
+                            Text="{Binding Amigo.Nick}"
+                            Style="{StaticResource texto_cabecera3}"
+                            TextColor="{DynamicResource variable3}"/>
+                 </Grid>
 
-                        <Label 
+
+                    <Label
+                            Text="{Binding Amigo.Perfil.Nombre}"
+                            Style="{StaticResource texto_subtitulo2}"
+                            TextColor="{DynamicResource variable4}"
+                            HorizontalTextAlignment="Center"/>
+
+                <Label HorizontalOptions="Center"
                                 Text="{Binding Amigo.Email}"
                                 Style="{StaticResource texto_subtitulo5}"
                                 TextColor="{DynamicResource variable4}"
-                                HorizontalTextAlignment="Center"/>
+                   HorizontalTextAlignment="Center"/>
 
                     <BoxView Margin="0,10,0,0"
                              BackgroundColor="{DynamicResource variable4}"

@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <?xaml-comp compile="true" ?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <ResourceDictionary
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
@@ -77,6 +83,11 @@
     <Style x:Key="texto_titulo2" TargetType="Label">
         <Setter Property="FontSize" Value="{StaticResource titulo}" />
         <Setter Property="FontFamily" Value="{StaticResource fuente_negrita}" />
+    </Style>
+
+    <Style x:Key="texto_subtitulo2" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource subtitulo2}" />
+        <Setter Property="FontFamily" Value="{StaticResource fuente_cursiva}" />
     </Style>
 
     <Style x:Key="texto_subtitulo3" TargetType="Label">

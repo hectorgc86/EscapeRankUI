@@ -1,4 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EscapeRankUI.Views.LoginPage"
@@ -42,18 +48,20 @@
 
                         <Entry Text="{Binding Usuario}"
                                    Style="{StaticResource texto_entry1}"
-                                   Placeholder="Nombre de usuario o e-mail"
+                                   Placeholder="{x:Static recursos:Strings.nombre_usuario_email}"
                                    Keyboard="Email"
                                    MaxLength="40"/>
 
                         <Entry Text="{Binding Contrasenya}"
                                    Style="{StaticResource texto_entry1}"
-                                   Placeholder="Contraseña"
+                                   Placeholder="{x:Static recursos:Strings.contrasenya}"
                                    IsPassword="True"
                                    MaxLength="15"/>
                     </StackLayout>
 
-                    <Label Margin="0,0,0,15"
+                    <!-- BOTON CONTRASEÑA OLVIDADA -->
+
+                    <!--<Label Margin="0,0,0,15"
                                Style="{StaticResource texto_subtitulo8}"
                                TextColor="{StaticResource blanco2}"
                                HorizontalTextAlignment="End"
@@ -62,7 +70,7 @@
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ResetPassCommand}"/>
                         </Label.GestureRecognizers>
-                    </Label>
+                    </Label>-->
 
                     <Button    Command="{Binding LoginCommand}"
                                Style="{StaticResource estilo_boton1}"
@@ -71,7 +79,9 @@
                                Visual="Material"
                                Text="{x:Static recursos:Strings.entrar}" />
 
-                    <Label HorizontalTextAlignment="Center"
+                    <!-- BOTON FACEBOOK -->
+
+                    <!--<Label HorizontalTextAlignment="Center"
                                Style="{StaticResource texto_subtitulo8}"
                                TextColor="{StaticResource blanco2}"
                                Text="{x:Static recursos:Strings.pregunta_crea_cuenta}" />
@@ -83,7 +93,7 @@
                                 VerticalOptions="EndAndExpand"
                                 ImageSource="{StaticResource icono_facebook}"
                                 Text="{x:Static recursos:Strings.entrar_con_facebook}">
-                    </Button>
+                    </Button>-->
 
                 </StackLayout>
 
@@ -107,5 +117,10 @@
 
                 </StackLayout>
         </Grid>
+        <BoxView Color="{DynamicResource variable1}" Opacity="0.5" IsVisible ="{Binding Cargando}"/>
+            <ActivityIndicator Color="{DynamicResource variable3}"
+                               Scale="0.3"
+                               IsRunning="{Binding Cargando}"
+                               IsVisible ="{Binding Cargando}"/>
     </Grid>
 </ContentPage>

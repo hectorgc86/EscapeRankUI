@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
+
 namespace EscapeRankUI.Modelos
 {
     public partial class Sala
@@ -63,8 +68,10 @@ namespace EscapeRankUI.Modelos
             {
                 Color color = (Color)Utils.GetResourceValue("variable4");
 
+                string colorHex = color.ToHex().TrimStart(new char[] { '#', 'F', 'F'});
+
                 return "<div style=\"" +
-                    "color: RGB(" + color.R * 255 + "," + color.G * 255 + "," + color.B * 255 + "); " +
+                    "color: #"+ colorHex + "; " +
                     "font-size:120%\">"
                     + Descripcion + "</div>";
             }

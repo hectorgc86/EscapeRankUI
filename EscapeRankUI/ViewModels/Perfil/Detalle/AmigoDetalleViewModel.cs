@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using EscapeRankUI.Modelos;
-using Xamarin.Forms;
+﻿using EscapeRankUI.Modelos;
+
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
 
 namespace EscapeRankUI.ViewModels
 {
     public class AmigoDetalleViewModel : BaseViewModel
     {
-        //Variables
-
-        public Amigo _amigo;
-
-        //Constructor
+        private Amigo _amigo;
 
         public AmigoDetalleViewModel(Amigo amigoSeleccionado)
         {
@@ -24,8 +21,6 @@ namespace EscapeRankUI.ViewModels
             get { return _amigo; }
             set { SetProperty(ref _amigo, value); }
         }
-
-        //Funciones
 
         public async void GetAmigo(Amigo amigoSeleccionado)
         {

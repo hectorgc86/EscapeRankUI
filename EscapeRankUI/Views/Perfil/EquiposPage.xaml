@@ -1,4 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <ContentPage
     x:Name="EquiposPageRef"
     x:Class="EscapeRankUI.Views.EquiposPage"
@@ -45,7 +51,7 @@
                                 BindableLayout.ItemsSource="{Binding Equipos}">
                         <BindableLayout.EmptyView>
                                       <Label VerticalTextAlignment="Center"
-                                             Text="Todavia no perteneces a un equipo"
+                                             Text="{x:Static recursos:Strings.todavia_no_perteneces_equipo}"
                                              TextColor="{DynamicResource variable5}"/>
                         </BindableLayout.EmptyView>
                         <BindableLayout.ItemTemplate>

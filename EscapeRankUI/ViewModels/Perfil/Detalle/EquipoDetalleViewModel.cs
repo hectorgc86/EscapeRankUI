@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using EscapeRankUI.Modelos;
-using Xamarin.Forms;
+
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
 
 namespace EscapeRankUI.ViewModels
 {
     public class EquipoDetalleViewModel : BaseViewModel
     {
-        //Variables
-
-        public Equipo Equipo { get; set; }
-
         private ObservableCollection<Usuario> _miembrosEquipo;
         private ObservableCollection<Partida> _partidasEquipo;
 
-        //Constructor
+        public Equipo Equipo { get; set; }
 
         public EquipoDetalleViewModel(Equipo equipoSeleccionado)
         {
@@ -25,8 +23,6 @@ namespace EscapeRankUI.ViewModels
                 GetIntegrantes();
                 GetPartidas();
         }
-
-        //Getters & Setters
 
         public ObservableCollection<Usuario> MiembrosEquipo
         {
@@ -39,8 +35,6 @@ namespace EscapeRankUI.ViewModels
             get { return _partidasEquipo; }
             set { SetProperty(ref _partidasEquipo, value); }
         }
-
-        //Funciones
 
         private async void GetIntegrantes()
         {

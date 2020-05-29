@@ -1,4 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EscapeRankUI.Views.ResetPassPage"
@@ -38,7 +44,7 @@
 
                 <Entry Text="{Binding Email}"
                                    Style="{StaticResource texto_entry1}"
-                                   Placeholder="E-mail"
+                                   Placeholder="{x:Static recursos:Strings.email}"
                                    Keyboard="Email"
                                    MaxLength="40"/>
 

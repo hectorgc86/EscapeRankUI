@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Xamarin.Forms;
-using EscapeRankUI.Modelos;
+﻿using Xamarin.Forms;
 using EscapeRankUI.ViewModels;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using System.Diagnostics;
-using System.ComponentModel;
+
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
 
 namespace EscapeRankUI.Views
 {
     public partial class SalasFiltradasPage : ContentPage
     {
-        public SalasFiltradasViewModel sfvm;
+        private readonly SalasFiltradasViewModel sfvm;
 
         public SalasFiltradasPage(object filtro)
         {

@@ -1,13 +1,15 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using EscapeRankUI.Modelos;
-using EscapeRankUI.Servicios;
 using EscapeRankUI.Views;
 using Xamarin.Forms;
+
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
 
 namespace EscapeRankUI.ViewModels
 {
@@ -17,12 +19,10 @@ namespace EscapeRankUI.ViewModels
         public string Nick { get; set; }
         public string Email { get; set; }
         public string Telefono { get; set; }
-        public string Nacido { get; set; }
         public string Contrasenya { get; set; }
+        public string Nacido { get; set; }
         public string RepContrasenya { get; set; }
         private string ContrasenyaEncriptada { get; set; }
-
-        //Constructor
 
         public RegistroViewModel()
         {
@@ -33,9 +33,7 @@ namespace EscapeRankUI.ViewModels
         public Command RegistrarCommand { get; set; }
         public Command LoginCommand { get; set; }
 
-        //Funciones
-
-        private async void Login(object obj)
+        private async void Login()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
         }
@@ -46,12 +44,15 @@ namespace EscapeRankUI.ViewModels
             {
                 ContrasenyaEncriptada = Utils.CalcularMD5(Contrasenya);
 
+
                 DateTime? nacidoFormateado = null;
 
                 if (!string.IsNullOrEmpty(Nacido))
                 {
                     nacidoFormateado = DateTime.ParseExact(Nacido, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 }
+
+                Cargando = true;
 
                 try
                 {
@@ -84,8 +85,14 @@ namespace EscapeRankUI.ViewModels
                 {
                     await Application.Current.MainPage.DisplayAlert("Ya existe un usuario registrado con ese Email", null, "Ok");
                 }
+                finally
+                {
+                    Cargando = false;
+                }
             }
         }
+
+        //Función de validación de campos del formulario de registro
 
         private async Task<bool> ValidarRegistroAsync()
         {

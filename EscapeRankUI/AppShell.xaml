@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <Shell
     x:Class="EscapeRankUI.AppShell"
     xmlns="http://xamarin.com/schemas/2014/forms"

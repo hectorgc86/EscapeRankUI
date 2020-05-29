@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using EscapeRankUI.Modelos;
 using EscapeRankUI.Views;
 
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
+
 namespace EscapeRankUI.ViewModels
 {
     public class SalasViewModel : BaseViewModel
     {
-        //Variables
-
         private readonly int offset;
         private ObservableCollection<Sala> _salas;
         private ObservableCollection<Sala> _salasPromocionadas;
@@ -24,8 +26,6 @@ namespace EscapeRankUI.ViewModels
         public Command VerSalaCommand { get; }
         public Command VerFiltradasCommand { get; }
         public Command VerTodasCommand { get; }
-
-        //Constructor
 
         public SalasViewModel()
         {
@@ -79,8 +79,6 @@ namespace EscapeRankUI.ViewModels
             set { SetProperty(ref _dificultades, value); }
         }
 
-        //Funciones
-
         public async void GetSalasPromocionadas()
         {
             Cargando = true;
@@ -101,7 +99,6 @@ namespace EscapeRankUI.ViewModels
         }
 
         
-
         private async void VerFiltradas()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new SalasFiltradasPage(FiltroSeleccionado));

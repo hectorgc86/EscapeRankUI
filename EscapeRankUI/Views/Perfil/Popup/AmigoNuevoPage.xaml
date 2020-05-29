@@ -1,4 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
              x:Class="EscapeRankUI.Views.AmigoNuevoPage"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -40,26 +46,26 @@
                  HorizontalOptions="Fill"
                  BackgroundColor="{DynamicResource variable2}">
 
-        <Label Text="Solicitar amistad"
+        <Label Text="{x:Static recursos:Strings.solicitar_amistad}"
                    HorizontalOptions="Center"
                    Style="{StaticResource texto_cabecera5}"
                    TextColor="{DynamicResource variable3}"/>
 
-        <Label Text="Nombre"
+        <Label Text="{x:Static recursos:Strings.email}"
                        HorizontalOptions="Start"
                        Style="{StaticResource texto_titulo1}"
                        TextColor="{DynamicResource variable3}"/>
 
         <Entry
                            Text="{Binding EmailSolicitud}"
-                           Placeholder="Introduzca el email de la persona a agregar.."
+                           Placeholder="{x:Static recursos:Strings.introduzca_email_agregar}"
                            PlaceholderColor="{DynamicResource variable4}"
                            BackgroundColor="{DynamicResource variable1}"
                            HorizontalOptions="Fill"
                            Style="{StaticResource texto_entry1}"
                            TextColor="{DynamicResource variable5}"/>
 
-        <Button     Text="Enviar"
+        <Button     Text="{x:Static recursos:Strings.enviar}"
                             Margin="0,20,0,0"
                             Style="{StaticResource estilo_boton1}"
                             Command="{Binding EnviarSolicitudCommand}"

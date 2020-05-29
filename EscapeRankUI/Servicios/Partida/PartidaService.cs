@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -22,6 +21,8 @@ namespace EscapeRankUI.Servicios
                 MaxResponseContentBufferSize = 256000
             };
         }
+
+        // Llamada a la API para registrar una partida
 
         public async Task<bool> PostPartidaAsync(Partida partida)
         {
@@ -45,38 +46,6 @@ namespace EscapeRankUI.Servicios
                 }
 
                 return guardada;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public async Task<List<Sala>> GetSalasCategoriaAsync(string categoriaId, int offset, string busqueda)
-        {
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await App.CredencialesService.GetToken());
-
-            List<Sala> salasCategoria = new List<Sala>();
-
-            Uri uri = new Uri(Constantes.EscapeRankURL
-                + Constantes.SalasCategoriaURL + categoriaId
-                + Constantes.OffsetQuery + offset
-                + Constantes.BusquedaQuery + busqueda);
-            try
-            {
-                HttpResponseMessage resp = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
-
-                switch (resp.StatusCode)
-                {
-                    case HttpStatusCode.OK:
-                        string aux = await resp.Content.ReadAsStringAsync();
-                        salasCategoria = JsonConvert.DeserializeObject<List<Sala>>(aux);
-                        break;
-                    case HttpStatusCode.Unauthorized:
-                        throw new HttpUnauthorizedException();
-                }
-
-                return salasCategoria;
             }
             catch (Exception)
             {

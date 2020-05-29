@@ -2,11 +2,16 @@
 using EscapeRankUI.ViewModels;
 using System;
 
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
+
 namespace EscapeRankUI.Views
 {
     public partial class PartidaPage : ContentPage
     {
-        public PartidaViewModel pvm;
+        private readonly PartidaViewModel pvm;
 
         public PartidaPage()
         {

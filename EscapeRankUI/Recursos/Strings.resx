@@ -1,10 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank
+     
+    Todos los strings asociados a un XAML -->
+
 <root>
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</resheader>
-    
     <data name="inicio">Inicio</data>
     <data name="partida">Partida</data>
     <data name="popular_ahora">Popular ahora</data>
@@ -22,7 +29,7 @@
     <data name="datos">Datos</data>
     <data name="editar">Editar</data>
     <data name="historial">Historial</data>
-    <data name="ganada_en">Partida ganada en </data>
+    <data name="ganada_en_">Partida ganada en </data>
     <data name="realizado_en">Realizado en</data>
     <data name="tiempo_sala">Tiempo sala </data>
     <data name="equipo">Equipo</data>
@@ -55,7 +62,7 @@
     <data name="eslogan">Entra al mundo escaperanker</data>
     <data name="email">E-mail</data>
     <data name="contrasenya">Contraseña</data>
-    <data name="repetir_contrasenya">Contraseña</data>
+    <data name="repetir_contrasenya">Repetir contraseña</data>
     <data name="selecciona_equipo">Selecciona equipo...</data>
     <data name="hacer_foto">Hacer una foto</data>
     <data name="contrasenya_olvidada">¿Has olvidado tu contraseña?</data>
@@ -64,6 +71,37 @@
     <data name="entrar_con_facebook">Entrar con facebook</data>
     <data name="cree_cuenta">Cree una cuenta antes de comenzar</data>
     <data name="instrucciones_contrasenya">Te enviaremos las instrucciones sobre como reestablecer tu contraseña al e-mail donde te hayas registrado con nosotros</data>
-
-
+    <data name="solicitar_amistad">Solicitar amistad</data>
+    <data name="todavia_no_amigos">Todavia no tienes amigos</data>
+    <data name="solicitudes_pendientes">Solicitudes pendientes</data>
+    <data name="no_solicitudes_pendientes">No hay solicitudes pendientes</data>
+    <data name="integrantes">Integrantes</data>
+    <data name="partidas">Partidas</data>
+    <data name="todavia_no_dispone_amigos">Todavia no se dispone de amigos</data>
+    <data name="todavia_no_perteneces_equipo">Todavia no perteneces a un equipo</data>
+    <data name="crear">Crear</data>
+    <data name="no_registrado_partidas_todavia">No has registrado partidas todavía</data>
+    <data name="partida_jugada_en">Partida jugada en</data>
+    <data name="no_noticias_que_mostrar">No hay noticias que mostrar</data>
+    <data name="campos_obligatorios">Campos obligatorios</data>
+    <data name="pregunta_tienes_cuenta">¿Ya tienes una cuenta?</data>
+    <data name="duracion">Duración</data>
+    <data name="jugadores">Jugadores</data>
+    <data name="precio">Precio</data>
+    <data name="jugador_adicional">Jugador adicional</data>
+    <data name="edad_publico">Edad público</data>
+    <data name="reservas">Reservas</data>
+    <data name="no_partidas_registradas_sala">No hay partidas registradas en esta sala</data>
+    <data name="no_salas_que_mostrar">No hay salas que mostrar</data>
+    <data name="ver_todas">Ver todas</data>
+    <data name="sala_">Sala </data>
+    <data name="crear_equipo">Crear equipo</data>
+    <data name="ciudad_">Ciudad </data>
+    <data name="companyia_">Compañia </data>
+    <data name="sala_companyia_ciudad">Sala, compañia o ciudad..</data>
+    <data name="nombre_apellido">Nombre y apellido</data>
+    <data name="nombre_usuario">Nombre de usuario</data>
+    <data name="nombre_usuario_email">Nombre de usuario o e-mail</data>
+    <data name="introduzca_nombre_equipo">Introduzca nombre de equipo..</data>
+    <data name="introduzca_email_agregar">Introduzca el email de la persona a agregar..</data>
 </root>

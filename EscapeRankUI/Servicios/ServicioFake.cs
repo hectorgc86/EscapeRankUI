@@ -5,8 +5,15 @@ using System.Linq;
 using EscapeRankUI.Modelos;
 using Xamarin.Forms;
 
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
+
 namespace EscapeRankUI.Servicios
 {
+    //Servicio fake para la prueba de la aplicación antes de enlazar con la API
+
     public static class ServicioFake
     {
         public static List<Noticia> Noticias;

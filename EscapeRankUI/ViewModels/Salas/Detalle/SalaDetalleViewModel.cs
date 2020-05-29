@@ -5,6 +5,11 @@ using EscapeRankUI.Modelos;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
+
 namespace EscapeRankUI.ViewModels
 {
     public class SalaDetalleViewModel : BaseViewModel

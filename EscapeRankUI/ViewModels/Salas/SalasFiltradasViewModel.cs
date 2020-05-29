@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Linq;
 using EscapeRankUI.Modelos;
-using EscapeRankUI.Views;
 
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
 
 namespace EscapeRankUI.ViewModels
 {

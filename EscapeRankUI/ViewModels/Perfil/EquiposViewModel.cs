@@ -7,16 +7,17 @@ using EscapeRankUI.Views;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
+
 namespace EscapeRankUI.ViewModels
 {
     public class EquiposViewModel : BaseViewModel
     {
-        //Variables
-
         private bool _modoEliminar;
         private ObservableCollection<Equipo> _equipos;
-
-        //Constructor
 
         public EquiposViewModel()
         {
@@ -30,9 +31,6 @@ namespace EscapeRankUI.ViewModels
                 await GetEquipos();
             });
         }
-
-
-        //Getters & Setters
 
         public Command VerEquipoCommand { get; }
         public Command ModoAnyadirCommand { get; }
@@ -50,8 +48,6 @@ namespace EscapeRankUI.ViewModels
             get { return _modoEliminar; }
             set { SetProperty(ref _modoEliminar, value); }
         }
-
-        //Funciones
 
         public async Task GetEquipos()
         {

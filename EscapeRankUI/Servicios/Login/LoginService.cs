@@ -1,12 +1,15 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using EscapeRankUI.Modelos;
 using Newtonsoft.Json;
+
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
 
 namespace EscapeRankUI.Servicios
 {
@@ -22,7 +25,7 @@ namespace EscapeRankUI.Servicios
             };
         }
 
-        //Llamada a la API para mandar usuario y contraseña y recibir autorización para loguearse.
+        //Llamada a la API para mandar usuario y contraseña y recibir autorización para loguearse y token de acceso.
 
         public async Task<Login> GetLoginAsync(string usuario, string contrasenya)
         {
@@ -52,7 +55,7 @@ namespace EscapeRankUI.Servicios
             }
         }
 
-        //Llamada a la API para mandar nombre, email y contraseña y registrar un usuario.
+        //Llamada a la API para registrar un usuario.
 
         public async Task<Login> PostRegistroAsync(Usuario usuario)
         {

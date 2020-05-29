@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using EscapeRankUI.Modelos;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
+
 namespace EscapeRankUI.ViewModels
 {
     public class EquipoNuevoViewModel : BaseViewModel
     {
-        //Variables
-
         private string _nombreEquipo;
         private ObservableCollection<Amigo> _amigosUsuario;
         private List<object> _miembrosSeleccionados;
-
-        //Constructor
 
         public EquipoNuevoViewModel()
         {
@@ -26,8 +26,6 @@ namespace EscapeRankUI.ViewModels
             CrearEquipoCommand = new Command(CrearEquipo);
             GetAmigos();
         }
-
-        //Getters & Setters
 
         public Command CrearEquipoCommand { get; }
 
@@ -48,8 +46,6 @@ namespace EscapeRankUI.ViewModels
             get { return _miembrosSeleccionados; }
             set { SetProperty(ref _miembrosSeleccionados, value); }
         }
-
-        //Funciones
 
         public async void GetAmigos()
         {

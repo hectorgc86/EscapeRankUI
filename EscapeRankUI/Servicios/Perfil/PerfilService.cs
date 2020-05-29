@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -210,6 +208,8 @@ namespace EscapeRankUI.Servicios
             }
         }
 
+        //Llamada a la API para mandar una solicitud de amistad a un usuario
+
         public async Task<bool> PostAmigoAsync(string emailAmigo)
         {
             bool creado = false;
@@ -243,6 +243,8 @@ namespace EscapeRankUI.Servicios
             }
         }
 
+        //Llamada a la API para guardar un nuevo equipo
+
         public async Task<bool> PostEquipoAsync(Equipo equipo)
         {
             bool creado = false;
@@ -273,6 +275,8 @@ namespace EscapeRankUI.Servicios
                 throw;
             }
         }
+
+        //Llamada a la API para aceptar una solicitud de amistad
 
         public async Task<bool> PutAmigoAsync(Amigo amigo)
         {
@@ -308,6 +312,8 @@ namespace EscapeRankUI.Servicios
             }
         }
 
+        //Llamada a la API para borrar una amistad
+
         public async Task<bool> DeleteAmigoAsync(int amigoId)
         {
             bool borrado = false;
@@ -339,6 +345,8 @@ namespace EscapeRankUI.Servicios
                 throw;
             }
         }
+
+        //Llamada a la API para borrar un equipo
 
         public async Task<bool> DeleteEquipoAsync(int equipoId)
         {

@@ -1,8 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <?xaml-comp compile="true" ?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <ResourceDictionary
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns="http://xamarin.com/schemas/2014/forms">
+
+    <!-- Diccionario principal de recursos -->
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Textos.xaml" />

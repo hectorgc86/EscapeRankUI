@@ -6,6 +6,11 @@ using EscapeRankUI.Modelos;
 using EscapeRankUI.Servicios;
 using System.Threading.Tasks;
 
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
+
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EscapeRankUI
 {

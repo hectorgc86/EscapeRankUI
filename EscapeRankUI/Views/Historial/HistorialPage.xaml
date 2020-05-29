@@ -1,4 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <ContentPage
     x:Class="EscapeRankUI.Views.HistorialPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -25,7 +31,7 @@
                  <CollectionView.EmptyView>
                                       <Label HorizontalTextAlignment="Center"
                                              VerticalTextAlignment="Center"
-                                             Text="No has registrado partidas todavía"
+                                             Text="{x:Static recursos:Strings.no_registrado_partidas_todavia}"
                                              TextColor="{DynamicResource variable5}"/>
                 </CollectionView.EmptyView>
                 <CollectionView.ItemsLayout>
@@ -44,7 +50,7 @@
 
                                 <StackLayout Spacing="10">
                                     <StackLayout Orientation="Horizontal" Spacing="5" >
-                                        <Label Text="Partida jugada en"
+                                        <Label Text="{x:Static recursos:Strings.partida_jugada_en}"
                                                Style="{StaticResource texto_titulo1}"
                                                TextColor="{DynamicResource variable3}"/>
 

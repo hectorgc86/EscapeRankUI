@@ -1,11 +1,13 @@
 ﻿using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
 using Android.OS;
 using Xamarin.Forms;
 using Android.Content;
-using Java.Security;
-using System;
+
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
 
 namespace EscapeRankUI.Droid
 {

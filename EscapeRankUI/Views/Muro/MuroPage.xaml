@@ -1,4 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <ContentPage
     x:Class="EscapeRankUI.Views.MuroPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -25,7 +31,7 @@
                         <CollectionView.EmptyView>
                                       <Label HorizontalTextAlignment="Center"
                                              VerticalTextAlignment="Center"
-                                             Text="No hay noticias que mostrar"
+                                             Text="{x:Static recursos:Strings.no_noticias_que_mostrar}"
                                              TextColor="{DynamicResource variable5}"/>
                         </CollectionView.EmptyView>
                     <CollectionView.ItemsLayout>

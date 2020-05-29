@@ -1,4 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <ContentPage
     x:Class="EscapeRankUI.Views.PartidaPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -44,7 +50,7 @@
                    Style="{StaticResource texto_titulo1}"
                    TextColor="{DynamicResource variable3}"/>
 
-                <DatePicker Format="D"
+                <DatePicker Format="d"
                             MaximumDate="{x:Static sys:DateTime.Now}"
                             BackgroundColor="{DynamicResource variable2}"
                             TextColor="{DynamicResource variable4}"

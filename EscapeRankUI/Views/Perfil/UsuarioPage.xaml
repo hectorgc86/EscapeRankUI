@@ -1,4 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <ContentPage
     x:Class="EscapeRankUI.Views.UsuarioPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -30,7 +36,8 @@
     <ContentPage.Content>
         <FlexLayout Direction="Column"
                     AlignItems="Center"
-                    JustifyContent="SpaceEvenly">
+                    JustifyContent="SpaceEvenly"
+                    Style="{StaticResource espacio_flex_normal}">
             <StackLayout>
                 <Frame
                 CornerRadius="45"
@@ -44,21 +51,33 @@
                    HeightRequest="90"
                    Aspect="AspectFill" />
                 </Frame>
-                <StackLayout Orientation="Horizontal" Spacing="5">
-                    <Label
-                            Text="{Binding Usuario.Perfil.Nombre}"
+
+                 <Grid Style="{StaticResource espacio_grid_normal}" ColumnSpacing="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label  Grid.Column="1"
+                            Text="{Binding Usuario.Nick}"
                             Style="{StaticResource texto_cabecera3}"
                             TextColor="{DynamicResource variable3}"/>
-                    <Label
+
+                     <!-- LABEL EDITAR -->
+
+                    <!--<Label
+                            Grid.Column="2"
                             Text="{x:Static recursos:Strings.editar}"
                             Style="{StaticResource texto_subtitulo4}"
                             TextColor="{DynamicResource variable4}"
-                            VerticalOptions="Center" />
-                </StackLayout>
+                            VerticalOptions="Center" />-->
+                 </Grid>
+
 
                     <Label
-                            Text="{Binding Usuario.Nick}"
-                            Style="{StaticResource texto_subtitulo5}"
+                            Text="{Binding Usuario.Perfil.Nombre}"
+                            Style="{StaticResource texto_subtitulo2}"
                             TextColor="{DynamicResource variable4}"
                             HorizontalTextAlignment="Center"/>
 

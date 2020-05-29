@@ -8,6 +8,11 @@ using Plugin.Media.Abstractions;
 using Xamarin.Forms;
 using ZXing.Net.Mobile.Forms;
 
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
+
 namespace EscapeRankUI.ViewModels
 {
     public class PartidaViewModel : BaseViewModel
@@ -79,8 +84,6 @@ namespace EscapeRankUI.ViewModels
             set { SetProperty(ref _equiposUsuario, value); }
         }
 
-        //Funciones
-
         public async void GetEquipos()
         {
             Cargando = true;
@@ -112,6 +115,8 @@ namespace EscapeRankUI.ViewModels
             }
             
         }
+
+        //Hacer foto de partida
 
         private async void HacerFoto()
         {
@@ -167,8 +172,6 @@ namespace EscapeRankUI.ViewModels
 
             await Application.Current.MainPage.Navigation.PushAsync(qr);
         }
-
-        //Guardar partida en BBDD
 
         private async void GuardarPartida()
         {

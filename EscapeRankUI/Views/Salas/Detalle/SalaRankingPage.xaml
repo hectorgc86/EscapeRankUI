@@ -1,4 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <ContentPage
     x:Class="EscapeRankUI.Views.SalaRankingPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -15,7 +21,7 @@
                     <CollectionView.EmptyView>
                                       <Label HorizontalTextAlignment="Center"
                                              VerticalTextAlignment="Center"
-                                             Text="No hay partidas registradas en esta sala"
+                                             Text="{x:Static recursos:Strings.no_partidas_registradas_sala}"
                                              TextColor="{DynamicResource variable5}"/>
                         </CollectionView.EmptyView>
                     <CollectionView.ItemsLayout>
@@ -59,7 +65,7 @@
                                             Padding="0">
                                             <Image
                                                     Source="{Binding ImagenPartida}"
-                                                    Aspect="Fill"
+                                                    Aspect="AspectFill"
                                                     HeightRequest="125"
                                                      />
                                         </Frame>

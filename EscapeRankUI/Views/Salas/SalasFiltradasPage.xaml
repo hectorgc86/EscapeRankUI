@@ -1,4 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <ContentPage
     x:Class="EscapeRankUI.Views.SalasFiltradasPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -38,7 +44,7 @@
                        BackgroundColor="{DynamicResource variable2}">
                         <SearchBar
                                Text="{Binding Busqueda}"
-                               Placeholder="Sala, compañia o ciudad.."
+                               Placeholder="{x:Static recursos:Strings.sala_companyia_ciudad}"
                                PlaceholderColor="{StaticResource gris2}"
                                BackgroundColor="{DynamicResource variable2}"
                                TextColor="{DynamicResource variable5}"
@@ -57,7 +63,7 @@
                             <CollectionView.EmptyView>
                                 <Label      HorizontalTextAlignment="Center"
                                             VerticalTextAlignment="Center"
-                                            Text="No hay salas que mostrar"
+                                            Text="{x:Static recursos:Strings.no_salas_que_mostrar}"
                                             TextColor="{DynamicResource variable5}"/>
                             </CollectionView.EmptyView>
                             <CollectionView.ItemTemplate>
@@ -81,7 +87,7 @@
                                                              VerticalOptions="StartAndExpand"
                                                              Spacing="5">
                                                         <Label
-                                                               Text="Sala "
+                                                               Text="{x:Static recursos:Strings.sala_}"
                                                                Style="{StaticResource texto_subtitulo9}"
                                                                TextColor="{StaticResource gris1}" />
                                                         <Label
@@ -94,7 +100,7 @@
                                                                 VerticalOptions="Center"
                                                                 Spacing="5">
                                                         <Label
-                                                               Text="Compañia "
+                                                               Text="{x:Static recursos:Strings.companyia_}"
                                                                Style="{StaticResource texto_subtitulo9}"
                                                                TextColor="{StaticResource gris1}" />
                                                         <Label
@@ -107,7 +113,7 @@
                                                                  VerticalOptions="EndAndExpand"
                                                                  Spacing="5">
                                                         <Label
-                                                                Text="Ciudad "
+                                                                Text="{x:Static recursos:Strings.ciudad_}"
                                                                 Style="{StaticResource texto_subtitulo9}"
                                                                 TextColor="{StaticResource gris1}"/>
                                                         <Label

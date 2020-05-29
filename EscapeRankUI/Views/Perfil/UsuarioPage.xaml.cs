@@ -1,12 +1,16 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using EscapeRankUI.ViewModels;
+
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
 
 namespace EscapeRankUI.Views
 {
     public partial class UsuarioPage : ContentPage
     {
-        public UsuarioViewModel uvm;
+        private readonly UsuarioViewModel uvm;
 
         public UsuarioPage()
         {

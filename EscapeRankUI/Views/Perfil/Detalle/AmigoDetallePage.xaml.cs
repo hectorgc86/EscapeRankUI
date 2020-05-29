@@ -1,13 +1,17 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using EscapeRankUI.ViewModels;
 using EscapeRankUI.Modelos;
+
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
 
 namespace EscapeRankUI.Views
 {
     public partial class AmigoDetallePage : ContentPage
     {
-        public AmigoDetalleViewModel advm;
+        private readonly AmigoDetalleViewModel advm;
 
         public AmigoDetallePage(Amigo amigoSeleccionado)
         {

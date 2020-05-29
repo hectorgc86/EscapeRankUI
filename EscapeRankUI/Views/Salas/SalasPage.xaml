@@ -1,4 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <ContentPage
     x:Class="EscapeRankUI.Views.SalasPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -366,7 +372,7 @@
                             BackgroundColor="{DynamicResource variable2}"
                             TextColor="{DynamicResource variable3}"
                             Command="{Binding VerTodasCommand}"
-                            Text="Ver todas"/>
+                            Text="{x:Static recursos:Strings.ver_todas}"/>
                     </StackLayout>
                 </Grid>
             </ScrollView>

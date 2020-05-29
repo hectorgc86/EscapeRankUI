@@ -2,11 +2,16 @@
 using EscapeRankUI.ViewModels;
 using EscapeRankUI.Modelos;
 
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
+
 namespace EscapeRankUI.Views
 {
     public partial class SalaDetallePage : ContentPage
     {
-        public SalaDetalleViewModel sdvm;
+        private readonly SalaDetalleViewModel sdvm;
 
         public SalaDetallePage(Sala salaSeleccionada)
         {

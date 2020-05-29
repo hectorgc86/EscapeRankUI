@@ -1,4 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <ContentPage x:Class="EscapeRankUI.Views.EquipoDetallePage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -34,7 +40,7 @@
                          HeightRequest="1"/>
 
                     <Label
-                         Text="Integrantes"
+                         Text="{x:Static recursos:Strings.integrantes}"
                          Padding="15"
                          Style="{StaticResource texto_cabecera3}"
                          TextColor="{DynamicResource variable3}"
@@ -60,9 +66,9 @@
                                     </Frame>
                                     <Label
                                         HorizontalTextAlignment="Center"
-                                        Text="{Binding Perfil.Nombre}"
+                                        Text="{Binding Nick}"
                                         Style="{StaticResource texto_subtitulo3}"
-                                        TextColor="{DynamicResource variable3}" />
+                                        TextColor="{DynamicResource variable3}"/>
                                 </StackLayout>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
@@ -72,7 +78,7 @@
                           BackgroundColor="{DynamicResource variable4}"
                           HeightRequest="1"/>
                     <Label
-                               Text="Partidas"
+                               Text="{x:Static recursos:Strings.partidas}"
                                Padding="15"
                                Style="{StaticResource texto_cabecera3}"
                                TextColor="{DynamicResource variable3}"

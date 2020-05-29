@@ -4,19 +4,19 @@ using EscapeRankUI.Modelos;
 using EscapeRankUI.Views;
 using Xamarin.Forms;
 
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
+
 namespace EscapeRankUI.ViewModels
 {
     public class UsuarioViewModel : BaseViewModel
     {
-
-        //Variables
-
-        string _tema;
+        private string _tema;
         private bool _modoOscuro;
         public Usuario Usuario { get; set; }
         public Command LogoutCommand { get; }
-
-        //Constructor
 
         public UsuarioViewModel()
         {
@@ -39,8 +39,6 @@ namespace EscapeRankUI.ViewModels
 
         }
 
-        //Getters & Setters
-
         public bool ModoOscuro
         {
             get { return _modoOscuro; }
@@ -60,8 +58,6 @@ namespace EscapeRankUI.ViewModels
                 }
             }
         }
-
-        //Funciones
 
         public async void Logout()
         {

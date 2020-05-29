@@ -1,8 +1,10 @@
-﻿using System;
-using System.Diagnostics;
-using System.Windows.Input;
-using EscapeRankUI.Views;
+﻿using EscapeRankUI.Views;
 using Xamarin.Forms;
+
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
 
 namespace EscapeRankUI.ViewModels
 {

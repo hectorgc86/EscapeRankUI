@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Xamarin.Forms;
-using EscapeRankUI.Modelos;
+﻿using Xamarin.Forms;
 using EscapeRankUI.ViewModels;
+
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
 
 namespace EscapeRankUI.Views
 {
@@ -21,10 +22,6 @@ namespace EscapeRankUI.Views
         protected override void OnAppearing()
         {
             svm.GetSalasPromocionadas();
-        }
-
-        void CollectionView_PropertyChanged(System.Object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
         }
     }
 }

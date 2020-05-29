@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 using EscapeRankUI.Modelos;
 using Newtonsoft.Json;
 
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
+
 namespace EscapeRankUI.Servicios
 {
     public class HistorialService : IHistorialService
@@ -20,6 +25,8 @@ namespace EscapeRankUI.Servicios
                 MaxResponseContentBufferSize = 256000
             };
         }
+
+        //Llamada a la api para todas traer las partidas del usuario principal ordenadas por fecha
 
         public async Task<List<Partida>> GetHistorialAsync(int usuarioId)
         {

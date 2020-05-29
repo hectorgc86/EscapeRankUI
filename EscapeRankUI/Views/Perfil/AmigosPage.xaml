@@ -1,4 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <ContentPage
     x:Name="AmigosPageRef"
     x:Class="EscapeRankUI.Views.AmigosPage"
@@ -46,7 +52,7 @@
                                 BindableLayout.ItemsSource="{Binding Amigos}">
                         <BindableLayout.EmptyView>
                                       <Label VerticalTextAlignment="Center"
-                                           Text="Todavia no tienes amigos"
+                                           Text="{x:Static recursos:Strings.todavia_no_amigos}"
                                             TextColor="{DynamicResource variable5}"/>
                         </BindableLayout.EmptyView>
                         <BindableLayout.ItemTemplate>
@@ -87,7 +93,7 @@
                                    
                                     <Label 
                                         HorizontalTextAlignment="Center"
-                                        Text="{Binding Perfil.Nombre}"
+                                        Text="{Binding Nick}"
                                         Style="{StaticResource texto_subtitulo3}"
                                         TextColor="{DynamicResource variable3}"
                                         LineBreakMode="TailTruncation"
@@ -103,7 +109,7 @@
                          HeightRequest="1"/>
 
                         <Label
-                         Text="Solicitudes pendientes"
+                         Text="{x:Static recursos:Strings.solicitudes_pendientes}"
                          Padding="15"
                          Style="{StaticResource texto_cabecera3}"
                          TextColor="{DynamicResource variable3}"
@@ -116,7 +122,7 @@
                         <BindableLayout.EmptyView>
                                       <Label 
                                           VerticalTextAlignment="Center"
-                                            Text="No hay solicitudes pendientes"
+                                            Text="{x:Static recursos:Strings.no_solicitudes_pendientes}"
                                             TextColor="{DynamicResource variable5}"/>
                         </BindableLayout.EmptyView>
                         <BindableLayout.ItemTemplate>
@@ -151,7 +157,7 @@
                                    
                                     <Label 
                                         HorizontalTextAlignment="Center"
-                                        Text="{Binding Perfil.Nombre}"
+                                        Text="{Binding Nick}"
                                         Style="{StaticResource texto_subtitulo3}"
                                         TextColor="{DynamicResource variable3}" />
                                    

@@ -7,18 +7,18 @@ using EscapeRankUI.Views;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
+
 namespace EscapeRankUI.ViewModels
 {
     public class AmigosViewModel : BaseViewModel
     {
-        //Variables
-
         private bool _modoEliminar;
         private ObservableCollection<Amigo> _amigos;
         private ObservableCollection<Amigo> _amigosPendientes;
-
-
-        //Constructor
 
         public AmigosViewModel()
         {
@@ -28,10 +28,7 @@ namespace EscapeRankUI.ViewModels
             AceptarAmigoCommand = new Command<Amigo>(AceptarAmigo);
             EliminarAmigoCommand = new Command<Amigo>(DeleteAmigo);
         }
-
-        
-        //Getters & Setters
-
+ 
         public Command VerAmigoCommand { get; }
         public Command ModoAnyadirCommand { get; }
         public Command ModoEliminarCommand { get; }
@@ -55,8 +52,6 @@ namespace EscapeRankUI.ViewModels
             get { return _amigosPendientes; }
             set { SetProperty(ref _amigosPendientes, value); }
         }
-
-        //Funciones
 
         public async void GetAmigos()
         {
@@ -86,7 +81,7 @@ namespace EscapeRankUI.ViewModels
 
         private async void AceptarAmigo(Amigo amigo)
         {
-            bool respuesta = await Application.Current.MainPage.DisplayAlert("Aceptar amigo", amigo.Perfil.Nombre + " te ha enviado una solicitud de amistad \n ¿Deseas aceptarla?", "Si", "No");
+            bool respuesta = await Application.Current.MainPage.DisplayAlert("Aceptar amigo", amigo.Nick + " te ha enviado una solicitud de amistad \n ¿Deseas aceptarla?", "Si", "No");
 
             if (respuesta)
             {
@@ -97,7 +92,7 @@ namespace EscapeRankUI.ViewModels
                     bool aceptado = await App.PerfilService.PutAmigoAsync(amigo);
                     if (aceptado)
                     {
-                        await Application.Current.MainPage.DisplayAlert("Ahora eres amigo de " + amigo.Perfil.Nombre, null, "Ok");
+                        await Application.Current.MainPage.DisplayAlert("Ahora eres amigo de " + amigo.Nick, null, "Ok");
                         GetAmigos();
                     }
                 }
@@ -107,7 +102,7 @@ namespace EscapeRankUI.ViewModels
                 }
                 catch (Exception)
                 {
-                    await Application.Current.MainPage.DisplayAlert("No se ha podido aceptar a \"" + amigo.Perfil.Nombre + "\"", null, "Ok");
+                    await Application.Current.MainPage.DisplayAlert("No se ha podido aceptar a \"" + amigo.Nick + "\"", null, "Ok");
                 }
                 finally
                 {
@@ -118,7 +113,7 @@ namespace EscapeRankUI.ViewModels
 
         private async void DeleteAmigo(Amigo amigo)
         {
-            bool respuesta = await Application.Current.MainPage.DisplayAlert("Borrar amigo", "¿Seguro que desea borrar a \"" + amigo.Perfil.Nombre + "\"?", "Si", "No");
+            bool respuesta = await Application.Current.MainPage.DisplayAlert("Borrar amigo", "¿Seguro que desea borrar a \"" + amigo.Nick + "\"?", "Si", "No");
 
             if (respuesta)
             {
@@ -129,7 +124,7 @@ namespace EscapeRankUI.ViewModels
                     bool borrado = await App.PerfilService.DeleteAmigoAsync(amigo.Id);
                     if (borrado)
                     {
-                        await Application.Current.MainPage.DisplayAlert(amigo.Perfil.Nombre + "\" se ha borrado de tu lista de amigos", null, "Ok");
+                        await Application.Current.MainPage.DisplayAlert(amigo.Nick + "\" se ha borrado de tu lista de amigos", null, "Ok");
                         GetAmigos();
                     }
                 }
@@ -139,7 +134,7 @@ namespace EscapeRankUI.ViewModels
                 }
                 catch (Exception)
                 {
-                    await Application.Current.MainPage.DisplayAlert("No se ha podido borrar a \"" + amigo.Perfil.Nombre + "\"", null, "Ok");
+                    await Application.Current.MainPage.DisplayAlert("No se ha podido borrar a \"" + amigo.Nick + "\"", null, "Ok");
                 }
                 finally
                 {

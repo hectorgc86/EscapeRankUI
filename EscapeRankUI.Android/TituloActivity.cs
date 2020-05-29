@@ -2,7 +2,6 @@
 using Android.Content.PM;
 using Android.OS;
 
-
 namespace EscapeRankUI.Droid
 {
     [Activity(Theme = "@style/TituloTheme",

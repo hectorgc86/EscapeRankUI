@@ -1,4 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--Héctor Granja Cortés
+     2ºDAM Semipresencial
+     Proyecto fin de ciclo
+     EscapeRank-->
+
 <ContentPage
     x:Class="EscapeRankUI.Views.SalaDetallePage"
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -50,7 +56,7 @@
                         </Grid.ColumnDefinitions>
                         <StackLayout>
                             <Label
-                                        Text="Categoria"
+                                        Text="{x:Static recursos:Strings.categoria}"
                                         HorizontalTextAlignment="Center"
                                         Style="{StaticResource texto_subtitulo3}"
                                         TextColor="{DynamicResource variable3}" />
@@ -69,7 +75,7 @@
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <Label
-                                        Text="Temática"
+                                        Text="{x:Static recursos:Strings.tematica}"
                                         HorizontalTextAlignment="Center"
                                         Style="{StaticResource texto_subtitulo3}"
                                         TextColor="{DynamicResource variable3}" />
@@ -88,7 +94,7 @@
                         </StackLayout>
                         <StackLayout Grid.Column="2">
                             <Label
-                                        Text="Público"
+                                        Text="{x:Static recursos:Strings.publico}"
                                         HorizontalTextAlignment="Center"
                                         Style="{StaticResource texto_subtitulo3}"
                                         TextColor="{DynamicResource variable3}" />
@@ -134,27 +140,27 @@
                                 Spacing="12">
 
                             <Label
-                                Text="Duración"
+                                Text="{x:Static recursos:Strings.duracion}"
                                 Style="{StaticResource texto_subtitulo3}"
                                 TextColor="{DynamicResource variable3}" />
                             <Label
-                                Text="Jugadores"
+                                Text="{x:Static recursos:Strings.jugadores}"
                                 Style="{StaticResource texto_subtitulo3}"
                                 TextColor="{DynamicResource variable3}" />
                             <Label
-                                Text="Precio"
+                                Text="{x:Static recursos:Strings.precio}"
                                 Style="{StaticResource texto_subtitulo3}"
                                 TextColor="{DynamicResource variable3}" />
                             <Label
-                                Text="Dificultad"
+                                Text="{x:Static recursos:Strings.dificultad}"
                                 Style="{StaticResource texto_subtitulo3}"
                                 TextColor="{DynamicResource variable3}" />
                             <Label
-                                Text="Jugador adicional"
+                                Text="{x:Static recursos:Strings.jugador_adicional}"
                                 Style="{StaticResource texto_subtitulo3}"
                                 TextColor="{DynamicResource variable3}" />
                             <Label
-                                Text="Edad público"
+                                Text="{x:Static recursos:Strings.edad_publico}"
                                 Style="{StaticResource texto_subtitulo3}"
                                 TextColor="{DynamicResource variable3}" />
 
@@ -202,7 +208,7 @@
                     </StackLayout>
                     <BoxView/>
                     <Label 
-                            Text="Reservas"
+                            Text="{x:Static recursos:Strings.reservas}"
                             HorizontalTextAlignment="Center"
                             Style="{StaticResource texto_subtitulo3}"
                             TextColor="{DynamicResource variable3}" />

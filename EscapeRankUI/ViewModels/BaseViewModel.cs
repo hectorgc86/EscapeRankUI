@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Tasks;
-using EscapeRankUI.Estilos;
 using EscapeRankUI.Modelos;
 using EscapeRankUI.Views;
 using Xamarin.Forms;
 
+/* Héctor Granja Cortés
+ * 2ºDAM Semipresencial
+ * Proyecto fin de ciclo
+   EscapeRank */
+
 namespace EscapeRankUI.ViewModels
 {
+    //Clase padre del resto de viewmodels, con propiedades usadas en común por varias de ellas
+
     public class BaseViewModel : BindableObject
     {
         private bool _cargando;
