@@ -4,6 +4,8 @@
  * Proyecto fin de ciclo
    EscapeRank */
 
+using Xamarin.Forms;
+
 namespace EscapeRankUI
 {
     public static class Constantes
@@ -18,7 +20,7 @@ namespace EscapeRankUI
         private static readonly string IP = Device.RuntimePlatform == Device.iOS
             ? "http://localhost:5000"
             : "http://10.0.2.2:5000";
-        private static readonly StorageURL = Device.RuntimePlatform == Device.iOS
+        private static readonly string StorageURL = Device.RuntimePlatform == Device.iOS
             ? "http://localhost/archivos"
             : "http://10.0.2.2/archivos";
 #else

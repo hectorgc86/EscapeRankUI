@@ -18,5 +18,10 @@ namespace EscapeRankUI.Views
             InitializeComponent();
             BindingContext = uvm;
         }
+
+        protected override void OnAppearing()
+        {
+            uvm.Usuario = App.UsuarioPrincipal;
+        }
     }
 }

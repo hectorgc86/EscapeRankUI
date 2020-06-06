@@ -197,6 +197,8 @@ namespace EscapeRankUI.ViewModels
                 if (await App.PartidaService.PostPartidaAsync(partida))
                 {
                     await Application.Current.MainPage.DisplayAlert("¡Enhorabuena!", "Partida registrada correctamente", "OK");
+
+                    App.UsuarioPrincipal = await App.PerfilService.GetUsuarioAsync();
                 }
                 else
                 {

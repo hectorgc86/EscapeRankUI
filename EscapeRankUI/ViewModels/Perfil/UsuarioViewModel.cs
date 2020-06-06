@@ -15,14 +15,12 @@ namespace EscapeRankUI.ViewModels
     {
         private string _tema;
         private bool _modoOscuro;
-        public Usuario Usuario { get; set; }
+        private Usuario _usuario;
         public Command LogoutCommand { get; }
 
         public UsuarioViewModel()
         {
             LogoutCommand = new Command(Logout);
-
-            Usuario = App.UsuarioPrincipal;
 
             Task.Run(async () =>
             {
@@ -37,6 +35,12 @@ namespace EscapeRankUI.ViewModels
 
             }).Wait();
 
+        }
+
+        public Usuario Usuario
+        {
+            get { return _usuario; }
+            set { SetProperty(ref _usuario, value); }
         }
 
         public bool ModoOscuro

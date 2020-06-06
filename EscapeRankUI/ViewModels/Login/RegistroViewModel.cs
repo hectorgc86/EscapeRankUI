@@ -83,7 +83,7 @@ namespace EscapeRankUI.ViewModels
                 }
                 catch (HttpConflictException)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Ya existe un usuario registrado con ese Email", null, "Ok");
+                    await Application.Current.MainPage.DisplayAlert("Ya existe un usuario registrado con ese nombre de usuario o e-mail", null, "Ok");
                 }
                 finally
                 {
