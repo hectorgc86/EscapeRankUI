@@ -24,8 +24,15 @@ namespace EscapeRankUI
             ? "http://localhost/archivos"
             : "http://10.0.2.2/archivos";
 #else
-        private static readonly string IP = "https://apiescaperank.azurewebsites.net";
-        private static readonly string StorageURL = "https://escaperankstorage.blob.core.windows.net";
+        //Conexión Azure
+
+        /*private static readonly string IP = "https://apiescaperank.azurewebsites.net";
+        private static readonly string StorageURL = "https://escaperankstorage.blob.core.windows.net";*/
+
+        //Conexión Oracle VM
+
+        private static readonly string IP = "http://132.145.63.165/escaperankapi";
+        private static readonly string StorageURL = "http://132.145.63.165/escaperankstorage";
 
 #endif
 
