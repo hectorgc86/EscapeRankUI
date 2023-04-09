@@ -16,14 +16,6 @@ namespace EscapeRankUI
 
         //CONEXIONES
 
-#if DEBUG
-        private static readonly string IP = Device.RuntimePlatform == Device.iOS
-            ? "http://localhost:5000"
-            : "http://10.0.2.2:5000";
-        private static readonly string StorageURL = Device.RuntimePlatform == Device.iOS
-            ? "http://localhost/archivos"
-            : "http://10.0.2.2/archivos";
-#else
         //Conexión Azure
 
         /*private static readonly string IP = "https://apiescaperank.azurewebsites.net";
@@ -31,11 +23,8 @@ namespace EscapeRankUI
 
         //Conexión Oracle VM
 
-        private static readonly string IP = "http://132.145.63.165/escaperankapi";
-        private static readonly string StorageURL = "http://132.145.63.165/escaperankstorage";
-
-#endif
-
+        private static readonly string IP = "http://132.145.65.153/escaperankapi";
+        private static readonly string StorageURL = "http://132.145.65.153/escaperankstorage";
         public static string EscapeRankURL = IP + "/api";
         public static string ImagenesSalaAnchasURL = StorageURL + "/img/salas/anchas/";
         public static string ImagenesSalaEstrechasURL = StorageURL + "/img/salas/estrechas/";
